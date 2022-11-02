@@ -1,0 +1,119 @@
+{% sw_extends '@Storefront/storefront/element/cms-element-moorl-shop-the-look.html.twig' %}
+{% block element_moorl_shop_the_look %}
+    {% set priceTotal = 0 %}
+    <div class="cms-element-{{ element.type }}" style="--products-width: {{ element.config.productsWidth.value ?: "380px" }}">
+        <div class="hotspot-area">
+            <div class="hotspot-area-image">
+                <img src="{{ element.data.media.media.url }}" alt="{{ element.data.media.media.alt }}">
+                <div class="hotspot-area-image-overlay">
+                    {% for product in element.data.products.products %}
+                        {% set price = product.calculatedPrice %}
+
+                        {% if page.product.calculatedPrices|length == 1 %}
+                            {% set price = product.calculatedPrices.first %}
+                        {% endif %}
+
+                        <div class="hotspot-area-image-overlay-dot"
+                             tabindex="-1"
+                             style="top: {{ element.config.productMediaHotspots.value[product.id].top }}%; left: {{ element.config.productMediaHotspots.value[product.id].left }}%">
+                            <div class="hover-card">
+                                {% if product.cover.media.url %}
+                                    {% set attributes = {
+                                        'alt': product.translated.name
+                                    } %}
+                                    {% sw_thumbnails 'product-image-thumbnails' with { media: product.cover.media } %}
+                                {% else %}
+                                    {% sw_icon 'placeholder' style {'size': 'fluid'} %}
+                                {% endif %}
+                                <h4>{{ product.translated.name }}</h4> 
+                                <a href="{{ seoUrl('frontend.detail.page', {'productId': product.id}) }}"
+                                   class="btn btn-block btn-primary btn-buy"
+                                   data-modal-class="quickview-modal"
+                                   data-url="{{ path('widgets.quickview.minimal', { 'productId': product.id }) }}"
+                                >{{ "listing.boxProductDetails"|trans|striptags }}</a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="product-list">
+            <form action="{{ path('frontend.checkout.line-item.add') }}"
+                  method="post"
+                  data-add-to-cart="true">
+                {{ sw_csrf('frontend.checkout.line-item.add') }}
+                <input type="hidden" name="redirectTo" value="frontend.cart.offcanvas">
+
+                <div class="product-list-content">
+                    {% for product in element.data.products.products %}
+                        {% set price = product.calculatedPrice %}
+
+                        {% if page.product.calculatedPrices|length == 1 %}
+                            {% set price = product.calculatedPrices.first %}
+                        {% endif %}
+
+                        {% set priceTotal = priceTotal + price.unitPrice %}
+
+                        <input type="hidden" name="lineItems[{{ product.id }}][id]" value="{{ product.id }}">
+                        <input type="hidden" name="lineItems[{{ product.id }}][type]" value="product">
+                        <input type="hidden" name="lineItems[{{ product.id }}][referencedId]" value="{{ product.id }}">
+                        <input type="hidden" name="lineItems[{{ product.id }}][stackable]" value="1">
+                        <input type="hidden" name="lineItems[{{ product.id }}][removable]" value="1">
+                        <input type="hidden" name="lineItems[{{ product.id }}][quantity]" value="1">
+
+                        <div class="product-list-content-item">
+                            {% if product.cover.media.url %}
+                                {% set attributes = {
+                                    'alt': product.translated.name
+                                } %}
+                                {% sw_thumbnails 'product-image-thumbnails' with { media: product.cover.media } %}
+                            {% else %}
+                                {% sw_icon 'placeholder' style {'size': 'fluid'} %}
+                            {% endif %}
+                            <div class="product-list-content-item-info">
+                                <h4>
+                                    <a href="{{ seoUrl('frontend.detail.page', {'productId': product.id}) }}"
+                                       data-modal-class="quickview-modal"
+                                       data-url="{{ path('widgets.quickview.minimal', { 'productId': product.id }) }}"
+                                    >{{ product.translated.name }}</a>
+                                </h4>
+                                {% if context.currentCustomerGroup.id != shopware.config.MoorlCmsShopTheLook.config.customerGroup %}
+                                    <div class="product-list-content-item-info-price">
+                                        {{ price.unitPrice|currency }}{{ "general.star"|trans|sw_sanitize }}
+                                    </div>
+                                {% endif %}
+                            </div>
+                            <div>
+                                <i class="fas fa-check"></i>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                {% if context.currentCustomerGroup.id != shopware.config.MoorlCmsShopTheLook.config.customerGroup %}
+                    <hr>
+                    <div class="product-list-buy">
+                        <div class="product-list-buy-price">
+                            <div>{{ "account.orderItemColumnTotal"|trans|sw_sanitize }}:</div>
+                            <div class="product-list-buy-price-total">{{ priceTotal|currency }}{{ "general.star"|trans|sw_sanitize }}</div>
+                        </div>
+                        <button class="btn btn-primary btn-block btn-buy"
+                                title="{{ "detail.addProduct"|trans|striptags }}"
+                                aria-label="{{ "detail.addProduct"|trans|striptags }}">
+                            {{ "detail.addProduct"|trans|sw_sanitize }}
+                        </button>
+                    </div>
+                {% else %}
+                    <hr>
+                    <div class="product-list-buy">
+                        <button disabled
+                                class="btn btn-primary btn-block btn-buy"
+                                title="{{ "detail.addProduct"|trans|striptags }}"
+                                aria-label="{{ "detail.addProduct"|trans|striptags }}">
+                            {{ "detail.addProduct"|trans|sw_sanitize }}
+                        </button>
+                    </div>
+                {% endif %}
+            </form>
+        </div>
+    </div>
+{% endblock %}

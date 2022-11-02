@@ -1,0 +1,20 @@
+{% sw_extends '@NenoCategoryH1/storefront/category-h1.html.twig' %}
+
+{% block neno_category_h1 %}
+    {{ parent() }}
+    <div class="cms-section  pos-0 cms-section-default" style="">
+        <div class="cms-section-default boxed">
+            <div class="cms-block  pos-1 cms-block-text-hero" style="">
+                <div class="cms-block-container" style="padding: 20px 20px 20px 20px;">
+                    <div class="cms-block-container-row row cms-row ">
+                        <div class="col-12" data-cms-element-id="f5cb966b587140dc93388ab1af040a74">
+                            <div class="cms-element-text">
+                                {{ page.header.navigation.active.translated.description|raw }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

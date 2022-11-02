@@ -1,0 +1,133 @@
+{% block element_rhweb_cta_banner %}
+    {% set config = element.fieldConfig.elements %}
+
+
+    <div class="cms-element-{{ element.type }}{% if element.config.backgroundFixed.value %} bg-fixed{% endif %} {% if isInSidebar %} rhweb-sidebar-element{% endif %}{% if config.mediaActive.value and config.videoActive.value %} video-active {% else %} video-inactive{% endif %}{% if config.elementType.value == 'usp' %} usp-active{% endif %}"
+         style="display:block;
+         {% if config.mediaActive.value and not config.videoActive.value and element.data.media %}
+             {% if config.elementType.value == 'usp' or config.elementType.value == 'custom' or config.elementType.value=='category'%}
+                background-image: unset;
+             {% else %}
+                 background-image: url('{{ element.data.media.url }}');
+                 background-size: cover;
+                 background-position: center;
+             {% endif %}
+         {% elseif config.elementType.value == 'category' and not config.videoActive.value %}
+             #background-image: url('{{ element.data.category.media.url }}');
+             #background-size: cover;
+             #background-position: center;
+         {% endif %}
+             height: {{ config.elementHeight.value }};
+             align-items: {{ config.boxVerticalAlign.value }};
+             justify-content: {{ config.boxHorizontalAlign.value }};">
+
+        {% if config.elementType.value == 'category' or config.elementType.value == 'cta' %}
+            {% if config.mediaActive.value and config.videoActive.value %}
+                <video class="video"
+                       {% if element.config.videoAutoplay.value %}autoplay{% endif %}
+                       {% if element.config.videoMute.value %}muted{% endif %}
+                       {% if element.config.videoLoop.value %}loop{% endif %}>
+                    <source src="{{ element.data.media.url }}" type="{{ element.data.media.mimeType }}">
+                </video>
+            {% endif %}
+        {% endif %}
+    {% if config.elementType.value=='category' %}
+        {% if element.data.category.id %}
+        <a href="{{ seoUrl('frontend.navigation.page', { navigationId: element.data.category.id }) }}">
+            <div class="home-category">
+    		  <img src="{{element.data.media.url}}" style="width:100%"/>
+            </div>
+        </a>
+        {% endif %}
+	{% endif %}
+        <div class="overlay"
+             style="
+                 background: {{ config.elementBackground.value }};
+                {% if isInSidebar %}
+                    max-width:100%;
+                {% else %}
+                    max-width: {{ config.captionMaxWidth.value }};
+                {% endif %}
+                {% if config.elementType.value == 'category' or config.elementType.value == 'cta' %}
+                     display:flex;
+                    {% if not isInSidebar %}
+                        height:100%;
+                    {% endif %}
+                     align-items: {{ config.boxVerticalAlign.value }};
+                 {% endif %}
+
+                 ">
+            <div style="color: {{ config.boxColor.value }};
+                     text-align: {{ config.boxTextAlign.value }};">
+                {% if config.elementType.value == 'cta' %}
+                    <div class="container-content cta-content">
+                        {% if element.config.title.value %}
+                            <h3 style="color: {{ config.boxHeadlineColor.value }};
+                                {% if isInSidebar %}
+                                    font-size: 1.25rem;
+                                {% else %}
+                                    font-size: 2.25rem;
+                                {% endif %}
+                                ">
+                                {{ config.title.value }}
+                            </h3> 
+                        {% endif %}
+                        {% if element.config.quote.value %}
+                            <p>{{ config.quote.value }}</p>
+                        {% endif %}
+                        {% if config.btnActive.value %}
+                            <a class="btn btn-primary btn-lg" href="{{ config.btnUrl.value }}">{{ config.btnText.value }}</a>
+                        {% endif %}
+                    </div>
+                {% elseif config.elementType.value == 'custom' %}
+                    <div class="container-content">
+                        {{ config.content.value|raw }}
+                    </div>
+                {% elseif config.elementType.value == 'category' %}
+                    {% if element.data.category.id %}
+                    <a href="{{ seoUrl('frontend.navigation.page', { navigationId: element.data.category.id }) }}">
+                    {% endif %} 
+                    <div class="container-content category-content">
+                        {% if element.data.category.name %}
+                            <h3 style="color: {{ config.boxHeadlineColor.value }};
+                                {% if isInSidebar %}
+                                    font-size: 1.25rem;
+                                {% else %}
+                                    font-size: 2.25rem;
+                                {% endif %}
+                                ">
+                                {{ element.data.category.name }}
+                            </h3>
+                        {% endif %}
+                        {% if element.data.category.description %}
+                            <p>{{ element.data.category.description|striptags|slice(0, 100) }}...</p>
+                        {% endif %}
+                        {% if config.btnActive.value and element.data.category.id %}
+                            <a class="btn btn-primary btn-lg custom-home-btn" href="{{ seoUrl('frontend.navigation.page', { navigationId: element.data.category.id }) }}">{{ config.btnText.value }}</a>
+                            
+                        {% endif %}
+                    </div>
+                    </a>
+                {% elseif config.elementType.value == 'usp' %}
+                    <div class="container-content {{ config.boxTextAlign.value }}">
+                        {% if element.config.iconActive.value %}
+                            <i class="{{ element.config.iconClass.value }}"></i>
+                        {% endif %}
+                        <div>
+                            {% if element.config.title.value %}
+                                {% if isInSidebar %}
+                                    <h6 style="color: {{ config.boxHeadlineColor.value }};">{{ config.title.value }}</h6>
+                                {% else %}
+                                    <h4 style="color: {{ config.boxHeadlineColor.value }};">{{ config.title.value }}</h4>
+                                {% endif %}
+                            {% endif %}
+                            {% if element.config.quote.value %}
+                                <p>{{ config.quote.value }}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

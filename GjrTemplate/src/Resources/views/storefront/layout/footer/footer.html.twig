@@ -1,0 +1,392 @@
+    {% sw_extends '@Storefront/storefront/layout/footer/footer.html.twig' %}
+
+{% block layout_footer_inner_container %}
+
+    {% set activateContact = shopware.theme['rhweb-footer-activate-contact'] %}
+    {% set activatePayment = shopware.theme['rhweb-footer-activate-payment'] %}
+    {% set activateShipping = shopware.theme['rhweb-footer-activate-shipping'] %}
+    {% set activateCertificates = shopware.theme['rhweb-footer-activate-certificates'] %}
+
+    {% if activatePayment or activateShipping or activateCertificates %}
+        {% set additionalColumnSize = 0 %}
+    {% else %}
+        {% set additionalColumnSize = 1 %}
+    {% endif %}
+    {% if activatePayment %}
+        {% set additionalColumnSize = additionalColumnSize + 1 %}
+    {% endif %}
+    {% if activateShipping %}
+        {% set additionalColumnSize = additionalColumnSize + 1 %}
+    {% endif %}
+    {% if activateCertificates %}
+        {% set additionalColumnSize = additionalColumnSize + 1 %}
+    {% endif %}
+
+    {% set additionalColumn = 'col-md-6 col-lg-'~12/additionalColumnSize %}
+
+    {% set columnAmount = theme_config('rhweb-footer-column-amount') %}
+    {% set columnBootstrap = 12/columnAmount %}
+
+
+    {% block layout_footer_navigation %}
+        {# <div class="container">
+            <div id="footerColumns" class="row footer-columns" data-collapse-footer="true">
+
+                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-column js-footer-column footer-custom footer-first">
+                    <h3 class="footer-custom-title">{{context.salesChannel.customFields.custom_footer_one_title | trans}}</h3>
+                    {{ context.salesChannel.customFields.custom_footer_one | raw }}
+                </div>
+
+                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-column js-footer-column footer-custom footer-second">
+                    <h3 class="footer-custom-title">{{context.salesChannel.customFields.custom_footer_two_title | trans}}</h3>
+                    {{context.salesChannel.customFields.custom_footer_two | raw }}
+                </div>
+
+                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-column js-footer-column footer-custom footer-third">
+                    <h3 class="footer-custom-title">{{context.salesChannel.customFields.custom_footer_three_title | trans}}</h3>
+                    {% block rhweb_venue_social_media %}
+                    {% set socials = [
+                    {
+                        'title': 'Facebook',
+                        'icon': 'lab la-facebook-f',
+                        'url': shopware.theme['rhweb-social-facebook']
+                    },
+                    {
+                        'title': 'Twitter',
+                        'icon': 'lab la-twitter',
+                        'url': shopware.theme['rhweb-social-twitter']
+                    },
+                    {
+                        'title': 'Instagram',
+                        'icon': 'lab la-instagram',
+                        'url': shopware.theme['rhweb-social-instagram']
+                    },
+                    {
+                        'title': 'Youtube',
+                        'icon': 'lab la-youtube',
+                        'url': shopware.theme['rhweb-social-youtube']
+                    },
+                    {
+                        'title': 'Pinterest',
+                        'icon': 'lab la-pinterest-p',
+                        'url': shopware.theme['rhweb-social-pinterest']
+                    },
+                    {
+                        'title': 'Vimeo',
+                        'icon': 'lab la-vimeo',
+                        'url': shopware.theme['rhweb-social-vimeo']
+                    },
+                    {
+                        'title': 'Google Plus +',
+                        'icon': 'lab la-google-plus-g',
+                        'url': shopware.theme['rhweb-social-googleplus']
+                    },
+                    {
+                        'title': 'Tumblr',
+                        'icon': 'lab la-tumblr',
+                        'url': shopware.theme['rhweb-social-tumblr']
+                    },
+                    {
+                        'title': 'Linked In',
+                        'icon': 'lab la-linkedin',
+                        'url': shopware.theme['rhweb-social-linkedin']
+                    },
+                    {
+                        'title': 'Xing',
+                        'icon': 'lab la-xing',
+                        'url': shopware.theme['rhweb-social-xing']
+                    },
+                    {
+                        'title': 'Skype',
+                        'icon': 'lab la-skype',
+                        'url': shopware.theme['rhweb-social-skype']
+                    },
+                    {
+                        'title': 'Snapchat',
+                        'icon': 'lab la-snapchat',
+                        'url': shopware.theme['rhweb-social-snapchat']
+                    },
+                    {
+                        'title': 'Amazon',
+                        'icon': 'lab la-amazon',
+                        'url': shopware.theme['rhweb-social-amazon']
+                    },
+                    {
+                        'title': 'Ebay',
+                        'icon': 'lab la-ebay',
+                        'url': shopware.theme['rhweb-social-ebay']
+                    },
+                    {
+                        'title': 'Etsy',
+                        'icon': 'lab la-etsy',
+                        'url': shopware.theme['rhweb-social-etsy']
+                    },
+                    {
+                        'title': 'Appstore',
+                        'icon': 'lab la-app-store',
+                        'url': shopware.theme['rhweb-social-appstore']
+                    },
+                    {
+                        'title': 'Google Play',
+                        'icon': 'lab la-google-play',
+                        'url': shopware.theme['rhweb-social-googleplay']
+                    },
+                    {
+                        'title': 'Kickstarter',
+                        'icon': 'lab la-kickstarter-k',
+                        'url': shopware.theme['rhweb-social-kickstarter']
+                    },
+                    ] %}
+
+                    <ul class="list-unstyled list-inline m-0">
+                    {% for social in socials %}
+                        {% if social.url %}
+                            <li class="list-inline-item">
+                                <a rel="noopener" aria-label="{{ social.title }} Page" target="_blank" href="{{ social.url }}" title="{{ social.title }}">
+                                    <i aria-hidden="true" aria-label="{{ social.title }} Page" class="{{ social.icon }}"></i>
+                                </a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                    </ul>
+                    {% endblock %}
+
+                </div>
+
+                {% block layout_footer_navigation_hotline %}
+                    {% if activateContact %}
+                        <div class="col-md-4 col-lg-{{ columnBootstrap }} footer-column js-footer-column">
+                            {% block layout_footer_navigation_hotline_headline %}
+                                {{ parent() }}
+                            {% endblock %}
+
+                            {% block layout_footer_navigation_hotline_content %}
+                                {{ parent() }}
+                            {% endblock %}
+                        </div>
+                    {% endif %}
+                {% endblock %}
+
+                {% block layout_footer_navigation_columns %}
+                    {% for root in page.footer.navigation.tree %}
+                        {% block layout_footer_navigation_column %}
+                            <div class="col-md-4 col-lg-{{ columnBootstrap }} footer-column js-footer-column">
+                                {% block layout_footer_navigation_information_headline %}
+                                    <div class="footer-column-headline footer-headline js-collapse-footer-column-trigger pb-md-4 pt-md-5"
+                                         data-target="#collapseFooter{{ loop.index }}"
+                                         aria-expanded="true"
+                                         aria-controls="collapseFooter{{ loop.index }}">
+
+                                        {{ root.category.translated.name }}
+                                        {% block layout_footer_navigation_information_icons %}
+                                            {{ parent() }}
+                                        {% endblock %}
+                                    </div>
+
+                                {% endblock %}
+
+                                {% block layout_footer_navigation_information_content %}
+                                    {{ parent() }}
+                                {% endblock %}
+                            </div>
+                        {% endblock %}
+                    {% endfor %}
+                {% endblock %}
+            </div> 
+        </div>
+    </div>#}
+
+    {% endblock %}
+    
+    <div class="container">
+        {# For reference #}
+        {# <div class="row rhweb-logo-row footer-columns pt-md-5" data-collapse-footer="true"> #}
+        <div class="row rhweb-logo-row" data-collapse-footer="true">
+            {% if activatePayment %}
+                {% block layout_footer_payment_logos %}
+                    <div class="{{ additionalColumn }} footer-column js-footer-column">
+                        {% block layout_footer_payment_logos_headline %}
+                            <div class="footer-column-headline footer-headline js-footer-column-headline js-collapse-footer-column-trigger"
+                                 id="collapseFooterPaymentTitle"
+                                 data-target="#collapseFooterPayment"
+                                 aria-expanded="true"
+                                 aria-controls="collapseFooterPayment">
+                                {{ 'rhwebTheme.footer.payment.headline'|trans }}
+                                <div class="footer-column-toggle">
+                                    <span class="footer-plus-icon">
+                                        {% sw_icon 'plus' %}
+                                    </span>
+                                    <span class="footer-minus-icon">
+                                        {% sw_icon 'minus' %}
+                                    </span>
+                                </div>
+                            </div>
+                        {% endblock %}
+
+
+                        <div id="collapseFooterPayment" class="footer-column-content collapse js-footer-column-content" aria-labelledby="collapseFooterPaymentTitle">
+                            <div class="footer-column-content-inner mt-md-3">
+                                {% block layout_footer_payment_logos_content %}
+                                    <div class="logo-container">
+                                        {% for paymentMethod in page.salesChannelPaymentMethods %}
+                                            {% block layout_footer_payment_logo %}
+                                                {% if paymentMethod.media %}
+                                                    <div class="footer-logo is-payment">
+                                                        {% sw_thumbnails 'footer-payment-image-thumbnails' with {
+                                                            media: paymentMethod.media,
+                                                            sizes: {
+                                                                'default': '100px'
+                                                            },
+                                                            attributes: {
+                                                                'class': 'img-fluid footer-logo-image',
+                                                                'alt': (paymentMethod.media.translated.alt ?: paymentMethod.translated.name),
+                                                                'title': (paymentMethod.media.translated.title ?: paymentMethod.translated.name)
+                                                            }
+                                                        } %}
+                                                    </div>
+                                                {% endif %}
+                                            {% endblock %}
+                                        {% endfor %}
+                                    </div>
+                                {% endblock %}
+                            </div>
+                        </div>
+                    </div>
+                {% endblock %}
+            {% endif %}
+
+
+            {% if activateShipping %}
+                {% block layout_footer_shipping_logos %}
+                    <div class="{{ additionalColumn }} footer-column js-footer-column">
+                        {% block layout_footer_shipping_logos_headline %}
+                            <div class="footer-column-headline footer-headline js-footer-column-headline js-collapse-footer-column-trigger"
+                                 id="collapseFooterShippingTitle"
+                                 data-target="#collapseFooterShipping"
+                                 aria-expanded="true"
+                                 aria-controls="collapseFooterShipping">
+                                {{ 'rhwebTheme.footer.shipping.headline'|trans }}
+                                <div class="footer-column-toggle">
+                                    <span class="footer-plus-icon">
+                                        {% sw_icon 'plus' %}
+                                    </span>
+                                    <span class="footer-minus-icon">
+                                        {% sw_icon 'minus' %}
+                                    </span>
+                                </div>
+                            </div>
+                        {% endblock %}
+
+
+                        <div id="collapseFooterShipping" class="footer-column-content collapse js-footer-column-content" aria-labelledby="collapseFooterShippingTitle">
+                            <div class="footer-column-content-inner mt-md-3">
+                                <div class="logo-container">
+                                    {% block layout_footer_shipping_logos_content %}
+                                        {% for shippingMethod in page.salesChannelShippingMethods %}
+                                            {% block layout_footer_shipping_logo %}
+                                                {% if shippingMethod.media %}
+                                                    <div class="footer-logo is-shipping">
+                                                        {% sw_thumbnails 'footer-shipping-image-thumbnails' with {
+                                                            media: shippingMethod.media,
+                                                            sizes: {
+                                                                'default': '100px'
+                                                            },
+                                                            attributes: {
+                                                                'class': 'img-fluid footer-logo-image',
+                                                                'alt': (shippingMethod.media.translated.alt ?: shippingMethod.translated.name),
+                                                                'title': (shippingMethod.media.translated.title ?: shippingMethod.translated.name)
+                                                            }
+                                                        } %}
+                                                    </div>
+                                                {% endif %}
+                                            {% endblock %}
+                                        {% endfor %}
+                                    {% endblock %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endblock %}
+            {% endif %}
+
+
+            {% if activateCertificates %}
+                {% block rhweb_footer_certificates %}
+                    <div class="{{ additionalColumn }} footer-column js-footer-column">
+                        {% block rhweb_footer_certificates_headline %}
+                            <div class="footer-column-headline footer-headline js-footer-column-headline js-collapse-footer-column-trigger"
+                                 id="collapseFooterCertificatesTitle"
+                                 data-target="#collapseFooterCertificates"
+                                 aria-expanded="true"
+                                 aria-controls="collapseFooterCertificates">
+                                {{ 'rhwebTheme.footer.certificates.headline'|trans }}
+                                <div class="footer-column-toggle">
+                                    <span class="footer-plus-icon">
+                                        {% sw_icon 'plus' %}
+                                    </span>
+                                    <span class="footer-minus-icon">
+                                        {% sw_icon 'minus' %}
+                                    </span>
+                                </div>
+                            </div>
+                        {% endblock %}
+
+
+                        {% block rhweb_footer_certificates_content %}
+                            <div id="collapseFooterCertificates" class="footer-column-content collapse js-footer-column-content" aria-labelledby="collapseFooterCertificatesTitle">
+                                <div class="footer-column-content-inner mt-md-3">
+                                    <div class="footer-certificates">
+                                        {% if shopware.theme['rhweb-certificate-1'] %}
+                                            <img alt="certificate" title="Certificate" src="{{ shopware.theme['rhweb-certificate-1'] |sw_encode_url }}">
+                                        {% endif %}
+                                        {% if shopware.theme['rhweb-certificate-2'] %}
+                                            <img alt="certificate" title="Certificate" src="{{ shopware.theme['rhweb-certificate-2'] |sw_encode_url }}">
+                                        {% endif %}
+                                        {% if shopware.theme['rhweb-certificate-3'] %}
+                                            <img alt="certificate" title="Certificate" src="{{ shopware.theme['rhweb-certificate-3'] |sw_encode_url }}">
+                                        {% endif %}
+                                        {% if shopware.theme['rhweb-certificate-4'] %}
+                                            <img alt="certificate" title="Certificate" src="{{ shopware.theme['rhweb-certificate-4'] |sw_encode_url }}">
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        {% endblock %}
+                    </div>
+                {% endblock %}
+            {% endif %}
+        </div>
+    </div>
+
+    {% block layout_footer_bottom %}
+        <div class="footer-bottom-main">
+            <div class="footer-bottom">
+                {# {% block layout_footer_vat %}
+                    <div class="footer-vat">
+                        {% if context.taxState == "gross" %}
+                            <p>
+                                {{ "footer.includeVat"|trans({
+                                    '%url%': path('frontend.cms.page',{ id: shopware.config.core.basicInformation.shippingPaymentInfoPage })
+                                })|raw }}
+                            </p>
+                        {% else %}
+                            <p>
+                                {{ "footer.excludeVat"|trans({
+                                    '%url%': path('frontend.cms.page',{ id: shopware.config.core.basicInformation.shippingPaymentInfoPage })
+                                })|raw }}
+                            </p>
+                        {% endif %}
+                    </div>
+                {% endblock %} #}
+
+                {# {% block layout_footer_copyright %}
+                    <div class="py-md-3">
+                        <div class="text-center">
+                            Theme by <a href="https://rh-webdesign.com" rel="noopener" target="_blank"><u>RH-Webdesign</u></a>
+                        </div>
+                    </div>
+                {% endblock %} #}
+            </div>
+        </div>
+    {% endblock %}
+{% endblock %}

@@ -1,0 +1,99 @@
+{% block element_rhweb_shop_the_look %}
+    {% set priceTotal = 0 %}
+
+    <div class="cms-element-{{ element.type }} {% if isInSidebar %} rhweb-sidebar-element{% endif %}">
+        <div class="row">
+            <div class="{% if isInSidebar %}col-12 mb-3{% else %}col-lg-9 mb-4 mb-lg-0{% endif %}">
+                <div class="hotspot-area">
+                    <div class="hotspot-area-image">
+                        <img src="{{ element.data.media.media.url }}" alt="Shop the Look">
+                        <div class="hotspot-area-image-overlay">
+                            {% for product in element.data.products.products %}
+                                <a href="{{ seoUrl('frontend.detail.page', {'productId': product.id}) }}" title="{{ product.translated.name }}">
+                                    <div class="hotspot-area-image-overlay-dot"
+                                         tabindex="-1"
+                                         style="top: {{ element.config.productMediaHotspots.value[product.id].top }}; left: {{ element.config.productMediaHotspots.value[product.id].left }}">
+
+                                        <div class="hover-card shadow-sm">
+                                            {% if product.cover.media.url %}
+                                                {% sw_thumbnails 'cart-item-img-thumbnails' with {
+                                                    media: product.cover.media,
+                                                    attributes: {
+                                                        'alt': product.translated.name,
+                                                    }
+                                                } %}
+                                            {% else %}
+                                                {% sw_icon 'placeholder' style {'size': 'fluid'} %}
+                                            {% endif %}
+                                            <h4>{{ product.translated.name }}</h4>
+                                        </div>
+                                    </div>
+                                </a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="{% if isInSidebar %}col-12{% else %}col-lg-3{% endif %}">
+                <div class="product-list">
+                    <form action="{{ path('frontend.checkout.line-item.add') }}"
+                          method="post"
+                          data-add-to-cart="true">
+                        {{ sw_csrf('frontend.checkout.line-item.add') }}
+                        <input type="hidden" name="redirectTo" value="frontend.cart.offcanvas"/>
+
+                        <div class="product-list-content">
+                            {% for product in element.data.products.products %}
+                                {% set priceTotal = priceTotal + product.price.first.gross %}
+
+                                <input type="hidden" name="lineItems[{{ product.id }}][id]" value="{{ product.id }}">
+                                <input type="hidden" name="lineItems[{{ product.id }}][type]" value="product">
+                                <input type="hidden" name="lineItems[{{ product.id }}][referencedId]" value="{{ product.id }}">
+                                <input type="hidden" name="lineItems[{{ product.id }}][stackable]" value="1">
+                                <input type="hidden" name="lineItems[{{ product.id }}][removable]" value="1">
+                                <input type="hidden" name="lineItems[{{ product.id }}][quantity]" value="1">
+
+                                <div class="product-list-content-item">
+                                    <div class="product-list-image-container">
+                                        {% if product.cover.media.url %}
+                                            {% sw_thumbnails 'cart-item-img-thumbnails' with {
+                                                media: product.cover.media,
+                                                attributes: {
+                                                    'alt': product.translated.name,
+                                                }
+                                            } %}
+                                        {% else %}
+                                            {% sw_icon 'placeholder' style {'size': 'fluid'} %}
+                                        {% endif %}
+                                    </div>
+                                    <div class="product-list-content-item-info">
+                                        <a href="{{ seoUrl('frontend.detail.page', {'productId': product.id}) }}"
+                                            class="product-list-title" title="{{ product.translated.name }}">
+                                            {{ product.translated.name }}
+                                        </a>
+                                        <div class="product-list-content-item-info-price">
+                                            {{ product.price.first.gross|currency }}{{ "general.star"|trans|sw_sanitize }}
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                        <hr>
+                        <div class="product-list-buy">
+                            <div class="product-list-buy-price">
+                                <div>{{ "account.orderItemColumnTotal"|trans|sw_sanitize }}:</div>
+                                <div class="product-list-buy-price-total">{{ priceTotal|currency }}{{ "general.star"|trans|sw_sanitize }}</div>
+                            </div>
+                            <button class="btn btn-primary btn-block btn-buy {% if isInSidebar %} btn-sm{% endif %}"
+                                    title="{{ "detail.addProduct"|trans|striptags }}"
+                                    aria-label="{{ "detail.addProduct"|trans|striptags }}">
+                                {{ "detail.addProduct"|trans|sw_sanitize }}
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}

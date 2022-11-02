@@ -1,0 +1,27 @@
+{% sw_extends '@Storefront/storefront/page/product-detail/acris-downloads/downloads.html.twig' %}
+
+{% block page_product_detail_downloads %}
+    <div class="bacris-downloads-list gjr">
+        {% for value in page.product.extensions.acrisDownloads.elements %}
+            {% block page_product_detail_downloads_element %}
+                {#{% set mediaFolderCollection = searchMediaFolder([value.getMedia().getMediaFolderId()], context.context) %}
+                {% set mediaFolder = mediaFolderCollection.get(value.getMedia().getMediaFolderId()) %}#}
+<li class="acris-downloads-list-item">
+    <a href="{{ value.getMedia().getUrl() }}"
+       target="_blank"
+       title="{{ value.getMedia().getFileName() }}.{{ value.getMedia().getFileExtension() }}">
+        {% if value.translated.title %}
+            {{ value.translated.title }}
+        {% else %}
+            {{ value.getMedia().getFileName() }}.{{ value.getMedia().getFileExtension() }}
+        {% endif %}
+    </a>
+    {% if value.translated.description %}
+        - {{ value.translated.description }}
+    {% endif %}
+    {#({{ mediaFolder.getName()}})#}
+</li>
+            {% endblock %}
+        {% endfor %}
+    </div class="acris-downloads-list gjr">
+{% endblock %}

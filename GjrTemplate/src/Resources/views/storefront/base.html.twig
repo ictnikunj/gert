@@ -1,0 +1,361 @@
+{% sw_extends '@Storefront/storefront/base.html.twig' %}
+
+{% block base_body_classes %}
+    {{ parent() }} {{ shopware.theme['rhweb-custom-body-class'] }}
+{% endblock %}
+
+{% block base_header %}
+    {% if theme_config('rhweb-topbar-activate-topbar') %}
+        <div class="d-none d-lg-block">
+            
+        </div>
+    {% endif %}
+    {{ parent() }}
+{% endblock %}
+
+{% block base_navigation %}
+    <div id="fixedNavigation" class="nav-main">
+        {% block base_navigation_inner %}
+            {% sw_include '@Storefront/storefront/layout/navigation/navigation.html.twig' %}
+        {% endblock %}
+    </div>
+{% endblock %}
+
+{% block base_body %}
+    <div class="rhweb-overlay-cookie-change"></div>
+
+    {% if shopware.theme['rhweb-general-activate-cookie-overlay'] %}
+        <script>
+            window.activateCookieOverlay = true;
+        </script>
+    {% endif %}
+
+    {% if shopware.theme['rhweb-header-layout-header-fixed'] and controllerName != 'Checkout' and controllerName != 'Register' %}
+        <script>
+            window.activateFixedNavigation = true;
+        </script>
+    {% endif %}
+
+    {{ parent() }}
+{% endblock %}
+
+{% block base_main %}
+    <main class="content-main">
+        {% if shopware.theme['rhweb-slider-activate-slider'] %}
+            {% if shopware.theme['rhweb-slider-activate-slider-onlyfrontpage'] %}
+                {% if controllerAction|lower == 'home' %}
+                    {% include '@RHWebVenue/storefront/rhweb-custom/home/slider.html.twig' %}
+                {% endif %}
+            {% else %}
+                {% include '@RHWebVenue/storefront/rhweb-custom/home/slider.html.twig' %}
+            {% endif %}
+        {% endif %}
+        {% block base_flashbags %}
+            {{ parent() }}
+        {% endblock %}
+
+        {% block base_main_inner %}
+            {{ parent() }}
+        {% endblock %}
+    </main>
+{% endblock %}
+
+{% block base_body_script %}
+    {{ parent() }}
+    {% if shopware.theme['rhweb-custom-js'] %}
+        <script>
+            {{ shopware.theme['rhweb-custom-js'] | raw }}
+        </script>
+    {% endif %}
+{% endblock %}
+
+{% block base_footer %}
+    {% if shopware.theme['rhweb-mailchimp-activate-footer'] %}
+        {% if shopware.theme['rhweb-mailchimp-activate-onlyfrontpage'] %}
+            {% if controllerAction|lower == 'home' %}
+                {% include '@RHWebVenue/storefront/rhweb-custom/home/mailchimp.html.twig' %}
+            {% endif %}
+        {% else %}
+            {% include '@RHWebVenue/storefront/rhweb-custom/home/mailchimp.html.twig' %}
+        {% endif %}
+    {% endif %}
+
+    {% if shopware.theme['rhweb-footer-activate-service'] %}
+        <div class="service-menu-container text-center d-none d-lg-block">
+            <div class="container">
+                {% sw_include '@Storefront/storefront/layout/header/actions/service-menu-widget.html.twig' %}
+            </div>
+        </div>
+    {% endif %}
+
+    {% if shopware.theme['rhweb-footer-activate-socials'] %}
+        <div class="social-footer-container">
+            <div class="container">
+                {% include '@RHWebVenue/storefront/rhweb-custom/social.html.twig' %}
+            </div>
+        </div>
+    {% endif %}
+
+    {% if theme_config('rhweb-footer-activate-newsletter') and theme_config('rhweb-newsletter-position') != 'column' %}
+        {% sw_include '@Storefront/storefront/rhweb-custom/snippets/footer/rhweb-newsletter.html.twig' with{
+            position: 'footer-above'
+        } %}
+    {% endif %}
+
+    {% if theme_config('rhweb-mailchimp-activate-popup') and not theme_config('rhweb-general-activate-cookie-overlay') %}
+        {% sw_include '@Storefront/storefront/rhweb-custom/newsletter-popup.html.twig' %}
+    {% endif %}
+
+    <footer class="footer-main">
+        {% block base_footer_inner %}
+        <div class="footer-upper-desktop">
+            <div class="container">
+                <div class="row">
+                   <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 product-line">
+                        <h3>{{context.salesChannel.customFields.custom_footer_section_1_title | trans}}</h3>
+                       <div class="part-one">
+                        {{context.salesChannel.customFields.custom_footer_section_1_text | raw }}
+                       </div>
+                   </div>
+                   <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 product-line">
+                        <h3>{{context.salesChannel.customFields.custom_footer_section_2_title | trans}}</h3>
+                       <div class="part-one">
+                       {{context.salesChannel.customFields.custom_footer_section_2_text | raw }}
+                       </div>
+                   </div>
+                   <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 product-line">
+                        <h3>{{context.salesChannel.customFields.custom_footer_section_3_title | trans}}</h3>
+                       <div class="part-one">
+                        {{context.salesChannel.customFields.custom_footer_section_3_text | raw }}
+                       </div>
+                   </div>
+                   <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 product-line">
+                        <h3>{{context.salesChannel.customFields.custom_footer_section_4_title | trans}}</h3>
+                       <div class="part-one">
+                       {{context.salesChannel.customFields.custom_footer_section_4_text | raw }}
+                       </div>
+                   </div> 
+               </div>
+            </div>
+        </div>
+
+        <div class="footer-upper-mobile">
+            <div class="container">
+                <div class="accordion" id="accordionExample">
+                    <div class="card">
+                        <div class="card-head" id="headingOne">
+                            <h2 class="mb-0 collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                {{context.salesChannel.customFields.custom_footer_section_1_title | trans}}
+                            </h2>
+                        </div>
+                        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                            <div class="card-body">
+                                <div class="part-one">
+                                     {{context.salesChannel.customFields.custom_footer_section_1_text | raw }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+      
+                    <div class="card">
+                        <div class="card-head" id="headingTwo">
+                            <h2 class="mb-0 collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                {{context.salesChannel.customFields.custom_footer_section_2_title | trans}}
+                            </h2>
+                        </div>
+                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                            <div class="card-body">
+                                <div class="part-one">
+                                    {{context.salesChannel.customFields.custom_footer_section_2_text | raw }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-head" id="headingThree">
+                            <h2 class="mb-0 collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                {{context.salesChannel.customFields.custom_footer_section_3_title | trans}}
+                            </h2>
+                        </div>
+                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                            <div class="card-body">
+                                <div class="part-one">
+                                    {{context.salesChannel.customFields.custom_footer_section_3_text | raw }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-head" id="headingfour">
+                            <h2 class="mb-0 collapsed" data-toggle="collapse" data-target="#collapsefour" aria-expanded="false" aria-controls="collapsefour">
+                                {{context.salesChannel.customFields.custom_footer_section_4_title | trans}}
+                            </h2>
+                        </div>
+                        <div id="collapsefour" class="collapse" aria-labelledby="headingfour" data-parent="#accordionExample">
+                            <div class="card-body">
+                                <div class="part-one">
+                                    {{context.salesChannel.customFields.custom_footer_section_4_text | raw }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-top">
+            <div class="container">
+                <div id="footerColumns" class="row footer-columns" data-collapse-footer="true">
+                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-column js-footer-column footer-custom footer-first">
+                        <h3 class="footer-custom-title">{{context.salesChannel.customFields.custom_footer_one_title | trans}}</h3>
+                        {{ context.salesChannel.customFields.custom_footer_one | raw }}
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-column js-footer-column footer-custom footer-second">
+                        <h3 class="footer-custom-title">{{context.salesChannel.customFields.custom_footer_two_title | trans}}</h3>
+                        {{context.salesChannel.customFields.custom_footer_two | raw }}
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-column js-footer-column footer-custom footer-third">
+                        <h3 class="footer-custom-title">{{context.salesChannel.customFields.custom_footer_three_title | trans}}</h3>
+                        {% block rhweb_venue_social_media %}
+                            {% set socials = [
+                                {
+                                    'title': 'Facebook',
+                                    'icon': 'lab la-facebook-f',
+                                    'url': theme_config('rhweb-social-facebook')
+                                },
+                                {
+                                    'title': 'Twitter',
+                                    'icon': 'lab la-twitter',
+                                    'url': theme_config('rhweb-social-twitter')
+                                },
+                                {
+                                    'title': 'Instagram',
+                                    'icon': 'lab la-instagram',
+                                    'url': theme_config('rhweb-social-instagram')
+                                },
+                                {
+                                    'title': 'Youtube',
+                                    'icon': 'lab la-youtube',
+                                    'url': theme_config('rhweb-social-youtube')
+                                },
+                                {
+                                    'title': 'Pinterest',
+                                    'icon': 'lab la-pinterest-p',
+                                    'url': theme_config('rhweb-social-pinterest')
+                                },
+                                {
+                                    'title': 'Vimeo',
+                                    'icon': 'lab la-vimeo',
+                                    'url': theme_config('rhweb-social-vimeo')
+                                },
+                                {
+                                    'title': 'Google Plus +',
+                                    'icon': 'lab la-google-plus-g',
+                                    'url': theme_config('rhweb-social-googleplus')
+                                },
+                                {
+                                    'title': 'Tumblr',
+                                    'icon': 'lab la-tumblr',
+                                    'url': theme_config('rhweb-social-tumblr')
+                                },
+                                {
+                                    'title': 'Linked In',
+                                    'icon': 'lab la-linkedin',
+                                    'url': theme_config('rhweb-social-linkedin')
+                                },
+                                {
+                                    'title': 'Xing',
+                                    'icon': 'lab la-xing',
+                                    'url': theme_config('rhweb-social-xing')
+                                },
+                                {
+                                    'title': 'Skype',
+                                    'icon': 'lab la-skype',
+                                    'url': theme_config('rhweb-social-skype')
+                                },
+                                {
+                                    'title': 'Snapchat',
+                                    'icon': 'lab la-snapchat',
+                                    'url': theme_config('rhweb-social-snapchat')
+                                },
+                                {
+                                    'title': 'Amazon',
+                                    'icon': 'lab la-amazon',
+                                    'url': theme_config('rhweb-social-amazon')
+                                },
+                                {
+                                    'title': 'Ebay',
+                                    'icon': 'lab la-ebay',
+                                    'url': theme_config('rhweb-social-ebay')
+                                },
+                                {
+                                    'title': 'Etsy',
+                                    'icon': 'lab la-etsy',
+                                    'url': theme_config('rhweb-social-etsy')
+                                },
+                                {
+                                    'title': 'Appstore',
+                                    'icon': 'lab la-app-store',
+                                    'url': theme_config('rhweb-social-appstore')
+                                },
+                                {
+                                    'title': 'Google Play',
+                                    'icon': 'lab la-google-play',
+                                    'url': theme_config('rhweb-social-googleplay')
+                                },
+                                {
+                                    'title': 'Kickstarter',
+                                    'icon': 'lab la-kickstarter-k',
+                                    'url': theme_config('rhweb-social-kickstarter')
+                                },
+                            ] %}
+
+                            <ul class="list-unstyled list-inline m-0">
+                                {% for social in socials %}
+                                    {% if social.url %}
+                                        <li class="list-inline-item">
+                                            <a rel="noopener" aria-label="{{ social.title }} Page" target="_blank" href="{{ social.url }}" title="{{ social.title }}">
+                                                <i aria-hidden="true" aria-label="{{ social.title }} Page" class="{{ social.icon }}"></i>
+                                            </a>
+                                        </li>
+                                    {% endif %}
+                                {% endfor %}
+                            </ul>
+                        {% endblock %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="container">
+            {% sw_include '@Storefront/storefront/layout/footer/footer.html.twig' %}
+        </div>
+        {% endblock %}
+    </footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+    $('.product-box').hover(
+        function () {
+            var count = $(this).find( "a" ).find('img').length;
+            if(count == 2){
+                $(this).find( "a" ).find('img').eq(0).css('opacity', '0');
+                $(this).find( "a" ).find('img').eq(1).css('opacity', '1');
+            }
+            }, 
+        function () {
+            var count = $(this).find( "a" ).find('img').length;
+            if(count == 2){
+                $(this).find( "a" ).find('img').eq(0).css('opacity', '1');
+                $(this).find( "a" ).find('img').eq(1).css('opacity', '0');
+            }
+        }
+    );
+    </script>
+
+{% endblock %}
+

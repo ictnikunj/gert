@@ -1,0 +1,31 @@
+{
+    "name": "gjr/template",
+    "description": "Gjr Template aanpassingen Wisa",
+    "version": "v1.0.1",
+    "type": "shopware-platform-plugin",
+    "license": "AGPL-3.0-or-later",
+    "authors": [
+        {
+            "name": "Ecommerce Expert / GJR Webdevelopment",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "shopware/core": "6.*.*"
+    },
+    "extra": {
+        "shopware-plugin-class": "Gjr\\Template\\GjrTemplate",
+        "plugin-icon": "Resources/config/plugin.png",
+        "label": {
+            "de-DE": "Monitoring Plugin",
+            "en-GB": "GJR Template",
+            "nl-NL": "GJR Template"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Gjr\\Template\\": "src/"
+        }
+    }
+}
+

@@ -1,0 +1,17 @@
+{% sw_extends '@Parent/storefront/utilities/offcanvas.html.twig' %}
+
+{% block utilities_offcanvas_content %}
+    {% block page_product_detail_downloads_container %}
+        <div class="product-detail-downloads tab-pane-container">
+            {#{% block page_product_detail_downloads_title %}
+                <div class="h3 product-detail-downloads-title">
+                    <h3>{{ "detail.acrisProductDownloadTitle"|trans }}</h3>
+                </div>
+            {% endblock %}#}
+
+            {% block page_product_detail_downloads_content %}
+                {% sw_include '@Storefront/storefront/page/product-detail/acris-downloads/downloads.html.twig' %}
+            {% endblock %}
+        </div>
+    {% endblock %}
+{% endblock %}

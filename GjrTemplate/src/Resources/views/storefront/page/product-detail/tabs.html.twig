@@ -1,0 +1,383 @@
+{# <link rel="stylesheet" type="text/css" href="{{ asset('bundles/gjrtemplate/custom.css') }}"> #}
+{% block page_product_detail_tabs_inner %}
+
+    <div class="card card-tabs">
+        {% block page_product_detail_tabs_navigation %}
+
+            <div class="card-header product-detail-tab-navigation">
+                <div class="accordion" id="accordionExample">
+                    <div class="card">
+
+                        {% if page.product.translated.description|length > 0 %}
+                        <div class="card-header" id="headingOne">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                    {{ "detail.tabsDescription"|trans|sw_sanitize }}
+                                </button>
+                            </h2>
+                        </div>
+
+
+                        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                            <div class="card-body">
+                                {% sw_include '@Storefront/storefront/page/product-detail/description.html.twig' %}
+                            </div>
+                        </div>
+
+                    </div>
+                    {% endif %}
+
+                    {% if page.product.sortedProperties|length > 0 %}
+                        <div class="card">
+                            <div class="card-header" id="headingTwo">
+                                <h2 class="mb-0">
+                                    <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        {{ "detail.Properties"|trans }}
+                                    </button>
+                                </h2>
+                            </div>
+                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                                <div class="card-body">
+                                    {% sw_include '@Storefront/storefront/page/product-detail/properties.html.twig' %}
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+
+                    {% if config('AcrisProductDownloadsCS.config').displayPosition == 'afterReviews' and page.product.extensions.acrisDownloads.elements and page.product.extensions.acrisDownloads.elements|length > 0 %}
+                        <div class="card">
+                            <div class="card-header" id="headingThree">
+                                <h2 class="mb-0">
+                                    <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                        {{ "detail.acrisProductDownloadTabLabel"|trans }}
+                                    </button>
+                                </h2>
+                            </div>
+                            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                                <div class="card-body">
+                                    {% block utilities_offcanvas_content %}
+                                        {% block page_product_detail_downloads_container %}
+                                            <div class="product-detail-downloads tab-pane-container">
+                                                {#{% block page_product_detail_downloads_title %}
+                                                    <div class="h3 product-detail-downloads-title">
+                                                        <h3>{{ "detail.acrisProductDownloadTitle"|trans }}</h3>
+                                                    </div>
+                                                {% endblock %}#}
+
+                                                {% block page_product_detail_downloads_content %}
+                                                    {% block page_product_detail_downloads %}
+                                                        {% sw_include '@Storefront/storefront/page/product-detail/acris-downloads/download-tab.html.twig' %}
+                                                            <ul class="acris-downloads-list">
+                                                                {#{% for value in page.product.extensions.acrisDownloads.elements %}
+                                                                    {% block page_product_detail_downloads_element %}
+
+                                                                        {% set mediaFolderCollection = searchMediaFolder([value.getMedia().getMediaFolderId()], context.context) %}
+
+                                                                        {% set mediaFolder = mediaFolderCollection.get(value.getMedia().getMediaFolderId()) %}
+
+
+
+
+                                                                        <li class="acris-downloads-list-item"><a href="{{ value.getMedia().getUrl() }}" target="_blank" title="{{ value.getMedia().getFileName() }}.{{ value.getMedia().getFileExtension() }}">
+
+                                                                        {{ mediaFolder.getName()}}
+                                                                        </a>
+                                                                        </li>
+                                                                    {% endblock %}
+                                                                {% endfor %}
+                                                                #}
+
+                                                                {% for vkey, vdatas in context.context.extensions['myslider']['Values'] %}
+                                                                    <h5>{{ vkey|trans }}</h5>
+                                                                     {% for vdata in vdatas %}
+                                                                        <li class="acris-downloads-list-item">
+                                                                        {% set var1 = page.header.languages.elements %}
+                                                                        {% set var2 = context.languageId %}
+                                                                            {% if(var1[var2].name == 'Magyar') %}
+                                                                                <a href="{% if vdata['url'] == null  %}{{ vdata['mediaUrl'] }}{% else %}{{ seoUrl('Letöltések.redirect', {'path': vdata['url']}) }}{% endif %}" target="_blank" title="{{ vdata['filename'] }}">{{ vdata['title'] }}</a>
+                                                                            {% elseif(var1[var2].name == 'English') %}
+                                                                                <a href="{% if vdata['url'] == null  %}{{ vdata['mediaUrl'] }}{% else %}{{ seoUrl('Downloads.redirect', {'path': vdata['url']}) }}{% endif %}" target="_blank" title="{{ vdata['filename'] }}">{{ vdata['title'] }}</a>
+                                                                            {% elseif(var1[var2].name == 'Čeština') %}
+                                                                                <a href="{% if vdata['url'] == null  %}{{ vdata['mediaUrl'] }}{% else %}{{ seoUrl('Stahování.redirect', {'path': vdata['url']}) }}{% endif %}" target="_blank" title="{{ vdata['filename'] }}">{{ vdata['title'] }}</a>
+                                                                            {% elseif(var1[var2].name == 'Deutsch') %}
+                                                                                <a href="{% if vdata['url'] == null  %}{{ vdata['mediaUrl'] }}{% else %}{{ seoUrl('Downloads.redirect', {'path': vdata['url']}) }}{% endif %}" target="_blank" title="{{ vdata['filename'] }}">{{ vdata['title'] }}</a>
+                                                                            {% elseif(var1[var2].name == 'Español') %}
+                                                                                <a href="{% if vdata['url'] == null  %}{{ vdata['mediaUrl'] }}{% else %}{{ seoUrl('Descargas.redirect', {'path': vdata['url']}) }}{% endif %}" target="_blank" title="{{ vdata['filename'] }}">{{ vdata['title'] }}</a>
+                                                                            {% elseif(var1[var2].name == 'Croatian') %}
+                                                                                <a href="{% if vdata['url'] == null  %}{{ vdata['mediaUrl'] }}{% else %}{{ seoUrl('Preuzimanja.redirect', {'path': vdata['url']}) }}{% endif %}" target="_blank" title="{{ vdata['filename'] }}">{{ vdata['title'] }}</a>
+                                                                            {% elseif(var1[var2].name == 'Italiano') %}
+                                                                                <a href="{% if vdata['url'] == null  %}{{ vdata['mediaUrl'] }}{% else %}{{ seoUrl('Download.redirect', {'path': vdata['url']}) }}{% endif %}" target="_blank" title="{{ vdata['filename'] }}">{{ vdata['title'] }}</a>
+                                                                            {% elseif(var1[var2].name == 'Dutch') %}
+                                                                                <a href="{% if vdata['url'] == null  %}{{ vdata['mediaUrl'] }}{% else %}{{ seoUrl('Downloads.redirect', {'path': vdata['url']}) }}{% endif %}" target="_blank" title="{{ vdata['filename'] }}">{{ vdata['title'] }}</a>
+                                                                            {% elseif(var1[var2].name == 'Slovenian') %}
+                                                                                <a href="{% if vdata['url'] == null  %}{{ vdata['mediaUrl'] }}{% else %}{{ seoUrl('Prenosi.redirect', {'path': vdata['url']}) }}{% endif %}" target="_blank" title="{{ vdata['filename'] }}">{{ vdata['title'] }}</a>
+                                                                            {% elseif(var1[var2].name == 'Polski') %}
+                                                                                <a href="{% if vdata['url'] == null  %}{{ vdata['mediaUrl'] }}{% else %}{{ seoUrl('Pobierzpliki.redirect', {'path': vdata['url']}) }}{% endif %}" target="_blank" title="{{ vdata['filename'] }}">{{ vdata['title'] }}</a>
+                                                                            {% else %}
+                                                                                <a href="{% if vdata['url'] == null  %}{{ vdata['mediaUrl'] }}{% else %}{{ seoUrl('document.redirect', {'path': vdata['url']}) }}{% endif %}" target="_blank" title="{{ vdata['filename'] }}">{{ vdata['title'] }}</a>
+                                                                            {% endif %}
+                                                                        </li>
+                                                                    {% endfor %}
+                                                                {% endfor %}
+                                                            </ul>
+                                                        {% endblock %}
+                                                {% endblock %}
+                                            </div>
+                                        {% endblock %}
+                                    {% endblock %}
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                    {# Tab to show related items #}
+
+
+                    {% for item in page.crossSellings %}
+                        {% if item.crossSelling.translated.name == 'Addon Products' %}
+                            {% set id = item.crossSelling.id %}
+                            {% if item.crossSelling.active and item.getProducts().elements %}
+                                <div class="card">
+                                    <div class="card-header" id="heading{{ item.crossSelling.id }}">
+                                        <h2 class="mb-0">
+                                            <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapse{{ item.crossSelling.id }}" aria-expanded="false" aria-controls="collapse{{ item.crossSelling.id }}">
+                                                {{ "AddonProducts"|trans }}
+                                        </button>
+                                        </h2>
+                                </div>
+
+                                <div id="collapse{{ item.crossSelling.id }}" class="custom collapse show" aria-labelledby="heading{{ item.crossSelling.id }}" data-parent="#accordionExample">
+                                    <div class="card-body">
+
+                                        {% set config = {
+                                            'title': {
+                                                'value': ''
+                                            },
+                                            'border': {
+                                                'value': false
+                                            },
+                                            'rotate': {
+                                                'value': false
+                                            },
+                                            'products': {
+                                                'value': item.getProducts()
+                                            },
+                                            'boxLayout': {
+                                                'value': 'standard'
+                                            },
+                                            'elMinWidth': {
+                                                'value': '230px'
+                                            },
+                                            'navigation': {
+                                                'value': true
+                                            },
+                                            'displayMode': {
+                                                'value': 'minimal'
+                                            },
+                                            'verticalAlign': {
+                                                'value': 'top'
+                                            },
+                                        } %}
+
+                                        {% sw_include "@Storefront/storefront/element/cms-element-product-slider.html.twig" with {
+                                            sliderConfig: config,
+                                            element: {
+                                                'data': {
+                                                    'products': {
+                                                        elements: item.getProducts()
+                                                    }
+                                                },
+                                                type: 'product-slider'
+                                            }
+                                        } only %}
+                                    </div>
+                                </div>
+                            </div>
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
+
+                    {% for item in page.crossSellings %}
+                        {% if item.crossSelling.translated.name == 'Related Items' %}
+                            {% set id = item.crossSelling.id %}
+                            {% if item.crossSelling.active and item.getProducts().elements %}
+                                <div class="card">
+                                    <div class="card-header" id="heading{{ item.crossSelling.id }}">
+                                        <h2 class="mb-0">
+                                            <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapse{{ item.crossSelling.id }}" aria-expanded="false" aria-controls="collapse{{ item.crossSelling.id }}">
+                                                {{ "RelatedItems"|trans }}
+                                            </button>
+                                        </h2>
+                                    </div>
+
+                                    <div id="collapse{{ item.crossSelling.id }}" class="custom collapse show" aria-labelledby="heading{{ item.crossSelling.id }}" data-parent="#accordionExample">
+                                        <div class="card-body">
+
+                                            {% set config = {
+                                                'title': {
+                                                    'value': ''
+                                                },
+                                                'border': {
+                                                    'value': false
+                                                },
+                                                'rotate': {
+                                                    'value': false
+                                                },
+                                                'products': {
+                                                    'value': item.getProducts()
+                                                },
+                                                'boxLayout': {
+                                                    'value': 'standard'
+                                                },
+                                                'elMinWidth': {
+                                                    'value': '230px'
+                                                },
+                                                'navigation': {
+                                                    'value': true
+                                                },
+                                                'displayMode': {
+                                                    'value': 'minimal'
+                                                },
+                                                'verticalAlign': {
+                                                    'value': 'top'
+                                                },
+                                            } %}
+
+                                            {% sw_include "@Storefront/storefront/element/cms-element-product-slider.html.twig" with {
+                                                sliderConfig: config,
+                                                element: {
+                                                    'data': {
+                                                        'products': {
+                                                            elements: item.getProducts()
+                                                        }
+                                                    },
+                                                    type: 'product-slider'
+                                                }
+                                            } only %}
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
+
+                    {% for item in page.crossSellings %}
+
+                        {% if item.crossSelling.translated.name == 'Product Parts' %}
+                            {% if item.total != 0 %}
+                            <div class="card">
+                                    <div class="card-header" id="heading{{ item.crossSelling.id }}">
+                                        <h2 class="mb-0">
+                                            <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapse{{ item.crossSelling.id }}" aria-expanded="false" aria-controls="collapse{{ item.crossSelling.id }}">
+                                                {{ "ProductParts"|trans }}
+                                            </button>
+                                        </h2>
+                                    </div>
+
+                                    <div id="collapse{{ item.crossSelling.id }}" class="collapse show" aria-labelledby="heading{{ item.crossSelling.id }}" data-parent="#accordionExample">
+                                        <div class="card-body">
+
+                                            <table class="table table-striped table-bordered">
+                                                <thead>
+                                                <tr>
+                                                    <th scope="col">{{ "detail.productNumberLabel"|trans|sw_sanitize }}</th>
+                                                    <th scope="col">{{ "detail.tabsDescription"|trans|sw_sanitize }}</th>
+                                                    <th scope="col">{{ "ropi-frontend-editing.contentElement.definition.subheader.image"|trans|sw_sanitize }}</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                {% for productData in item.getProducts() %}
+                                                    <tr>
+                                                        <td><a href="{{ seoUrl('frontend.detail.page', {'productId': productData.id}) }}"
+                                                               title="{{ productData.name }}"class="product-image-link is-{{ displayMode }}">{{ productData.productNumber }}</a></td>
+                                                        <td>{{ productData.name }}  </td>
+                                                        <td>
+                                                            {% if productData.cover.mediaId %}
+                                                            {% set productPartCollection = searchMedia([productData.cover.mediaId], context.context) %}
+                                                            {% set productPart = productPartCollection.get(productData.cover.mediaId) %}
+                                                                {% sw_thumbnails 'my-thumbnails' with {
+                                                                    media: productPart,
+                                                                    sizes: {
+                                                                        'xs': '50px',
+                                                                        'sm': '50px',
+                                                                        'md': '50px',
+                                                                        'lg': '50px',
+                                                                        'xl': '50px',
+                                                                    }
+                                                                } %}
+                                                            {% endif %}
+                                                        </td>
+                                                    </tr>
+                                                {% endfor %}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
+
+
+		    {% set relatedcategories = '' %}
+                    {% set navigationTree = page.header.navigation.tree %}
+                    {% set categories = page.product.categoryTree %}
+
+		    {% for categorypart in categories %}
+                            {% for item in navigationTree %}
+                                {% if item.category.id == categorypart %}
+                                   {# {{item.category.name}}   <br /> #}
+                                {% else %}
+				   {% if item.category.name =='Onderdelen' %}
+                                   {% if item.children|length %}
+                                        {% for subitem in item.children %}
+                                            {% if subitem.category.id == categorypart %}
+                                                {% set relatedsub %}
+							<a href="{{ seoUrl('frontend.navigation.page', { navigationId: categorypart }) }}"> {{subitem.category.name}} </a> <br />
+						{% endset %}
+						{% set relatedcategories = relatedcategories ~ relatedsub %}
+                                            {% else %}
+                                                {% if subitem.children|length %}
+                                                    {% for subsubitem in subitem.children %}
+                                                        {% if subsubitem.category.id == categorypart %}
+							    {% set relatedsubsub %}
+                                                            <a href="{{ seoUrl('frontend.navigation.page', { navigationId: categorypart }) }}"> {{subsubitem.category.name}} </a><br />
+							    {% endset %}
+							    {% set relatedcategories = relatedcategories ~ relatedsubsub %}
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                {% endif %}
+                                            {% endif %}
+                                        {% endfor %}
+                                   {% endif %}
+				   {% endif %}
+                                {% endif %}
+                            {% endfor %}
+                            {% endfor %}
+		    {% if relatedcategories != '' %}
+                    <div class="card">
+                        <div class="card-header" id="headingFive">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                    Dit onderdeel is geschikt voor
+                                </button>
+                            </h2>
+                        </div>
+
+                        <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
+                            <div class="card-body">
+                            	{{relatedcategories|raw}}
+                            </div>
+                        </div>
+                    </div>
+		    {% endif %}
+                </div>
+            </div>
+        {% endblock %}
+    </div>
+{% endblock %}
+<script>
+  setTimeout(function(){
+      $('.custom.show').prev().find('button').click();
+  },2000);
+
+</script>

@@ -1,0 +1,5 @@
+{% sw_extends '@Storefront/storefront/component/product/listing.html.twig' %}
+{% block element_product_listing_pagination_nav_top %}
+    {{ parent() }}
+    <div class="product-count col-12">{{ element.data.listing.total }} {{ "listing.product.count"|trans|sw_sanitize }}</div>
+{% endblock %}
