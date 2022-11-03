@@ -1,0 +1,20 @@
+{% block video %}
+
+    {% block video_id_textfield %}
+        <div class="ropi-margin-h">
+            <ropi-textfield name="{{ name }}">
+                <div slot="placeholder">{% trans %}ropi-frontend-editing.contentElement.definition.label.videoId{% endtrans %}</div>
+            </ropi-textfield>
+        </div>
+    {% endblock %}
+
+    {% block aspect_ratio_fields %}
+        {% sw_include '@RopiFrontendEditing/content-editor/elements/common/settings/aspect-ratio.html.twig' with {
+            'name': 'aspectRatio',
+            'minHeight': {
+                'name': 'minHeight'
+            }
+        } %}
+    {% endblock %}
+
+{% endblock %}

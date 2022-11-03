@@ -1,0 +1,220 @@
+{% block sw_product_detail_attribute_sets %}
+    {% block acris_product_links_add_modal %}
+        <sw-modal v-if="currentUrl"
+                  @modal-close="onCloseUrlModal"
+                  :title="$tc('sw-product.detailBase.acrisProductLinks.modalTitleLink')">
+            {% block acris_product_links_add_modal_link_form %}
+                <acris-product-links-modal-form :product="product"
+                                                :productLink="currentUrl"
+                                                v-if="product">
+                </acris-product-links-modal-form>
+            {% endblock %}
+
+            {% block acris_product_links_add_modal_footer %}
+                <template #modal-footer>
+                    {% block acris_product_links_add_modal_cancel %}
+                        <sw-button size="small" @click="onCloseUrlModal">
+                            {{ $tc('sw-product.detailBase.acrisProductLinks.buttonCancel') }}
+                        </sw-button>
+                    {% endblock %}
+
+                    {% block acris_product_links_add_modal_apply %}
+                        <sw-button variant="primary" size="small" @click="onSaveUrl" :disabled="!currentUrl.url">
+                            {{ $tc('sw-product.detailBase.acrisProductLinks.buttonApply') }}
+                        </sw-button>
+                    {% endblock %}
+                </template>
+            {% endblock %}
+        </sw-modal>
+    {% endblock %}
+    {% block acris_product_links %}
+        <sw-card :isLoading="isLoading"
+                 :title="$tc('sw-product.detailBase.acrisProductLinks.cardTitle')" >
+            {% block acris_product_links_toolbar %}
+                <template #toolbar>
+                    <sw-card-filter placeholder=""
+                                    @sw-card-filter-term-change="onChange">
+                        <template #filter>
+                            {% block acris_product_links_add_button %}
+                                <sw-button class="sw-product-detail-link__add-link-action"
+                                           size="small"
+                                           @click="onCreateNewUrl">
+                                    <sw-icon name="small-default-plus-circle" small></sw-icon>
+                                    {{ $tc('sw-product.detailBase.acrisProductLinks.buttonAddLink') }}
+                                </sw-button>
+                            {% endblock %}
+                        </template>
+                    </sw-card-filter>
+                </template>
+            {% endblock %}
+
+            {% block acris_product_links_grid %}
+                <template #grid>
+                    <acris-one-to-many-grid v-if="product.extensions"
+                                         :collection="product.extensions.acrisLinks"
+                                         ref="productLinkGrid"
+                                         :localMode="true"
+                                         :columns="urlColumns"
+                                         :showSelection="false"
+                                         @column-sort="setUrlSorting"
+                                         :sortDirection="urlSortDirection"
+                                         :sortBy="urlSortProperty"
+                                         :isLoading="isLoading">
+                        {% block acris_product_links_grid_columns %}
+                            {% block acris_product_links_grid_columns_url %}
+                                <template #column-url="{ item }">
+                                    <a @click="onEditUrl(item.id)">
+                                        {{ item.url }}
+                                    </a>
+                                </template>
+                            {% endblock %}
+
+                            {% block acris_product_links_grid_columns_link_target %}
+                                <template #column-target="{ item }">
+                                    {% block acris_product_links_grid_columns_url_content %}
+                                        <template>
+                                            <sw-icon v-if="item.linkTarget" name="small-default-checkmark-line-medium" small
+                                                     class="is--active acris-product-links-target"></sw-icon>
+                                            <sw-icon v-else name="small-default-x-line-medium" small class="is--inactive acris-product-links-target"></sw-icon>
+                                        </template>
+                                    {% endblock %}
+                                </template>
+                            {% endblock %}
+
+                            {% block acris_product_links_grid_columns_translated_title %}
+                                <template #column-title="{ item }">
+                                    <a v-if="item.translated" @click="onEditUrl(item.id)">
+                                        {{ item.translated.title }}
+                                    </a>
+                                    <a v-else @click="onEditUrl(item.id)">
+                                        {{ item.title }}
+                                    </a>
+                                </template>
+                            {% endblock %}
+
+                            {% block acris_product_links_grid_columns_translated_description %}
+                                <template #column-description="{ item }">
+                                    <a v-if="item.translated" @click="onEditUrl(item.id)">
+                                        {{ item.translated.description }}
+                                    </a>
+                                    <a v-else @click="onEditUrl(item.id)">
+                                        {{ item.description }}
+                                    </a>
+                                </template>
+                            {% endblock %}
+                        {% endblock %}
+
+
+                        {% block acris_product_links_grid_columns_actions %}
+                            <template #actions="{ item }">
+
+                                {% block acris_product_links_grid_columns_actions_edit %}
+                                    <sw-context-menu-item @click="onEditUrl(item.id)">
+                                        {{ $tc('sw-product.detailBase.acrisProductLinks.contextMenuEdit') }}
+                                    </sw-context-menu-item>
+                                {% endblock %}
+
+                                {% block acris_product_links_grid_columns_actions_delete %}
+                                    <sw-context-menu-item @click="onDeleteUrl(item.id)"
+                                                          variant="danger">
+                                        {{ $tc('sw-product.detailBase.acrisProductLinks.contextMenuDelete') }}
+                                    </sw-context-menu-item>
+                                {% endblock %}
+                            </template>
+                        {% endblock %}
+
+                        {% block acris_product_links_grid_columns_action_modals %}
+                            <template #action-modals="{ item }">
+                                {% block acris_product_links_delete_modal %}
+                                    <sw-modal v-if="showDeleteUrlModal === item.id"
+                                              @modal-close="onCloseDeleteUrlModal"
+                                              :title="$tc('sw-product.detailBase.acrisProductLinks.modalTitleDeleteLink')"
+                                              variant="small">
+                                        {% block acris_product_links_delete_modal_confirm_delete_text %}
+                                            <p class="sw-product-detail-link__confirm-delete-text">
+                                                {{ $tc('sw-product.detailBase.acrisProductLinks.textDeleteLinkConfirm') }}
+                                            </p>
+                                        {% endblock %}
+
+                                        {% block acris_product_links_delete_modal_footer %}
+                                            <template #modal-footer>
+                                                {% block acris_product_links_delete_modal_cancel %}
+                                                    <sw-button @click="onCloseDeleteUrlModal"
+                                                               size="small">
+                                                        {{ $tc('sw-product.detailBase.acrisProductLinks.buttonCancel') }}
+                                                    </sw-button>
+                                                {% endblock %}
+
+                                                {% block acris_product_links_delete_modal_confirm %}
+                                                    <sw-button @click="onConfirmDeleteUrl(item.id)"
+                                                               variant="primary"
+                                                               size="small">
+                                                        {{ $tc('sw-product.detailBase.acrisProductLinks.buttonDelete') }}
+                                                    </sw-button>
+                                                {% endblock %}
+                                            </template>
+                                        {% endblock %}
+                                    </sw-modal>
+                                {% endblock %}
+                            </template>
+                        {% endblock %}
+                    </acris-one-to-many-grid>
+                </template>
+            {% endblock %}
+
+        </sw-card>
+    {% endblock %}
+
+    {% block sw_product_detail_base_acris_downloads %}
+    <sw-inherit-wrapper v-model="product.downloads"
+                        :inheritedValue="parentProduct.downloads"
+                        :customRestoreInheritanceFunction="downloadRestoreInheritanceFunction"
+                        :customRemoveInheritanceFunction="downloadRemoveInheritanceFunction"
+                        isAssociation
+                        ref="productDownloadMediaInheritance">
+        <template #content="{ isInherited, isInheritField, restoreInheritance, removeInheritance }">
+
+            {% block sw_product_detail_base_acris_downloads_card %}
+            <sw-card :isLoading="loading.product || loading.customFieldSets || loading.media" :class="{ 'sw-card__inherited': isInherited }">
+                <template #title>
+                    {% block sw_product_detail_base_acris_downloads_card_title %}
+                    <div class="sw-card__title" :class="{ 'sw-card__title__inherited': isInherited }">
+                        <sw-inheritance-switch v-if="isInheritField"
+                                               class="sw-inherit-wrapper__inheritance-icon"
+                                               :isInherited="isInherited"
+                                               @inheritance-restore="restoreInheritance"
+                                               @inheritance-remove="removeInheritance">
+                        </sw-inheritance-switch>
+                        {{ $tc('sw-product.detailBase.acrisProductDownloads.cardTitle') }}
+                    </div>
+                    {% endblock %}
+                </template>
+
+                {% block sw_product_detail_base_acris_downloads_card_form %}
+                <acris-product-download-form v-if="mediaFormVisible"
+                                       :productId="isInherited ? parentProduct.id : product.id"
+                                       :key="isInherited"
+                                       :isInherited="isInherited"
+                                       :disabled="isInherited"
+                                       @media-open="onOpenDownloadModal">
+                </acris-product-download-form>
+                {% endblock %}
+            </sw-card>
+            {% endblock %}
+
+        </template>
+    </sw-inherit-wrapper>
+    {% endblock %}
+
+    {% block sw_product_detail_base_acris_downloads_modal %}
+    <sw-media-modal-v2
+        v-if="showDownloadModal"
+        :initialFolderId="downloadDefaultFolderId"
+        :entityContext="product.getEntityName()"
+        @media-modal-selection-change="onAddDownload"
+        @modal-close="onCloseDownloadModal">
+    </sw-media-modal-v2>
+    {% endblock %}
+
+    {% parent() %}
+{% endblock %}

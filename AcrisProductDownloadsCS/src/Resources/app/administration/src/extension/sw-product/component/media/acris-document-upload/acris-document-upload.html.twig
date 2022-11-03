@@ -1,0 +1,159 @@
+{% block acris_document_upload %}
+    <div class="acris-document-upload">
+        {% block acris_document_upload_compact %}
+            <div v-if="variant == 'compact'" class="acris-document-upload__content">
+                <sw-button-group splitButton>
+                    {% block acris_document_upload_compact_button_file_upload %}
+                        <sw-button class="acris-document-upload__button-compact-upload" variant="primary" @click="onClickUpload">
+                            {{ $tc('global.acris-document-upload.buttonFileUpload') }}
+                        </sw-button>
+                    {% endblock %}
+
+                    {% block acris_document_upload_compact_button_context_menu %}
+                        <sw-context-button>
+                            <template slot="button">
+                                <sw-button square variant="primary" class="acris-document-upload__button-context-menu">
+                                    <sw-icon name="small-arrow-medium-down" size="16"></sw-icon>
+                                </sw-button>
+                            </template>
+
+                            <sw-context-menu-item @click="openUrlModal" class="acris-document-upload__button-url-upload">
+                                {{ $tc('global.acris-document-upload.buttonUrlUpload') }}
+                            </sw-context-menu-item>
+                        </sw-context-button>
+                    {% endblock %}
+                </sw-button-group>
+
+                {% block acris_document_upload_compact_url_form %}
+                    <sw-media-url-form
+                        v-if="showUrlInput"
+                        variant="modal"
+                        @modal-close="closeUrlModal"
+                        @media-url-form-submit="onUrlUpload">
+                    </sw-media-url-form>
+                {% endblock %}
+            </div>
+        {% endblock %}
+
+        {% block acris_document_upload_regular %}
+            <div v-if="variant == 'regular'" class="acris-document-upload__content">
+                {% block acris_document_upload_regular_header %}
+                    <div class="acris-document-upload__header">
+                        {% block acris_document_upload_regular_header_label %}
+                            <label v-if="label" class="acris-document-upload__label">
+                                {{ label }}
+                            </label>
+                        {% endblock %}
+
+                        {% block acris_document_upload_regular_header_helptext %}
+                            <sw-help-text class="acris-document-upload__help-text" :text="helpText" v-if="helpText"></sw-help-text>
+                        {% endblock %}
+
+                        {% block acris_document_upload_regular_header_switch %}
+                            <a v-if="!source" class="acris-document-upload__switch-mode" @click="toggleShowUrlFields">
+                                {{ toggleButtonCaption }}
+                            </a>
+                        {% endblock %}
+                    </div>
+                {% endblock %}
+
+                {% block acris_document_upload_regular_drop_zone %}
+                    <div class="acris-document-upload__dropzone"
+                         ref="dropzone"
+                         v-droppable="{ dragGroup: 'media', onDrop: onDropDownload, validDropCls: 'is--active' }"
+                         :class="isDragActiveClass">
+
+                        {% block acris_document_upload_preview %}
+                            <template v-if="showPreview">
+                                {% block acris_document_upload_regular_preview_file %}
+                                    <sw-media-preview
+                                        v-if="source || preview"
+                                        class="acris-document-upload__preview"
+                                        :source="source || preview">
+                                    </sw-media-preview>
+                                {% endblock %}
+                                {% block acris_document_upload_regular_preview_fallback %}
+                                    <div v-else class="acris-document-upload__preview is--fallback">
+                                        <sw-icon class="acris-document-upload__fallback-icon" name="default-object-image"></sw-icon>
+                                    </div>
+                                {% endblock %}
+                            </template>
+
+                            <template v-else>
+                                {% block acris_document_upload_regular_caption %}
+                                    <div class="acris-document-upload__upload-caption">
+                                        <sw-icon name="default-action-cloud-upload"></sw-icon>
+                                        {{ $tc('global.acris-document-upload.caption') }}
+                                    </div>
+                                {% endblock %}
+                            </template>
+                        {% endblock %}
+
+                        {% block acris_document_upload_actions %}
+                            <div class="acris-document-upload__actions" :class="{ 'has--source': source }">
+
+                                <div class="acris-document-upload__file-info" v-if="source">
+                                    <div class="acris-document-upload__file-headline">
+                                        {{ source | mediaName }}
+                                    </div>
+                                    <sw-icon class="acris-document-upload__remove-icon"
+                                        name="small-default-x-line-small"
+                                        @click="onRemoveMediaItem"
+                                        small>
+                                    </sw-icon>
+                                </div>
+
+                                <template v-else>
+                                    {% block acris_document_upload_regular_actions_url %}
+                                        <sw-media-url-form
+                                            class="acris-document-upload__url-form"
+                                            v-if="showUrlInput"
+                                            variant="inline"
+                                            @media-url-form-submit="onUrlUpload">
+                                        </sw-media-url-form>
+                                    {% endblock %}
+
+                                    {% block acris_document_upload_regular_actions_add %}
+                                        <template v-if="!showUrlInput">
+                                            {% block acris_document_upload_regular_upload_button %}
+                                                <sw-button class="acris-document-upload__button upload"
+                                                            variant="ghost"
+                                                            size="small"
+                                                            @click="onClickUpload">
+                                                    {{ $tc('global.acris-document-upload.buttonFileUpload') }}
+                                                </sw-button>
+                                            {% endblock %}
+
+                                            {% block acris_document_upload_regular_media_sidebar_button %}
+                                                <sw-button class="acris-document-upload__button open-media-sidebar"
+                                                            v-if="hasOpenMediaButtonListener"
+                                                            variant="primary"
+                                                            size="small"
+                                                            @click="onClickOpenMediaSidebar">
+                                                    {{ $tc('global.acris-document-upload.buttonOpenMedia') }}
+                                                </sw-button>
+                                            {% endblock %}
+                                        </template>
+                                    {% endblock %}
+                                </template>
+
+                            </div>
+                        {% endblock %}
+                    </div>
+                {% endblock %}
+            </div>
+        {% endblock %}
+
+        {% block acris_document_upload_file_input %}
+            <form class="acris-document-upload__form" ref="fileForm">
+                <input class="acris-document-upload__file-input"
+                       type="file"
+                       id="files"
+                       ref="fileInput"
+                       accept="media_type"
+                       :multiple="multiSelect"
+                       @change="onFileInputChange"/>
+            </form>
+        {% endblock %}
+    </div>
+{% endblock %}

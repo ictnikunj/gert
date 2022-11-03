@@ -1,0 +1,19 @@
+{
+    "pim-import": {
+        "general": {
+            "mainMenuItemGeneral": "PIM Import"
+        },
+        "label": {
+            "title": "PIM Import Configuration",
+            "btn" : "Main Product Import",
+            "crossRlatedItemsbtn" : "Related Product Import",
+            "crossProductPartsbtn" : "Product Part Import",
+            "crossAddonbtn" : "Addon Import",
+            "categoryButton" : "Category Import",
+            "categoryOrderButton" : "Category Manage Order",
+            "PropertyButton" : "Property Import",
+            "ProductPropertyButton" : "Product Property Import",
+            "deleteCategory" : "Category Delete"
+        }
+    }
+}

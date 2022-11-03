@@ -1,0 +1,103 @@
+{% sw_extends '@Parent/storefront/component/product/description.html.twig' %}
+
+{% block component_product_description_title %}
+    {% if page.product.extension('acrisDownloadTabs').elements|length > 0 %}
+        {% for downloadTab in page.product.extension('acrisDownloadTabs').elements %}
+            {% if config('AcrisProductDownloadsCS.config').acrisShowDownloadsInDescription == "acrisShowDownloadsInDescriptionBefore" %}
+                <div class="h3 product-detail-downloads-title">
+                    {{ downloadTab.translated.displayName }}
+                </div>
+                {% sw_include '@Storefront/storefront/page/product-detail/acris-downloads/all-downloads.html.twig' with {
+                    downloads: downloadTab.acrisDownloads.elements
+                } %}
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+
+    {% if page.product.extensions.acrisDownloads.elements and config('AcrisProductDownloadsCS.config').acrisShowDownloadsInDescription == "acrisShowDownloadsInDescriptionBefore" %}
+        <div class="h3 product-detail-downloads-title">
+            {{ "detail.acrisProductDownloadTitle"|trans }}
+        </div>
+        {% sw_include '@Storefront/storefront/page/product-detail/acris-downloads/all-downloads.html.twig' with {
+            downloads: page.product.extensions.acrisDownloads.elements
+        } %}
+    {% endif %}
+
+    {% if page.product.extensions.acrisLinks.elements and config('AcrisProductDownloadsCS.config').linkShowDownloadsInDescription == "linkShowDownloadsInDescriptionBefore" %}
+        <div class="h3 product-detail-links-title">
+            {{ "detail.acrisProductLinkTitle"|trans }}
+        </div>
+        {% sw_include '@Storefront/storefront/page/product-detail/acris-links/all-links.html.twig' with {
+            links: page.product.extensions.acrisLinks.elements
+        } %}
+    {% endif %}
+    {{ parent() }}
+{% endblock %}
+
+{% block component_product_description_content_text %}
+    {{ parent() }}
+    {% if page.product.extension('acrisDownloadTabs').elements|length > 0 %}
+        {% for downloadTab in page.product.extension('acrisDownloadTabs').elements %}
+            {% if config('AcrisProductDownloadsCS.config').acrisShowDownloadsInDescription == "acrisShowDownloadsInDescriptionMiddle" %}
+                <div class="h4 product-detail-downloads-title">
+                    {{ downloadTab.translated.displayName }}
+                </div>
+                {% sw_include '@Storefront/storefront/page/product-detail/acris-downloads/all-downloads.html.twig' with {
+                    downloads: downloadTab.acrisDownloads.elements
+                } %}
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+
+    {% if page.product.extensions.acrisDownloads.elements and config('AcrisProductDownloadsCS.config').acrisShowDownloadsInDescription == "acrisShowDownloadsInDescriptionMiddle" %}
+        <div class="h4 product-detail-downloads-title">
+            {{ "detail.acrisProductDownloadTitle"|trans }}
+        </div>
+        {% sw_include '@Storefront/storefront/page/product-detail/acris-downloads/all-downloads.html.twig' with {
+            downloads: page.product.extensions.acrisDownloads.elements
+        } %}
+    {% endif %}
+
+    {% if page.product.extensions.acrisLinks.elements and config('AcrisProductDownloadsCS.config').linkShowDownloadsInDescription == "linkShowDownloadsInDescriptionMiddle" %}
+        <div class="h4 product-detail-links-title">
+            {{ "detail.acrisProductLinkTitle"|trans }}
+        </div>
+        {% sw_include '@Storefront/storefront/page/product-detail/acris-links/all-links.html.twig' with {
+            links: page.product.extensions.acrisLinks.elements
+        } %}
+    {% endif %}
+{% endblock %}
+
+{% block component_product_description_content %}
+    {{ parent() }}
+    {% if page.product.extension('acrisDownloadTabs').elements|length > 0 %}
+        {% for downloadTab in page.product.extension('acrisDownloadTabs').elements %}
+            {% if config('AcrisProductDownloadsCS.config').acrisShowDownloadsInDescription == "acrisShowDownloadsInDescriptionAfter" %}
+                <div class="h4 product-detail-downloads-title">
+                    {{ downloadTab.translated.displayName }}
+                </div>
+                {% sw_include '@Storefront/storefront/page/product-detail/acris-downloads/all-downloads.html.twig' with {
+                    downloads: downloadTab.acrisDownloads.elements
+                } %}
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+
+    {% if page.product.extensions.acrisDownloads.elements and config('AcrisProductDownloadsCS.config').acrisShowDownloadsInDescription == "acrisShowDownloadsInDescriptionAfter" %}
+        <div class="h4 product-detail-downloads-title">
+            {{ "detail.acrisProductDownloadTitle"|trans }}
+        </div>
+        {% sw_include '@Storefront/storefront/page/product-detail/acris-downloads/all-downloads.html.twig' with {
+            downloads: page.product.extensions.acrisDownloads.elements
+        } %}
+    {% endif %}
+
+    {% if page.product.extensions.acrisLinks.elements and config('AcrisProductDownloadsCS.config').linkShowDownloadsInDescription == "linkShowDownloadsInDescriptionAfter" %}
+        <div class="h4 product-detail-links-title">
+            {{ "detail.acrisProductLinkTitle"|trans }}
+        </div>
+        {% sw_include '@Storefront/storefront/page/product-detail/acris-links/all-links.html.twig' with {
+            links: page.product.extensions.acrisLinks.elements
+        } %}
+    {% endif %}
+{% endblock %}

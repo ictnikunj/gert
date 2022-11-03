@@ -1,0 +1,14 @@
+{% block visibility %}
+    {% if breakpoint %}
+        <ropi-subheader>{% trans %}ropi-frontend-editing.contentElement.definition.subheader.visibility{% endtrans %}</ropi-subheader>
+        {% block visibility_checkbox_group %}
+            <ropi-checkbox-group>
+                {% block visibility_checkbox_group_inner %}
+                    {% block visibility_checkbox %}
+                        <ropi-checkbox name="visibility.{{ breakpoint.key }}" value="hidden">{% trans %}ropi-frontend-editing.contentElement.definition.label.hideForBreakpoint{% endtrans %}</ropi-checkbox>
+                    {% endblock %}
+                {% endblock %}
+            </ropi-checkbox-group>
+        {% endblock %}
+    {% endif %}
+{% endblock %}

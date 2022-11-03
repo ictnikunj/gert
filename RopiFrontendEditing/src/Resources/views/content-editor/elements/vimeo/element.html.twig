@@ -1,0 +1,62 @@
+{% block element %}
+
+{% if data.configuration.aspectRatio.x > 0 and data.configuration.aspectRatio.y > 0 %}
+    {% set paddingBottom = (100 / data.configuration.aspectRatio.x * data.configuration.aspectRatio.y) %}
+{% else %}
+    {% set paddingBottom = '0' %}
+{% endif %}
+
+<div
+        {% sw_include '@RopiFrontendEditing/content-editor/elements/common/editor-attributes.html.twig' %}
+        class="{% block element_class %}
+                    ropi-frontend-editing-content-element-vimeo
+                    {% if paddingBottom %}
+                        {% sw_include '@RopiFrontendEditing/content-editor/elements/common/general-classes.html.twig' %}
+                    {% else %}
+                        ropi-frontend-editing-flex
+                        {% sw_include '@RopiFrontendEditing/content-editor/elements/common/general-classes.html.twig' with { defaultDisplay: 'flex' } %}
+                    {% endif %}
+                   {% endblock %}"
+        style="{% block element_style %}{% endblock %}">
+
+    {% block element_inner %}
+        <div class="ropi-frontend-editing-content-element-vimeo__wrap
+                    {% if paddingBottom %}ropi-frontend-editing-aspect-ratio{% else %}ropi-frontend-editing-flex{% endif %}"
+             style="{% block wrap_style %}
+                       {% if paddingBottom %}padding-bottom: {{ paddingBottom }}%;{% endif %}
+                       {% if data.configuration.minHeight > 0 %}min-height: {{ data.configuration.minHeight }}px;{% endif %}
+                    {% endblock %}">
+
+            {% if data.configuration.videoId|trim %}
+                {% block iframe %}
+                    <iframe
+                            class="ropi-frontend-editing-content-element-vimeo__iframe
+                                   flex-grow-1
+                                   {% if paddingBottom %}ropi-frontend-editing-aspect-ratio__element{% endif %}"
+                            width="100%"
+                            src="https://player.vimeo.com/video/{{ data.configuration.videoId }}?dnt=1&portrait=false&{% if data.configuration.autoplay %}autoplay=true&{% endif %}{% if data.configuration.loop %}loop=true&{% endif %}"
+                            frameborder="0"
+                            allow="autoplay; fullscreen"
+                            allowfullscreen>
+                    </iframe>
+                {% endblock %}
+            {% else %}
+                {% if ropiFrontendEditingEditorOpened %}
+                    <div class="ropi-content-editor-empty-state"
+                         style="{% if paddingBottom %}position: absolute;{% endif %}">
+                        <div>
+                            <h1>{% trans %}ropi-frontend-editing.contentElement.definition.element.vimeo{% endtrans %}</h1>
+                            {% trans %}ropi-frontend-editing.contentElement.element.noVideoIdDefined{% endtrans %}
+                        </div>
+                    </div>
+                {% endif %}
+            {% endif %}
+            {% if ropiFrontendEditingEditorOpened %}
+                <div class="ropi-content-editor-click-layer"></div>
+            {% endif %}
+
+        </div>
+
+    {% endblock %}
+</div>
+{% endblock %}

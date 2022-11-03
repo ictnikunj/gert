@@ -1,0 +1,22 @@
+<div class="moorl-form-element-entity-mapping">
+    <moorl-collapse class="content--single"
+                    :label="$tc('moorl-form-builder.general.elementEntity')"
+                    key="elementEntity">
+        <template #content>
+            <sw-single-select v-model="formElement.mapping"
+                              valueProperty="name"
+                              labelProperty="name"
+                              show-clearable-button
+                              :options="options"
+                              :placeholder="$tc('sw-seo-url-template-card.general.placeholderSelectVariables')"
+                              :disabled="disabled"
+                              :label="$tc('sw-seo-url-template-card.general.labelPossibleValues')">
+            </sw-single-select>
+            <sw-field type="switch"
+                      bordered
+                      :label="$tc('moorl-form-builder.properties.isUnique')"
+                      :helpText="$tc('moorl-form-builder.tooltips.isUnique')"
+                      v-model="formElement.isUnique"></sw-field>
+        </template>
+    </moorl-collapse>
+</div>

@@ -1,0 +1,23 @@
+.pagination-nav{
+
+  .pagination{
+    .page-item{
+      margin-right: 5px;
+
+      .page-link{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding:0;
+
+        svg{
+          top:0;
+        }
+      }
+
+      &:last-child{
+        margin-right: 0;
+      }
+    }
+  }
+}

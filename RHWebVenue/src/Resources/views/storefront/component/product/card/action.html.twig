@@ -1,0 +1,42 @@
+{% sw_extends '@Storefront/storefront/component/product/card/action.html.twig' %}
+
+{% block component_product_box_action_form %}
+
+    {% block component_product_box_action_buy_redirect_input %}
+        {{ parent() }}
+    {% endblock %}
+
+    {% block page_product_detail_buy_product_buy_info %}
+        {{ parent() }}
+    {% endblock %}
+
+    {% if theme_config('rhweb-listing-activate-multiple-items') %}
+        <div class="rhweb-action-btn-container">
+            {% if product.maxPurchase %}
+                {% if product.availableStock < product.maxPurchase %}
+                    {% set maxQuantity = product.availableStock %}
+                {% else %}
+                    {% set maxQuantity = product.maxPurchase %}
+                {% endif %}
+            {% else %}
+                {% set maxQuantity = config('core.cart.maxQuantity') %}
+            {% endif %}
+            <select name="lineItems[{{ product.id }}][quantity]"
+                    class="custom-select product-detail-quantity-select">
+                {% for quantity in range(product.minPurchase, maxQuantity, product.purchaseSteps) %}
+                    <option value="{{ quantity }}">
+                        {{ quantity }}{% if product.packUnit %} {{ product.packUnit }}{% endif %}
+                    </option>
+                {% endfor %}
+            </select>
+            <button class="btn btn-buy" title="{{ "listing.boxAddProduct"|trans|striptags }}">
+                {{ "listing.boxAddProduct"|trans|striptags }}
+            </button>
+        </div>
+    {% else %}
+        <button class="btn btn-buy btn-block"
+                title="{{ "listing.boxAddProduct"|trans|striptags }}">
+            {{ "listing.boxAddProduct"|trans|striptags }}
+        </button>
+    {% endif %}
+{% endblock %}

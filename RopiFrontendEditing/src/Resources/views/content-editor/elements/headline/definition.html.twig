@@ -1,0 +1,124 @@
+{% block definition %}
+<ropi-content-element
+        type="RopiFrontendEditing/headline"
+        icon="title"
+        color="#5cb85b"
+        group="{% trans %}ropi-frontend-editing.contentElement.definition.group.text{% endtrans %}"
+        name="{% trans %}ropi-frontend-editing.contentElement.definition.element.headline{% endtrans %}"
+        languagespecificsettings="{% block languagespecificsettings %}{% endblock %}"
+        src="{{ path('ropi.frontend-editing.element.render') }}">
+    <template>
+        {% block settings_template %}
+        <ropi-tabs scrollable tablistposition="bottom">
+            {% block tab_general %}
+                <ropi-touchable slot="tab">{% trans %}ropi-frontend-editing.contentElement.definition.tab.general{% endtrans %}</ropi-touchable>
+            {% endblock %}
+            {% block tabpanel_general %}
+                <div slot="tabpanel">
+                    {% block tabpanel_general_inner %}
+
+                        {% block level %}
+                            <ropi-collapsible>
+                                <ropi-subheader slot="header">{% trans %}ropi-frontend-editing.contentElement.definition.subheader.level{% endtrans %}</ropi-subheader>
+                                <div slot="content">
+                                    {% block level_content %}
+
+                                        {% block level_radio_group %}
+                                            <ropi-radio-group>
+                                                {% block level_radio_group_inner %}
+                                                    {% block level_radio_1 %}
+                                                        <ropi-radio name="level" value="1" checked>H1</ropi-radio>
+                                                    {% endblock %}
+                                                    {% block level_radio_2 %}
+                                                        <ropi-radio name="level" value="2">H2</ropi-radio>
+                                                    {% endblock %}
+                                                    {% block level_radio_3 %}
+                                                        <ropi-radio name="level" value="3">H3</ropi-radio>
+                                                    {% endblock %}
+                                                    {% block level_radio_4 %}
+                                                        <ropi-radio name="level" value="4">H4</ropi-radio>
+                                                    {% endblock %}
+                                                    {% block level_radio_5 %}
+                                                        <ropi-radio name="level" value="5">H5</ropi-radio>
+                                                    {% endblock %}
+                                                    {% block level_radio_6 %}
+                                                        <ropi-radio name="level" value="6">H6</ropi-radio>
+                                                    {% endblock %}
+                                                {% endblock %}
+                                            </ropi-radio-group>
+                                        {% endblock %}
+
+                                    {% endblock %}
+                                </div>
+                            </ropi-collapsible>
+                        {% endblock %}
+
+                        {% block appearance %}
+                            <ropi-collapsible>
+                                <ropi-subheader slot="header">{% trans %}ropi-frontend-editing.contentElement.definition.subheader.appearance{% endtrans %}</ropi-subheader>
+                                <div slot="content">
+                                    {% block appearance_content %}
+                                        {% block appearance_radio_group %}
+                                            <ropi-radio-group>
+                                                {% block appearance_radio_group_inner %}
+                                                    {% block appearance_radio_default %}
+                                                        <ropi-radio name="appearance" value="" checked>{% trans %}ropi-frontend-editing.contentElement.definition.label.default{% endtrans %}</ropi-radio>
+                                                    {% endblock %}
+                                                    {% block appearance_radio_1 %}
+                                                        <ropi-radio name="appearance" value="1">H1</ropi-radio>
+                                                    {% endblock %}
+                                                    {% block appearance_radio_2 %}
+                                                        <ropi-radio name="appearance" value="2">H2</ropi-radio>
+                                                    {% endblock %}
+                                                    {% block appearance_radio_3 %}
+                                                        <ropi-radio name="appearance" value="3">H3</ropi-radio>
+                                                    {% endblock %}
+                                                    {% block appearance_radio_4 %}
+                                                        <ropi-radio name="appearance" value="4">H4</ropi-radio>
+                                                    {% endblock %}
+                                                    {% block appearance_radio_5 %}
+                                                        <ropi-radio name="appearance" value="5">H5</ropi-radio>
+                                                    {% endblock %}
+                                                    {% block appearance_radio_6 %}
+                                                        <ropi-radio name="appearance" value="6">H6</ropi-radio>
+                                                    {% endblock %}
+                                                {% endblock %}
+                                            </ropi-radio-group>
+                                        {% endblock %}
+                                    {% endblock %}
+                                </div>
+                            </ropi-collapsible>
+                        {% endblock %}
+
+                        {% block text_color %}
+                            {% sw_include '@RopiFrontendEditing/content-editor/elements/common/settings/text-color.html.twig' with {
+                                'name': 'textColor'
+                            } %}
+                        {% endblock %}
+
+                    {% endblock %}
+                </div>
+            {% endblock %}
+            {% block breakpoints_tabs %}
+                {% for breakpoint in breakpoints %}
+                    {% block tab_breakpoint %}
+                        <ropi-touchable slot="tab">{{ breakpoint.name }}</ropi-touchable>
+                    {% endblock %}
+                    {% block tabpanel_breakpoint %}
+                        <div slot="tabpanel">
+                            {% block tabpanel_breakpoint_inner %}
+
+                                    {% block general %}
+                                        {% sw_include '@RopiFrontendEditing/content-editor/elements/common/settings/general.html.twig' %}
+                                    {% endblock %}
+
+                            {% endblock %}
+                        </div>
+                    {% endblock %}
+                {% endfor %}
+            {% endblock %}
+        </ropi-tabs>
+        {% endblock %}
+    </template>
+</ropi-content-element>
+{% endblock %}

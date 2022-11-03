@@ -1,0 +1,187 @@
+{% sw_extends '@Storefront/storefront/layout/header/actions/service-menu-widget.html.twig' %}
+
+{% block layout_header_actions_service_menu_widget %}
+{% if shopware.config.UltraStoreSwitcher.config %} {% set UltraStoreSwitcher = shopware.config.UltraStoreSwitcher.config %} {% endif %}
+{% if config('UltraStoreSwitcher.config') %} {% set UltraStoreSwitcher = config('UltraStoreSwitcher.config') %} {% endif %}
+{% set number = UltraStoreSwitcher|length %}
+{% set myarrayhead = [] %}
+{% set myarray = [] %}
+{% set a=1 %}
+
+{% for i in 1..number %}
+
+{% if "Kanal" ~ i ~ "url" in UltraStoreSwitcher %}
+{% set a=a+1 %}
+{% endif %}
+{% endfor %}
+
+{% for i in 1..(a-1) %}
+
+    {% if "Kanal" ~ i ~ "langonoff" in UltraStoreSwitcher %}
+			{% set valuelon = "" %}
+			{% if UltraStoreSwitcher["Kanal" ~ i ~ "langonoff"] !="" %}
+				{% set valuelon = UltraStoreSwitcher["Kanal" ~ i ~ "langonoff"] %}
+			{% endif %}
+	{% endif %}
+
+	{% if "Kanal" ~ i ~ "kanal" in UltraStoreSwitcher %}
+		{% if ";;" in UltraStoreSwitcher["Kanal" ~ i ~ "kanal"] %}
+			{% set switching = "" %}
+			{% set switching0 = "" %}
+			{% set switching1 = "" %}
+			{% set switching2 = "" %}
+			{% set switching = UltraStoreSwitcher["Kanal" ~ i ~ "kanal"]|split(";;") %} 
+			{% if switching[0] !="" %}
+			{% set switching0 = switching[0] %}
+			{% set switching1 = switching[1] %}
+			{% set switching2 = switching[2] %}
+
+			{% if switching[2] == context.salesChannel.accessKey %}
+				{% set value0 = true %}
+			{% endif %}
+			
+			{% if switching[2] != context.salesChannel.accessKey %}
+				{% set value0 = false %}
+			{% endif %}
+		
+			{% endif %}
+		{% endif %}
+		{% endif %}
+		
+		{% if "Kanal" ~ i ~ "url" in UltraStoreSwitcher %}
+			{% set valueurl = "" %}
+			{% if UltraStoreSwitcher["Kanal" ~ i ~ "url"] !="" %}
+				{% set valueurl = UltraStoreSwitcher["Kanal" ~ i ~ "url"] %}
+			{% endif %}
+		{% endif %}
+		
+		{% if "Kanal" ~ i ~ "title" in UltraStoreSwitcher %}
+			{% set valuetitle = "" %}
+			{% if UltraStoreSwitcher["Kanal" ~ i ~ "title"] !="" %}
+				{% set valuetitle = UltraStoreSwitcher["Kanal" ~ i ~ "title"] %}
+			{% endif %}
+		{% endif %}
+
+		{% if "Kanal" ~ i ~ "name" in UltraStoreSwitcher %}
+			{% set valuenome = "" %}
+			{% if UltraStoreSwitcher["Kanal" ~ i ~ "name"] !="" %}
+				{% set valuenome = UltraStoreSwitcher["Kanal" ~ i ~ "name"] %}
+			{% endif %}
+		{% endif %}
+		
+		{% if "Kanal" ~ i ~ "ownflagonoff" in UltraStoreSwitcher %}
+			{% set valueflagownon = "" %}
+			{% if UltraStoreSwitcher["Kanal" ~ i ~ "ownflagonoff"] !="" %}
+				{% set valueflagownon = UltraStoreSwitcher["Kanal" ~ i ~ "ownflagonoff"] %}
+			{% endif %}
+		{% endif %}
+		
+		{% if "Kanal" ~ i ~ "flagger" in UltraStoreSwitcher %}
+			{% set valuef = "" %}
+			{% if UltraStoreSwitcher["Kanal" ~ i ~ "flagger"] !="" %}
+				{% set valuef = UltraStoreSwitcher["Kanal" ~ i ~ "flagger"] %}
+			{% endif %}
+		{% endif %}
+		
+		{% if value0 %}
+			{% set myarrayhead = myarrayhead|merge([{ 'langonoff': valuelon, 'kuerzel': switching[1], 'namen': switching[0], 'ownflagonoff': valueflagownon, 'flagger': valuef, 'ownname': valuenome, 'link':valueurl, 'title':valuetitle }]) %}
+		{% endif %}
+		
+		{% if not value0 %}
+			{% set myarray = myarray|merge([{ 'langonoff': valuelon, 'kuerzel': switching[1], 'namen': switching[0], 'ownflagonoff': valueflagownon, 'flagger': valuef, 'ownname': valuenome, 'link':valueurl, 'title':valuetitle }]) %}
+		{% endif %}
+
+	{% endfor %}
+	{% if UltraStoreSwitcher.activeKanal and number > 0 %}
+
+        <div class="top-bar-nav-item top-bar-menu">
+            {% block layout_header_actions_store_menu_list %}
+                <div class="ultra service-menu dropdown">
+                    <button class="btn dropdown-toggle top-bar-nav-btn"
+                            type="button"
+                            id="serviceMenuDropdown-{{ position }}"
+                            data-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded="false">
+							{% set isoCode = myarrayhead[0]['kuerzel']|lower|split('-') %}
+							 {% set country = isoCode[0] %}
+							 {% set language = isoCode[1] %}
+
+							{% if myarrayhead[0]['ownflagonoff'] and UltraStoreSwitcher.flagonoff and myarrayhead[0]['flagger'] !="" %}
+								   
+											{% set mediaid=myarrayhead[0]['flagger'] %}
+											{% set media = searchMedia([mediaid], context.context).get(mediaid) %}
+												{%if mediaid != ""%}
+													<span class="top-bar-list-icon ultra-topbar-own-icon">
+														<img src="{{media.url}}">
+													</span>{% if myarrayhead[0]['ownname'] !="" %}{{ myarrayhead[0]['ownname'] }}{% else %}{{ myarrayhead[0]['namen'] }}{% endif %}
+												{%endif%}
+								   {% endif %}
+							
+							{% if not myarrayhead[0]['ownflagonoff'] and UltraStoreSwitcher.flagonoff %}
+							<div class="top-bar-list-icon language-flag country-{{ country }} language-{{ language }}"></div>
+							<span class="top-bar-nav-text-own">{% if myarrayhead[0]['ownname'] !="" %}{{ myarrayhead[0]['ownname'] }}{% else %}{{ myarrayhead[0]['namen'] }}{% endif %}</span>
+							{% endif %}
+							
+							{% if not UltraStoreSwitcher.flagonoff %}
+							<span class="top-bar-nav-text-own">{% if myarrayhead[0]['ownname'] !="" %}{{ myarrayhead[0]['ownname'] }}{% else %}{{ myarrayhead[0]['namen'] }}{% endif %}</span>
+							{% endif %}
+							
+							                                
+							
+                        
+                    </button>
+                    {% block layout_header_actions_store_menu_items %}
+					<div class="dropdown-menu dropdown-menu-right"
+                             aria-labelledby="serviceMenuDropdown-{{ position }}">
+							
+					{% for item in myarray %}
+					
+					{% set isoCode = item.kuerzel|lower|split('-') %}
+							 {% set country = isoCode[0] %}
+							 {% set language = isoCode[1] %}
+					
+								{% if item.namen !="" and item.langonoff %}
+                                 <a class="top-bar-list-item dropdown-item"
+                                   href="{{ item.link }}"
+                                   title="{% if item.title !='' %}{{ item.title }}{% else %}{% if item.ownname !="" %}{{ item.ownname }}{% else %}{{ item.namen }}{% endif %}{% endif %}">
+
+								   {% if item.ownflagonoff and UltraStoreSwitcher.flagonoff and item.flagger !="" %}
+								   
+											{% set mediaid=item.flagger %}
+											{% set media = searchMedia([mediaid], context.context).get(mediaid) %}
+												{%if mediaid != ""%}
+													<span class="top-bar-list-icon ultra-topbar-own-icon">
+														<img src="{{media.url}}">
+													</span>{% if item.ownname !="" %}{{ item.ownname }}{% else %}{{ item.namen }}{% endif %}
+												{%endif%}
+								   {% endif %}
+								   	
+									{% if item.ownflagonoff and UltraStoreSwitcher.flagonoff and item.flagger =="" %}
+								   <span class="top-bar-list-icon language-flag country-{{ country }} language-{{ language }}"></span>
+								   {% if item.ownname !="" %}{{ item.ownname }}{% else %}{{ item.namen }}{% endif %}
+								   {% endif %}
+									
+								   {% if not item.ownflagonoff and UltraStoreSwitcher.flagonoff %}
+								   <span class="top-bar-list-icon language-flag country-{{ country }} language-{{ language }}"></span>
+								   {% if item.ownname !="" %}{{ item.ownname }}{% else %}{{ item.namen }}{% endif %}
+								   {% endif %}
+								   
+								   {% if not UltraStoreSwitcher.flagonoff %}
+								   {% if item.ownname !="" %}{{ item.ownname }}{% else %}{{ item.namen }}{% endif %}
+								   {% endif %}
+								   
+								   </a>
+	{% endif %}
+		{% endfor %}
+					 </div>
+                        
+						
+					
+                    {% endblock %}
+                </div>
+            {% endblock %}
+        </div>
+
+{% endif %}
+{% endblock %}

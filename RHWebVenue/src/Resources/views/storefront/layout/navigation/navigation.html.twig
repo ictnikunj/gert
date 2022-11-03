@@ -1,0 +1,11 @@
+{% sw_extends '@Storefront/storefront/layout/navigation/navigation.html.twig' %}
+
+{% block layout_main_navigation %}
+    {{ parent() }}
+{% endblock %}
+
+{% block layout_main_navigation_menu_home %}
+    {% if theme_config('rhweb-header-layout-navigation-home') %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}

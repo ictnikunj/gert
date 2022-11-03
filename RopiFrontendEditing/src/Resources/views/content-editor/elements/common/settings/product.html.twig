@@ -1,0 +1,32 @@
+{% block product %}
+    <div class="ropi-margin-h">
+        <ropi-textfield
+            type="select"
+            name="{{ name }}"
+            items="{{ asset("/store-api/product") }}"
+            onupdatesuggest="
+                {% block onupdatesuggest %}
+                    event.detail.request
+                        .setMethod('POST')
+                        .setBody(JSON.stringify({
+                            'term': event.detail.request.getQueryParameters().q,
+                            'limit': 10,
+                            'page': 1
+                        }))
+                        .setQueryParameters({})
+                        .setHeaders({
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json',
+                            'sw-access-key': '{{ context.getSalesChannel().getAccessKey() }}',
+                            'sw-inheritance': 'true',
+                            'sw-language-id': '{{ user.getLocale().getLanguages().first().getId() }}'
+                        });
+                {% endblock %}
+            "
+            dataproperty="elements"
+            valueproperty="id"
+            labelformat="{% block labelformat %}{% verbatim %}{{translated.name}} ({{productNumber}}){% endverbatim %}{% endblock %}">
+            <div slot="placeholder">{% trans %}ropi-frontend-editing.contentElement.definition.label.product{% endtrans %}</div>
+        </ropi-textfield>
+    </div>
+{% endblock %}

@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+      <script type="module">
+        import '../../demo-element/demo-element.js?v=1637255330';
+        import '../../javascript-test-element/javascript-test-element.js?v=1637255330';
+      </script>
+
+      <title>string-template demo</title>
+  </head>
+  <body>
+    <ropi-demo sourcehidden>
+      <ropi-javascript-test dependencies="import StringTemplate from '../string-template.js?v=1637255330'" expect="'I am a string and I am a value'">
+        (new StringTemplate(
+          'I am a string {{template}}',
+          {
+            template: 'and I am a value'
+          }
+        )).process()
+      </ropi-javascript-test>
+    </ropi-demo>
+    <ropi-demo sourcehidden name="nested variables">
+      <ropi-javascript-test dependencies="import StringTemplate from '../string-template.js?v=1637255330'" expect="'The distance to the moon is 384400 km'">
+        (new StringTemplate(
+          'The distance to the moon is {{ planet.moon.distance }} km',
+          {
+            planet: {
+              moon: {
+                distance: 384400
+              }
+            }
+          }
+        )).process()
+      </ropi-javascript-test>
+    </ropi-demo>
+    <ropi-demo sourcehidden name="static call">
+      <ropi-javascript-test dependencies="import StringTemplate from '../string-template.js?v=1637255330'" expect="'I was processed statically'">
+        StringTemplate.process(
+          'I was processed {{processType}}',
+          {
+            processType: 'statically'
+          }
+        );
+      </ropi-javascript-test>
+    </ropi-demo>
+    <ropi-demo sourcehidden name="No variable for placeholder">
+      <ropi-javascript-test dependencies="import StringTemplate from '../string-template.js?v=1637255330'" expect="'The value is: '">
+        StringTemplate.process(
+          "The value is: {{notExisting}}",
+          {}
+        );
+      </ropi-javascript-test>
+    </ropi-demo>
+    <ropi-demo sourcehidden name="No variable for placeholder, but keep placeholder">
+      <ropi-javascript-test dependencies="import StringTemplate from '../string-template.js?v=1637255330'" expect="'The value is: {{notExisting}}'">
+        StringTemplate.process(
+          "The value is: {{notExisting}}",
+          {},
+          true
+        );
+      </ropi-javascript-test>
+    </ropi-demo>
+    <ropi-demo sourcehidden name="Variables from Array">
+      <ropi-javascript-test dependencies="import StringTemplate from '../string-template.js?v=1637255330'" expect="'First value: v1; Second value: v2'">
+        StringTemplate.process(
+          'First value: {{0}}; Second value: {{1}}',
+          ['v1', 'v2']
+        );
+      </ropi-javascript-test>
+    </ropi-demo>
+    <ropi-demo sourcehidden name="Object as value">
+      <ropi-javascript-test dependencies="import StringTemplate from '../string-template.js?v=1637255330'" expect="'Person: [object Object]'">
+        StringTemplate.process(
+          'Person: {{person}}',
+          {person: {name: 'Robert'}}
+        );
+      </ropi-javascript-test>
+    </ropi-demo>
+    <ropi-demo sourcehidden name="Object, which implements toString() method, as value">
+      <ropi-javascript-test dependencies="import StringTemplate from '../string-template.js?v=1637255330'" expect="'Person: Rob'">
+        StringTemplate.process(
+          'Person: {{person}}',
+          {person: {name: 'Robert', toString: function() {return 'Rob'}}}
+        );
+      </ropi-javascript-test>
+    </ropi-demo>
+    <ropi-demo sourcehidden name="Function as value">
+      <ropi-javascript-test dependencies="import StringTemplate from '../string-template.js?v=1637255330'" expect="'Function: function() {return &quot;test&quot;;}}'">
+        StringTemplate.process(
+          'Function: {{func}}}',
+          {func: function() {return "test";}}
+        );
+      </ropi-javascript-test>
+    </ropi-demo>
+    <ropi-demo sourcehidden name="Custom value encoder">
+      <ropi-javascript-test dependencies="import StringTemplate from '../string-template.js?v=1637255330'" expect="'Person: {&quot;name&quot;:&quot;Robert&quot;}'">
+        (new StringTemplate(
+          'Person: {{person}}',
+          {person: {name: 'Robert', toString: function() {return 'Rob'}}},
+          false,
+          function(value) {
+            if (Array.isArray(value) || typeof value === 'object') {
+              return JSON.stringify(value);
+            }
+
+            return value;
+          }
+        )).process();
+      </ropi-javascript-test>
+    </ropi-demo>
+
+    <ropi-demo sourcehidden name="Passing invalid argument types">
+      <ropi-javascript-test dependencies="import StringTemplate from '../string-template.js?v=1637255330'" expect="'100'">
+        StringTemplate.process(100, {});
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import StringTemplate from '../string-template.js?v=1637255330'" expect="'NaN'">
+        StringTemplate.process(NaN, {});
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import StringTemplate from '../string-template.js?v=1637255330'" expect="''">
+        StringTemplate.process();
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import StringTemplate from '../string-template.js?v=1637255330'" expect="''">
+        StringTemplate.process(null, {});
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import StringTemplate from '../string-template.js?v=1637255330'" expect="''">
+        StringTemplate.process([], {});
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import StringTemplate from '../string-template.js?v=1637255330'" expect="'string'">
+        StringTemplate.process('string', '');
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import StringTemplate from '../string-template.js?v=1637255330'" expect="'string'">
+        StringTemplate.process('string', 100);
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import StringTemplate from '../string-template.js?v=1637255330'" expect="'string'">
+        StringTemplate.process('string', NaN);
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import StringTemplate from '../string-template.js?v=1637255330'" expect="'string'">
+        StringTemplate.process('string');
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import StringTemplate from '../string-template.js?v=1637255330'" expect="'string'">
+        StringTemplate.process('string', null);
+      </ropi-javascript-test>
+    </ropi-demo>
+  </body>
+</html>

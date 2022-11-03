@@ -1,0 +1,10 @@
+<div class="sw-cms-el-config-moorl-form-builder">
+    <sw-entity-single-select
+        :label="$tc('moorl-cms.elements.general.config.label.moorlFormId')"
+        v-model="element.config.form.value"
+        labelProperty="name"
+        @change="onChangeForm"
+        :criteria="defaultCriteria"
+        entity="moorl_form">
+    </sw-entity-single-select>
+</div>

@@ -1,0 +1,53 @@
+<sw-page class="moorl-form-builder-list">
+    <template slot="language-switch">
+        <sw-language-switch @on-change="onChangeLanguage"></sw-language-switch>
+    </template>
+
+    <sw-sidebar slot="sidebar">
+        <sw-sidebar-item icon="default-action-cloud-upload"
+                         :title="$t('moorl-form-builder.buttons.importButtonText')"
+                         @click="onClickUpload"></sw-sidebar-item>
+        <form style="display: none;" ref="fileForm">
+            <input class="sw-plugin-file-upload__file-input"
+                   type="file"
+                   id="files"
+                   ref="fileInput"
+                   @change="onFileInputChange"/>
+        </form>
+    </sw-sidebar>
+
+    <template slot="smart-bar-actions">
+        <sw-button variant="primary" :routerLink="{ name: 'moorl.form.builder.create' }">
+            {{ $t('moorl-form-builder.buttons.addEntryText') }}
+        </sw-button>
+    </template>
+
+    <template slot="content">
+        <sw-entity-listing
+                :items="items"
+                :repository="repository"
+                :showSelection="false"
+                :columns="columns"
+                :isLoading="isLoading"
+                detailRoute="moorl.form.builder.detail"
+                @select-item="updateSelection"
+                @update-records="updateTotal">
+            <template #column-label="{ item }">
+                {{ item.label[locale.code] }}
+            </template>
+
+            <template #column-type="{ item }">
+                {{ $tc('moorl-form-builder.options.type.' + item.type) }}
+            </template>
+
+            <template #more-actions="{ item }">
+                <sw-context-menu-item @click="onDuplicate(item)">
+                    {{ $tc('sw-product.list.buttonDuplicate') }}
+                </sw-context-menu-item>
+                <sw-context-menu-item @click="onClickDownload(item)">
+                    Download
+                </sw-context-menu-item>
+            </template>
+        </sw-entity-listing>
+    </template>
+</sw-page>

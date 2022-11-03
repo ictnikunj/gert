@@ -1,0 +1,48 @@
+.cms-element-sidebar-filter{
+
+    .filter-panel-item{
+        background-color: $rhweb-listing-filter-background-color;
+        border-color:$rhweb-listing-filter-border-color;
+        transition: ease all .2s;
+
+        &:hover{
+            background-color: $rhweb-listing-filter-background-color-hover;
+            border-color:$rhweb-listing-filter-border-color-hover;
+        }
+
+        .filter-panel-item-toggle{
+            color:$rhweb-listing-filter-font-color;
+
+            svg{
+                color:$rhweb-listing-filter-font-color;
+            }
+
+            &:focus{
+                background-color: $rhweb-listing-filter-background-color-focus;
+                border-color:$rhweb-listing-filter-border-color-focus;
+                box-shadow: none;
+            }
+
+            &[aria-expanded=true]{
+                background-color: $rhweb-listing-filter-background-color-focus;
+                border-color: transparent;
+            }
+        }
+
+        .filter-panel-item-dropdown{
+            border-color:$rhweb-listing-filter-border-color-focus;
+
+            &.show{
+                background-color: $rhweb-listing-filter-background-color-focus;
+            }
+
+            label{
+                color:$rhweb-listing-filter-font-color;
+            }
+
+            &.collapsing{
+                overflow: hidden;
+            }
+        }
+    }
+}

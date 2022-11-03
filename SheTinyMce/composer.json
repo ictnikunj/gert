@@ -1,0 +1,66 @@
+{
+  "name": "she/tiny-mce",
+  "description": "S.HE TinyMCE",
+  "license": "proprietary",
+  "type": "shopware-platform-plugin",
+  "version": "1.6.1",
+  "authors": [
+    {
+      "name": "Laudert GmbH + Co. KG",
+      "homepage": "https://www.laudert.com/"
+    }
+  ],
+  "require": {
+    "shopware/administration": "~6.4.13",
+    "shopware/core": "~6.4.13"
+  },
+  "require-dev": {
+    "captainhook/plugin-composer": "^5.3",
+    "ergebnis/composer-normalize": "^2.23",
+    "phpstan/extension-installer": "^1.1",
+    "phpstan/phpstan": "^1.4",
+    "phpstan/phpstan-deprecation-rules": "^1.0",
+    "phpstan/phpstan-strict-rules": "^1.1",
+    "phpstan/phpstan-symfony": "^1.1",
+    "psalm/plugin-symfony": "^3.1",
+    "rector/rector": "^0.12.17",
+    "sclable/xml-lint": "^0.4.0",
+    "symplify/easy-coding-standard": "^10.1",
+    "vimeo/psalm": "^4.22"
+  },
+  "autoload": {
+    "psr-4": {
+      "She\\TinyMce\\": "src/"
+    }
+  },
+  "config": {
+    "allow-plugins": {
+      "captainhook/plugin-composer": true,
+      "ergebnis/composer-normalize": true,
+      "phpstan/extension-installer": true
+    }
+  },
+  "extra": {
+    "composer-normalize": {
+      "indent-size": 2,
+      "indent-style": "space"
+    },
+    "description": {
+      "de-DE": "Dieses Plugin ersetzt den Shopware's Texteditor durch den bereits aus Shopware 5 bekannten TinyMCE \"What you see is what you get\"-Texteditor in die Shopware 6 Administration.",
+      "en-GB": "This plugin replaces Shopware's editor, which is already known from Shopware 5, with the TinyMCE  \"What you see is what you get\"-Texteditor within the Shopware 6 administration."
+    },
+    "label": {
+      "de-DE": "Laudert | TinyMCE",
+      "en-GB": "Laudert | TinyMCE"
+    },
+    "manufacturerLink": {
+      "de-DE": "https://store.shopware.com/laudert.html",
+      "en-GB": "https://store.shopware.com/laudert.html"
+    },
+    "shopware-plugin-class": "She\\TinyMce\\SheTinyMce",
+    "supportLink": {
+      "de-DE": "https://account.shopware.com/",
+      "en-GB": "https://account.shopware.com/"
+    }
+  }
+}

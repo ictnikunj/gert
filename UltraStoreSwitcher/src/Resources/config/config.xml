@@ -1,0 +1,1528 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/shopware/platform/master/src/Core/System/SystemConfig/Schema/config.xsd">
+
+     <!-- InfoBox -->
+	<card>
+		<component name="sw-highlight-text">
+            <name>ultrainfostartbutton0</name>
+            <text><![CDATA[<div style="background:#737373; padding: 10px; margin: -30px; text-align: center; font-size: 20px;"><span style="color:#ffffff;">
+			<p style="text-align: center;">Thank you for using our Plugin:<br><strong>Sales channel header dropdown menu</strong>.</p>
+<p>If you have problems with the configuration, please have a look at the documentation <a title="Ultra-Media.de" href="https://ultra-media.de/Online-Dokumentation/Verkaufskanal-Header-Dropdown-Menue-SW6/" target="_blank" rel="noopener noreferrer"></a> an.</p>
+			</span></div>]]></text>
+            <text lang="de-DE"><![CDATA[<div style="background:#737373; padding: 10px; margin: -30px; text-align: center; font-size: 20px;"><span style="color:#ffffff;">
+			<p style="text-align: center;">Vielen Dank f&uuml;r die Nutzung unseres Plugins:<br><strong>Verkaufskanal Header Dropdown Menü</strong>.</p>
+<p>Sollten Sie mit der Konfiguration Probleme haben, so schauen Sie sich bitte die Dokumentation <a title="Ultra-Media.de" href="https://ultra-media.de/Online-Dokumentation/Verkaufskanal-Header-Dropdown-Menue-SW6/" target="_blank" rel="noopener noreferrer">hier</a> an.</p></span></div>]]></text>
+        </component>
+	</card>
+
+
+<!-- Verkaufskanal Header Dropdown Menü -->
+
+	<card>
+		<component name="sw-highlight-text">
+            <name>ultrainfostartbutton</name>
+            <text><![CDATA[<div style="background:#364159; padding: 10px; margin: -30px; height: 60px;line-height: 40px; text-align: center; font-size: 20px;"><span style="color:#ffffff;">1. Activate in this saleschannel</span></div>]]></text>
+            <text lang="de-DE"><![CDATA[<div style="background:#364159; padding: 10px; margin: -30px; height: 60px;line-height: 40px; text-align: center; font-size: 20px;"><span style="color:#ffffff;">1. Aktivierung in diesem Verkaufskanal</span></div>]]></text>
+        </component>
+	</card>
+
+
+	<card>
+
+        <input-field type="bool">
+            <name>activeKanal</name>
+            <label>Active</label>
+            <label lang="de-DE">Aktiv</label>
+            <helpText>If selected, plugin will be shown in this shop or subshop.</helpText>
+            <helpText lang="de-DE">Wenn gewählt, wird das Plugin in diesem Verkaufskanal angezeigt.</helpText>
+        </input-field>
+		
+	</card>	
+	
+	
+	   <!-- Card 2. Verkaufskanal Auswahl -->
+	<card>
+		<component name="sw-highlight-text">
+            <name>ultrainfostartbutton</name>
+            <text><![CDATA[<div style="background:#364159; padding: 10px; margin: -30px; height: 60px;line-height: 40px; text-align: center; font-size: 20px;"><span style="color:#ffffff;">
+			2. Turn on flag(s)
+			</span></div>]]></text>
+            <text lang="de-DE"><![CDATA[<div style="background:#364159; padding: 10px; margin: -30px; height: 60px;line-height: 40px; text-align: center; font-size: 20px;"><span style="color:#ffffff;">
+			2. Flagge(n) einschalten
+			</span></div>]]></text>
+        </component>
+	</card>
+	   
+    <card>
+		<input-field type="bool">
+            <name>flagonoff</name>
+			<label>Turn on flag(s)</label>
+			<label lang="de-DE">Flagge(n) einschalten</label>
+        </input-field>
+	</card>
+
+		
+		<card>
+		<component name="sw-highlight-text">
+            <name>ultrainfostartbutton3</name>
+            <text><![CDATA[<div style="background:#364159; padding: 10px; margin: -30px; height: 60px;line-height: 40px; text-align: center; font-size: 20px;"><span style="color:#ffffff;">
+			3 Frescoblue
+			</span></div>]]></text>
+            <text lang="de-DE"><![CDATA[<div style="background:#364159; padding: 10px; margin: -30px; height: 60px;line-height: 40px; text-align: center; font-size: 20px;"><span style="color:#ffffff;">
+			3 Frescoblue
+			</span></div>]]></text>
+        </component>
+		</card>
+		
+		<card>
+		
+		<input-field type="bool">
+            <name>Kanal1langonoff</name>
+			<label>Activate</label>
+			<label lang="de-DE">Einschalten</label>
+        </input-field>
+		
+		<input-field type="text">
+            <name>Kanal1name</name>
+			<label>Own Label</label>
+			<label lang="de-DE">Eigene Bezeichnung</label>
+        </input-field>
+		
+		<input-field type="single-select">
+            <name>Kanal1kanal</name>
+            <label>Frescoblue</label>
+            <label lang="de-DE">Frescoblue</label>
+			<options>
+				 <option>
+                    <id>Frescoblue;;en-GB;;SWSCSE5UTKUWD1B2SHPZMZFWDW</id>
+                    <name>Frescoblue</name>
+                    <name lang="de-DE">Frescoblue</name>
+                </option>
+			</options>
+			<disabled>true</disabled>
+        </input-field>
+		
+		
+		<input-field type="single-select">
+            <name>Kanal1url</name>
+            <label>Choose URL</label>
+            <label lang="de-DE">URL auswählen</label>
+			<options>
+				 
+			<option>
+                    <id>https://staging.wisa-sanitair.com/frescoblue</id>
+                    <name>https://staging.wisa-sanitair.com/frescoblue</name>
+                    <name lang="de-DE">https://staging.wisa-sanitair.com/frescoblue</name>
+                </option>
+			
+			<option>
+                    <id>https://staging.wisa-sanitair.com/frescoblue</id>
+                    <name>https://staging.wisa-sanitair.com/frescoblue</name>
+                    <name lang="de-DE">https://staging.wisa-sanitair.com/frescoblue</name>
+                </option>
+			
+			</options>
+        </input-field>
+		
+		<input-field type="text">
+            <name>Kanal1title</name>
+			<label>Own Title</label>
+			<label lang="de-DE">Eigener Title</label>
+        </input-field>
+		
+		<input-field type="bool">
+            <name>Kanal1ownflagonoff</name>
+			<label>Turn on own picture</label>
+			<label lang="de-DE">Eigenes Bild einschalten</label>
+        </input-field>
+		
+		<component name="sw-media-field">
+			<name>Kanal1flagger</name>
+			<label>Own picture</label>
+			<label lang="de-DE">Eigenes Bild</label>
+		</component>
+
+	</card>
+		
+		<card>
+		<component name="sw-highlight-text">
+            <name>ultrainfostartbutton4</name>
+            <text><![CDATA[<div style="background:#364159; padding: 10px; margin: -30px; height: 60px;line-height: 40px; text-align: center; font-size: 20px;"><span style="color:#ffffff;">
+			4 LIV EN
+			</span></div>]]></text>
+            <text lang="de-DE"><![CDATA[<div style="background:#364159; padding: 10px; margin: -30px; height: 60px;line-height: 40px; text-align: center; font-size: 20px;"><span style="color:#ffffff;">
+			4 LIV EN
+			</span></div>]]></text>
+        </component>
+		</card>
+		
+		<card>
+		
+		<input-field type="bool">
+            <name>Kanal2langonoff</name>
+			<label>Activate</label>
+			<label lang="de-DE">Einschalten</label>
+        </input-field>
+		
+		<input-field type="text">
+            <name>Kanal2name</name>
+			<label>Own Label</label>
+			<label lang="de-DE">Eigene Bezeichnung</label>
+        </input-field>
+		
+		<input-field type="single-select">
+            <name>Kanal2kanal</name>
+            <label>LIV EN</label>
+            <label lang="de-DE">LIV EN</label>
+			<options>
+				 <option>
+                    <id>LIV EN;;en-GB;;SWSCCXNYTJHXOEDYR3H2RULQAW</id>
+                    <name>LIV EN</name>
+                    <name lang="de-DE">LIV EN</name>
+                </option>
+			</options>
+			<disabled>true</disabled>
+        </input-field>
+		
+		
+		<input-field type="single-select">
+            <name>Kanal2url</name>
+            <label>Choose URL</label>
+            <label lang="de-DE">URL auswählen</label>
+			<options>
+				 
+			<option>
+                    <id>https://en.liv.si</id>
+                    <name>https://en.liv.si</name>
+                    <name lang="de-DE">https://en.liv.si</name>
+                </option>
+			
+			<option>
+                    <id>https://en.liv.si</id>
+                    <name>https://en.liv.si</name>
+                    <name lang="de-DE">https://en.liv.si</name>
+                </option>
+			
+			<option>
+                    <id>https://staging.wisa-sanitair.com/liv-en</id>
+                    <name>https://staging.wisa-sanitair.com/liv-en</name>
+                    <name lang="de-DE">https://staging.wisa-sanitair.com/liv-en</name>
+                </option>
+			
+			<option>
+                    <id>https://staging.wisa-sanitair.com/liv-en</id>
+                    <name>https://staging.wisa-sanitair.com/liv-en</name>
+                    <name lang="de-DE">https://staging.wisa-sanitair.com/liv-en</name>
+                </option>
+			
+			</options>
+        </input-field>
+		
+		<input-field type="text">
+            <name>Kanal2title</name>
+			<label>Own Title</label>
+			<label lang="de-DE">Eigener Title</label>
+        </input-field>
+		
+		<input-field type="bool">
+            <name>Kanal2ownflagonoff</name>
+			<label>Turn on own picture</label>
+			<label lang="de-DE">Eigenes Bild einschalten</label>
+        </input-field>
+		
+		<component name="sw-media-field">
+			<name>Kanal2flagger</name>
+			<label>Own picture</label>
+			<label lang="de-DE">Eigenes Bild</label>
+		</component>
+
+	</card>
+		
+		<card>
+		<component name="sw-highlight-text">
+            <name>ultrainfostartbutton5</name>
+            <text><![CDATA[<div style="background:#364159; padding: 10px; margin: -30px; height: 60px;line-height: 40px; text-align: center; font-size: 20px;"><span style="color:#ffffff;">
+			5 LIV HR
+			</span></div>]]></text>
+            <text lang="de-DE"><![CDATA[<div style="background:#364159; padding: 10px; margin: -30px; height: 60px;line-height: 40px; text-align: center; font-size: 20px;"><span style="color:#ffffff;">
+			5 LIV HR
+			</span></div>]]></text>
+        </component>
+		</card>
+		
+		<card>
+		
+		<input-field type="bool">
+            <name>Kanal3langonoff</name>
+			<label>Activate</label>
+			<label lang="de-DE">Einschalten</label>
+        </input-field>
+		
+		<input-field type="text">
+            <name>Kanal3name</name>
+			<label>Own Label</label>
+			<label lang="de-DE">Eigene Bezeichnung</label>
+        </input-field>
+		
+		<input-field type="single-select">
+            <name>Kanal3kanal</name>
+            <label>LIV HR</label>
+            <label lang="de-DE">LIV HR</label>
+			<options>
+				 <option>
+                    <id>LIV HR;;hr-HR;;SWSCVJJTN1NCTULATJRDTZNGSG</id>
+                    <name>LIV HR</name>
+                    <name lang="de-DE">LIV HR</name>
+                </option>
+			</options>
+			<disabled>true</disabled>
+        </input-field>
+		
+		
+		<input-field type="single-select">
+            <name>Kanal3url</name>
+            <label>Choose URL</label>
+            <label lang="de-DE">URL auswählen</label>
+			<options>
+				 
+			<option>
+                    <id>https://hr.liv.si</id>
+                    <name>https://hr.liv.si</name>
+                    <name lang="de-DE">https://hr.liv.si</name>
+                </option>
+			
+			<option>
+                    <id>https://hr.liv.si</id>
+                    <name>https://hr.liv.si</name>
+                    <name lang="de-DE">https://hr.liv.si</name>
+                </option>
+			
+			<option>
+                    <id>https://staging.wisa-sanitair.com/liv-hr</id>
+                    <name>https://staging.wisa-sanitair.com/liv-hr</name>
+                    <name lang="de-DE">https://staging.wisa-sanitair.com/liv-hr</name>
+                </option>
+			
+			<option>
+                    <id>https://staging.wisa-sanitair.com/liv-hr</id>
+                    <name>https://staging.wisa-sanitair.com/liv-hr</name>
+                    <name lang="de-DE">https://staging.wisa-sanitair.com/liv-hr</name>
+                </option>
+			
+			</options>
+        </input-field>
+		
+		<input-field type="text">
+            <name>Kanal3title</name>
+			<label>Own Title</label>
+			<label lang="de-DE">Eigener Title</label>
+        </input-field>
+		
+		<input-field type="bool">
+            <name>Kanal3ownflagonoff</name>
+			<label>Turn on own picture</label>
+			<label lang="de-DE">Eigenes Bild einschalten</label>
+        </input-field>
+		
+		<component name="sw-media-field">
+			<name>Kanal3flagger</name>
+			<label>Own picture</label>
+			<label lang="de-DE">Eigenes Bild</label>
+		</component>
+
+	</card>
+		
+		<card>
+		<component name="sw-highlight-text">
+            <name>ultrainfostartbutton6</name>
+            <text><![CDATA[<div style="background:#364159; padding: 10px; margin: -30px; height: 60px;line-height: 40px; text-align: center; font-size: 20px;"><span style="color:#ffffff;">
+			6 LIV HU
+			</span></div>]]></text>
+            <text lang="de-DE"><![CDATA[<div style="background:#364159; padding: 10px; margin: -30px; height: 60px;line-height: 40px; text-align: center; font-size: 20px;"><span style="color:#ffffff;">
+			6 LIV HU
+			</span></div>]]></text>
+        </component>
+		</card>
+		
+		<card>
+		
+		<input-field type="bool">
+            <name>Kanal4langonoff</name>
+			<label>Activate</label>
+			<label lang="de-DE">Einschalten</label>
+        </input-field>
+		
+		<input-field type="text">
+            <name>Kanal4name</name>
+			<label>Own Label</label>
+			<label lang="de-DE">Eigene Bezeichnung</label>
+        </input-field>
+		
+		<input-field type="single-select">
+            <name>Kanal4kanal</name>
+            <label>LIV HU</label>
+            <label lang="de-DE">LIV HU</label>
+			<options>
+				 <option>
+                    <id>LIV HU;;hu-HU;;SWSCDLQ1ELVSOWS5DKVPRWQ1ZG</id>
+                    <name>LIV HU</name>
+                    <name lang="de-DE">LIV HU</name>
+                </option>
+			</options>
+			<disabled>true</disabled>
+        </input-field>
+		
+		
+		<input-field type="single-select">
+            <name>Kanal4url</name>
+            <label>Choose URL</label>
+            <label lang="de-DE">URL auswählen</label>
+			<options>
+				 
+			<option>
+                    <id>https://hu.liv.si</id>
+                    <name>https://hu.liv.si</name>
+                    <name lang="de-DE">https://hu.liv.si</name>
+                </option>
+			
+			<option>
+                    <id>https://hu.liv.si</id>
+                    <name>https://hu.liv.si</name>
+                    <name lang="de-DE">https://hu.liv.si</name>
+                </option>
+			
+			<option>
+                    <id>https://staging.wisa-sanitair.com/liv-hu</id>
+                    <name>https://staging.wisa-sanitair.com/liv-hu</name>
+                    <name lang="de-DE">https://staging.wisa-sanitair.com/liv-hu</name>
+                </option>
+			
+			<option>
+                    <id>https://staging.wisa-sanitair.com/liv-hu</id>
+                    <name>https://staging.wisa-sanitair.com/liv-hu</name>
+                    <name lang="de-DE">https://staging.wisa-sanitair.com/liv-hu</name>
+                </option>
+			
+			</options>
+        </input-field>
+		
+		<input-field type="text">
+            <name>Kanal4title</name>
+			<label>Own Title</label>
+			<label lang="de-DE">Eigener Title</label>
+        </input-field>
+		
+		<input-field type="bool">
+            <name>Kanal4ownflagonoff</name>
+			<label>Turn on own picture</label>
+			<label lang="de-DE">Eigenes Bild einschalten</label>
+        </input-field>
+		
+		<component name="sw-media-field">
+			<name>Kanal4flagger</name>
+			<label>Own picture</label>
+			<label lang="de-DE">Eigenes Bild</label>
+		</component>
+
+	</card>
+		
+		<card>
+		<component name="sw-highlight-text">
+            <name>ultrainfostartbutton7</name>
+            <text><![CDATA[<div style="background:#364159; padding: 10px; margin: -30px; height: 60px;line-height: 40px; text-align: center; font-size: 20px;"><span style="color:#ffffff;">
+			7 LIV RO
+			</span></div>]]></text>
+            <text lang="de-DE"><![CDATA[<div style="background:#364159; padding: 10px; margin: -30px; height: 60px;line-height: 40px; text-align: center; font-size: 20px;"><span style="color:#ffffff;">
+			7 LIV RO
+			</span></div>]]></text>
+        </component>
+		</card>
+		
+		<card>
+		
+		<input-field type="bool">
+            <name>Kanal5langonoff</name>
+			<label>Activate</label>
+			<label lang="de-DE">Einschalten</label>
+        </input-field>
+		
+		<input-field type="text">
+            <name>Kanal5name</name>
+			<label>Own Label</label>
+			<label lang="de-DE">Eigene Bezeichnung</label>
+        </input-field>
+		
+		<input-field type="single-select">
+            <name>Kanal5kanal</name>
+            <label>LIV RO</label>
+            <label lang="de-DE">LIV RO</label>
+			<options>
+				 <option>
+                    <id>LIV RO;;ro-MD;;SWSCCNLHZVVEQVJZCJNENZLVCW</id>
+                    <name>LIV RO</name>
+                    <name lang="de-DE">LIV RO</name>
+                </option>
+			</options>
+			<disabled>true</disabled>
+        </input-field>
+		
+		
+		<input-field type="single-select">
+            <name>Kanal5url</name>
+            <label>Choose URL</label>
+            <label lang="de-DE">URL auswählen</label>
+			<options>
+				 
+			<option>
+                    <id>https://ro.liv.si</id>
+                    <name>https://ro.liv.si</name>
+                    <name lang="de-DE">https://ro.liv.si</name>
+                </option>
+			
+			<option>
+                    <id>https://ro.liv.si</id>
+                    <name>https://ro.liv.si</name>
+                    <name lang="de-DE">https://ro.liv.si</name>
+                </option>
+			
+			<option>
+                    <id>https://staging.wisa-sanitair.com/liv-ro</id>
+                    <name>https://staging.wisa-sanitair.com/liv-ro</name>
+                    <name lang="de-DE">https://staging.wisa-sanitair.com/liv-ro</name>
+                </option>
+			
+			<option>
+                    <id>https://staging.wisa-sanitair.com/liv-ro</id>
+                    <name>https://staging.wisa-sanitair.com/liv-ro</name>
+                    <name lang="de-DE">https://staging.wisa-sanitair.com/liv-ro</name>
+                </option>
+			
+			</options>
+        </input-field>
+		
+		<input-field type="text">
+            <name>Kanal5title</name>
+			<label>Own Title</label>
+			<label lang="de-DE">Eigener Title</label>
+        </input-field>
+		
+		<input-field type="bool">
+            <name>Kanal5ownflagonoff</name>
+			<label>Turn on own picture</label>
+			<label lang="de-DE">Eigenes Bild einschalten</label>
+        </input-field>
+		
+		<component name="sw-media-field">
+			<name>Kanal5flagger</name>
+			<label>Own picture</label>
+			<label lang="de-DE">Eigenes Bild</label>
+		</component>
+
+	</card>
+		
+		<card>
+		<component name="sw-highlight-text">
+            <name>ultrainfostartbutton8</name>
+            <text><![CDATA[<div style="background:#364159; padding: 10px; margin: -30px; height: 60px;line-height: 40px; text-align: center; font-size: 20px;"><span style="color:#ffffff;">
+			8 LIV SI
+			</span></div>]]></text>
+            <text lang="de-DE"><![CDATA[<div style="background:#364159; padding: 10px; margin: -30px; height: 60px;line-height: 40px; text-align: center; font-size: 20px;"><span style="color:#ffffff;">
+			8 LIV SI
+			</span></div>]]></text>
+        </component>
+		</card>
+		
+		<card>
+		
+		<input-field type="bool">
+            <name>Kanal6langonoff</name>
+			<label>Activate</label>
+			<label lang="de-DE">Einschalten</label>
+        </input-field>
+		
+		<input-field type="text">
+            <name>Kanal6name</name>
+			<label>Own Label</label>
+			<label lang="de-DE">Eigene Bezeichnung</label>
+        </input-field>
+		
+		<input-field type="single-select">
+            <name>Kanal6kanal</name>
+            <label>LIV SI</label>
+            <label lang="de-DE">LIV SI</label>
+			<options>
+				 <option>
+                    <id>LIV SI;;sl-SI;;SWSCMG52UVRLMMDIYTJSRMJQYG</id>
+                    <name>LIV SI</name>
+                    <name lang="de-DE">LIV SI</name>
+                </option>
+			</options>
+			<disabled>true</disabled>
+        </input-field>
+		
+		
+		<input-field type="single-select">
+            <name>Kanal6url</name>
+            <label>Choose URL</label>
+            <label lang="de-DE">URL auswählen</label>
+			<options>
+				 
+			<option>
+                    <id>http://www.liv.si</id>
+                    <name>http://www.liv.si</name>
+                    <name lang="de-DE">http://www.liv.si</name>
+                </option>
+			
+			<option>
+                    <id>http://www.liv.si</id>
+                    <name>http://www.liv.si</name>
+                    <name lang="de-DE">http://www.liv.si</name>
+                </option>
+			
+			<option>
+                    <id>https://staging.wisa-sanitair.com/liv-si</id>
+                    <name>https://staging.wisa-sanitair.com/liv-si</name>
+                    <name lang="de-DE">https://staging.wisa-sanitair.com/liv-si</name>
+                </option>
+			
+			<option>
+                    <id>https://staging.wisa-sanitair.com/liv-si</id>
+                    <name>https://staging.wisa-sanitair.com/liv-si</name>
+                    <name lang="de-DE">https://staging.wisa-sanitair.com/liv-si</name>
+                </option>
+			
+			<option>
+                    <id>https://www.liv.si</id>
+                    <name>https://www.liv.si</name>
+                    <name lang="de-DE">https://www.liv.si</name>
+                </option>
+			
+			<option>
+                    <id>https://www.liv.si</id>
+                    <name>https://www.liv.si</name>
+                    <name lang="de-DE">https://www.liv.si</name>
+                </option>
+			
+			</options>
+        </input-field>
+		
+		<input-field type="text">
+            <name>Kanal6title</name>
+			<label>Own Title</label>
+			<label lang="de-DE">Eigener Title</label>
+        </input-field>
+		
+		<input-field type="bool">
+            <name>Kanal6ownflagonoff</name>
+			<label>Turn on own picture</label>
+			<label lang="de-DE">Eigenes Bild einschalten</label>
+        </input-field>
+		
+		<component name="sw-media-field">
+			<name>Kanal6flagger</name>
+			<label>Own picture</label>
+			<label lang="de-DE">Eigenes Bild</label>
+		</component>
+
+	</card>
+		
+		<card>
+		<component name="sw-highlight-text">
+            <name>ultrainfostartbutton9</name>
+            <text><![CDATA[<div style="background:#364159; padding: 10px; margin: -30px; height: 60px;line-height: 40px; text-align: center; font-size: 20px;"><span style="color:#ffffff;">
+			9 SCHWAB DACH
+			</span></div>]]></text>
+            <text lang="de-DE"><![CDATA[<div style="background:#364159; padding: 10px; margin: -30px; height: 60px;line-height: 40px; text-align: center; font-size: 20px;"><span style="color:#ffffff;">
+			9 SCHWAB DACH
+			</span></div>]]></text>
+        </component>
+		</card>
+		
+		<card>
+		
+		<input-field type="bool">
+            <name>Kanal7langonoff</name>
+			<label>Activate</label>
+			<label lang="de-DE">Einschalten</label>
+        </input-field>
+		
+		<input-field type="text">
+            <name>Kanal7name</name>
+			<label>Own Label</label>
+			<label lang="de-DE">Eigene Bezeichnung</label>
+        </input-field>
+		
+		<input-field type="single-select">
+            <name>Kanal7kanal</name>
+            <label>SCHWAB DACH</label>
+            <label lang="de-DE">SCHWAB DACH</label>
+			<options>
+				 <option>
+                    <id>SCHWAB DACH;;de-DE;;SWSCAEZOWJDLCHEWSW5ITZZHZQ</id>
+                    <name>SCHWAB DACH</name>
+                    <name lang="de-DE">SCHWAB DACH</name>
+                </option>
+			</options>
+			<disabled>true</disabled>
+        </input-field>
+		
+		
+		<input-field type="single-select">
+            <name>Kanal7url</name>
+            <label>Choose URL</label>
+            <label lang="de-DE">URL auswählen</label>
+			<options>
+				 
+			<option>
+                    <id>https://staging.wisa-sanitair.com/schwab-de</id>
+                    <name>https://staging.wisa-sanitair.com/schwab-de</name>
+                    <name lang="de-DE">https://staging.wisa-sanitair.com/schwab-de</name>
+                </option>
+			
+			<option>
+                    <id>https://staging.wisa-sanitair.com/schwab-de</id>
+                    <name>https://staging.wisa-sanitair.com/schwab-de</name>
+                    <name lang="de-DE">https://staging.wisa-sanitair.com/schwab-de</name>
+                </option>
+			
+			<option>
+                    <id>https://www.sanitaer-schwab.com</id>
+                    <name>https://www.sanitaer-schwab.com</name>
+                    <name lang="de-DE">https://www.sanitaer-schwab.com</name>
+                </option>
+			
+			<option>
+                    <id>https://www.sanitaer-schwab.com</id>
+                    <name>https://www.sanitaer-schwab.com</name>
+                    <name lang="de-DE">https://www.sanitaer-schwab.com</name>
+                </option>
+			
+			</options>
+        </input-field>
+		
+		<input-field type="text">
+            <name>Kanal7title</name>
+			<label>Own Title</label>
+			<label lang="de-DE">Eigener Title</label>
+        </input-field>
+		
+		<input-field type="bool">
+            <name>Kanal7ownflagonoff</name>
+			<label>Turn on own picture</label>
+			<label lang="de-DE">Eigenes Bild einschalten</label>
+        </input-field>
+		
+		<component name="sw-media-field">
+			<name>Kanal7flagger</name>
+			<label>Own picture</label>
+			<label lang="de-DE">Eigenes Bild</label>
+		</component>
+
+	</card>
+		
+		<card>
+		<component name="sw-highlight-text">
+            <name>ultrainfostartbutton10</name>
+            <text><![CDATA[<div style="background:#364159; padding: 10px; margin: -30px; height: 60px;line-height: 40px; text-align: center; font-size: 20px;"><span style="color:#ffffff;">
+			10 SCHWAB EN
+			</span></div>]]></text>
+            <text lang="de-DE"><![CDATA[<div style="background:#364159; padding: 10px; margin: -30px; height: 60px;line-height: 40px; text-align: center; font-size: 20px;"><span style="color:#ffffff;">
+			10 SCHWAB EN
+			</span></div>]]></text>
+        </component>
+		</card>
+		
+		<card>
+		
+		<input-field type="bool">
+            <name>Kanal8langonoff</name>
+			<label>Activate</label>
+			<label lang="de-DE">Einschalten</label>
+        </input-field>
+		
+		<input-field type="text">
+            <name>Kanal8name</name>
+			<label>Own Label</label>
+			<label lang="de-DE">Eigene Bezeichnung</label>
+        </input-field>
+		
+		<input-field type="single-select">
+            <name>Kanal8kanal</name>
+            <label>SCHWAB EN</label>
+            <label lang="de-DE">SCHWAB EN</label>
+			<options>
+				 <option>
+                    <id>SCHWAB EN;;en-GB;;SWSCWHJLVKVMTM9YULCXDVG1AW</id>
+                    <name>SCHWAB EN</name>
+                    <name lang="de-DE">SCHWAB EN</name>
+                </option>
+			</options>
+			<disabled>true</disabled>
+        </input-field>
+		
+		
+		<input-field type="single-select">
+            <name>Kanal8url</name>
+            <label>Choose URL</label>
+            <label lang="de-DE">URL auswählen</label>
+			<options>
+				 
+			<option>
+                    <id>https://en.sanitaer-schwab.com</id>
+                    <name>https://en.sanitaer-schwab.com</name>
+                    <name lang="de-DE">https://en.sanitaer-schwab.com</name>
+                </option>
+			
+			<option>
+                    <id>https://en.sanitaer-schwab.com</id>
+                    <name>https://en.sanitaer-schwab.com</name>
+                    <name lang="de-DE">https://en.sanitaer-schwab.com</name>
+                </option>
+			
+			<option>
+                    <id>https://staging.wisa-sanitair.com/schwab-en</id>
+                    <name>https://staging.wisa-sanitair.com/schwab-en</name>
+                    <name lang="de-DE">https://staging.wisa-sanitair.com/schwab-en</name>
+                </option>
+			
+			<option>
+                    <id>https://staging.wisa-sanitair.com/schwab-en</id>
+                    <name>https://staging.wisa-sanitair.com/schwab-en</name>
+                    <name lang="de-DE">https://staging.wisa-sanitair.com/schwab-en</name>
+                </option>
+			
+			<option>
+                    <id>https://www.schwab-mena.com</id>
+                    <name>https://www.schwab-mena.com</name>
+                    <name lang="de-DE">https://www.schwab-mena.com</name>
+                </option>
+			
+			<option>
+                    <id>https://www.schwab-mena.com</id>
+                    <name>https://www.schwab-mena.com</name>
+                    <name lang="de-DE">https://www.schwab-mena.com</name>
+                </option>
+			
+			</options>
+        </input-field>
+		
+		<input-field type="text">
+            <name>Kanal8title</name>
+			<label>Own Title</label>
+			<label lang="de-DE">Eigener Title</label>
+        </input-field>
+		
+		<input-field type="bool">
+            <name>Kanal8ownflagonoff</name>
+			<label>Turn on own picture</label>
+			<label lang="de-DE">Eigenes Bild einschalten</label>
+        </input-field>
+		
+		<component name="sw-media-field">
+			<name>Kanal8flagger</name>
+			<label>Own picture</label>
+			<label lang="de-DE">Eigenes Bild</label>
+		</component>
+
+	</card>
+		
+		<card>
+		<component name="sw-highlight-text">
+            <name>ultrainfostartbutton11</name>
+            <text><![CDATA[<div style="background:#364159; padding: 10px; margin: -30px; height: 60px;line-height: 40px; text-align: center; font-size: 20px;"><span style="color:#ffffff;">
+			11 SCHWAB IT
+			</span></div>]]></text>
+            <text lang="de-DE"><![CDATA[<div style="background:#364159; padding: 10px; margin: -30px; height: 60px;line-height: 40px; text-align: center; font-size: 20px;"><span style="color:#ffffff;">
+			11 SCHWAB IT
+			</span></div>]]></text>
+        </component>
+		</card>
+		
+		<card>
+		
+		<input-field type="bool">
+            <name>Kanal9langonoff</name>
+			<label>Activate</label>
+			<label lang="de-DE">Einschalten</label>
+        </input-field>
+		
+		<input-field type="text">
+            <name>Kanal9name</name>
+			<label>Own Label</label>
+			<label lang="de-DE">Eigene Bezeichnung</label>
+        </input-field>
+		
+		<input-field type="single-select">
+            <name>Kanal9kanal</name>
+            <label>SCHWAB IT</label>
+            <label lang="de-DE">SCHWAB IT</label>
+			<options>
+				 <option>
+                    <id>SCHWAB IT;;it-IT;;SWSCQ3NZNEJKA2PNWDDQANN2YW</id>
+                    <name>SCHWAB IT</name>
+                    <name lang="de-DE">SCHWAB IT</name>
+                </option>
+			</options>
+			<disabled>true</disabled>
+        </input-field>
+		
+		
+		<input-field type="single-select">
+            <name>Kanal9url</name>
+            <label>Choose URL</label>
+            <label lang="de-DE">URL auswählen</label>
+			<options>
+				 
+			<option>
+                    <id>https://staging.wisa-sanitair.com/schwab-it</id>
+                    <name>https://staging.wisa-sanitair.com/schwab-it</name>
+                    <name lang="de-DE">https://staging.wisa-sanitair.com/schwab-it</name>
+                </option>
+			
+			<option>
+                    <id>https://staging.wisa-sanitair.com/schwab-it</id>
+                    <name>https://staging.wisa-sanitair.com/schwab-it</name>
+                    <name lang="de-DE">https://staging.wisa-sanitair.com/schwab-it</name>
+                </option>
+			
+			<option>
+                    <id>https://www.schwab-san.it</id>
+                    <name>https://www.schwab-san.it</name>
+                    <name lang="de-DE">https://www.schwab-san.it</name>
+                </option>
+			
+			<option>
+                    <id>https://www.schwab-san.it</id>
+                    <name>https://www.schwab-san.it</name>
+                    <name lang="de-DE">https://www.schwab-san.it</name>
+                </option>
+			
+			</options>
+        </input-field>
+		
+		<input-field type="text">
+            <name>Kanal9title</name>
+			<label>Own Title</label>
+			<label lang="de-DE">Eigener Title</label>
+        </input-field>
+		
+		<input-field type="bool">
+            <name>Kanal9ownflagonoff</name>
+			<label>Turn on own picture</label>
+			<label lang="de-DE">Eigenes Bild einschalten</label>
+        </input-field>
+		
+		<component name="sw-media-field">
+			<name>Kanal9flagger</name>
+			<label>Own picture</label>
+			<label lang="de-DE">Eigenes Bild</label>
+		</component>
+
+	</card>
+		
+		<card>
+		<component name="sw-highlight-text">
+            <name>ultrainfostartbutton12</name>
+            <text><![CDATA[<div style="background:#364159; padding: 10px; margin: -30px; height: 60px;line-height: 40px; text-align: center; font-size: 20px;"><span style="color:#ffffff;">
+			12 SCHWAB MENA
+			</span></div>]]></text>
+            <text lang="de-DE"><![CDATA[<div style="background:#364159; padding: 10px; margin: -30px; height: 60px;line-height: 40px; text-align: center; font-size: 20px;"><span style="color:#ffffff;">
+			12 SCHWAB MENA
+			</span></div>]]></text>
+        </component>
+		</card>
+		
+		<card>
+		
+		<input-field type="bool">
+            <name>Kanal10langonoff</name>
+			<label>Activate</label>
+			<label lang="de-DE">Einschalten</label>
+        </input-field>
+		
+		<input-field type="text">
+            <name>Kanal10name</name>
+			<label>Own Label</label>
+			<label lang="de-DE">Eigene Bezeichnung</label>
+        </input-field>
+		
+		<input-field type="single-select">
+            <name>Kanal10kanal</name>
+            <label>SCHWAB MENA</label>
+            <label lang="de-DE">SCHWAB MENA</label>
+			<options>
+				 <option>
+                    <id>SCHWAB MENA;;en-GB;;SWSCT0XTEG11MWXUULLAYJC3VW</id>
+                    <name>SCHWAB MENA</name>
+                    <name lang="de-DE">SCHWAB MENA</name>
+                </option>
+			</options>
+			<disabled>true</disabled>
+        </input-field>
+		
+		
+		<input-field type="single-select">
+            <name>Kanal10url</name>
+            <label>Choose URL</label>
+            <label lang="de-DE">URL auswählen</label>
+			<options>
+				 
+			<option>
+                    <id>https://staging.wisa-sanitair.com/schwab-mena</id>
+                    <name>https://staging.wisa-sanitair.com/schwab-mena</name>
+                    <name lang="de-DE">https://staging.wisa-sanitair.com/schwab-mena</name>
+                </option>
+			
+			<option>
+                    <id>https://staging.wisa-sanitair.com/schwab-mena</id>
+                    <name>https://staging.wisa-sanitair.com/schwab-mena</name>
+                    <name lang="de-DE">https://staging.wisa-sanitair.com/schwab-mena</name>
+                </option>
+			
+			</options>
+        </input-field>
+		
+		<input-field type="text">
+            <name>Kanal10title</name>
+			<label>Own Title</label>
+			<label lang="de-DE">Eigener Title</label>
+        </input-field>
+		
+		<input-field type="bool">
+            <name>Kanal10ownflagonoff</name>
+			<label>Turn on own picture</label>
+			<label lang="de-DE">Eigenes Bild einschalten</label>
+        </input-field>
+		
+		<component name="sw-media-field">
+			<name>Kanal10flagger</name>
+			<label>Own picture</label>
+			<label lang="de-DE">Eigenes Bild</label>
+		</component>
+
+	</card>
+		
+		<card>
+		<component name="sw-highlight-text">
+            <name>ultrainfostartbutton13</name>
+            <text><![CDATA[<div style="background:#364159; padding: 10px; margin: -30px; height: 60px;line-height: 40px; text-align: center; font-size: 20px;"><span style="color:#ffffff;">
+			13 SCHWAB PL
+			</span></div>]]></text>
+            <text lang="de-DE"><![CDATA[<div style="background:#364159; padding: 10px; margin: -30px; height: 60px;line-height: 40px; text-align: center; font-size: 20px;"><span style="color:#ffffff;">
+			13 SCHWAB PL
+			</span></div>]]></text>
+        </component>
+		</card>
+		
+		<card>
+		
+		<input-field type="bool">
+            <name>Kanal11langonoff</name>
+			<label>Activate</label>
+			<label lang="de-DE">Einschalten</label>
+        </input-field>
+		
+		<input-field type="text">
+            <name>Kanal11name</name>
+			<label>Own Label</label>
+			<label lang="de-DE">Eigene Bezeichnung</label>
+        </input-field>
+		
+		<input-field type="single-select">
+            <name>Kanal11kanal</name>
+            <label>SCHWAB PL</label>
+            <label lang="de-DE">SCHWAB PL</label>
+			<options>
+				 <option>
+                    <id>SCHWAB PL;;pl-PL;;SWSCSZHJTKF0ETI2EGZ3VEVMOA</id>
+                    <name>SCHWAB PL</name>
+                    <name lang="de-DE">SCHWAB PL</name>
+                </option>
+			</options>
+			<disabled>true</disabled>
+        </input-field>
+		
+		
+		<input-field type="single-select">
+            <name>Kanal11url</name>
+            <label>Choose URL</label>
+            <label lang="de-DE">URL auswählen</label>
+			<options>
+				 
+			<option>
+                    <id>https://pl.sanitaer-schwab.com</id>
+                    <name>https://pl.sanitaer-schwab.com</name>
+                    <name lang="de-DE">https://pl.sanitaer-schwab.com</name>
+                </option>
+			
+			<option>
+                    <id>https://pl.sanitaer-schwab.com</id>
+                    <name>https://pl.sanitaer-schwab.com</name>
+                    <name lang="de-DE">https://pl.sanitaer-schwab.com</name>
+                </option>
+			
+			<option>
+                    <id>https://staging.wisa-sanitair.com/schwab-pl</id>
+                    <name>https://staging.wisa-sanitair.com/schwab-pl</name>
+                    <name lang="de-DE">https://staging.wisa-sanitair.com/schwab-pl</name>
+                </option>
+			
+			<option>
+                    <id>https://staging.wisa-sanitair.com/schwab-pl</id>
+                    <name>https://staging.wisa-sanitair.com/schwab-pl</name>
+                    <name lang="de-DE">https://staging.wisa-sanitair.com/schwab-pl</name>
+                </option>
+			
+			<option>
+                    <id>https://www.schwab-sanitaer.pl</id>
+                    <name>https://www.schwab-sanitaer.pl</name>
+                    <name lang="de-DE">https://www.schwab-sanitaer.pl</name>
+                </option>
+			
+			<option>
+                    <id>https://www.schwab-sanitaer.pl</id>
+                    <name>https://www.schwab-sanitaer.pl</name>
+                    <name lang="de-DE">https://www.schwab-sanitaer.pl</name>
+                </option>
+			
+			</options>
+        </input-field>
+		
+		<input-field type="text">
+            <name>Kanal11title</name>
+			<label>Own Title</label>
+			<label lang="de-DE">Eigener Title</label>
+        </input-field>
+		
+		<input-field type="bool">
+            <name>Kanal11ownflagonoff</name>
+			<label>Turn on own picture</label>
+			<label lang="de-DE">Eigenes Bild einschalten</label>
+        </input-field>
+		
+		<component name="sw-media-field">
+			<name>Kanal11flagger</name>
+			<label>Own picture</label>
+			<label lang="de-DE">Eigenes Bild</label>
+		</component>
+
+	</card>
+		
+		<card>
+		<component name="sw-highlight-text">
+            <name>ultrainfostartbutton14</name>
+            <text><![CDATA[<div style="background:#364159; padding: 10px; margin: -30px; height: 60px;line-height: 40px; text-align: center; font-size: 20px;"><span style="color:#ffffff;">
+			14 WAVEDESIGN NL
+			</span></div>]]></text>
+            <text lang="de-DE"><![CDATA[<div style="background:#364159; padding: 10px; margin: -30px; height: 60px;line-height: 40px; text-align: center; font-size: 20px;"><span style="color:#ffffff;">
+			14 WAVEDESIGN NL
+			</span></div>]]></text>
+        </component>
+		</card>
+		
+		<card>
+		
+		<input-field type="bool">
+            <name>Kanal12langonoff</name>
+			<label>Activate</label>
+			<label lang="de-DE">Einschalten</label>
+        </input-field>
+		
+		<input-field type="text">
+            <name>Kanal12name</name>
+			<label>Own Label</label>
+			<label lang="de-DE">Eigene Bezeichnung</label>
+        </input-field>
+		
+		<input-field type="single-select">
+            <name>Kanal12kanal</name>
+            <label>WAVEDESIGN NL</label>
+            <label lang="de-DE">WAVEDESIGN NL</label>
+			<options>
+				 <option>
+                    <id>WAVEDESIGN NL;;nl-NL;;SWSCAGJ0UHDRZ29YBK1TD2O3WG</id>
+                    <name>WAVEDESIGN NL</name>
+                    <name lang="de-DE">WAVEDESIGN NL</name>
+                </option>
+			</options>
+			<disabled>true</disabled>
+        </input-field>
+		
+		
+		<input-field type="single-select">
+            <name>Kanal12url</name>
+            <label>Choose URL</label>
+            <label lang="de-DE">URL auswählen</label>
+			<options>
+				 
+			<option>
+                    <id>https://wavedesign.eu</id>
+                    <name>https://wavedesign.eu</name>
+                    <name lang="de-DE">https://wavedesign.eu</name>
+                </option>
+			
+			<option>
+                    <id>https://wavedesign.eu</id>
+                    <name>https://wavedesign.eu</name>
+                    <name lang="de-DE">https://wavedesign.eu</name>
+                </option>
+			
+			</options>
+        </input-field>
+		
+		<input-field type="text">
+            <name>Kanal12title</name>
+			<label>Own Title</label>
+			<label lang="de-DE">Eigener Title</label>
+        </input-field>
+		
+		<input-field type="bool">
+            <name>Kanal12ownflagonoff</name>
+			<label>Turn on own picture</label>
+			<label lang="de-DE">Eigenes Bild einschalten</label>
+        </input-field>
+		
+		<component name="sw-media-field">
+			<name>Kanal12flagger</name>
+			<label>Own picture</label>
+			<label lang="de-DE">Eigenes Bild</label>
+		</component>
+
+	</card>
+		
+		<card>
+		<component name="sw-highlight-text">
+            <name>ultrainfostartbutton15</name>
+            <text><![CDATA[<div style="background:#364159; padding: 10px; margin: -30px; height: 60px;line-height: 40px; text-align: center; font-size: 20px;"><span style="color:#ffffff;">
+			15 WISA DE
+			</span></div>]]></text>
+            <text lang="de-DE"><![CDATA[<div style="background:#364159; padding: 10px; margin: -30px; height: 60px;line-height: 40px; text-align: center; font-size: 20px;"><span style="color:#ffffff;">
+			15 WISA DE
+			</span></div>]]></text>
+        </component>
+		</card>
+		
+		<card>
+		
+		<input-field type="bool">
+            <name>Kanal13langonoff</name>
+			<label>Activate</label>
+			<label lang="de-DE">Einschalten</label>
+        </input-field>
+		
+		<input-field type="text">
+            <name>Kanal13name</name>
+			<label>Own Label</label>
+			<label lang="de-DE">Eigene Bezeichnung</label>
+        </input-field>
+		
+		<input-field type="single-select">
+            <name>Kanal13kanal</name>
+            <label>WISA DE</label>
+            <label lang="de-DE">WISA DE</label>
+			<options>
+				 <option>
+                    <id>WISA DE;;de-DE;;SWSCVVMWD3NNME5VSFLCEJCYUW</id>
+                    <name>WISA DE</name>
+                    <name lang="de-DE">WISA DE</name>
+                </option>
+			</options>
+			<disabled>true</disabled>
+        </input-field>
+		
+		
+		<input-field type="single-select">
+            <name>Kanal13url</name>
+            <label>Choose URL</label>
+            <label lang="de-DE">URL auswählen</label>
+			<options>
+				 
+			<option>
+                    <id>https://staging.wisa-sanitair.com/de</id>
+                    <name>https://staging.wisa-sanitair.com/de</name>
+                    <name lang="de-DE">https://staging.wisa-sanitair.com/de</name>
+                </option>
+			
+			<option>
+                    <id>https://staging.wisa-sanitair.com/de</id>
+                    <name>https://staging.wisa-sanitair.com/de</name>
+                    <name lang="de-DE">https://staging.wisa-sanitair.com/de</name>
+                </option>
+			
+			<option>
+                    <id>https://staging.wisa-sanitair.com/de</id>
+                    <name>https://staging.wisa-sanitair.com/de</name>
+                    <name lang="de-DE">https://staging.wisa-sanitair.com/de</name>
+                </option>
+			
+			</options>
+        </input-field>
+		
+		<input-field type="text">
+            <name>Kanal13title</name>
+			<label>Own Title</label>
+			<label lang="de-DE">Eigener Title</label>
+        </input-field>
+		
+		<input-field type="bool">
+            <name>Kanal13ownflagonoff</name>
+			<label>Turn on own picture</label>
+			<label lang="de-DE">Eigenes Bild einschalten</label>
+        </input-field>
+		
+		<component name="sw-media-field">
+			<name>Kanal13flagger</name>
+			<label>Own picture</label>
+			<label lang="de-DE">Eigenes Bild</label>
+		</component>
+
+	</card>
+		
+		<card>
+		<component name="sw-highlight-text">
+            <name>ultrainfostartbutton16</name>
+            <text><![CDATA[<div style="background:#364159; padding: 10px; margin: -30px; height: 60px;line-height: 40px; text-align: center; font-size: 20px;"><span style="color:#ffffff;">
+			16 WISA EN
+			</span></div>]]></text>
+            <text lang="de-DE"><![CDATA[<div style="background:#364159; padding: 10px; margin: -30px; height: 60px;line-height: 40px; text-align: center; font-size: 20px;"><span style="color:#ffffff;">
+			16 WISA EN
+			</span></div>]]></text>
+        </component>
+		</card>
+		
+		<card>
+		
+		<input-field type="bool">
+            <name>Kanal14langonoff</name>
+			<label>Activate</label>
+			<label lang="de-DE">Einschalten</label>
+        </input-field>
+		
+		<input-field type="text">
+            <name>Kanal14name</name>
+			<label>Own Label</label>
+			<label lang="de-DE">Eigene Bezeichnung</label>
+        </input-field>
+		
+		<input-field type="single-select">
+            <name>Kanal14kanal</name>
+            <label>WISA EN</label>
+            <label lang="de-DE">WISA EN</label>
+			<options>
+				 <option>
+                    <id>WISA EN;;en-GB;;SWSCAMU0OXVOTTA1AZM5D0HFQG</id>
+                    <name>WISA EN</name>
+                    <name lang="de-DE">WISA EN</name>
+                </option>
+			</options>
+			<disabled>true</disabled>
+        </input-field>
+		
+		
+		<input-field type="single-select">
+            <name>Kanal14url</name>
+            <label>Choose URL</label>
+            <label lang="de-DE">URL auswählen</label>
+			<options>
+				 
+			<option>
+                    <id>https://staging.wisa-sanitair.com/en</id>
+                    <name>https://staging.wisa-sanitair.com/en</name>
+                    <name lang="de-DE">https://staging.wisa-sanitair.com/en</name>
+                </option>
+			
+			<option>
+                    <id>https://staging.wisa-sanitair.com/en</id>
+                    <name>https://staging.wisa-sanitair.com/en</name>
+                    <name lang="de-DE">https://staging.wisa-sanitair.com/en</name>
+                </option>
+			
+			</options>
+        </input-field>
+		
+		<input-field type="text">
+            <name>Kanal14title</name>
+			<label>Own Title</label>
+			<label lang="de-DE">Eigener Title</label>
+        </input-field>
+		
+		<input-field type="bool">
+            <name>Kanal14ownflagonoff</name>
+			<label>Turn on own picture</label>
+			<label lang="de-DE">Eigenes Bild einschalten</label>
+        </input-field>
+		
+		<component name="sw-media-field">
+			<name>Kanal14flagger</name>
+			<label>Own picture</label>
+			<label lang="de-DE">Eigenes Bild</label>
+		</component>
+
+	</card>
+		
+		<card>
+		<component name="sw-highlight-text">
+            <name>ultrainfostartbutton17</name>
+            <text><![CDATA[<div style="background:#364159; padding: 10px; margin: -30px; height: 60px;line-height: 40px; text-align: center; font-size: 20px;"><span style="color:#ffffff;">
+			17 WISA ES
+			</span></div>]]></text>
+            <text lang="de-DE"><![CDATA[<div style="background:#364159; padding: 10px; margin: -30px; height: 60px;line-height: 40px; text-align: center; font-size: 20px;"><span style="color:#ffffff;">
+			17 WISA ES
+			</span></div>]]></text>
+        </component>
+		</card>
+		
+		<card>
+		
+		<input-field type="bool">
+            <name>Kanal15langonoff</name>
+			<label>Activate</label>
+			<label lang="de-DE">Einschalten</label>
+        </input-field>
+		
+		<input-field type="text">
+            <name>Kanal15name</name>
+			<label>Own Label</label>
+			<label lang="de-DE">Eigene Bezeichnung</label>
+        </input-field>
+		
+		<input-field type="single-select">
+            <name>Kanal15kanal</name>
+            <label>WISA ES</label>
+            <label lang="de-DE">WISA ES</label>
+			<options>
+				 <option>
+                    <id>WISA ES;;es-ES;;SWSCCW56MWFJR3BWBLF4MG9EQW</id>
+                    <name>WISA ES</name>
+                    <name lang="de-DE">WISA ES</name>
+                </option>
+			</options>
+			<disabled>true</disabled>
+        </input-field>
+		
+		
+		<input-field type="single-select">
+            <name>Kanal15url</name>
+            <label>Choose URL</label>
+            <label lang="de-DE">URL auswählen</label>
+			<options>
+				 
+			<option>
+                    <id>https://staging.wisa-sanitair.com/es</id>
+                    <name>https://staging.wisa-sanitair.com/es</name>
+                    <name lang="de-DE">https://staging.wisa-sanitair.com/es</name>
+                </option>
+			
+			<option>
+                    <id>https://staging.wisa-sanitair.com/es</id>
+                    <name>https://staging.wisa-sanitair.com/es</name>
+                    <name lang="de-DE">https://staging.wisa-sanitair.com/es</name>
+                </option>
+			
+			</options>
+        </input-field>
+		
+		<input-field type="text">
+            <name>Kanal15title</name>
+			<label>Own Title</label>
+			<label lang="de-DE">Eigener Title</label>
+        </input-field>
+		
+		<input-field type="bool">
+            <name>Kanal15ownflagonoff</name>
+			<label>Turn on own picture</label>
+			<label lang="de-DE">Eigenes Bild einschalten</label>
+        </input-field>
+		
+		<component name="sw-media-field">
+			<name>Kanal15flagger</name>
+			<label>Own picture</label>
+			<label lang="de-DE">Eigenes Bild</label>
+		</component>
+
+	</card>
+		
+		<card>
+		<component name="sw-highlight-text">
+            <name>ultrainfostartbutton18</name>
+            <text><![CDATA[<div style="background:#364159; padding: 10px; margin: -30px; height: 60px;line-height: 40px; text-align: center; font-size: 20px;"><span style="color:#ffffff;">
+			18 WISA NL
+			</span></div>]]></text>
+            <text lang="de-DE"><![CDATA[<div style="background:#364159; padding: 10px; margin: -30px; height: 60px;line-height: 40px; text-align: center; font-size: 20px;"><span style="color:#ffffff;">
+			18 WISA NL
+			</span></div>]]></text>
+        </component>
+		</card>
+		
+		<card>
+		
+		<input-field type="bool">
+            <name>Kanal16langonoff</name>
+			<label>Activate</label>
+			<label lang="de-DE">Einschalten</label>
+        </input-field>
+		
+		<input-field type="text">
+            <name>Kanal16name</name>
+			<label>Own Label</label>
+			<label lang="de-DE">Eigene Bezeichnung</label>
+        </input-field>
+		
+		<input-field type="single-select">
+            <name>Kanal16kanal</name>
+            <label>WISA NL</label>
+            <label lang="de-DE">WISA NL</label>
+			<options>
+				 <option>
+                    <id>WISA NL;;nl-NL;;SWSCCFDWUMJYYLHWMFHZSXPHBA</id>
+                    <name>WISA NL</name>
+                    <name lang="de-DE">WISA NL</name>
+                </option>
+			</options>
+			<disabled>true</disabled>
+        </input-field>
+		
+		
+		<input-field type="single-select">
+            <name>Kanal16url</name>
+            <label>Choose URL</label>
+            <label lang="de-DE">URL auswählen</label>
+			<options>
+				 
+			<option>
+                    <id>https://staging.wisa-sanitair.com</id>
+                    <name>https://staging.wisa-sanitair.com</name>
+                    <name lang="de-DE">https://staging.wisa-sanitair.com</name>
+                </option>
+			
+			<option>
+                    <id>https://staging.wisa-sanitair.com</id>
+                    <name>https://staging.wisa-sanitair.com</name>
+                    <name lang="de-DE">https://staging.wisa-sanitair.com</name>
+                </option>
+			
+			</options>
+        </input-field>
+		
+		<input-field type="text">
+            <name>Kanal16title</name>
+			<label>Own Title</label>
+			<label lang="de-DE">Eigener Title</label>
+        </input-field>
+		
+		<input-field type="bool">
+            <name>Kanal16ownflagonoff</name>
+			<label>Turn on own picture</label>
+			<label lang="de-DE">Eigenes Bild einschalten</label>
+        </input-field>
+		
+		<component name="sw-media-field">
+			<name>Kanal16flagger</name>
+			<label>Own picture</label>
+			<label lang="de-DE">Eigenes Bild</label>
+		</component>
+
+	</card>
+
+</config>

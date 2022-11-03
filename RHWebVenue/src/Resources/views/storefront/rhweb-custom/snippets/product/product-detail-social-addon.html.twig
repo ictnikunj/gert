@@ -1,0 +1,38 @@
+{% block rhweb_page_product_detail_buybox_social_container %}
+    {% if theme_config('rhweb-commerce-activate-social-share') %}
+        <div class="rhweb-social-share-container">
+            {% block rhweb_page_product_detail_buybox_social_list %}
+                <ul class="list-inline list-unstyled">
+                    {% block rhweb_page_product_detail_buybox_social_facebook %}
+                        <li class="list-inline-item">
+                            <div class="share facebook">
+                                <a rel="noopener" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{ seoUrl('frontend.detail.page', { productId: page.product.id }) }}" title="Facebook"><i class="lab la-facebook-f"></i></a>
+                            </div>
+                        </li>
+                    {% endblock %}
+                    {% block rhweb_page_product_detail_buybox_social_twitter %}
+                        <li class="list-inline-item">
+                            <div class="share twitter">
+                                <a rel="noopener" target="_blank" href="https://twitter.com/home?status={{ seoUrl('frontend.detail.page', { productId: page.product.id }) }}" title="Twitter"><i class="lab la-twitter"></i></a>
+                            </div>
+                        </li>
+                    {% endblock %}
+                    {% block rhweb_page_product_detail_buybox_social_pinterest %}
+                        <li class="list-inline-item">
+                            <div class="share pinterest">
+                                <a rel="noopener" target="_blank" href="https://pinterest.com/pin/create/button/?url={{ seoUrl('frontend.detail.page', { productId: page.product.id }) }}" title="Pinterest"><i class="lab la-pinterest-p"></i></a>
+                            </div>
+                        </li>
+                    {% endblock %}
+                    {% block rhweb_page_product_detail_buybox_social_linkedin %}
+                        <li class="list-inline-item">
+                            <div class="share linkedin">
+                                <a rel="noopener" target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url={{ seoUrl('frontend.detail.page', { productId: page.product.id }) }}" title="LinkedIn"><i class="lab la-linkedin-in"></i></a>
+                            </div>
+                        </li>
+                    {% endblock %}
+                </ul>
+            {% endblock %}
+        </div>
+    {% endif %}
+{% endblock %}

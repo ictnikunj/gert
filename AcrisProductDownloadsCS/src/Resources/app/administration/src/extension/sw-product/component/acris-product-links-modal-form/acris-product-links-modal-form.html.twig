@@ -1,0 +1,60 @@
+{% block acris_product_links_modal_form %}
+    <div class="acris-product-links-modal-form">
+        {% block acris_product_links_modal_form_link_field_full_url %}
+            <sw-text-field
+                class="acris-product-links-modal-link-field"
+                required
+                :label="$tc('acris-product-links-modal-form.fieldLabelUrl')"
+                :placeholder="$tc('acris-product-links-modal-form.fieldPlaceholderUrl')"
+                :helpText="$tc('acris-product-links-modal-form.fieldHelpTextUrl')"
+                v-model="productLink.url">
+            </sw-text-field>
+        {% endblock %}
+
+        {% block acris_product_links_modal_form_link_field_link_target %}
+            <sw-field v-model="productLink.linkTarget"
+                      type="switch"
+                      class="acris-product-links-modal-link_target-field"
+                      :label="$tc('acris-product-links-modal-form.fieldTitleLabelLinkTarget')"
+                      :helpText="$tc('acris-product-links-modal-form.fieldTitleHelpTextLinkTarget')">
+            </sw-field>
+        {% endblock %}
+
+        {% block acris_product_links_modal_form_link_field_title %}
+            <sw-text-field
+                :label="$tc('acris-product-links-modal-form.fieldTitleLabelTitle')"
+                :placeholder="placeholder(productLink, 'title', $tc('acris-product-links-modal-form.fieldTitlePlaceholderTitle'))"
+                v-model="productLink.title">
+            </sw-text-field>
+        {% endblock %}
+
+        {% block acris_product_links_modal_form_link_field_description %}
+            <sw-textarea-field
+                :label="$tc('acris-product-links-modal-form.fieldTitleLabelDescription')"
+                :placeholder="placeholder(productLink, 'description', $tc('acris-product-links-modal-form.fieldTitlePlaceholderDescription'))"
+                v-model="productLink.description"
+                size="medium">
+            </sw-textarea-field>
+        {% endblock %}
+
+        {% block acris_product_links_modal_form_link_field_position %}
+            <sw-number-field
+                :label="$tc('acris-product-links-modal-form.fieldTitleLabelPosition')"
+                :helpText="$tc('acris-product-links-modal-form.fieldTitleHelpTextPosition')"
+                numberType="int"
+                v-model="productLink.position"
+                disabled="disabled">
+            </sw-number-field>
+        {% endblock %}
+
+        {% block acris_product_links_modal_form_link_field_language %}
+            <sw-entity-many-to-many-select
+                :label="$tc('acris-product-links-modal-form.fieldTitleLabelLanguage')"
+                :placeholder="$tc('acris-product-links-modal-form.fieldTitlePlaceholderLanguage')"
+                :helpText="$tc('acris-product-links-modal-form.fieldTitleHelpTextLanguage')"
+                :localMode="true"
+                v-model="productLink.languages">
+            </sw-entity-many-to-many-select>
+        {% endblock %}
+    </div>
+{% endblock %}

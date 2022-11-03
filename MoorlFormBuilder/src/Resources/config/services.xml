@@ -1,0 +1,93 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <imports>
+        <import resource="entities.xml"/>
+        <import resource="data.xml"/>
+    </imports>
+
+    <services>
+        <service id="MoorlFormBuilder\Subscriber\MailSendSubscriber">
+            <tag name="kernel.event_subscriber"/>
+            <argument type="service" id="Shopware\Core\Content\Mail\Service\MailService"/>
+            <argument type="service" id="mail_template.repository"/>
+            <argument type="service" id="Shopware\Core\Content\Media\MediaService"/>
+        </service>
+
+        <!-- Main Service -->
+        <service id="MoorlFormBuilder\Core\Service\FormService" public="true">
+            <argument type="service" id="MoorlFormBuilder\Core\Service\NewsletterService"/>
+            <argument type="service" id="Shopware\Core\Framework\DataAbstractionLayer\DefinitionInstanceRegistry"/>
+            <argument type="service" id="Doctrine\DBAL\Connection"/>
+            <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService"/>
+            <argument type="service" id="event_dispatcher"/>
+            <argument type="service" id="moorl_form.repository"/>
+            <argument type="service" id="MoorlFormBuilder\Core\Service\StorefrontMediaUploader"/>
+            <argument type="service" id="Symfony\Component\HttpFoundation\RequestStack"/>
+            <argument type="tagged" tag="shopware.storefront.captcha"/>
+            <argument>%shopware.filesystem.allowed_extensions%</argument>
+            <argument type="service" id="Shopware\Core\Framework\Adapter\Translation\Translator"/>
+        </service>
+
+        <service id="MoorlFormBuilder\Core\Service\NewsletterService" public="true">
+            <argument type="service" id="newsletter_recipient.repository" />
+            <argument type="service" id="Shopware\Core\Framework\Validation\DataValidator"/>
+            <argument type="service" id="event_dispatcher"/>
+        </service>
+
+        <!-- Reworked -->
+        <service id="MoorlFormBuilder\Subscriber\StorefrontSubscriber">
+            <argument type="service" id="MoorlFormBuilder\Core\Service\FormService"/>
+            <tag name="kernel.event_subscriber"/>
+        </service>
+
+        <service id="MoorlFormBuilder\Subscriber\AccountSubscriber">
+            <argument type="service" id="MoorlFormBuilder\Core\Service\FormService"/>
+            <tag name="kernel.event_subscriber"/>
+        </service>
+
+        <service id="MoorlFormBuilder\Core\Twig\GetFileWhitelistExtension">
+            <argument type="service" id="MoorlFormBuilder\Core\Service\FormService"/>
+            <tag name="twig.extension"/>
+        </service>
+
+        <!-- OLD -->
+        <service id="MoorlFormBuilder\Controller\StorefrontController" public="true">
+            <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService"/>
+            <argument type="service" id="MoorlFormBuilder\Core\Service\FormService"/>
+
+            <call method="setContainer">
+                <argument type="service" id="service_container"/>
+            </call>
+        </service>
+
+        <service id="MoorlFormBuilder\Core\Service\StorefrontMediaUploader" public="true">
+            <argument type="service" id="media.repository"/>
+            <argument type="service" id="media_folder.repository"/>
+            <argument type="service" id="Shopware\Core\Content\Media\MediaService"/>
+            <argument type="service" id="Shopware\Core\Content\Media\File\FileSaver"/>
+            <argument type="service" id="Shopware\Storefront\Framework\Media\StorefrontMediaValidatorRegistry"/>
+        </service>
+
+        <service id="Twig\Extension\StringLoaderExtension">
+            <tag name="twig.extension"/>
+        </service>
+
+        <service id="MoorlFormBuilder\Core\Twig\FormExtension">
+            <argument type="service" id="Shopware\Core\Framework\Adapter\Twig\TemplateFinder"/>
+            <argument type="service" id="MoorlFormBuilder\Core\Service\FormService"/>
+
+            <tag name="twig.extension"/>
+        </service>
+
+        <!-- Captcha -->
+        <service id="MoorlFormBuilder\Core\Captcha\MoorlCaptcha">
+            <argument type="service" id="request_stack"/>
+            <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService"/>
+
+            <tag name="shopware.storefront.captcha" priority="300"/>
+        </service>
+    </services>
+</container>

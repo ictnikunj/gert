@@ -1,0 +1,33 @@
+{
+    "sw-cms": {
+        "elements": {
+            "moorl-shop-the-look": {
+                "title": "Shop-The-Look",
+                "label": {
+                    "videoActive": "Video aktiv",
+                    "positionDescription": "NUtzen `0` bis `100` für die Positionierung deiner Hotspots (Oben, Links)",
+                    "enablePrices": "Preise anzeigen",
+                    "enableAddToCart": "In den Warenkorb Button anzeigen",
+                    "enableDirectUrl": "Hotspots sind Links zu den Produkten",
+                    "enableAnimatedHotspots": "Hotspots mit Pulse Animation",
+                    "custom1": "Custom Field 1",
+                    "custom2": "Custom Field 2",
+                    "custom3": "Custom Field 3",
+                    "custom4": "Custom Field 4",
+                    "topPosition": "Position Open",
+                    "leftPosition": "Position Links",
+                    "imageProducts": "Bild > Produkte",
+                    "productsImage": "Produkte > Bild",
+                    "products": "Nur Produkte",
+                    "image": "Nur Bild",
+                    "productsWidth": "Breite der Produktliste"
+                },
+                "tab": {
+                    "general": "Allgemein",
+                    "hotspots": "Hotspots",
+                    "other": "Sonstige"
+                }
+            }
+        }
+    }
+}

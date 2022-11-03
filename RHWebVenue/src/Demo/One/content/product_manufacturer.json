@@ -1,0 +1,50 @@
+[
+  {
+    "id": "{ID:RHWEB_MANUFACTURER_VENUE_01}",
+    "name": "Brand 1",
+    "mediaId": "{MEDIA_FILE:manufacturer/venue_manufacturer_01.png}",
+    "link": "#"
+  },
+  {
+    "id": "{ID:RHWEB_MANUFACTURER_VENUE_02}",
+    "name": "Brand 2",
+    "mediaId": "{MEDIA_FILE:manufacturer/venue_manufacturer_02.png}",
+    "link": "#"
+  },
+  {
+    "id": "{ID:RHWEB_MANUFACTURER_VENUE_03}",
+    "name": "Brand 3",
+    "mediaId": "{MEDIA_FILE:manufacturer/venue_manufacturer_03.png}",
+    "link": "#"
+  },
+  {
+    "id": "{ID:RHWEB_MANUFACTURER_VENUE_04}",
+    "name": "Brand 4",
+    "mediaId": "{MEDIA_FILE:manufacturer/venue_manufacturer_04.png}",
+    "link": "#"
+  },
+  {
+    "id": "{ID:RHWEB_MANUFACTURER_VENUE_05}",
+    "name": "Brand 5",
+    "mediaId": "{MEDIA_FILE:manufacturer/venue_manufacturer_05.png}",
+    "link": "#"
+  },
+  {
+    "id": "{ID:RHWEB_MANUFACTURER_VENUE_06}",
+    "name": "Brand 6",
+    "mediaId": "{MEDIA_FILE:manufacturer/venue_manufacturer_06.png}",
+    "link": "#"
+  },
+  {
+    "id": "{ID:RHWEB_MANUFACTURER_VENUE_07}",
+    "name": "Brand 7",
+    "mediaId": "{MEDIA_FILE:manufacturer/venue_manufacturer_07.png}",
+    "link": "#"
+  },
+  {
+    "id": "{ID:RHWEB_MANUFACTURER_VENUE_08}",
+    "name": "Brand 8",
+    "mediaId": "{MEDIA_FILE:manufacturer/venue_manufacturer_08.png}",
+    "link": "#"
+  }
+]

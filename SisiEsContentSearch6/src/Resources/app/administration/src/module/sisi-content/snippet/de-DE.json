@@ -1,0 +1,18 @@
+{
+    "sisi-content": {
+
+        "list":{
+            "modul": "Content Suche",
+            "shop": "Channel Name",
+            "new": "Neu",
+            "label": "Beschriftung"
+        },
+        "detail": {
+            "list": "Zurück zur Übersichtseite",
+             "save": "Speichern",
+             "language" : "Shop/Channel  Sprache",
+             "label": "Beschriftung",
+             "stemming": "(Stemming) sprach Filter https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-stemmer-tokenfilter.html"
+        }
+    }
+}

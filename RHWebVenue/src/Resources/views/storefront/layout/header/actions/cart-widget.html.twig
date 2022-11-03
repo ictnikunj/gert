@@ -1,0 +1,10 @@
+{% sw_extends '@Storefront/storefront/layout/header/actions/cart-widget.html.twig' %}
+
+{% block layout_header_actions_cart_widget %}
+    <div class="rhweb-header-cart">
+        <i aria-hidden="true" class="icon-handbag icon"></i>
+        <div class="cart-amount-header bg-light">
+            {{ page.cart.lineItems|length }}
+        </div>
+    </div>
+{% endblock %}

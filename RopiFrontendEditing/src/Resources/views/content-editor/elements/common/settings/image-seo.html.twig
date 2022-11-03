@@ -1,0 +1,22 @@
+{% block image_seo %}
+
+    <ropi-collapsible>
+        <ropi-subheader slot="header">
+            {% trans %}ropi-frontend-editing.contentElement.definition.subheader.seo{% endtrans %}
+        </ropi-subheader>
+        <div slot="content">
+            {% block image_seo_content %}
+
+                {% block alt_textfield %}
+                    <div class="ropi-margin-h">
+                        <ropi-textfield name="{{ alt.name }}">
+                            <div slot="placeholder">{% trans %}ropi-frontend-editing.contentElement.definition.label.alt{% endtrans %}</div>
+                        </ropi-textfield>
+                    </div>
+                {% endblock %}
+
+            {% endblock %}
+        </div>
+    </ropi-collapsible>
+
+{% endblock %}

@@ -1,0 +1,21 @@
+<div class="form-group form-{{ formElement.type }}-{{ formElement.name }}">
+    {% sw_include "@MoorlFormBuilder/plugin/moorl-form-builder/component/label.html.twig" ignore missing %}
+
+    {% set formElementInput %}
+        <select multiple
+                name="{{ formElement.name }}[]"
+                id="{{ formElementId }}"
+                {% if formElement.required %}required{% endif %}
+                class="form-control">
+            {% for option in formElement.options %}
+                {% set optionLabel = option.translated.label %}
+                <option value="{{ option.value }}"
+                {% if formElementValue and option.value in formElementValue %}selected{% endif %}>
+                    {{ optionLabel }}
+                    {% sw_include "@MoorlFormBuilder/plugin/moorl-form-builder/component/price-label.html.twig" ignore missing %}
+                </option>
+            {% endfor %}
+        </select>
+    {% endset %}
+    {% sw_include "@MoorlFormBuilder/plugin/moorl-form-builder/component/input-group.html.twig" ignore missing %}
+</div>

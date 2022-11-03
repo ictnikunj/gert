@@ -1,0 +1,41 @@
+{% block sw_cms_element_config_category_listing %}
+    <div class="sw-cms-el-config-category-listing">
+
+        <div class="sw-cms-el-config-category-listing-form">
+            <sw-entity-multi-select
+                class="sw-cms-el-config-category-listing-categories"
+                v-model="categoryCollection"
+                @change="onCategoryChange"
+                :label="$tc('sw-cms.elements.categoryListing.config.categoryLabel')"
+                :placeholder="$tc('sw-cms.elements.categoryListing.config.categoryPlaceholder')"
+                :help-text="$tc('sw-cms.elements.categoryListing.config.categoryHelpText')"
+            >
+            </sw-entity-multi-select>
+
+            <sw-field class="sw-cms-el-config-category-listing-row-name"
+                      v-model="element.config.rowElementClassName.value"
+                      type="text"
+                      :label="$tc('sw-cms.elements.categoryListing.config.rowClassNameLabel')">
+            </sw-field>
+
+            <sw-field class="sw-cms-el-config-category-listing-col-name"
+                      v-model="element.config.colElementClassName.value"
+                      type="text"
+                      :label="$tc('sw-cms.elements.categoryListing.config.colClassNameLabel')">
+            </sw-field>
+
+            <sw-single-select
+                size="medium"
+                :options="headingPositionValues"
+                v-model="element.config.headingPosition.value"
+                :label="$tc('sw-cms.elements.categoryListing.config.headingPositionLabel')">>
+            </sw-single-select>
+        </div>
+
+        <sw-alert variant="info">{{ $tc('sw-cms.elements.categoryListing.config.infoText') }}</sw-alert>
+
+        <p>{{ $tc('sw-cms.elements.categoryListing.config.helpText') }}</p>
+        <code>@Storefront/storefront/element/cms-element-category-listing.html.twig</code>
+
+    </div>
+{% endblock %}

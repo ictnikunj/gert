@@ -1,0 +1,205 @@
+li.items-grid.is--drag-element {
+  padding: 10px 20px;
+  background-color: rgba(255,255,255,0.6);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-gap: 5px;
+  .items-options {
+    text-align: right;
+  }
+}
+
+.moorl-form-builder-detail {
+  h3 {
+    padding-top: 10px;
+    border-top: 1px solid #d1d9e0;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+    &:first-child {
+      padding-top: 0;
+      border-top: 0;
+      margin-top: 0;
+    }
+  }
+
+  .sw-page__main-content-inner {
+    display: grid;
+    max-height: 100%;
+    width: 100%;
+    grid-template-columns: 1fr 360px 1fr;
+    grid-gap: 0;
+
+    > div {
+      height: 100%;
+      overflow-y: auto;
+      overflow-x: hidden;
+      &::-webkit-scrollbar {
+        width: 10px;
+      }
+
+      &::-webkit-scrollbar-track {
+        background: transparent;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background: darken(#f9fafb, 5%);
+        border-radius: 0;
+      }
+
+      &::-webkit-scrollbar-thumb:hover {
+        background: darken(#f9fafb, 10%);
+      }
+    }
+
+    .sw-field--default {
+      margin-top: 0;
+      margin-bottom: 10px;
+
+      &:not(.sw-field--switch) {
+        .sw-field__label {
+          margin-bottom: 4px;
+        }
+      }
+    }
+
+    .mixed-fields {
+      .sw-field--switch {
+        margin-top: 20px;
+      }
+    }
+
+    .link-field {
+      margin-bottom: 10px;
+
+      > .sw-field {
+        margin-bottom: 0;
+      }
+
+      > a {
+        height: 30px;
+      }
+    }
+
+    .moorl-form-builder-detail-general,
+    .moorl-form-builder-detail-item-settings {
+      background-color: #f9fafb;
+
+      ul.form-element-options {
+        width: 100%;
+        list-style: none;
+        padding: 0;
+        li {
+          border-bottom: 1px solid #189eff;
+          margin-bottom: 10px;
+
+          .items-badge {
+            font-family: Courier New, Courier, Lucida Sans Typewriter, Lucida Typewriter, monospace;
+            text-align: center;
+            padding: 3px;
+            background-color: #ffcab1;
+            border-radius: 8px;
+            font-size: .8em;
+          }
+          .items-options {
+            display: flex;
+            justify-content: space-between;
+
+            span:hover {
+              color: #189eff;
+              cursor: pointer;
+            }
+          }
+          .sw-field--default {
+            margin-bottom: 0;
+          }
+          .items-grid {
+            padding: 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr 40px;
+            grid-gap: 10px;
+            align-items: center;
+            margin-bottom: 10px;
+          }
+          .items-grid-1 {
+            padding: 0;
+            display: grid;
+            grid-template-columns: 1fr 40px;
+            grid-gap: 10px;
+            align-items: center;
+            margin-bottom: 10px;
+          }
+          .items-grid-3 {
+            padding: 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 20px;
+            grid-gap: 10px;
+            align-items: center;
+            margin-bottom: 10px;
+          }
+          .items-grid-2 {
+            padding: 0;
+            display: grid;
+            grid-template-columns: 40px 1fr 1fr 1fr;
+            grid-gap: 10px;
+            align-items: center;
+            margin-bottom: 10px;
+          }
+          .items-grid-conditions {
+            padding: 0;
+            display: grid;
+            grid-template-columns: 2fr 20px 1fr 1fr 20px;
+            grid-gap: 10px;
+            align-items: center;
+            margin-bottom: 10px;
+          }
+        }
+      }
+    }
+
+    .moorl-form-builder-detail-items {
+      background-color: #ffcab1;
+
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        li {
+          padding: 5px 10px;
+          border-bottom: 1px solid #f9fafb;
+          transition: background 0.2s;
+
+          &.items-grid {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            grid-gap: 5px;
+            &:hover {
+              background: #f9fafb;
+            }
+            &.active {
+              background: #189eff;
+              color: #ffffff;
+            }
+          }
+
+
+
+          &.items-options {
+            text-align: right;
+          }
+
+          span {
+            cursor: pointer;
+            white-space: nowrap;
+            overflow: hidden;
+          }
+
+          button {
+            display: block;
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,9 @@
+[
+  {
+    "id": "{DEMO_CATEGORY_0}",
+    "parentId": "{NAVIGATION_CATEGORY_ID}",
+    "cmsPageId": "{DEMO_CMS_PAGE_1}",
+    "active": true,
+    "name": "Formular Baukasten"
+  }
+]

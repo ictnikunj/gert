@@ -1,0 +1,18 @@
+{
+    "storeAvailabilities": [
+        "German",
+        "International"
+    ],
+    "localizations": [
+        "de_DE",
+        "en_GB"
+    ],
+    "categories": [
+        "Einkaufswelten"
+    ],
+    "productType": "extension",
+    "responsive": null,
+    "standardLocale": "de_DE",
+    "tags": [],
+    "videos": []
+}

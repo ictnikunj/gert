@@ -1,0 +1,20 @@
+{% block background_color %}
+    <ropi-collapsible>
+    <ropi-subheader slot="header">{% trans %}ropi-frontend-editing.contentElement.definition.subheader.backgroundColor{% endtrans %}</ropi-subheader>
+    <div slot="content">
+        {% block background_color_content %}
+
+            {% block background_color_fields %}
+                {% sw_include '@RopiFrontendEditing/content-editor/elements/common/settings/color.html.twig' with {
+                    'name': name,
+                    'hideMutedOption': true,
+                    'hideDefaultOption': true,
+                    'showNoneOption': true,
+                    'checkedDefaultOption': 'none'
+                } %}
+            {% endblock %}
+
+        {% endblock %}
+    </div>
+    </ropi-collapsible>
+{% endblock %}

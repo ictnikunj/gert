@@ -1,0 +1,111 @@
+{
+    "swag-social-shopping": {
+        "networks": {
+            "base": {
+                "titleGeneralSettings": "Yleiset asetukset",
+                "titleOptions": "Vaihtoehdot",
+                "storefront": "Storefront",
+                "storefrontDomain": "Storefront-verkkotunnus",
+                "storefrontDomainCurrency": "Storefront valuutta",
+                "productStream": "Dynamic tuoteryhmä",
+                "createDynamicProductGroup": "Dynamic tuoteryhmä",
+                "tabErrors": "Julkaisemattomat tuotteet",
+                "tabIntegration": "integraatio",
+                "intervalHelpText": "Aikaväliä rajoittaa ajoitetun tehtävän ”ProductExportGenerateTask” -ajoväli. Tämä on oletusarvoisesti kerran päivässä.",
+                "template": {
+                    "tabTemplate": "Malli",
+                    "inputHeaderLabel": "Otsikkorivi",
+                    "inputBodyLabel": "Tuoterivi",
+                    "inputFooterLabel": "Alatunnisteen rivi",
+                    "buttonTestLabel": "Testausmalli",
+                    "buttonPreviewLabel": "Luo esiversio"
+                }
+            },
+            "facebook": {
+                "titleFacebookSettings": "Lisäasetukset",
+                "name": "Facebook",
+                "description": "Myydä tuotteita Facebook-sivulla",
+                "includeVariants": "Tuo variantteja erillisinä tuotteina",
+                "interval": "Väliaika",
+                "generateByCronjob": "Luo ajastimen kautta",
+                "googleProductCategoryLinkLabel": "Google-tuoteryhmien tukisivu",
+                "manufacturer": "shopware AG",
+                "descriptionLong": "Luo myyntikanava, jolla voit myydä tuotteitasi Facebookissa."
+            },
+            "instagram": {
+                "titleInstagramSettings": "Lisäasetukset",
+                "name": "Instagram",
+                "description": "Myy tuotteita Instagram-kanavalla",
+                "includeVariants": "Tuo variantteja erillisinä tuotteina",
+                "interval": "Väliaika",
+                "generateByCronjob": "Luo ajastimen kautta",
+                "googleProductCategoryLinkLabel": "Google-tuoteryhmien tukisivu",
+                "manufacturer": "shopware AG",
+                "descriptionLong": "Luo myyntikanava, jolla voit myydä tuotteitasi Instagramissa."
+            },
+            "google-shopping": {
+                "name": "Google-ostokset",
+                "description": "Myydä tuotteita Google Shopping",
+                "titleGoogleShoppingSettings": "Lisäasetukset",
+                "titleGoogleShoppingGuide": "Kotouttamisopas",
+                "googleProductCategoryLinkLabel": "Google-tuoteryhmien tukisivu",
+                "includeVariants": "Tuo variantteja erillisinä tuotteina",
+                "interval": "Väliaika",
+                "generateByCronjob": "Luo ajastimen kautta",
+                "manufacturer": "shopware AG",
+                "descriptionLong": "Luo myyntikanava myyäksesi tuotteitasi Google Shopping -palvelussa."
+            },
+            "pinterest": {
+                "titlePinterestSettings": "Lisäasetukset",
+                "titlePinterestGuide": "Kotouttamisopas",
+                "validationButtonTitle": "Vahvista Pinterestissä",
+                "name": "pinterest",
+                "description": "Myydä tuotteita Pinterestin kautta",
+                "manufacturer": "shopware AG",
+                "descriptionLong": "Luo myyntikanava, jolla voit myydä tuotteitasi Pinterestissä."
+            }
+        },
+        "validation": {
+            "titleValidation": "Julkaisemattomat tuotteet",
+            "buttonStartValidation": "Validoi tuotteet",
+            "columns": {
+                "product": "Tuote",
+                "errors": "Virheitä"
+            },
+            "noErrorsFound": "Kaikki tuotteet on validoitu ilman virheitä {validationDate}",
+            "notValidatedYet": "Tuotteita ei ole vielä validoitu. Aloita validointi nähdäksesi, ovatko kaikki tuotteet kelvollisia.",
+            "validationShowedErrors": "Viimeinen validointi johti virheisiin. Tarkista ja korjaa alla olevat virheet ja käynnistä validointi uudelleen. Viimeisin validointi: {validationDate}",
+            "validationRunning": "Validointi on parhaillaan käynnissä. Loki päivittyy automaattisesti. Odota, että validointi on valmis.",
+            "product-image": {
+                "no-image": "Tämä tuote tarvitsee kuvan"
+            },
+            "google-product-category-missing": "Tämä tuote liittyy luokkaan, jossa ei ole googlen tuoteluokkaa"
+        },
+        "integration": {
+            "facebook": {
+                "introduction": {
+                    "title": "Ohjeet: Asennus ja yhteys",
+                    "description": "Jotta voit näyttää tuotteita Instagram-yrityssivulla, sinun on ensin luotava Instagram Business -tili. Kaikki muu selitetään alla olevassa askel askeleelta oppaassa."
+                }
+            },
+            "google-shopping": {
+                "introduction": {
+                    "title": "Ohjeet: Asennus ja yhteys"
+                }
+            },
+            "instagram": {
+                "introduction": {
+                    "title": "Ohjeet: Asennus ja yhteys",
+                    "description": "Jotta voit näyttää tuotteita facebook-yrityssivulla, sinun on ensin luotava facebook-yritystili. Kaikki muu selitetään alla olevassa askel askeleelta oppaassa."
+                }
+            },
+            "pinterest": {
+                "introduction": {
+                    "title": "Ohjeet: Asennus ja yhteys",
+                    "description": "Tämä myyntikanava luo metatietoja, joiden avulla voit näyttää tuotteesi Pinterestissä pin-lisäyksenä. Lisätietoja tästä aiheesta on alla olevasta vaiheittaisesta oppaasta."
+                },
+                "stepByStep": "<li>Klikkaa ”Vahvista Pinterestissä”</li><li>Kirjaudu sisään tai luo tili <a href=\"https://pinterest.com\">Pinterest</a></li><li>Anna minkä tahansa tuotteen URL-osoite myymälästäsi ja napsauta ”Vahvista”</li>"
+            }
+        }
+    }
+}

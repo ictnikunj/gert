@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="en">
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+      <script type="module">
+        import html from '../../html-tag/html-tag.js?v=1637255330';
+        import '../../styles/styles.js?v=1637255330';
+        import '../../styles/themes/dark.js?v=1637255330';
+        import '../../material-icon-element/material-icon-sprite.js?v=1637255330';
+
+        import Logger from '../../logger/logger.js?v=1637255330';
+        Logger.level = Logger.LEVEL_ALL;
+
+        import '../content-editor-element.js?v=1637255330';
+
+        import '../../touchable-element/touchable-element.js?v=1637255330';
+        import '../../tabs-element/tabs-element.js?v=1637255330';
+        import '../../radio-element/radio-group-element.js?v=1637255330';
+        import '../../radio-element/radio-element.js?v=1637255330';
+        import '../../slider-element/slider-element.js?v=1637255330';
+        import '../../hline-element/hline-element.js?v=1637255330';
+        import '../../textfield-element/textfield-element.js?v=1637255330';
+      </script>
+
+      <style>
+        .ropi-container {
+          padding: var(--ropi-grid-outer-gutter, 0.75rem 1rem);
+        }
+      </style>
+
+      <title>content-editor-element demo</title>
+  </head>
+  <body style="overflow:hidden">
+    <ropi-content-editor
+      id="editor"
+      sites='[{"name":"My German Demo Site","editorUrl": "http://robpipe/php-content-editor/js/components/ropi/content-editor-element/demo/","documentContextDelta": {"id": "123"}},{"name":"Site from another domain","documentContextDelta": {"id": "124"},"editorUrl": "http://example.local/frontend-editing"}]'>
+
+      <ropi-content-preset name="Preset 1" time="1611751896272"  type="grid" structure="{
+      &quot;type&quot;:&quot;element&quot;,
+      &quot;meta&quot;:{
+         &quot;type&quot;:&quot;grid&quot;
+      },
+      &quot;configuration&quot;:{
+
+      },
+      &quot;contents&quot;:{
+
+      },
+      &quot;children&quot;:[
+         {
+            &quot;type&quot;:&quot;area&quot;,
+            &quot;meta&quot;:{
+               &quot;name&quot;:&quot;col1&quot;
+            },
+            &quot;children&quot;:[
+               {
+                  &quot;type&quot;:&quot;element&quot;,
+                  &quot;meta&quot;:{
+                     &quot;type&quot;:&quot;headline&quot;
+                  },
+                  &quot;configuration&quot;:{
+                     &quot;level&quot;:&quot;3&quot;
+                  },
+                  &quot;contents&quot;:{
+                     &quot;text&quot;:&quot;I am a &lt;a href=\&quot;https://www.google.de\&quot;&gt;headline&lt;/a&gt;&quot;
+                  },
+                  &quot;children&quot;:[
+
+                  ]
+               },
+               {
+                  &quot;type&quot;:&quot;element&quot;,
+                  &quot;meta&quot;:{
+                     &quot;type&quot;:&quot;productlist&quot;
+                  },
+                  &quot;configuration&quot;:{
+                     &quot;languageSpecific&quot;:&quot;&quot;
+                  },
+                  &quot;contents&quot;:{
+                     &quot;text&quot;:&quot;Produktliste&quot;
+                  },
+                  &quot;children&quot;:[
+
+                  ]
+               }
+            ]
+         },
+         {
+            &quot;type&quot;:&quot;area&quot;,
+            &quot;meta&quot;:{
+               &quot;name&quot;:&quot;col2&quot;
+            },
+            &quot;children&quot;:[
+
+            ]
+         }
+      ]
+}"></ropi-content-preset>
+
+
+      <ropi-content-preset name="Preset Readonly" readonly time="1611701896"  type="grid" structure="{
+      &quot;type&quot;:&quot;element&quot;,
+      &quot;meta&quot;:{
+         &quot;type&quot;:&quot;grid&quot;
+      },
+      &quot;configuration&quot;:{
+
+      },
+      &quot;contents&quot;:{
+
+      },
+      &quot;children&quot;:[
+         {
+            &quot;type&quot;:&quot;area&quot;,
+            &quot;meta&quot;:{
+               &quot;name&quot;:&quot;col1&quot;
+            },
+            &quot;children&quot;:[
+               {
+                  &quot;type&quot;:&quot;element&quot;,
+                  &quot;meta&quot;:{
+                     &quot;type&quot;:&quot;headline&quot;
+                  },
+                  &quot;configuration&quot;:{
+                     &quot;level&quot;:&quot;3&quot;
+                  },
+                  &quot;contents&quot;:{
+                     &quot;text&quot;:&quot;I am a &lt;a href=\&quot;https://www.google.de\&quot;&gt;headline&lt;/a&gt;&quot;
+                  },
+                  &quot;children&quot;:[
+
+                  ]
+               },
+               {
+                  &quot;type&quot;:&quot;element&quot;,
+                  &quot;meta&quot;:{
+                     &quot;type&quot;:&quot;productlist&quot;
+                  },
+                  &quot;configuration&quot;:{
+                     &quot;languageSpecific&quot;:&quot;&quot;
+                  },
+                  &quot;contents&quot;:{
+                     &quot;text&quot;:&quot;Produktliste&quot;
+                  },
+                  &quot;children&quot;:[
+
+                  ]
+               }
+            ]
+         },
+         {
+            &quot;type&quot;:&quot;area&quot;,
+            &quot;meta&quot;:{
+               &quot;name&quot;:&quot;col2&quot;
+            },
+            &quot;children&quot;:[
+
+            ]
+         }
+      ]
+}"></ropi-content-preset>
+
+      <ropi-content-element
+        type="headline"
+        icon="title"
+        group="Basis"
+        name="Headline"
+        color="red"
+        src="components/headline.php">
+        <template>
+          <ropi-tabs scrollable tablistposition="bottom">
+            <ropi-touchable slot="tab">General</ropi-touchable>
+            <ropi-touchable slot="tab">Mobile Portrait</ropi-touchable>
+            <ropi-touchable slot="tab">Mobile Landscape</ropi-touchable>
+            <ropi-touchable slot="tab">Tablet Portrait</ropi-touchable>
+            <ropi-touchable slot="tab">Tablet Landscape</ropi-touchable>
+            <ropi-touchable slot="tab">Desktop</ropi-touchable>
+            <div slot="tabpanel">
+              <ropi-subheader>Level</ropi-subheader>
+              <ropi-radio-group>
+                <ropi-radio name="level" value="1" checked="checked">H1</ropi-radio>
+                <ropi-radio name="level" value="2">H2</ropi-radio>
+                <ropi-radio name="level" value="3">H3</ropi-radio>
+                <ropi-radio name="level" value="4">H4</ropi-radio>
+                <ropi-radio name="level" value="5">H5</ropi-radio>
+                <ropi-radio name="level" value="6">H6</ropi-radio>
+              </ropi-radio-group>
+            </div>
+            <div slot="tabpanel">
+              <ropi-subheader>Appearance</ropi-subheader>
+              <ropi-radio-group>
+                <ropi-radio name="visualLevel_mp" value="0" checked="checked">Default</ropi-radio>
+                <ropi-radio name="visualLevel_mp" value="1">Like a H1</ropi-radio>
+                <ropi-radio name="visualLevel_mp" value="2">Like a H2</ropi-radio>
+                <ropi-radio name="visualLevel_mp" value="3">Like a H3</ropi-radio>
+                <ropi-radio name="visualLevel_mp" value="4">Like a H4</ropi-radio>
+                <ropi-radio name="visualLevel_mp" value="5">Like a H5</ropi-radio>
+                <ropi-radio name="visualLevel_mp" value="6">Like a H6</ropi-radio>
+              </ropi-radio-group>
+            </div>
+            <div slot="tabpanel">
+              <ropi-subheader>Appearance</ropi-subheader>
+              <ropi-radio-group>
+                <ropi-radio value="0" checked="checked">Inherit from mobile portrait</ropi-radio>
+                <ropi-radio value="1">Like a H1</ropi-radio>
+                <ropi-radio value="2">Like a H2</ropi-radio>
+                <ropi-radio value="3">Like a H3</ropi-radio>
+                <ropi-radio value="4">Like a H4</ropi-radio>
+                <ropi-radio value="5">Like a H5</ropi-radio>
+                <ropi-radio value="6">Like a H6</ropi-radio>
+              </ropi-radio-group>
+            </div>
+            <div slot="tabpanel">
+              <ropi-subheader>Appearance</ropi-subheader>
+              <ropi-radio-group>
+                <ropi-radio value="0" checked="checked">Inherit from mobile landscape</ropi-radio>
+                <ropi-radio value="1">Like a H1</ropi-radio>
+                <ropi-radio value="2">Like a H2</ropi-radio>
+                <ropi-radio value="3">Like a H3</ropi-radio>
+                <ropi-radio value="4">Like a H4</ropi-radio>
+                <ropi-radio value="5">Like a H5</ropi-radio>
+                <ropi-radio value="6">Like a H6</ropi-radio>
+              </ropi-radio-group>
+            </div>
+            <div slot="tabpanel">
+              <ropi-subheader>Appearance</ropi-subheader>
+              <ropi-radio-group>
+                <ropi-radio value="0" checked="checked">Inherit from tablet portrait</ropi-radio>
+                <ropi-radio value="1">Like a H1</ropi-radio>
+                <ropi-radio value="2">Like a H2</ropi-radio>
+                <ropi-radio value="3">Like a H3</ropi-radio>
+                <ropi-radio value="4">Like a H4</ropi-radio>
+                <ropi-radio value="5">Like a H5</ropi-radio>
+                <ropi-radio value="6">Like a H6</ropi-radio>
+              </ropi-radio-group>
+            </div>
+            <div slot="tabpanel">
+              <ropi-subheader>Appearance</ropi-subheader>
+              <ropi-radio-group>
+                <ropi-radio value="0" checked="checked">Inherit from tablet landscape</ropi-radio>
+                <ropi-radio value="1">Like a H1</ropi-radio>
+                <ropi-radio value="2">Like a H2</ropi-radio>
+                <ropi-radio value="3">Like a H3</ropi-radio>
+                <ropi-radio value="4">Like a H4</ropi-radio>
+                <ropi-radio value="5">Like a H5</ropi-radio>
+                <ropi-radio value="6">Like a H6</ropi-radio>
+              </ropi-radio-group>
+            </div>
+          </ropi-tabs>
+        </template>
+      </ropi-content-element>
+
+      <ropi-content-element
+        type="teaser"
+        group="Basis"
+        name="Teaser"
+        color="lightblue"
+        src="components/teaser.php">
+      </ropi-content-element>
+
+      <ropi-content-element
+        type="grid"
+        color="pink"
+        icon="grid_on"
+        group="Struktur"
+        name="Grid"
+        src="components/grid.php">
+      </ropi-content-element>
+
+      <ropi-content-element
+        type="productlist"
+        color="cyan"
+        icon="list"
+        group="Produkte"
+        name="Produktliste"
+        languagespecificsettings="languageSpecific"
+        src="components/productlist.php">
+        <template>
+          <div style="padding: 0.75rem 1rem">
+            <ropi-textfield name="languageSpecific">
+              <div slot="placeholder">Language Specific</div>
+            </ropi-textfield>
+          </div>
+        </template>
+      </ropi-content-element>
+    </ropi-content-editor>
+    <script type="module">
+      let editor = document.getElementById('editor');
+
+      editor.breakpoints = [
+        {
+          name: 'Mobile Portrait',
+          width: '320px'
+        },
+        {
+          name: 'Mobile Landscape',
+          width: '480px'
+        },
+        {
+          name: 'Tablet Portrait',
+          width: '640px'
+        },
+        {
+          name: 'Tablet Landscape',
+          width: '1024px'
+        },
+        {
+          name: 'Desktop',
+          width: '1260px'
+        }
+      ];
+
+      editor.setAttribute('src', location.href.replace(/\/content-editor-element\/demo\/?/i, '/content-editor-element/demo/dummy-page.php'));
+
+      editor.addEventListener('save', (event) => {
+        console.log(JSON.stringify(event.detail.data, null, 2));
+        console.log('publish: ' + event.detail.publish);
+      });
+
+      editor.addEventListener('unpublish', (event) => {
+        console.log(JSON.stringify(event.detail.data, null, 2));
+      });
+
+      editor.addEventListener('exporttofile', (event) => {
+        console.log(event.detail.filename);
+        console.log(JSON.stringify(event.detail.data, null, 2));
+      });
+
+      editor.addEventListener('exporttosites', (event) => {
+          console.log(JSON.stringify(event.detail.documentContextDeltas, null, 2));
+          console.log('keepLanguageSpecificData: ' + event.detail.keepLanguageSpecificData);
+          console.log('publish: ' + event.detail.publish);
+      });
+
+      editor.addEventListener('importsite', (event) => {
+        console.log(JSON.stringify(event.detail.documentContextDelta, null, 2));
+        console.log('keepLanguageSpecificData: ' + event.detail.keepLanguageSpecificData);
+      });
+
+      editor.addEventListener('importfile', (event) => {
+        console.log(JSON.stringify(event.detail.data, null, 2));
+        console.log('keepLanguageSpecificData: ' + event.detail.keepLanguageSpecificData);
+      });
+
+      editor.addEventListener('revert', (event) => {
+        console.log('versionId: ' + event.detail.versionId);
+      });
+
+      editor.addEventListener('openhref', (event) => {
+        event.preventDefault();
+        console.log('Should render URL on server side: ' + event.detail.href);
+      });
+
+      editor.addEventListener('presetsave', (event) => {
+        //  event.preventDefault(); // on error to prevent adding preset to list
+        console.log('Save preset');
+        console.log(event.detail);
+      });
+
+      editor.addEventListener('presetdelete', (event) => {
+        //  event.preventDefault(); // on error to prevent removing preset from list
+        console.log('Delete preset');
+        console.log(event.detail);
+      });
+    </script>
+  </body>
+</html>

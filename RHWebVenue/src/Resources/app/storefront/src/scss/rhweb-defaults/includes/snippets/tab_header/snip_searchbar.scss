@@ -1,0 +1,25 @@
+.header-search{
+    .header-search-input{
+        background-color: $rhweb-header-searchbar-background-color;
+        color:$rhweb-header-searchbar-font-color;
+        transition: ease all .2s;
+
+        &:focus{
+            background-color: $rhweb-header-searchbar-background-color-focus;
+            border-color:$rhweb-header-searchbar-border-color-focus;
+        }
+
+        @include mxn_placeholder($rhweb-header-searchbar-placeholder-color);
+    }
+
+    button[type=submit]{
+        background-color:$rhweb-header-searchbar-button-background-color;
+        color:$rhweb-header-searchbar-button-icon-color;
+
+        &:hover{
+            background-color: $rhweb-header-searchbar-button-background-color-hover;
+            color:$rhweb-header-searchbar-button-icon-color-hover;
+        }
+    }
+}
+

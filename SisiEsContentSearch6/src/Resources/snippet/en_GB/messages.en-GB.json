@@ -1,0 +1,23 @@
+{
+  "header": {
+    "sisi": {
+      "label1": "English1"
+    }
+  },
+  "footer": {
+    "sisi":{
+      "label1": "English1"
+    },
+    "copyrightInfo": "<a href=\"https://signundsinn.de/\" target=\"blank\">signundsinn GmbH</a> - realized with Shopware"
+  },
+  "detail": {
+    "sisi": {
+      "label1": "English1"
+    }
+  },
+  "listing": {
+    "sisi": {
+      "label1": "English1"
+    }
+  }
+}

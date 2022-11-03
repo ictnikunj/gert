@@ -1,0 +1,16 @@
+{% sw_extends '@Storefront/storefront/page/account/order-history/index.html.twig' %}
+
+{% block page_account_main_content %}
+    {{ parent () }}
+
+    {% if page.extensions['MoorlFormBuilder'] %}
+        <div class="card-title mt-4">
+            {{ page.extensions['MoorlFormBuilder'].translated.label }}
+        </div>
+
+        {% sw_include "@Storefront/plugin/moorl-form-builder/component/form.html.twig" with {
+            reloadPage: true,
+            form: page.extensions['MoorlFormBuilder']
+        } %}
+    {% endif %}
+{% endblock %}

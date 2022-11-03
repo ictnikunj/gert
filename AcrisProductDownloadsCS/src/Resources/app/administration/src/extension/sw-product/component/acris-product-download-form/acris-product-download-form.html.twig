@@ -1,0 +1,49 @@
+{% block acris_product_download_form %}
+    <div class="acris-product-download-form" :class="{ 'is--disabled': disabled }">
+        {% block acris_product_download_form_upload %}
+            <sw-upload-listener
+                v-if="!isLoading"
+                :uploadTag="acrisUploadTag"
+                autoUpload
+                @media-upload-finish="successfulUpload"
+                @media-upload-fail="onUploadFailed">
+            </sw-upload-listener>
+            <acris-document-upload
+                    v-if="!isLoading"
+                    :uploadTag="acrisUploadTag"
+                    variant="regular"
+                    :scrollTarget="$parent.$el"
+                    :defaultFolder="productDownloadsEntityName"
+                    @media-upload-sidebar-open="onOpenMedia">
+            </acris-document-upload>
+        {% endblock %}
+
+        {% block acris_product_download_form_grid %}
+            <div v-if="!isLoading"
+                 class="acris-product-download-form__grid acris-product-download-form__column"
+                 :style="gridAutoRows">
+                {%  block acris_product_download_form_grid_items %}
+                    <acris-product-download
+                        v-for="downloadItem in downloadItems"
+                        :key="downloadItem.id"
+                        :isPlaceholder="downloadItem.isPlaceholder"
+                        :mediaId="downloadItem.previewMediaId ? downloadItem.previewMediaId : downloadItem.mediaId"
+                        v-draggable="{ dragGroup: 'product-media', data: downloadItem, onDragEnter: onDownloadItemDragSort }"
+                        v-droppable="{ dragGroup: 'product-media', data: downloadItem }"
+                        @acris-product-download-delete="removeFile(downloadItem)"
+                        @acris-product-download-edit="editFile(downloadItem)">
+                    </acris-product-download>
+                {% endblock %}
+            </div>
+            <sw-loader v-else></sw-loader>
+        {% endblock %}
+
+        {% block acris_product_download_form_edit_modal %}
+            <acris-edit-download-modal v-if="displayEditDownload"
+                                          :downloadItem="editDownloadItem"
+                                          @modal-save="onEditDownloadSave"
+                                          @modal-close="onEditDownloadClose">
+            </acris-edit-download-modal>
+        {% endblock %}
+    </div>
+{% endblock %}

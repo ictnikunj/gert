@@ -1,0 +1,62 @@
+{% block definition %}
+<ropi-content-element
+        type="RopiFrontendEditing/iframe"
+        icon="web"
+        color="#20c997"
+        group="{% trans %}ropi-frontend-editing.contentElement.definition.group.other{% endtrans %}"
+        name="{% trans %}ropi-frontend-editing.contentElement.definition.element.iframe{% endtrans %}"
+        languagespecificsettings="{% block languagespecificsettings %}{% endblock %}"
+        src="{{ path('ropi.frontend-editing.element.render') }}">
+    <template>
+        {% block settings_template %}
+        <ropi-tabs scrollable tablistposition="bottom">
+            {% block tab_general %}
+                <ropi-touchable slot="tab">{% trans %}ropi-frontend-editing.contentElement.definition.tab.general{% endtrans %}</ropi-touchable>
+            {% endblock %}
+            {% block tabpanel_general %}
+                <div slot="tabpanel">
+                    {% block tabpanel_general_inner %}
+
+                        {% block url_textfield %}
+                            <div class="ropi-margin-h">
+                                <ropi-textfield name="url">
+                                    <div slot="placeholder">{% trans %}ropi-frontend-editing.contentElement.definition.label.url{% endtrans %}</div>
+                                </ropi-textfield>
+                            </div>
+                        {% endblock %}
+
+                        {% block aspect_ratio %}
+                            {% sw_include '@RopiFrontendEditing/content-editor/elements/common/settings/aspect-ratio.html.twig' with {
+                                'name': 'aspectRatio',
+                                'minHeight': {
+                                    'name': 'minHeight'
+                                }
+                            } %}
+                        {% endblock %}
+
+                    {% endblock %}
+                </div>
+            {% endblock %}
+            {% block breakpoints_tabs %}
+                {% for breakpoint in breakpoints %}
+                    {% block tab_breakpoint %}
+                        <ropi-touchable slot="tab">{{ breakpoint.name }}</ropi-touchable>
+                    {% endblock %}
+                    {% block tabpanel_breakpoint %}
+                        <div slot="tabpanel">
+                            {% block tabpanel_breakpoint_inner %}
+
+                                    {% block general %}
+                                        {% sw_include '@RopiFrontendEditing/content-editor/elements/common/settings/general.html.twig' %}
+                                    {% endblock %}
+
+                            {% endblock %}
+                        </div>
+                    {% endblock %}
+                {% endfor %}
+            {% endblock %}
+        </ropi-tabs>
+        {% endblock %}
+    </template>
+</ropi-content-element>
+{% endblock %}

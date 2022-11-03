@@ -1,0 +1,104 @@
+{% block bst_cron_manager_detail %}
+    <sw-page class="bst-cron-manager-detail">
+
+        {% block bst_cron_manager_detail_header %}
+            <template #smart-bar-header>
+                <h2>{{ placeholder(cronjob, 'name', $tc('bst-cron-manager.detail.textHeadline')) }}</h2>
+            </template>
+        {% endblock %}
+
+        {% block bst_cron_manager_detail_actions %}
+            <template #smart-bar-actions>
+
+                {% block bst_cron_manager_detail_actions_abort %}
+                    <sw-button :disabled="cronjobIsLoading" v-tooltip.bottom="tooltipCancel" @click="onCancel">
+                        {{ $tc('bst-cron-manager.detail.buttonCancel') }}
+                    </sw-button>
+                {% endblock %}
+
+                {% block bst_cron_manager_detail_actions_save %}
+                    <sw-button-process
+                            class="bst-cron-manager-detail__save-action"
+                            :isLoading="isLoading"
+                            v-model="isSaveSuccessful"
+                            :disabled="isLoading"
+                            variant="primary"
+                            v-tooltip.bottom="tooltipSave"
+                            @click.prevent="onSave">
+                        {{ $tc('bst-cron-manager.detail.buttonSave') }}
+                    </sw-button-process>
+                {% endblock %}
+
+            </template>
+        {% endblock %}
+
+        {% block bst_cron_manager_detail_content %}
+            <sw-card-view slot="content">
+
+                {% block bst_cron_manager_detail_base_basic_info_card %}
+                    <sw-card :title="$tc('bst-cron-manager.detail.cardTitleCronjobInfo')" :isLoading="cronjobIsLoading">
+                        <template v-if="!cronjobIsLoading">
+                            <sw-container>
+                                <sw-field type="text"
+                                          :label="$tc('bst-cron-manager.detail.labelName')"
+                                          name="name"
+                                          disabled
+                                          v-model="cronjob.name">
+                                </sw-field>
+
+                                <sw-field type="text"
+                                          :label="$tc('bst-cron-manager.detail.labelClass')"
+                                          name="scheduledTaskClass"
+                                          disabled
+                                          v-model="cronjob.scheduledTaskClass">
+                                </sw-field>
+                            </sw-container>
+
+                            <sw-container columns="1fr 1fr" gap="0px 30px">
+                                <sw-field :label="$tc('bst-cron-manager.detail.labelLastExecutionTime')"
+                                          name="lastExecutionTime"
+                                          type="datetime"
+                                          disabled
+                                          v-model="cronjob.lastExecutionTime">
+                                </sw-field>
+
+                                <sw-datepicker dateType="datetime-local"
+                                               :label="$tc('bst-cron-manager.detail.labelNextExecutionTime')"
+                                               v-model="cronjob.nextExecutionTime">
+                                </sw-datepicker>
+                            </sw-container>
+
+                            <sw-container columns="1fr 1fr 1fr" gap="0px 30px">
+                                <sw-button class="sw-field"
+                                           :disabled="false"
+                                           :isLoading="false"
+                                           variant="primary"
+                                           @click="changeNextExecutionTime">
+                                    {{ '+1 minute from now' }}
+                                </sw-button>
+                            </sw-container>
+
+                            <sw-container columns="1fr" gap="0px 30px">
+                                <sw-single-select
+                                        size="big"
+                                        :label="$tc('bst-cron-manager.detail.labelRunInterval')"
+                                        :options="intervals"
+                                        v-model="cronjob.runInterval">
+                                </sw-single-select>
+                            </sw-container>
+
+                            <sw-container>
+                                <sw-field type="text"
+                                          :label="$tc('bst-cron-manager.detail.labelStatus')"
+                                          name="status"
+                                          disabled
+                                          v-model="cronjob.status">
+                                </sw-field>
+                            </sw-container>
+                        </template>
+                    </sw-card>
+                {% endblock %}
+            </sw-card-view>
+        {% endblock %}
+    </sw-page>
+{% endblock %}

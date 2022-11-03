@@ -1,0 +1,23 @@
+{
+  "moorl-fb2-hint": {
+    "notifications": {
+      "p1": "Ich bedanke mich für das Vertrauen, die vielen Downloads und das positive Feedback für den Formular Baukasten!",
+      "p2": "In den letzten Änderungswünschen ist mir aufgefallen, dass das Plugin an seine technisch möglichen Grenzen stößt. Viele der inklusiven Features sind für die meisten Shopbetreiber überhaupt nicht notwendig und belasten unter anderem auch unnötig den Geldbeutel. Die Erweiterbarkeit für Entwickler ist aktuell nur durch Events möglich und deckt nur einen kleinen Teil davon ab, was eigentlich für die professionelle Weiterentwicklung für komplexe Prozesse notwendig wäre. Viele setzen deshalb auch lieber auf kostspielige Eigenentwicklungen für individuelle Formulare.",
+      "p3": "Mit eurem Feedback der letzten zwei Jahre und meinem jetzigen Kenntnisstand über das Shopware-System habe ich das Plugin grundlegend neu entwickelt! Es wird einerseits zu einem günstigeren Preis angeboten (mit grundlegenden Features) und kann durch neue Add-Ons in der Funktionalität erweitert werden.",
+      "p4": "Die Neu-Entwicklung richtet sich unter anderem auch an Entwickler und Agenturen, die eigene oder Kundenspezifische Add-Ons für das Plugin bauen möchten. Ein Beispiel-Plugin für Entwickler ist frei in GitHub zugänglich.",
+      "p5": "Alle Kunden mit einer aktiven Subscription können mich per Mail informieren und ab dem 01.06.2022 einen 50% Gutschein für Basis Version und Add-Ons erhalten!",
+      "p6": "Dieses Plugin wird auch weiterhin Sicherheitsrelevante Updates und Fehlerbehebungen erhalten."
+    },
+    "modal": {
+      "title": "Formular Baukasten 2 - Hinweis",
+      "more": "Weitere Infos findest du hier:",
+      "store": "Zum Shopware Store",
+      "storeLink": "https://store.shopware.com/detail/index/sArticle/2300041",
+      "docs": "Zur Dokumentation",
+      "docsLink": "https://docs.moori.net/MoorlForms/",
+      "demo": "Zur Demo",
+      "demoLink": "https://demo.moori.net/Formular-Baukasten-2-NEU/",
+      "close": "Schließen"
+    }
+  }
+}

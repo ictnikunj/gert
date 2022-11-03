@@ -1,0 +1,49 @@
+@import 'rhweb-cms/deal-counter';
+@import 'rhweb-cms/shop-the-look';
+@import 'rhweb-cms/testimonial';
+@import 'rhweb-cms/brand-slider';
+@import "rhweb-cms/cta-banner";
+@import "rhweb-defaults/defaults";
+@import "rhweb-theme/base";
+
+.container{
+    max-width:$rhweb-additional-maxwidth;
+}
+
+
+.scroll-up-button{
+    svg{
+        display:none;
+    }
+}
+
+.icon-wishlist{
+    &.icon-wishlist-not-added{
+        svg{
+            display: none;
+        }
+    }
+}
+
+.product-wishlist-not-added .icon-wishlist-not-added, .product-wishlist-not-added .text-wishlist-not-added{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.is-ctl-navigation, .is-ctl-product {
+    .container-main{
+        padding-top:0;
+    }
+}
+
+.is-act-home{
+    .container-main{
+        padding-top:0;
+        padding-bottom: 0;
+    }
+
+    .breadcrumb{
+        display:none;
+    }
+}

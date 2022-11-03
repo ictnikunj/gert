@@ -1,0 +1,16 @@
+.social-footer-container{
+    text-align:center;
+    background-color:$rhweb-social-background-color;
+    padding:$rhweb-social-padding;
+
+    a{
+        font-size:1.3em;
+        padding:0 8px;
+        color:$rhweb-social-link-color;
+
+        &:hover{
+            color:darken($rhweb-social-link-color, 10%);
+            text-decoration:none;
+        }
+    }
+}

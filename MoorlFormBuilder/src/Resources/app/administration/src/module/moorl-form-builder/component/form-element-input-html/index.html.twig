@@ -1,0 +1,15 @@
+<div class="moorl-form-element-input-html">
+    <moorl-collapse class="content--single"
+                    :label="$tc('moorl-form-builder.general.elementInput')"
+                    key="elementInput">
+        <template #content>
+            <sw-code-editor :label="$tc('moorl-form-builder.properties.html')"
+                            v-model="formElement.html"
+                            :softWraps="false"></sw-code-editor>
+            <sw-field type="switch"
+                      bordered
+                      :label="$tc('moorl-form-builder.properties.noWrap')"
+                      v-model="formElement.noWrap"></sw-field>
+        </template>
+    </moorl-collapse>
+</div>

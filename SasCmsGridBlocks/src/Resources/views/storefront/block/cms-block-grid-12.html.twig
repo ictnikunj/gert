@@ -1,0 +1,13 @@
+{% block block_grid_12 %}
+
+    {% block block_grid_12_col_1 %}
+        {% set element = block.slots.getSlot('col-1') %}
+
+        <div class="col-12">
+            {% block block_grid_12_col_1_inner %}
+                {% sw_include "@Storefront/storefront/element/cms-element-" ~ element.type ~ ".html.twig" ignore missing %}
+            {% endblock %}
+        </div>
+    {% endblock %}
+
+{% endblock %}

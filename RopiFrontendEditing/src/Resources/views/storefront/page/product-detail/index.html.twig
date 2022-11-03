@@ -1,0 +1,27 @@
+{% sw_extends '@Storefront/storefront/page/product-detail/index.html.twig' %}
+
+{% block base_main_inner %}
+    {{ parent() }}
+
+    {% block ropi_frontend_editing_content_area_bottom %}
+        <div data-ropi-content-area="bottom">
+            {{ ropi_frontend_editing_render_content_area('bottom', ropiFrontendEditingContentDocument.structure.children) }}
+        </div>
+    {% endblock %}
+{% endblock %}
+
+{% block page_product_detail_main %}
+    {% block ropi_frontend_editing_content_area_product_main_top %}
+        <div data-ropi-content-area="product-main-top">
+            {{ ropi_frontend_editing_render_content_area('product-main-top', ropiFrontendEditingContentDocument.structure.children) }}
+        </div>
+    {% endblock %}
+
+    {{ parent() }}
+
+    {% block ropi_frontend_editing_content_area_product_main_bottom %}
+        <div data-ropi-content-area="product-main-bottom">
+            {{ ropi_frontend_editing_render_content_area('product-main-bottom', ropiFrontendEditingContentDocument.structure.children) }}
+        </div>
+    {% endblock %}
+{% endblock %}

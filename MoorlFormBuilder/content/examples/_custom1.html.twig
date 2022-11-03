@@ -1,0 +1,32 @@
+{# Beispiel custom Template - Mehrfachauswahl Checkboxes #}
+<div class="form-{{ formElement.type }}-{{ formElement.name }} form-group">
+    <div class="form-input-group">
+        <div class="custom-form-grid font-weight-bold">
+            <div>{{ formElementLabel }}</div>
+            <div>Bezeichung</div>
+            <div>Bild</div>
+            <div>Mehr</div>
+        </div>
+        {% for option in formElement.options %}
+            {% set optionLabel = option.label[app.request.locale] %}
+            {% set optionMedia = mediaCollection.get(option.mediaId) %}
+            <div class="custom-form-grid">
+                <div><input type="number" class="form-control" id="{{ option.value }}-{{ formElement.name }}-{{ formElement.id }}" name="{{ formElement.name }}[{{ option.value }}]" value="0"></div>
+                <div><label class="form-label" for="{{ option.value }}-{{ formElement.name }}-{{ formElement.id }}">{{ optionLabel }}</label></div>
+                <div><img class="img-fluid" alt="{{ optionMedia.fileName }}" src="{{ optionMedia.url }}"></div>
+                <div><label class="form-label" for="{{ option.value }}-{{ formElement.name }}-{{ formElement.id }}">{{ option.customField1[app.request.locale] }}</label></div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+{# CSS #}
+<style>
+    #form-{{ form.id }} .custom-form-grid {
+        display: grid;
+        grid-template-columns: 50px 150px 100px 1fr;
+        grid-gap: 20px;
+        margin-bottom: 20px;
+        align-items: center
+    }
+</style>

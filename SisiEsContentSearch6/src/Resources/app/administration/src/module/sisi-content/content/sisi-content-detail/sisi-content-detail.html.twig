@@ -1,0 +1,188 @@
+{% block sisi_content_detail %}
+    <sw-page class="sisi-content-detail">
+        <template slot="smart-bar-actions">
+            <sw-button :routerLink="{ name: 'sisi.content.list' }">
+                {{ $t('sisi-content.detail.list') }}
+            </sw-button>
+
+            <sw-button-process
+                :isLoading="isLoading"
+                :processSuccess="processSuccess"
+                variant="primary"
+                @process-finish="saveFinish"
+                @click="onClickSave">
+                {{ $t('sisi-content.detail.save') }}
+            </sw-button-process>
+        </template>
+
+        <template slot="content">
+                <sw-card v-if="fields" :isLoading="isLoading">
+
+                    <sw-field :label="$t('sisi-content.detail.label')" v-model="fields.label"></sw-field>
+
+                    <sw-select-field :label="$t('ssisi-fields.detail.shop')" size="medium" v-model="fields.shop"
+                                     v-bind:style="{background:colorshop}">
+                        <option> {{ fields.shop }} </option>
+                        <option value=""> no select </option>
+                        <option v-for="option in options" v-bind:value="option.value">
+                            {{ option.text }}
+                        </option>
+                    </sw-select-field>
+
+                    <sw-select-field :label="$t('sisi-content.detail.language')" size="medium" v-model="fields.language">
+                        <option> {{ fields.language }} </option>
+                        <option value=""> no select </option>
+                        <option v-for="option in optionsLanguage" v-bind:value="option.value">
+                            {{ option.text }}
+                        </option>
+                    </sw-select-field>
+                    <sw-select-field :label="$t('ssisi-fields.detail.tokenizer')" v-model="fields.tokenizer"
+                                     :helpText="$t('ssisi-fields.detail.help.tokenizer')" v-on:change="choiceFields()"
+                                     v-bind:style="{background:colorName}">
+                        <option value="classic">Classic tokenizer</option>
+                        <option value="lowercase">Lowercase tokenizer</option>
+                        <option value="edge_ngram"  v-bind:style="{display:strEdge}">Edge_n-gram_tokenizer</option>
+                        <option value="ngram"  v-bind:style="{display:strEdge}">Ngram</option>
+                        <option value="letter">Letter tokenizer</option>
+                        <option value="standard">Standard tokenizer</option>
+                        <option value="whitespace">Whitespace</option>
+                        <option value="keyword">Keyword</option>
+
+                    </sw-select-field>
+                    <sw-number-field :label="$t('ssisi-fields.detail.edge')" v-bind:style="{display:edge}"
+                                     v-model="fields.edge"
+                                     :helpText="$t('ssisi-fields.detail.help.edge')"></sw-number-field>
+
+                    <sw-number-field :label="$t('ssisi-fields.detail.minedge')" v-bind:style="{display:edge}"
+                                     v-model="fields.minedge"
+                                     :helpText="$t('ssisi-fields.detail.help.minedge')"></sw-number-field>
+
+                    <sw-select-field :label="$t('ssisi-fields.detail.filter1')" size="medium" v-model="fields.filter1"
+                                     v-on:change="choiceFields()" :helpText="$t('ssisi-fields.detail.help.filter')">
+                        <option value="noselect">  {{ $t('ssisi-fields.detail.noselect') }}</option>
+                        <option value="lowercase"> {{ $t('ssisi-fields.detail.lowercase') }}</option>
+                        <option value="classic"> Classic</option>
+                        <option value="truncate"> Truncate</option>
+                        <option value="autocomplete"> Autocomplete</option>
+                        <option value="synonym"> synonym</option>
+                        <option value="word_delimiter_graph"> Word_delimiter_graph</option>
+                    </sw-select-field>
+
+                    <sw-select-field :label="$t('ssisi-fields.detail.filter2')" v-model="fields.filter2"
+                                     v-on:change="choiceFields()" :helpText="$t('ssisi-fields.detail.help.filter')">
+                        <option value="noselect">  {{ $t('ssisi-fields.detail.noselect') }}</option>
+                        <option value="lowercase"> {{ $t('ssisi-fields.detail.lowercase') }}</option>
+                        <option value="classic"> Classic</option>
+                        <option value="truncate"> Truncate</option>
+                        <option value="autocomplete"> Autocomplete</option>
+                        <option value="synonym"> synonym</option>
+                        <option value="word_delimiter_graph"> Word_delimiter_graph</option>
+                    </sw-select-field>
+
+                    <sw-select-field :label="$t('ssisi-fields.detail.filter3')" v-model="fields.filter3"
+                                     v-on:change="choiceFields()" :helpText="$t('ssisi-fields.detail.help.filter')">
+                        <option value="noselect">  {{ $t('ssisi-fields.detail.noselect') }}</option>
+                        <option value="lowercase"> {{ $t('ssisi-fields.detail.lowercase') }}</option>
+                        <option value="classic"> Classic</option>
+                        <option value="truncate"> Truncate</option>
+                        <option value="autocomplete"> Autocomplete</option>
+                        <option value="synonym"> synonym</option>
+                        <option value="word_delimiter_graph"> Word_delimiter_graph</option>
+                    </sw-select-field>
+                    <sw-select-field :label="$t('sisi-content.detail.stemming')" v-model="fields.stemming"
+                                     v-on:change="changeStemming()"
+                                     :helpText="$t('ssisi-fields.detail.help.stemming')">
+                        <option value="noselect">  {{ $t('ssisi-fields.detail.noselect') }}</option>
+                        <option value="arabic"> {{ $t('ssisi-fields.detail.stemmings.arabic') }}</option>
+                        <option value="armenian"> {{ $t('ssisi-fields.detail.stemmings.armenian') }}</option>
+                        <option value="basque"> {{ $t('ssisi-fields.detail.stemmings.basque') }}</option>
+                        <option value="bengali"> {{ $t('ssisi-fields.detail.stemmings.bengali') }}</option>
+                        <option value="brazilian"> {{ $t('ssisi-fields.detail.stemmings.brazilian') }}</option>
+                        <option value="bulgarian"> {{ $t('ssisi-fields.detail.stemmings.bulgarian') }}</option>
+                        <option value="catalan"> {{ $t('ssisi-fields.detail.stemmings.catalan') }}</option>
+                        <option value="czech"> {{ $t('ssisi-fields.detail.stemmings.czech') }}</option>
+                        <option value="danish"> {{ $t('ssisi-fields.detail.stemmings.danish') }}</option>
+                        <option value="dutch"> {{ $t('ssisi-fields.detail.stemmings.dutch') }}</option>
+                        <option value="dutch_kp"> {{ $t('ssisi-fields.detail.stemmings.dutch_kp') }}</option>
+                        <option value="english"> {{ $t('ssisi-fields.detail.stemmings.english') }}</option>
+                        <option value="light_english"> {{ $t('ssisi-fields.detail.stemmings.light_english') }}</option>
+                        <option value="lovins"> {{ $t('ssisi-fields.detail.stemmings.lovins') }}</option>
+                        <option
+                            value="minimal_english"> {{ $t('ssisi-fields.detail.stemmings.minimal_english') }}</option>
+                        <option value="porter2"> {{ $t('ssisi-fields.detail.stemmings.porter2') }}</option>
+                        <option
+                            value="possessive_english"> {{ $t('ssisi-fields.detail.stemmings.possessive_english') }}</option>
+                        <option value="estonian"> {{ $t('ssisi-fields.detail.stemmings.estonian') }}</option>
+                        <option value="finnish"> {{ $t('ssisi-fields.detail.stemmings.finnish') }}</option>
+                        <option value="light_finnish"> {{ $t('ssisi-fields.detail.stemmings.light_finnish') }}</option>
+                        <option value="light_french"> {{ $t('ssisi-fields.detail.stemmings.light_french') }}</option>
+                        <option value="french"> {{ $t('ssisi-fields.detail.stemmings.french') }}</option>
+                        <option
+                            value="minimal_french"> {{ $t('ssisi-fields.detail.stemmings.minimal_french') }}</option>
+                        <option value="galician"> {{ $t('ssisi-fields.detail.stemmings.galician') }}</option>
+                        <option
+                            value="minimal_galician"> {{ $t('ssisi-fields.detail.stemmings.minimal_galician') }}</option>
+                        <option value="light_german"> {{ $t('ssisi-fields.detail.stemmings.light_german') }}</option>
+                        <option value="german"> {{ $t('ssisi-fields.detail.stemmings.german') }}</option>
+                        <option value="german2"> {{ $t('ssisi-fields.detail.stemmings.german2') }}</option>
+                        <option
+                            value="minimal_german"> {{ $t('ssisi-fields.detail.stemmings.minimal_german') }}</option>
+                        <option value="greek"> {{ $t('ssisi-fields.detail.stemmings.greek') }}</option>
+                        <option value="hindi"> {{ $t('ssisi-fields.detail.stemmings.hindi') }}</option>
+                        <option value="hungarian"> {{ $t('ssisi-fields.detail.stemmings.hungarian') }}</option>
+                        <option
+                            value="light_hungarian"> {{ $t('ssisi-fields.detail.stemmings.light_hungarian') }}</option>
+                        <option value="indonesian"> {{ $t('ssisi-fields.detail.stemmings.indonesian') }}</option>
+                        <option value="irish"> {{ $t('ssisi-fields.detail.stemmings.irish') }}</option>
+                        <option value="light_italian"> {{ $t('ssisi-fields.detail.stemmings.light_italian') }}</option>
+                        <option value="italian"> {{ $t('ssisi-fields.detail.stemmings.italian') }}</option>
+                        <option value="sorani"> {{ $t('ssisi-fields.detail.stemmings.sorani') }}</option>
+                        <option value="latvian"> {{ $t('ssisi-fields.detail.stemmings.latvian') }}</option>
+                        <option value="lithuanian"> {{ $t('ssisi-fields.detail.stemmings.lithuanian') }}</option>
+                        <option value="norwegian"> {{ $t('ssisi-fields.detail.stemmings.norwegian') }}</option>
+                        <option
+                            value="light_norwegian"> {{ $t('ssisi-fields.detail.stemmings.light_norwegian') }}</option>
+                        <option
+                            value="minimal_norwegian">{{ $t('ssisi-fields.detail.stemmings. minimal_norwegian') }}</option>
+                        <option value="light_nynorsk"> {{ $t('ssisi-fields.detail.stemmings.light_nynorsk') }}</option>
+                        <option value="nynorsk"> {{ $t('ssisi-fields.detail.stemmings.minimal_nynorsk') }}</option>
+                        <option
+                            value="light_portuguese"> {{ $t('ssisi-fields.detail.stemmings.light_portuguese') }}</option>
+                        <option
+                            value="minimal_portuguese"> {{ $t('ssisi-fields.detail.stemmings.minimal_portuguese') }}</option>
+                        <option value="portuguese"> {{ $t('ssisi-fields.detail.stemmings.portuguese') }}</option>
+                        <option
+                            value="portuguese_rslp"> {{ $t('ssisi-fields.detail.stemmings.portuguese_rslp') }}</option>
+                        <option value="romanian"> {{ $t('ssisi-fields.detail.stemmings.romanian') }}</option>
+                        <option value="russian"> {{ $t('ssisi-fields.detail.stemmings.russian') }}</option>
+                        <option value="light_russian"> {{ $t('ssisi-fields.detail.stemmings.light_russian') }}</option>
+                        <option value="light_spanish"> {{ $t('ssisi-fields.detail.stemmings.light_spanish') }}</option>
+                        <option value="spanish"> {{ $t('ssisi-fields.detail.stemmings.spanish') }}</option>
+                        <option value="swedish"> {{ $t('ssisi-fields.detail.stemmings.swedish') }}</option>
+                        <option value="light_swedish"> {{ $t('ssisi-fields.detail.stemmings.light_swedish') }}</option>
+                        <option value="turkish"> {{ $t('ssisi-fields.detail.stemmings.turkish') }}</option>
+                    </sw-select-field>
+                    <sw-select-field :label="$t('ssisi-fields.detail.stemming_stop')" v-model="fields.stemmingstop"
+                                     v-bind:style="{display:stemmingStr}"
+                                     :helpText="$t('ssisi-fields.detail.help.stemming_stop')">
+                        <option value="yes"> {{ $t('ssisi-fields.detail.booleanYes') }}</option>
+                        <option value="No">{{ $t('ssisi-fields.detail.booleanNo') }}</option>
+                    </sw-select-field>
+                    <sw-textarea-field :label="$t('ssisi-fields.detail.stop')" v-model="fields.stop"
+                                       :helpText="$t('ssisi-fields.detail.help.stop')"></sw-textarea-field>
+
+                    <sw-select-field :label="$t('ssisi-fields.detail.strip_str')" v-model="fields.format"
+                                     :helpText="$t('ssisi-fields.detail.help.strip_str')">
+                        <option value="yes"> {{ $t('ssisi-fields.detail.booleanYes') }} </option>
+                        <option value="no"> {{ $t('ssisi-fields.detail.booleanNo') }} </option>
+                    </sw-select-field>
+
+                    <sw-textarea-field :label="$t('ssisi-fields.detail.strip')" v-model="fields.pattern"
+                                       :helpText="$t('ssisi-fields.detail.help.strip')">
+                </sw-card>
+            </sw-card-view>
+
+
+        </template>
+    </sw-page>
+{% endblock %}

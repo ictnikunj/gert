@@ -1,0 +1,15 @@
+.ropi-frontend-editing-aspect-ratio {
+  min-height: 0;
+  display: block;
+  position: relative;
+  box-sizing: border-box;
+  flex-grow: 0;
+}
+
+.ropi-frontend-editing-aspect-ratio__element {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+}

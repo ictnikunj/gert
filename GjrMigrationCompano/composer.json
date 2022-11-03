@@ -1,0 +1,31 @@
+{
+    "name": "gjr/migrationcompano",
+    "description": "Gjr Compano importer",
+    "version": "v1.0.0",
+    "type": "shopware-platform-plugin",
+    "license": "AGPL-3.0-or-later",
+    "authors": [
+        {
+            "name": "Ecommerce Expert / GJR Webdevelopment",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "shopware/core": "6.*.*"
+    },
+    "extra": {
+        "shopware-plugin-class": "Gjr\\MigrationCompano\\MigrationCompano",
+        "plugin-icon": "Resources/config/plugin.png",
+        "label": {
+            "de-DE": "Compano import",
+            "en-GB": "Compano import",
+            "nl-NL": "Compano import"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Gjr\\MigrationCompano\\": "src/"
+        }
+    }
+}
+

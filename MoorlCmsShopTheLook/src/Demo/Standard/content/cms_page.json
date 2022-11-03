@@ -1,0 +1,112 @@
+[
+  {
+    "id": "{ID:CMS_PAGE_0}",
+    "type": "page",
+    "name": "Shop-The-Look Demo",
+    "sections": [
+      {
+        "id": "{ID:CMS_SECTION_0}",
+        "position": 0,
+        "type": "default",
+        "sizingMode": "boxed",
+        "cssClass": "bg-light",
+        "blocks": [
+          {
+            "id": "{ID:CMS_BLOCK_0}",
+            "position": 0,
+            "type": "moorl-column-layout-1",
+            "marginTop": "20px",
+            "marginBottom": "20px",
+            "slots": [
+              {
+                "id": "{ID:CMS_SLOT_0}",
+                "type": "moorl-shop-the-look",
+                "slot": "slot-a",
+                "config": {
+                  "media": {
+                    "value": "{MEDIA_FILE:cms_page/pexels-lumn-322207.jpg}",
+                    "source": "static"
+                  },
+                  "style": {
+                    "value": "standard",
+                    "source": "static"
+                  },
+                  "custom1": {
+                    "value": "",
+                    "source": "static"
+                  },
+                  "custom2": {
+                    "value": "",
+                    "source": "static"
+                  },
+                  "custom3": {
+                    "value": "",
+                    "source": "static"
+                  },
+                  "custom4": {
+                    "value": "",
+                    "source": "static"
+                  },
+                  "products": {
+                    "value": [
+                      "{ID:PRODUCT_0}",
+                      "{ID:PRODUCT_1}",
+                      "{ID:PRODUCT_2}",
+                      "{ID:PRODUCT_3}"
+                    ],
+                    "source": "static"
+                  },
+                  "enableList": {
+                    "value": true,
+                    "source": "static"
+                  },
+                  "videoActive": {
+                    "value": false,
+                    "source": "static"
+                  },
+                  "enablePrices": {
+                    "value": true,
+                    "source": "static"
+                  },
+                  "enableAddToCart": {
+                    "value": true,
+                    "source": "static"
+                  },
+                  "enableDirectUrl": {
+                    "value": false,
+                    "source": "static"
+                  },
+                  "productMediaHotspots": {
+                    "value": {
+                      "{ID:PRODUCT_0}": {
+                        "top": "40",
+                        "left": "25"
+                      },
+                      "{ID:PRODUCT_1}": {
+                        "top": "75",
+                        "left": "75"
+                      },
+                      "{ID:PRODUCT_2}": {
+                        "top": "54",
+                        "left": "75"
+                      },
+                      "{ID:PRODUCT_3}": {
+                        "top": "82",
+                        "left": "45"
+                      }
+                    },
+                    "source": "static"
+                  },
+                  "enableAnimatedHotspots": {
+                    "value": true,
+                    "source": "static"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

@@ -1,0 +1,17 @@
+.service-menu-container{
+    background-color:$rhweb-service-background-color;
+    padding:$rhweb-service-padding 0;
+
+    a{
+        padding: 0 27px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: .14em;
+        color:$rhweb-service-link-color;
+
+        &:hover{
+            color:$rhweb-service-link-color-hover;
+            text-decoration:none;
+        }
+    }
+}

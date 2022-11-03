@@ -1,0 +1,17 @@
+{% block general_classes %}
+
+    ropi-frontend-editing-content-element
+
+    {% block visibilty_classes %}
+        {% sw_include '@RopiFrontendEditing/content-editor/elements/common/visibility-classes.html.twig' %}
+    {% endblock %}
+
+    {% block padding_classes %}
+        {% if not withoutPaddingClasses %}
+            {% if paddingClasses is defined and paddingClasses is iterable %}
+                {{ paddingClasses|join(' ') }}
+            {% endif %}
+        {% endif %}
+    {% endblock %}
+
+{% endblock %}

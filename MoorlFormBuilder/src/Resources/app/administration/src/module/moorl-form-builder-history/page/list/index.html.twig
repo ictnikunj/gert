@@ -1,0 +1,53 @@
+<sw-page class="moorl-form-builder-history-list">
+    <template slot="content">
+        <sw-entity-listing
+                v-if="items"
+                :items="items"
+                :repository="repository"
+                :showSelection="true"
+                :columns="columns"
+                :isLoading="isLoading"
+                detailRoute="moorl.form.builder.history.detail"
+                @select-item="updateSelection"
+                @update-records="updateTotal">
+            <template #column-form.type="{ item }">
+                <router-link v-if="item.form" :to="{ name: 'moorl.form.builder.detail', params: { id: item.formId } }">
+                    {{ $tc('moorl-form-builder.options.type.' + item.form.type) }}
+                </router-link>
+            </template>
+
+            <template #column-form.name="{ item }">
+                <router-link v-if="item.form" :to="{ name: 'moorl.form.builder.detail', params: { id: item.formId } }">
+                    {{ item.form.name }}
+                </router-link>
+            </template>
+
+            <template #detail-action="{ item }">
+                <sw-context-menu-item
+                        @click="showDetails(item)">
+                    {{ $tc('moorl-form-builder.buttons.showDetails') }}
+                </sw-context-menu-item>
+            </template>
+        </sw-entity-listing>
+
+        <sw-modal v-if="showModal"
+                  @modal-close="onCloseModal"
+                  :title="$t('moorl-form-builder.general.detailView')"
+                  variant="default">
+            <h3>User values</h3>
+            <pre>{{ formDetails.data }}</pre>
+
+            <h3>Media uploads</h3>
+            <pre>{{ formDetails.media }}</pre>
+
+            <h3>Request</h3>
+            <pre>{{ formDetails.requestData }}</pre>
+
+            <template #modal-footer>
+                <sw-button @click="onCloseModal" size="small">
+                    {{ $tc('moorl-form-builder.buttons.cancelButtonText') }}
+                </sw-button>
+            </template>
+        </sw-modal>
+    </template>
+</sw-page>

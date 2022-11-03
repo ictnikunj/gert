@@ -1,0 +1,23 @@
+@mixin mxn_placeholder($mxn-placeholder-color) {
+    &::-webkit-input-placeholder {
+        color: $mxn-placeholder-color;
+    }
+    &:-moz-placeholder {
+        color: $mxn-placeholder-color;
+        opacity: 1;
+    }
+    &::-moz-placeholder {
+        color: $mxn-placeholder-color;
+        opacity: 1;
+    }
+    &:-ms-input-placeholder {
+        color: $mxn-placeholder-color;
+    }
+    &::-ms-input-placeholder {
+        color: $mxn-placeholder-color;
+    }
+
+    &::placeholder {
+        color: $mxn-placeholder-color;
+    }
+}

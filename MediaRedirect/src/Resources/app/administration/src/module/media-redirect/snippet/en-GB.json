@@ -1,0 +1,19 @@
+{
+    "media-redirect": {
+        "general": {
+            "mainMenuItemGeneral": "Media Redirect",
+            "descriptionTextModule": "You will list,add,update,delete Faqs."
+        },
+        "list": {
+            "addButtonText": "Add Media Redirect",
+            "columnName": "FAQ Questions"
+        },
+        "detail": {
+            "nameLabel": "URL",
+            "answersLabel": "Image",
+            "cancelButtonText": "Cancel",
+            "saveButtonText": "Save",
+            "errorTitle": "Error saving the Media Redirect"
+        }
+    }
+}

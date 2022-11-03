@@ -1,0 +1,191 @@
+[
+  {
+    "id": "{DEMO_CMS_PAGE_1}",
+    "type": "page",
+    "name": "Formular Baukasten",
+    "sections": [
+      {
+        "id": "{DEMO_CMS_SECTION_0}",
+        "position": 0,
+        "type": "default",
+        "sizingMode": "boxed",
+        "cssClass": "bg-light",
+        "blocks": [
+          {
+            "id": "{DEMO_CMS_BLOCK_0}",
+            "position": 1,
+            "type": "image-text",
+            "marginBottom": "40px",
+            "marginTop": "40px",
+            "slots": [
+              {
+                "id": "{DEMO_CMS_SLOT_0}",
+                "type": "text",
+                "slot": "left",
+                "config": {
+                  "content": {
+                    "value": "<h2>Einfaches Kontaktformular</h2><p>In diesem Beispiel zeigen wir Dir, wie ein einfaches Kontaktformular mit dem moori Formular Baukasten aussehen könnte.</p><p>Dieses Formular unterstützt Datei-Uploads und besitzt ein integriertes Captcha, welches in den Plugin Einstellungen konfiguriert werden kann</p><p><a class=\"btn btn-primary\" target=\"blank\" href=\"https://docs.moori.net/MoorlFormBuilder/user/\">Zur Dokumentation</a>",
+                    "source": "static"
+                  },
+                  "verticalAlign": {
+                    "value": "center",
+                    "source": "static"
+                  }
+                }
+              },
+              {
+                "id": "{DEMO_CMS_SLOT_1}",
+                "type": "moorl-form-builder",
+                "slot": "right",
+                "config": {
+                  "form": {
+                    "source": "static",
+                    "value": "{ID:FORM_1}"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "{DEMO_CMS_SECTION_1}",
+        "position": 1,
+        "type": "default",
+        "sizingMode": "boxed",
+        "blocks": [
+          {
+            "id": "{DEMO_CMS_BLOCK_1}",
+            "position": 1,
+            "type": "image-text",
+            "marginBottom": "40px",
+            "marginTop": "40px",
+            "slots": [
+              {
+                "id": "{DEMO_CMS_SLOT_2}",
+                "type": "text",
+                "slot": "right",
+                "config": {
+                  "content": {
+                    "value": "<h2>Feedback Formular</h2><p>Sammle einfach Informationen Deiner Kunden, indem Du ihnen ein Formular mit Multiple Choice Eingaben anbietest.</p><p>Diese Daten können im Formular-Verlauf einfach gespeichert und für die Auswertung exportiert werden.</p><p>Du kannst mit Hilfe von CSS das Aussehen Deines Formulare selbst auf Deine Bedürfnisse anpassen.</p><p><a class=\"btn btn-primary\" target=\"blank\" href=\"https://docs.moori.net/MoorlFormBuilder/user/\">Zur Dokumentation</a>",
+                    "source": "static"
+                  },
+                  "verticalAlign": {
+                    "value": "center",
+                    "source": "static"
+                  }
+                }
+              },
+              {
+                "id": "{DEMO_CMS_SLOT_3}",
+                "type": "moorl-form-builder",
+                "slot": "left",
+                "config": {
+                  "form": {
+                    "source": "static",
+                    "value": "{ID:FORM_2}"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "{DEMO_CMS_SECTION_2}",
+        "position": 2,
+        "type": "default",
+        "sizingMode": "boxed",
+        "cssClass": "bg-light",
+        "blocks": [
+          {
+            "id": "{DEMO_CMS_BLOCK_2}",
+            "position": 1,
+            "type": "text",
+            "marginTop": "40px",
+            "slots": [
+              {
+                "id": "{DEMO_CMS_SLOT_4}",
+                "type": "text",
+                "slot": "content",
+                "config": {
+                  "content": {
+                    "value": "<h2>Multifunktionelle Formulare</h2><p>Du kannst mit dem Formular Baukasten viele Möglichkeiten in die Tat umsetzen.</p><p>Mit den dynamischen Formularfeldern bestimmst Du welche Eingaben in einem individuellem Fall Deinem Kunden angeboten werden.</p><p>Je nach Betreff hast Du die Möglichkeit, die Daten an die passenden Abteilung zu senden - Ein Support Fall geht direkt zum Support - Eine Bewerbung geht zur HR Abteilung!</p><p><b>Übrigens:</b> Wird das Formular nicht richtig dargestellt? Dann gehe in die Plugin Einstellungen von moori Foundation und aktiviere FontAwesome 5 und Animate.css!<p><a class=\"btn btn-primary\" target=\"blank\" href=\"https://docs.moori.net/MoorlFormBuilder/user/\">Zur Dokumentation</a>",
+                    "source": "static"
+                  },
+                  "verticalAlign": {
+                    "value": "center",
+                    "source": "static"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "id": "{DEMO_CMS_BLOCK_3}",
+            "position": 2,
+            "type": "text",
+            "marginTop": "40px",
+            "marginBottom": "40px",
+            "slots": [
+              {
+                "id": "{DEMO_CMS_SLOT_5}",
+                "type": "moorl-form-builder",
+                "slot": "content",
+                "config": {
+                  "form": {
+                    "source": "static",
+                    "value": "{ID:FORM_3}"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "{DEMO_CMS_SECTION_3}",
+        "position": 3,
+        "type": "default",
+        "sizingMode": "boxed",
+        "blocks": [
+          {
+            "id": "{DEMO_CMS_BLOCK_4}",
+            "position": 1,
+            "type": "image-text",
+            "marginBottom": "40px",
+            "marginTop": "40px",
+            "slots": [
+              {
+                "id": "{DEMO_CMS_SLOT_6}",
+                "type": "text",
+                "slot": "right",
+                "config": {
+                  "content": {
+                    "value": "<h2>Repeater Formular</h2><p>Mit dem Repeater Formular ist es nun möglich wiederholende Eingaben zu vereinfachen.</p>",
+                    "source": "static"
+                  },
+                  "verticalAlign": {
+                    "value": "center",
+                    "source": "static"
+                  }
+                }
+              },
+              {
+                "id": "{DEMO_CMS_SLOT_7}",
+                "type": "moorl-form-builder",
+                "slot": "left",
+                "config": {
+                  "form": {
+                    "source": "static",
+                    "value": "{ID:FORM_4}"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

@@ -1,0 +1,53 @@
+{% block sw_cms_element_acris_product_downloads %}
+    <div class="sw-cms-el-acris-product-downloads">
+        <div v-if="isProductPage">
+            {% block sw_cms_element_acris_product_downloads_product_page %}
+                <h4 v-if="element.config.showHeadline.value" class="acris-product-downloads-headline">
+                    {{ $tc('acris-product-downloads.elements.productDownloads.placeholder.title') }}
+                </h4>
+                <div class="acris-product-downloads-list">
+                    <ul>
+                        <li><span class="acris-product-downloads-list-item-name">Dolor sit amet</span></li>
+                        <li><span class="acris-product-downloads-list-item-name">Consetetur sadipscing elitr</span></li>
+                        <li><span class="acris-product-downloads-list-item-name">Sed diam nonumy</span></li>
+                    </ul>
+                </div>
+            {% endblock %}
+        </div>
+        <div v-else-if="product && product.extensions && product.extensions.acrisDownloads && product.extensions.acrisDownloads.length">
+            {% block sw_cms_element_acris_product_downloads_headline %}
+                <h4 v-if="element.config.showHeadline.value" class="acris-product-downloads-headline">
+                    {{ $tc('acris-product-downloads.elements.productDownloads.placeholder.title') }}
+                </h4>
+            {% endblock %}
+            {% block sw_cms_element_acris_product_downloads_list %}
+                <div class="acris-product-downloads-list">
+                    <ul>
+                        {% block sw_cms_element_acris_product_downloads_list_item %}
+                            <li v-for="item in product.extensions.acrisDownloads" :key="item.message">
+                                <span class="acris-product-downloads-list-item-name" v-if="item.translated.title !== null">
+                                    {{ item.translated.title }}
+                                </span>
+                                <span class="acris-product-downloads-list-item-name" v-else>
+                                    {{ item.media.fileName }}
+                                </span>
+                                <span class="acris-product-downloads-list-item-desc" v-if="item.translated.description">
+                                    - {{ item.translated.description }}
+                                </span>
+                            </li>
+                        {% endblock %}
+                    </ul>
+                </div>
+            {% endblock %}
+        </div>
+        <div v-else>
+            {% block sw_cms_element_acris_product_downloads_empty %}
+                <sw-alert
+                        class="acris-product-downloads-list-empty-info"
+                        variant="info">
+                    {{ $tc('acris-product-downloads.elements.productDownloads.info.empty') }}
+                </sw-alert>
+            {% endblock %}
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,1486 @@
+<?php declare(strict_types=1);
+
+namespace CategoryCron\Service\ScheduledTask;
+
+use Exception;
+use Shopware\Core\Content\Media\Exception\DuplicatedMediaFileNameException;
+use Shopware\Core\Content\Media\File\FileSaver;
+use Shopware\Core\Content\Media\File\MediaFile;
+use Shopware\Core\Content\Media\MediaService;
+use Shopware\Core\Framework\Context;
+use Shopware\Core\Framework\DataAbstractionLayer\EntityRepositoryInterface;
+use Shopware\Core\Framework\DataAbstractionLayer\Search\Criteria;
+use Shopware\Core\Framework\DataAbstractionLayer\Search\Filter\EqualsFilter;
+use Shopware\Core\Framework\MessageQueue\ScheduledTask\ScheduledTaskHandler;
+use Shopware\Core\Framework\Uuid\Uuid;
+use Shopware\Core\System\SystemConfig\SystemConfigService;
+
+class CategoryCronTaskHandler extends ScheduledTaskHandler
+{
+    const DOMAIN = "https://fluidmaster.compano.com";
+
+    protected $scheduledTaskRepository;
+    private $systemConfigService;
+    private $categoryRepository;
+    private $languageRepository;
+    private $mediaRepository;
+    private $mediaService;
+    private $fileSaver;
+    private $cmsPageRepository;
+    private $productRepository;
+    private $productCategoryRepository;
+    private $salesChannelRepository;
+    private $pimCategoryRepository;
+    private $productCategoryPositionRepository;
+    private $kplngi_orderactive;
+    private $categoryCronSalesChannel;
+
+    public function __construct(
+        EntityRepositoryInterface $scheduledTaskRepository,
+        SystemConfigService       $systemConfigService,
+        EntityRepositoryInterface $categoryRepository,
+        EntityRepositoryInterface $languageRepository,
+        EntityRepositoryInterface $mediaRepository,
+        MediaService              $mediaService,
+        FileSaver                 $fileSaver,
+        EntityRepositoryInterface $cmsPageRepository,
+        EntityRepositoryInterface $productRepository,
+        EntityRepositoryInterface $productCategoryRepository,
+        EntityRepositoryInterface $salesChannelRepository,
+        EntityRepositoryInterface $pimCategoryRepository,
+        EntityRepositoryInterface $productCategoryPositionRepository,
+        EntityRepositoryInterface $kplngi_orderactive,
+        EntityRepositoryInterface $categoryCronSalesChannel
+    ) {
+        $this->scheduledTaskRepository = $scheduledTaskRepository;
+        $this->systemConfigService = $systemConfigService;
+        $this->categoryRepository = $categoryRepository;
+        $this->languageRepository = $languageRepository;
+        $this->mediaRepository = $mediaRepository;
+        $this->mediaService = $mediaService;
+        $this->fileSaver = $fileSaver;
+        $this->cmsPageRepository = $cmsPageRepository;
+        $this->productRepository = $productRepository;
+        $this->productCategoryRepository = $productCategoryRepository;
+        $this->salesChannelRepository = $salesChannelRepository;
+        $this->pimCategoryRepository = $pimCategoryRepository;
+        $this->productCategoryPositionRepository = $productCategoryPositionRepository;
+        $this->kplngi_orderactive = $kplngi_orderactive;
+        $this->categoryCronSalesChannel = $categoryCronSalesChannel;
+    }
+
+    public static function getHandledMessages(): iterable
+    {
+        return [ CategoryCronTask::class ];
+    }
+
+    public function run(): void
+    {
+        file_put_contents("CategoryImportLog.txt", date("l jS \of F Y h:i:s A")."> Intialize Import Category\n", FILE_APPEND);
+
+        $context = Context::createDefaultContext();
+        $categoryURL = $this->systemConfigService->get('PimImport.config.pimCategoryUrl');
+        $apiKey = $this->systemConfigService->get('PimImport.config.pimApiKey');
+        $cat_Array = $this->systemConfigService->get('PimImport.config.SequenceManage');
+        $selectedSalesChannel = $this->systemConfigService->get('PimImport.config.ManageManualCronSalesChannel');
+        if (!$cat_Array) {
+            $cat_Array = [];
+        }
+
+        //initialize variable
+        $counter = $last_counter = $count99 = 1;
+        $apiParameters = '?';
+        $allCategoryData = [];
+        $date = date('Y-m-d');
+        $getAllSalesChannels = $this->getSalesChannelUsingId($context, $selectedSalesChannel);
+        foreach ($getAllSalesChannels as $getAllSalesChannel) {
+            $salesChannelId = $getAllSalesChannel->getId();
+            $customFields = $getAllSalesChannel->getcustomFields();
+            if (isset($customFields['custom_pim_sales_channel_publication_code'])) {
+                $PublicationCode = $customFields['custom_pim_sales_channel_publication_code'];
+                $this->systemConfigService->set('PimImport.config.CategoryPublicationCode', $PublicationCode);
+
+                //get two main hierarchy
+                $mainCategoryID = $getAllSalesChannel->getnavigationCategoryId();
+                $subCategories = $this->getChildren($mainCategoryID, $context);
+                //Import Category
+                file_put_contents(
+                    "CategoryImportLog.txt",
+                    date("l jS \of F Y h:i:s A") . "> " . $PublicationCode . " Start Import Category\n",
+                    FILE_APPEND
+                );
+
+                if ($subCategories && $this->checkExistSalesChannelOneDay($salesChannelId, $context) == 0) {
+                    foreach ($subCategories as $subCategoryID => $subCategory) {
+                        if (trim($subCategory->getName()) == 'Product' || trim($subCategory->getName()) == 'Products' || trim($subCategory->getName()) == 'Producten' || trim($subCategory->getName()) == 'Izdelki' || trim($subCategory->getName()) == 'Termékek' || trim($subCategory->getName()) == 'Produkte' || trim($subCategory->getName()) == 'Productos' || trim($subCategory->getName()) == 'Proizvodi' || trim($subCategory->getName()) == 'Produse' || trim($subCategory->getName()) == 'Produkty' || trim($subCategory->getName()) == 'Prodotti') {
+                            $getTotalCategory = $this->getpimAPIdata($categoryURL . $apiParameters . $apiKey . '&filter=PublicationCode=' . $PublicationCode);
+                            if (isset($getTotalCategory->Count)) {
+                                $perPage = $getTotalCategory->Count;
+                                $counter = 1;
+                                $apiUrl = $categoryURL . '/' . $counter . '/' . $perPage . $apiParameters . $apiKey . '&filter=PublicationCode=' . $PublicationCode;
+                                $categoryAPIData = $this->getpimAPIdata($apiUrl);
+                                if ($categoryAPIData->PublicationNodes) {
+                                    foreach ($categoryAPIData->PublicationNodes as $res) {
+                                        $Origin = $res->Origin->Value;
+                                        $Node = $res->Code->Value;
+                                        $SequenceNo = $res->ProductGroupDetails->Level->Value ?? '0';
+                                        if ($Origin == 'Generated' && $res->ProductGroupDetails) {
+                                            if ($Node == 99) {
+                                                $subCategoryID = $mainCategoryID;
+                                            }
+                                            $categoryCode = $res->Code->Value;
+                                            $categoryName = $res->ProductGroupDetails->Description->Value;
+                                            $checkCategoryExist = $this->checkCategoryExist($categoryName, $subCategoryID, $categoryCode, $context);
+                                            $categoryData = [];
+                                            if (isset($checkCategoryExist)) {
+                                                $categoryData['id'] = $checkCategoryExist;
+                                            } else {
+                                                $categoryData['id'] = Uuid::randomHex();
+                                            }
+                                            $categoryData['code'] = $res->Code->Value;
+                                            $categoryData['parentId'] = $subCategoryID;
+                                            if($res->ProductGroupDetails->CompositeLastModificationDateTime){
+                                                $categoryData['CompositeLastModificationDateTime'] = $res->ProductGroupDetails->CompositeLastModificationDateTime->Value;
+                                            }
+                                            else{
+                                                $categoryData['CompositeLastModificationDateTime'] = null;
+                                            }
+                                            $CommercialDescription = $res->ProductGroupDetails->CommercialDescription->Value;
+                                            $categoryData['translations'] = $this->setCategoryTranslation($categoryName, $CommercialDescription, $context);
+                                            //check image exist or not in shopware if not exist so add
+                                            if ($res->ProductGroupDetails->Image) {
+                                                $catImgUrl = self::DOMAIN . $res->ProductGroupDetails->Image->Value;
+                                                if ($catImgUrl) {
+                                                    $mediaId = $this->addImageToMediaFromURL($catImgUrl, $context);
+                                                } else {
+                                                    $mediaId = '';
+                                                }
+                                                $categoryData['mediaId'] = $mediaId;
+                                            } else {
+                                                $categoryData['mediaId'] = '';
+                                            }
+                                            //find cms id based on default english language
+                                            if (isset($res->ProductGroupDetails->UDF_PG_ProductGroupLayout->ValueDescription)) {
+                                                $languageKey = $this->getDefaultLanguageKey($context);
+                                                $cmsPageId = $this->findCMSName($res->ProductGroupDetails->UDF_PG_ProductGroupLayout->ValueDescription->$languageKey, $context);
+                                                if ($cmsPageId) {
+                                                    $categoryData['cmsPageId'] = $cmsPageId;
+                                                }
+                                            } else {
+                                                $categoryData['cmsPageId'] = null;
+                                            }
+                                            $categoryData['visible'] = $res->ProductGroupDetails->UDF_PG_ShowInNav->Value;
+                                            $productDatas = $res->PublicationNodeRecordLinks;
+                                            if ($productDatas) {
+                                                $productCodes = array();
+                                                $KProductCodes = array();
+                                                foreach ($productDatas as $productData) {
+                                                    $productId = $this->getProductID($productData->ProductCode->Value);
+                                                    $SequenceNoP = $productData->SequenceNo->Value;
+                                                    if ($productId) {
+                                                        $productCodes[] = $productId;
+                                                        $KProductCodes[] = array(
+                                                            'productId' => $productId,
+                                                            'position' => $SequenceNoP
+                                                        );
+                                                    }
+                                                }
+                                                $categoryData['products'] = $productCodes;
+                                                $categoryData['kplngiPositions'] = $KProductCodes;
+                                            }
+
+                                            $checkUpdatedProduct = $this->checkPimCategory($categoryData, $salesChannelId);
+                                            if (empty($checkUpdatedProduct) || $checkUpdatedProduct == null) {
+                                                $this->removeProductFromCategory($categoryData, $context);
+                                                $categoryID = $this->categoryInsert($SequenceNo, $cat_Array, $categoryData, $salesChannelId, $context);
+                                            } else {
+                                                $categoryID = $checkUpdatedProduct->getcategoryId();
+                                            }
+
+                                            file_put_contents(
+                                                "CategoryImportLog.txt",
+                                                date("l jS \of F Y h:i:s A") . "> " . $categoryID . " generated category is import\n",
+                                                FILE_APPEND
+                                            );
+                                            $cat_Array[$SequenceNo][] = $categoryID;
+                                            $ChildNodes = $res->ChildNodes;
+                                            if ($ChildNodes) {
+                                                $this->insertProductGroupRecursive($cat_Array, $categoryID, $ChildNodes, $salesChannelId, $context);
+                                            }
+                                        }
+                                        if ($Origin == 'Manual' && $res->Description) {
+                                            if ($Node == 99) {
+                                                $subCategoryID = $mainCategoryID;
+                                            }
+                                            $MCategoryCode = $res->Code->Value;
+                                            $MCategoryName = $res->Description->Value;
+                                            $MCheckCategoryExist = $this->checkCategoryExist($MCategoryName, $subCategoryID, $MCategoryCode, $context);
+
+                                            $MCategoryData = array();
+
+                                            if ($MCheckCategoryExist) {
+                                                $MCategoryData['id'] = $MCheckCategoryExist;
+                                            } else {
+                                                $MCategoryData['id'] = Uuid::randomHex();
+                                            }
+                                            $MCategoryData['code'] = $res->Code->Value;
+                                            $MCategoryData['parentId'] = $subCategoryID;
+                                            if($res->CompositeLastModificationDateTime){
+                                                $MCategoryData['CompositeLastModificationDateTime'] = $res->CompositeLastModificationDateTime->Value;
+                                            }
+                                            else{
+                                                $MCategoryData['CompositeLastModificationDateTime'] = null;
+                                            }
+                                            $MCommercialDescription = $res->FullDescription->Value;
+
+
+                                            $MCategoryData['translations'] = $this->setCategoryTranslation($MCategoryName, $MCommercialDescription, $context);
+                                            //check image exist or not in shopware if not exist so add
+                                            if ($res->Image) {
+                                                $MCatImgUrl = self::DOMAIN . $res->Image->Value;
+                                                if ($MCatImgUrl) {
+                                                    $MMediaId = $this->addImageToMediaFromURL($MCatImgUrl, $context);
+                                                } else {
+                                                    $MMediaId = '';
+                                                }
+                                                $MCategoryData['mediaId'] = $MMediaId;
+                                            }
+
+                                            //find cms id based on default english language
+                                            if (isset($res->UDF_PubNode_Layout->ValueDescription)) {
+                                                $languageKey = $this->getDefaultLanguageKey($context);
+                                                $MCmsPageId = $this->findCMSName($res->UDF_PubNode_Layout->ValueDescription->$languageKey, $context);
+                                                if ($MCmsPageId) {
+                                                    $MCategoryData['cmsPageId'] = $MCmsPageId;
+                                                }
+                                            } else {
+                                                $MCategoryData['cmsPageId'] = null;
+                                            }
+
+                                            $MCategoryData['visible'] = $res->UDF_PubNode_ShowInNav->Value;
+
+                                            $MProductDatas = $res->PublicationNodeRecordLinks;
+                                            if ($MProductDatas) {
+                                                $MProductCodes = array();
+                                                $MKProductCodes = array();
+                                                foreach ($MProductDatas as $MProductData) {
+                                                    $MProductId = $this->getProductID($MProductData->ProductCode->Value);
+                                                    $MSequenceNo = $MProductData->SequenceNo->Value;
+                                                    if ($MProductId) {
+                                                        $MProductCodes[] = $MProductId;
+                                                        $MKProductCodes[] = array(
+                                                            'productId' => $MProductId,
+                                                            'position' => $MSequenceNo
+                                                        );
+                                                    }
+                                                }
+                                                $MCategoryData['products'] = $MProductCodes;
+                                                $MCategoryData['kplngiPositions'] = $MKProductCodes;
+                                            }
+
+                                            $checkUpdatedProduct = $this->checkPimCategory($MCategoryData, $salesChannelId);
+                                            if (empty($checkUpdatedProduct) || $checkUpdatedProduct == null) {
+                                                $this->removeProductFromCategory($MCategoryData, $context);
+                                                $MCategoryID = $this->categoryInsert($SequenceNo, $cat_Array, $MCategoryData, $salesChannelId, $context);
+                                            } else {
+                                                $MCategoryID = $checkUpdatedProduct->getcategoryId();
+                                            }
+                                            file_put_contents(
+                                                "CategoryImportLog.txt",
+                                                date("l jS \of F Y h:i:s A") . "> " . $MCategoryID . " generated category is import\n",
+                                                FILE_APPEND
+                                            );
+                                            $cat_Array[$SequenceNo][] = $MCategoryID;
+
+                                            $MChildNodes = $res->ChildNodes;
+                                            if ($MChildNodes) {
+                                                $this->insertProductGroupRecursive($cat_Array, $MCategoryID, $MChildNodes, $salesChannelId, $context);
+                                            }
+                                        }
+                                        $counter++;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    file_put_contents(
+                        "CategoryImportLog.txt",
+                        date("l jS \of F Y h:i:s A") . "> " . $PublicationCode . " End Import Category\n",
+                        FILE_APPEND
+                    );
+
+                    //reset counter for sequence
+                    $counter = $last_counter = $count99 = 1;
+
+                    //Manage Sequence Concept
+                    file_put_contents(
+                        "CategoryImportLog.txt",
+                        date("l jS \of F Y h:i:s A") . "> " . $PublicationCode . " Start Manage Sequence\n",
+                        FILE_APPEND
+                    );
+                    foreach ($subCategories as $subCategoryID => $subCategory) {
+                        if (trim($subCategory->getName()) == 'Product' ||
+                            trim($subCategory->getName()) == 'Products' ||
+                            trim($subCategory->getName()) == 'Producten' ||
+                            trim($subCategory->getName()) == 'Izdelki' ||
+                            trim($subCategory->getName()) == 'Termékek' ||
+                            trim($subCategory->getName()) == 'Produkte' ||
+                            trim($subCategory->getName()) == 'Productos' ||
+                            trim($subCategory->getName()) == 'Proizvodi' ||
+                            trim($subCategory->getName()) == 'Produse' ||
+                            trim($subCategory->getName()) == 'Produkty' ||
+                            trim($subCategory->getName()) == 'Prodotti') {
+                            if ($subCategory->getafterCategoryId() != null) {
+                                $mainData = [
+                                    'id' => $subCategory->getId(),
+                                    'afterCategoryId' => null
+                                ];
+                                $this->categoryRepository->upsert([$mainData], $context);
+                            }
+                            $getTotalCategory = $this->getpimAPIdata(
+                                $categoryURL . $apiParameters . $apiKey . '&filter=PublicationCode=' . $PublicationCode
+                            );
+                            if (isset($getTotalCategory->Count)) {
+                                $totalPageCount = $getTotalCategory->Count;
+                                $perPage = 1;
+                                for ($counter=1; $counter<=$totalPageCount; $counter++) {
+                                    $count99 = 1;
+                                    $cat_Array = $this->systemConfigService->get('PimImport.config.SequenceManage');
+                                    if (!$cat_Array) {
+                                        $cat_Array = array();
+                                    }
+                                    $apiUrl = $categoryURL.'/'.$counter.'/'.$perPage.$apiParameters.$apiKey.'&filter=PublicationCode='.$PublicationCode;
+                                    dump($apiUrl, $cat_Array);
+                                    $categoryAPIData = $this->getpimAPIdata($apiUrl);
+                                    if ($categoryAPIData->PublicationNodes) {
+                                        foreach ($categoryAPIData->PublicationNodes as $res) {
+                                            $Origin = $res->Origin->Value;
+                                            $Node = $res->Code->Value;
+                                            if ($Node == 99) {
+                                                $cat_Array = array();
+                                            }
+                                            if (isset($res->ProductGroupDetails->Level->Value)) {
+                                                $SequenceNo = $res->ProductGroupDetails->Level->Value;
+                                            } else {
+                                                $SequenceNo = $count99;
+                                            }
+
+                                            if ($Origin == 'Generated' && $res->ProductGroupDetails) {
+                                                if ($Node == 99) {
+                                                    $subCategoryID = $mainCategoryID;
+                                                }
+                                                $categoryCode = $res->Code->Value;
+                                                $categoryName = $res->ProductGroupDetails->Description->Value;
+                                                $checkCategoryExist = $this->checkCategoryExist(
+                                                    $categoryName,
+                                                    $subCategoryID,
+                                                    $categoryCode,
+                                                    $context
+                                                );
+
+                                                if ($checkCategoryExist) {
+                                                    $categoryData = array();
+                                                    $categoryData['id'] = $checkCategoryExist;
+                                                    $categoryData['parentId'] = $subCategoryID;
+                                                    $categoryID = $this->categoryInsertSeq(
+                                                        $SequenceNo,
+                                                        $cat_Array,
+                                                        $categoryData,
+                                                        $context
+                                                    );
+                                                    $cat_Array[$SequenceNo][] = $categoryID;
+                                                    $ChildNodes = $res->ChildNodes;
+                                                    if ($ChildNodes) {
+                                                        $count99++;
+                                                        $ChildNodes = $this->arrayCustomMultiSort($ChildNodes);
+                                                        $this->insertProductGroupRecursiveSeq(
+                                                            $count99,
+                                                            $cat_Array,
+                                                            $categoryID,
+                                                            $ChildNodes,
+                                                            $context
+                                                        );
+                                                    }
+                                                }
+                                                $checkUpdatedProduct = $this->checkPimCategorySeq(
+                                                    $checkCategoryExist,
+                                                    $salesChannelId
+                                                );
+                                                if (!empty($checkUpdatedProduct) || $checkUpdatedProduct != null) {
+                                                    $submainData = [
+                                                        'id' => $checkUpdatedProduct->getcategoryId(),
+                                                        'afterCategoryId' => $subCategory->getId()
+                                                    ];
+                                                    $this->categoryRepository->upsert([$submainData], $context);
+                                                }
+                                            }
+                                            if ($Origin == 'Manual' && $res->Description) {
+                                                if ($Node == 99) {
+                                                    $subCategoryID = $mainCategoryID;
+                                                }
+                                                $MCategoryName = $res->Description->Value;
+                                                $categoryCode = $res->Code->Value;
+                                                $MCheckCategoryExist = $this->checkCategoryExist(
+                                                    $MCategoryName,
+                                                    $subCategoryID,
+                                                    $categoryCode,
+                                                    $context
+                                                );
+                                                if ($MCheckCategoryExist) {
+                                                    $MCategoryData = array();
+                                                    $MCategoryData['id'] = $MCheckCategoryExist;
+                                                    $MCategoryData['parentId'] = $subCategoryID;
+                                                    $MCategoryID = $this->categoryInsertSeq(
+                                                        $SequenceNo,
+                                                        $cat_Array,
+                                                        $MCategoryData,
+                                                        $context
+                                                    );
+                                                    $cat_Array[$SequenceNo][] = $MCategoryID;
+                                                    $MChildNodes = $res->ChildNodes;
+                                                    if ($MChildNodes) {
+                                                        $count99++;
+                                                        $MChildNodes = $this->arrayCustomMultiSort($MChildNodes);
+                                                        $this->insertProductGroupRecursiveSeq(
+                                                            $count99,
+                                                            $cat_Array,
+                                                            $MCategoryID,
+                                                            $MChildNodes,
+                                                            $context
+                                                        );
+                                                    }
+                                                }
+                                                $checkUpdatedProduct = $this->checkPimCategorySeq(
+                                                    $MCheckCategoryExist,
+                                                    $salesChannelId
+                                                );
+                                                if (!empty($checkUpdatedProduct) || $checkUpdatedProduct != null) {
+                                                    $submainData = [
+                                                        'id' => $checkUpdatedProduct->getcategoryId(),
+                                                        'afterCategoryId' => $subCategory->getId()
+                                                    ];
+                                                    $this->categoryRepository->upsert([$submainData], $context);
+                                                }
+                                            }
+                                            dump($cat_Array);
+                                            $this->systemConfigService->set('PimImport.config.SequenceManage', $cat_Array);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        $this->systemConfigService->set('PimImport.config.SequenceManage', '');
+                    }
+                    file_put_contents(
+                        "CategoryImportLog.txt",
+                        date("l jS \of F Y h:i:s A") . "> " . $PublicationCode . " End Manage Sequence\n",
+                        FILE_APPEND
+                    );
+                    //reset counter for delete
+                    $allCategoryData = $cat_Array = $generatedCategoryData = $manualCategoryData = [];
+                    $counter = $last_counter = $count99 = 1;
+
+                    //Manage Delete Concept
+                    file_put_contents(
+                        "CategoryImportLog.txt",
+                        date("l jS \of F Y h:i:s A") . "> " . $PublicationCode . " Start Delete\n",
+                        FILE_APPEND
+                    );
+
+                    foreach ($subCategories as $subCategoryID => $subCategory) {
+                        if (trim($subCategory->getName()) === 'Product' ||
+                            trim($subCategory->getName()) === 'Products' ||
+                            trim($subCategory->getName()) === 'Producten' ||
+                            trim($subCategory->getName()) === 'Izdelki' ||
+                            trim($subCategory->getName()) === 'Termékek' ||
+                            trim($subCategory->getName()) === 'Produkte' ||
+                            trim($subCategory->getName()) === 'Productos' ||
+                            trim($subCategory->getName()) === 'Proizvodi' ||
+                            trim($subCategory->getName()) === 'Produse' ||
+                            trim($subCategory->getName()) === 'Produkty' ||
+                            trim($subCategory->getName()) === 'Prodotti') {
+                            $getTotalCategory = $this->getPIMapiData($categoryURL . '?' .
+                                $apiKey . '&filter=PublicationCode=' . $PublicationCode);
+                            if (isset($getTotalCategory->Count)) {
+                                $apiUrl = $categoryURL . '/' . 1 . '/' . $getTotalCategory->Count . '?' .
+                                    $apiKey . '&filter=PublicationCode=' . $PublicationCode;
+                                $categoryAPIData = $this->getPIMapiData($apiUrl);
+                                if (isset($categoryAPIData->PublicationNodes)) {
+                                    $jumboGeneratedArray = $jumboManualArray = [];
+                                    foreach ($categoryAPIData->PublicationNodes as $res) {
+                                        $Origin = $res->Origin->Value;
+                                        $Node = $res->Code->Value;
+                                        if ($Origin === 'Generated' && $res->ProductGroupDetails) {
+                                            if ($Node === "99") {
+                                                $subCategoryID = $mainCategoryID;
+                                            }
+                                            $categoryCode = $res->Code->Value;
+                                            $categoryName = $res->ProductGroupDetails->Description->Value;
+                                            $categoryId = $this->checkCategoryExist(
+                                                $categoryName,
+                                                $subCategoryID,
+                                                $categoryCode,
+                                                $context
+                                            );
+                                            if ($categoryId) {
+                                                $ChildNodes = $res->ChildNodes;
+                                                if ($ChildNodes) {
+                                                    $generatedCategoryData = $this->checkCategoryChildId(
+                                                        $ChildNodes,
+                                                        $categoryId,
+                                                        $context,
+                                                        $generatedCategoryData
+                                                    );
+                                                } else {
+                                                    file_put_contents(
+                                                        "CategoryImportLog.txt",
+                                                        date("l jS \of F Y h:i:s A") .
+                                                        "> Child Node Empty\n",
+                                                        FILE_APPEND
+                                                    );
+                                                }
+                                                (array)array_push(
+                                                    $generatedCategoryData,
+                                                    $categoryId
+                                                );
+                                                $generatedCategoryData = array_unique($generatedCategoryData);
+                                            } else {
+                                                file_put_contents(
+                                                    "CategoryImportLog.txt",
+                                                    date("l jS \of F Y h:i:s A") .
+                                                    "> New generated category come\n",
+                                                    FILE_APPEND
+                                                );
+                                            }
+                                            $jumboGeneratedArray = (array)array_merge(
+                                                $jumboGeneratedArray,
+                                                $generatedCategoryData
+                                            );
+                                        }
+                                        if ($Origin === 'Manual' && $res->Description) {
+                                            if ($Node === "99") {
+                                                $subCategoryID = $mainCategoryID;
+                                            }
+                                            $MCategoryCode = $res->Code->Value;
+                                            $MCategoryName = $res->Description->Value;
+                                            $MCategoryId = $this->checkCategoryExist(
+                                                $MCategoryName,
+                                                $subCategoryID,
+                                                $MCategoryCode,
+                                                $context
+                                            );
+                                            if ($MCategoryId) {
+                                                $MChildNodes = $res->ChildNodes;
+                                                if ($MChildNodes) {
+                                                    $manualCategoryData = $this->checkCategoryChildId(
+                                                        $MChildNodes,
+                                                        $MCategoryId,
+                                                        $context,
+                                                        $manualCategoryData
+                                                    );
+                                                } else {
+                                                    file_put_contents(
+                                                        "CategoryImportLog.txt",
+                                                        date("l jS \of F Y h:i:s A") . "> Child Node Empty\n",
+                                                        FILE_APPEND
+                                                    );
+                                                }
+                                                (array)array_push(
+                                                    $manualCategoryData,
+                                                    $MCategoryId
+                                                );
+                                                $manualCategoryData = array_unique($manualCategoryData);
+                                            } else {
+                                                file_put_contents(
+                                                    "CategoryImportLog.txt",
+                                                    date("l jS \of F Y h:i:s A") . "> New manual category come\n",
+                                                    FILE_APPEND
+                                                );
+                                            }
+                                            $jumboManualArray = (array)array_merge(
+                                                $jumboManualArray,
+                                                $manualCategoryData
+                                            );
+                                        }
+                                    }
+                                } else {
+                                    file_put_contents(
+                                        "CategoryImportLog.txt",
+                                        date("l jS \of F Y h:i:s A") . "> " . "APi Error1" . " End Delete\n",
+                                        FILE_APPEND
+                                    );
+                                }
+                            } else {
+                                file_put_contents(
+                                    "CategoryImportLog.txt",
+                                    date("l jS \of F Y h:i:s A") . "> API Count Error\n",
+                                    FILE_APPEND
+                                );
+                            }
+                        }
+                    }
+                    if (!empty($jumboGeneratedArray) && !empty($jumboManualArray)) {
+                        $allCategoryData = array_merge($jumboGeneratedArray, $jumboManualArray);
+                        $allCategoryData = array_unique($allCategoryData);
+
+                        $pimData = $this->checkPimCategoryData($salesChannelId, $context);
+
+                        $finalDiff = array_diff($pimData, $allCategoryData);
+
+                        if (!empty($finalDiff)) {
+                            if ($this->checkAPIstatusCode($apiUrl) == 200) {
+                                $this->removeCategoryIds($finalDiff, $context);
+                                file_put_contents(
+                                    "CategoryImportLog.txt",
+                                    date("l jS \of F Y h:i:s A") . "> ".$salesChannelId." Diff Category Delete\n",
+                                    FILE_APPEND
+                                );
+                            }
+                        }
+                    }
+
+                    //double entry check code line number 109
+                    $categoryCronSalesChannelData = [
+                        'id' => Uuid::randomHex(),
+                        'salesChannelId' => $salesChannelId,
+                        'lastUsageAt' => date("Y-m-d"),
+                    ];
+                    $this->categoryCronSalesChannel->upsert([$categoryCronSalesChannelData], $context);
+                    //5th point
+                    $this->systemConfigService->set('PimImport.config.ManageManualCronSalesChannel', '');
+
+                    file_put_contents(
+                        "CategoryImportLog.txt",
+                        date("l jS \of F Y h:i:s A") . "> All SalesChannel Success Nothing to Delete\n",
+                        FILE_APPEND
+                    );
+                }
+                file_put_contents(
+                    "CategoryImportLog.txt",
+                    date("l jS \of F Y h:i:s A") . "> " . $PublicationCode . " Sales Channel\n",
+                    FILE_APPEND
+                );
+            } else {
+                //skip sales channel
+                file_put_contents(
+                    "CategoryImportLog.txt",
+                    date("l jS \of F Y h:i:s A") . "> " . $PublicationCode . " Skip Sales Channel\n",
+                    FILE_APPEND
+                );
+            }
+        }
+    }
+
+    //get sales channel using id
+    public function getSalesChannelUsingId($context, $selectedSalesChannel): array
+    {
+        $criteria = new Criteria();
+        $criteria->addFilter(new EqualsFilter('active', true));
+        if ($selectedSalesChannel) {
+            $criteria->addFilter(new EqualsFilter('id', $selectedSalesChannel));
+        }
+        return $this->salesChannelRepository->search($criteria, $context)->getEntities()->getElements();
+    }
+
+
+    //get all child
+    public function getChildren(string $parentId, Context $context): array
+    {
+        //set up the criteria for the search
+        $criteria = new Criteria();
+        $criteria->addFilter(new EqualsFilter('parentId', $parentId));
+        return $this->categoryRepository->search($criteria, $context)->getEntities()->getElements();
+    }
+    //get api data
+    public function getpimAPIdata($api_url)
+    {
+        $curl = curl_init();
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => $api_url,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 30,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "GET",
+            CURLOPT_HTTPHEADER => array(
+                "cache-control: no-cache",
+            ),
+        ));
+
+        $response = curl_exec($curl);
+        $err = curl_error($curl);
+        curl_close($curl);
+
+        if ($err) {
+            return "cURL Error #:" . $err;
+        } else {
+            return json_decode($response);
+        }
+    }
+
+    //get api data
+    public function checkAPIstatusCode($api_url)
+    {
+        $curl = curl_init();
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => $api_url,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 30,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "GET",
+            CURLOPT_HTTPHEADER => array(
+                "cache-control: no-cache",
+            ),
+        ));
+
+        $response = curl_exec($curl);
+        $httpcode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+        $err = curl_error($curl);
+        curl_close($curl);
+
+        return $httpcode;
+    }
+
+    //check category
+    public function checkCategoryExist(Object $categoryName, string $parentId, $categoryCode, Context $context): ?string
+    {
+        //set up the criteria for the search
+        $languageKey = $this->getDefaultLanguageKey($context);
+        $criteria = new Criteria();
+        $criteria->addFilter(new EqualsFilter('parentId', $parentId));
+        $criteria->addFilter(new EqualsFilter('customFields.custom_pim_category_code', $categoryCode));
+        $id = $this->categoryRepository->searchIds($criteria, $context)->firstId();
+        if ($id != null) {
+            return $id;
+        }
+        $criteria = new Criteria();
+        $criteria->addFilter(new EqualsFilter('name', $categoryName->$languageKey));
+        $criteria->addFilter(new EqualsFilter('parentId', $parentId));
+        return $this->categoryRepository->searchIds($criteria, $context)->firstId();
+    }
+
+    public function getDefaultLanguageKey(Context $context): ?string
+    {
+        $criteria = new Criteria();
+        $criteria->addFilter(new EqualsFilter('id', $context->getlanguageIdChain()[0]));
+        $criteria->addAssociation('locale');
+        $data = $this->languageRepository->search($criteria, $context)->first();
+        $languageKey = null;
+        if ($data->getName() == 'English') {
+            $languageKey = 'en';
+        }
+        if ($data->getName() == 'Dutch' || $data->getName() == 'Nederlands') {
+            $languageKey = 'nl';
+        }
+        if ($data->getName() == 'Deutsch') {
+            $languageKey = 'de';
+        }
+        if ($data->getName() == 'Magyar') {
+            $languageKey = 'hu';
+        }
+        if ($data->getName() == 'Italiano') {
+            $languageKey = 'it';
+        }
+        if ($data->getName() == 'Croatian') {
+            $languageKey = 'hr';
+        }
+        if ($data->getName() == 'Polski') {
+            $languageKey = 'pl';
+        }
+        if ($data->getName() == 'Română') {
+            $languageKey = 'ro';
+        }
+        if ($data->getName() == 'Slovenian') {
+            $languageKey = 'sl';
+        }
+        if ($data->getName() == 'Español') {
+            $languageKey = 'es';
+        }
+        if ($data->getName() == 'Čeština') {
+            $languageKey = 'cs';
+        }
+        return $languageKey;
+    }
+
+
+    // Check the Language
+    public function setCategoryTranslation(object $categoryName, object $CommercialDescription, Context $context): array
+    {
+        $languageData = array();
+        $criteria = new Criteria();
+        $datas = $this->languageRepository->search($criteria, $context)->getElements();
+
+        foreach ($datas as $data) {
+            if ($data->getName() == 'English') {
+                $languageKey = 'en';
+                $languageData[$data->getId()]['name'] = $categoryName->$languageKey;
+                $languageData[$data->getId()]['description'] = $CommercialDescription->$languageKey;
+            }
+            if ($data->getName() == 'Dutch' || $data->getName() == 'Nederlands') {
+                $languageKey = 'nl';
+                $languageData[$data->getId()]['name'] = $categoryName->$languageKey;
+                $languageData[$data->getId()]['description'] = $CommercialDescription->$languageKey;
+            }
+            if ($data->getName() == 'Deutsch') {
+                $languageKey = 'de';
+                $languageData[$data->getId()]['name'] = $categoryName->$languageKey;
+                $languageData[$data->getId()]['description'] = $CommercialDescription->$languageKey;
+            }
+            if ($data->getName() == 'Magyar') {
+                $languageKey = 'hu';
+                $languageData[$data->getId()]['name'] = $categoryName->$languageKey;
+                $languageData[$data->getId()]['description'] = $CommercialDescription->$languageKey;
+            }
+            if ($data->getName() == 'Italiano') {
+                $languageKey = 'it';
+                $languageData[$data->getId()]['name'] = $categoryName->$languageKey;
+                $languageData[$data->getId()]['description'] = $CommercialDescription->$languageKey;
+            }
+            if ($data->getName() == 'Croatian') {
+                $languageKey = 'hr';
+                $languageData[$data->getId()]['name'] = $categoryName->$languageKey;
+                $languageData[$data->getId()]['description'] = $CommercialDescription->$languageKey;
+            }
+            if ($data->getName() == 'Polski') {
+                $languageKey = 'pl';
+                $languageData[$data->getId()]['name'] = $categoryName->$languageKey;
+                $languageData[$data->getId()]['description'] = $CommercialDescription->$languageKey;
+            }
+            if ($data->getName() == 'Română') {
+                $languageKey = 'ro';
+                $languageData[$data->getId()]['name'] = $categoryName->$languageKey;
+                $languageData[$data->getId()]['description'] = $CommercialDescription->$languageKey;
+            }
+            if ($data->getName() == 'Slovenian') {
+                $languageKey = 'sl';
+                $languageData[$data->getId()]['name'] = $categoryName->$languageKey;
+                $languageData[$data->getId()]['description'] = $CommercialDescription->$languageKey;
+            }
+            if ($data->getName() == 'Español') {
+                $languageKey = 'es';
+                $languageData[$data->getId()]['name'] = $categoryName->$languageKey;
+                $languageData[$data->getId()]['description'] = $CommercialDescription->$languageKey;
+            }
+            if ($data->getName() == 'Čeština') {
+                $languageKey = 'cs';
+                $languageData[$data->getId()]['name'] = $categoryName->$languageKey;
+                $languageData[$data->getId()]['description'] = $CommercialDescription->$languageKey;
+            }
+        }
+        return $languageData;
+    }
+
+    //add image
+    public function addImageToMediaFromURL(string $imageUrl, Context $context): ?string
+    {
+        $mediaId = null;
+        //parse the URL
+        $filePathParts = explode('/', $imageUrl);
+        $fileNameParts = explode('.', array_pop($filePathParts));
+        //get the file name and extension
+        $fileName = $fileNameParts[0];
+        $fileExtension = $fileNameParts[1];
+
+        if ($fileName && $fileExtension) {
+            //copy the file from the URL to the newly created local temporary file
+            $filePath = tempnam(sys_get_temp_dir(), $fileName);
+            file_put_contents($filePath, @file_get_contents($imageUrl));
+            //create media record from the image
+            $mediaId = $this->createMediaFromFile($filePath, $fileName, $fileExtension, $context);
+        }
+        return $mediaId;
+    }
+
+    //create media
+    private function createMediaFromFile(string $filePath, string $fileName, string $fileExtension, Context $context): ?string
+    {
+        $mediaId = null;
+        //get additional info on the file
+        $fileSize = filesize($filePath);
+        $mimeType = mime_content_type($filePath);
+        //create and save new media file to the Shopware's media library
+        try {
+            $mediaFile = new MediaFile($filePath, $mimeType, $fileExtension, $fileSize);
+            $mediaId = $this->mediaService->createMediaInFolder('Product', $context, false);
+            $this->fileSaver->persistFileToMedia($mediaFile, $fileName, $mediaId, $context);
+        } catch (DuplicatedMediaFileNameException | Exception $e) {
+            $mediaId = $this->mediaCleanup($mediaId, $context);
+        }
+        //find media in shopware media
+        if (empty($mediaId)) {
+            $mediaId = $this->checkImageExist($fileName, $context);
+        }
+        return $mediaId;
+    }
+
+    //delete media
+    private function mediaCleanup(string $mediaId, Context $context)
+    {
+        $this->mediaRepository->delete([['id' => $mediaId]], $context);
+        return null;
+    }
+
+    //check image exist in media
+    private function checkImageExist(string $fileName, Context $context): ?string
+    {
+        $criteria = new Criteria();
+        $criteria->addFilter(new EqualsFilter('fileName', $fileName));
+        $media_object = $this->mediaRepository->searchIds($criteria, $context);
+        return $media_object->firstId();
+    }
+
+    //find Layout assignment name recursive
+    public function findCMSName(string $cmsPageName, Context $context): ?string
+    {
+        //set up the criteria for the search
+        $criteria = new Criteria();
+        $criteria->addFilter(new EqualsFilter('name', $cmsPageName));
+        $cmsPageID = $this->cmsPageRepository->searchIds($criteria, $context)->firstId();
+        if ($cmsPageID) {
+            return $cmsPageID;
+        } else {
+            return $this->findCMSName('Default category layout', $context);
+        }
+    }
+
+    // Check the Product
+    public function getProductID($productNumber = null)
+    {
+        $criteria = new Criteria();
+        $criteria->addFilter(new EqualsFilter('productNumber', $productNumber));
+        $productArray = $this->productRepository->searchIds($criteria, Context::createDefaultContext())->getIds();
+        return $productArray[0] ?? '';
+    }
+
+    public function checkPimCategory(array $categoryData, $salesChannelId)
+    {
+        $criteria = new Criteria();
+        $criteria->addFilter(new EqualsFilter('categoryId', $categoryData['id']));
+        $criteria->addFilter(new EqualsFilter('categoryCode', $categoryData['code']));
+        $criteria->addFilter(new EqualsFilter('salesChannelId', $salesChannelId));
+        $criteria->addFilter(new EqualsFilter('lastUsageAt', $categoryData['CompositeLastModificationDateTime']));
+        return $this->pimCategoryRepository->search($criteria, Context::createDefaultContext())->first();
+    }
+
+    // Insert Category
+    public function categoryInsert($SequenceNo, $cat_Array, array $categoryData, $salesChannelId, Context $context): string
+    {
+        $categoryID = $categoryData['id'];
+
+        $data = [
+            'id'            => $categoryData['id'],
+            'parentId'      => $categoryData['parentId'],
+            'translations'  => $categoryData['translations'],
+            'cmsPageId'     => $categoryData['cmsPageId'],
+            'visible'       => $categoryData['visible'],
+            'customFields' => ['custom_pim_category_code' => $categoryData['code']],
+        ];
+
+        //afterCategoryId
+        if (isset($cat_Array) && isset($cat_Array[$SequenceNo])) {
+            if (end($cat_Array[$SequenceNo])) {
+                $data['afterCategoryId'] = end($cat_Array[$SequenceNo]);
+            }
+        } else {
+            $data['afterCategoryId'] = null;
+        }
+
+        if (isset($categoryData['mediaId']) && $categoryData['mediaId']) {
+            $data['mediaId'] = $categoryData['mediaId'];
+        }
+        file_put_contents(
+            "CategoryImportLog.txt",
+            date("l jS \of F Y h:i:s A")."> ".$categoryID." generated category is import\n",
+            FILE_APPEND
+        );
+
+        $this->categoryRepository->upsert([$data], $context);
+
+        //add product id in category
+        if (isset($categoryData['products']) && $categoryID) {
+            foreach ($categoryData['products'] as $productId) {
+                $this->setCategoryId($productId, $categoryID, $context);
+            }
+        }
+
+        //add position in kpi
+        if (isset($categoryData['kplngiPositions']) && $categoryID) {
+            foreach ($categoryData['kplngiPositions'] as $product) {
+                $this->setkplngiPosition($product['productId'], $categoryID, $product['position'], $context);
+            }
+        }
+
+        $PimCategoryID = $this->checkPimCategoryID($categoryData, $salesChannelId);
+
+        $pimcategoryDatas = [
+            'id' => !empty($PimCategoryID) ? $PimCategoryID->getId() : Uuid::randomHex(),
+            'categoryId' => $categoryData['id'],
+            'categoryCode'=>$categoryData['code'],
+            'salesChannelId' => $salesChannelId,
+            'lastUsageAt' => $categoryData['CompositeLastModificationDateTime'],
+        ];
+        $this->pimCategoryRepository->upsert([$pimcategoryDatas], $context);
+        return $categoryID;
+    }
+
+    //update category id in product
+    public function setCategoryId($productId, $categoryId, $context)
+    {
+        $this->productRepository->update(
+            [
+                [
+                    'id' => $productId,
+                    'categories' => [
+                        [ 'id' => $categoryId ]
+                    ]
+                ]
+            ],
+            $context
+        );
+    }
+
+    //update category id in product
+    public function setkplngiPosition($productId, $categoryId, $position, $context)
+    {
+        $checkKPCategoryExist = $this->checkKPCategoryExist($categoryId, $context);
+        if (!$checkKPCategoryExist) {
+            $this->kplngi_orderactive->upsert(
+                [
+                    [
+                        'id' => Uuid::randomHex(),
+                        'categoryId' => $categoryId,
+                    ]
+                ],
+                $context
+            );
+        }
+
+        $checkProductCategoryPositionExist = $this->checkproductCategoryPositionExist($productId, $categoryId, $context);
+        $this->productCategoryPositionRepository->upsert(
+            [
+                [
+                    'id' => $checkProductCategoryPositionExist?$checkProductCategoryPositionExist:Uuid::randomHex(),
+                    'productId' => $productId,
+                    'categoryId' => $categoryId,
+                    'position' => $position
+                ]
+            ],
+            $context
+        );
+    }
+
+    //check category
+    public function checkproductCategoryPositionExist(string $productId, string $categoryId, Context $context): ?string
+    {
+        //set up the criteria for the search
+        $criteria = new Criteria();
+        $criteria->addFilter(new EqualsFilter('categoryId', $categoryId));
+        $criteria->addFilter(new EqualsFilter('productId', $productId));
+        return $this->productCategoryPositionRepository->searchIds($criteria, $context)->firstId();
+    }
+
+    //check category
+    public function checkKPCategoryExist(string $categoryId, Context $context): ?string
+    {
+        //set up the criteria for the search
+        $criteria = new Criteria();
+        $criteria->addFilter(new EqualsFilter('categoryId', $categoryId));
+        return $this->kplngi_orderactive->searchIds($criteria, $context)->firstId();
+    }
+
+    public function checkPimCategoryID(array $categoryData, $salesChannelId)
+    {
+        $criteria = new Criteria();
+        $criteria->addFilter(new EqualsFilter('categoryId', $categoryData['id']));
+        $criteria->addFilter(new EqualsFilter('salesChannelId', $salesChannelId));
+        return $this->pimCategoryRepository->search($criteria, Context::createDefaultContext())->first();
+    }
+
+    public function insertProductGroupRecursive($cat_Array, $subCategoryID, $ChildNodes, $salesChannelId, $context)
+    {
+        foreach ($ChildNodes as $res) {
+            $Origin = $res->Origin->Value;
+
+            $SequenceNo = $res->ProductGroupDetails->Level->Value ?? '0';
+
+            if ($Origin == 'Generated' && $res->ProductGroupDetails) {
+                $categoryCode = $res->Code->Value;
+                $categoryName = $res->ProductGroupDetails->Description->Value;
+
+                $checkCategoryExist = $this->checkCategoryExist($categoryName, $subCategoryID, $categoryCode, $context);
+
+                $categoryData = array();
+
+                if (isset($checkCategoryExist)) {
+                    $categoryData['id'] = $checkCategoryExist;
+                } else {
+                    $categoryData['id'] = Uuid::randomHex();
+                }
+                $categoryData['code'] = $res->Code->Value;
+                $categoryData['parentId'] = $subCategoryID;
+                if($res->ProductGroupDetails->CompositeLastModificationDateTime){
+                    $categoryData['CompositeLastModificationDateTime'] = $res->ProductGroupDetails->CompositeLastModificationDateTime->Value;
+                }
+                else{
+                    $categoryData['CompositeLastModificationDateTime'] = null;
+                }
+                $CommercialDescription = $res->ProductGroupDetails->CommercialDescription->Value;
+
+                $categoryData['translations'] = $this->setCategoryTranslation($categoryName, $CommercialDescription, $context);
+
+                //check image exist or not in shopware if not exist so add
+                if ($res->ProductGroupDetails->Image) {
+                    $catImgUrl = self::DOMAIN . $res->ProductGroupDetails->Image->Value;
+                    if ($catImgUrl) {
+                        $mediaId = $this->addImageToMediaFromURL($catImgUrl, $context);
+                    } else {
+                        $mediaId = '';
+                    }
+                    $categoryData['mediaId'] = $mediaId;
+                } else {
+                    $categoryData['mediaId'] = '';
+                }
+
+                //find cms id based on default english language
+                if (isset($res->ProductGroupDetails->UDF_PG_ProductGroupLayout->ValueDescription)) {
+                    $languageKey = $this->getDefaultLanguageKey($context);
+                    $cmsPageId = $this->findCMSName($res->ProductGroupDetails->UDF_PG_ProductGroupLayout->ValueDescription->$languageKey, $context);
+                    if ($cmsPageId) {
+                        $categoryData['cmsPageId'] = $cmsPageId;
+                    }
+                } else {
+                    $categoryData['cmsPageId'] = null;
+                }
+
+                $categoryData['visible'] = $res->ProductGroupDetails->UDF_PG_ShowInNav->Value;
+
+                $productDatas = $res->PublicationNodeRecordLinks;
+                if ($productDatas) {
+                    $productCodes = array();
+                    $KProductCodes = array();
+                    foreach ($productDatas as $productData) {
+                        $productId = $this->getProductID($productData->ProductCode->Value);
+
+                        $SequenceNoP = $productData->SequenceNo?$productData->SequenceNo->Value:950;
+                        if ($productId) {
+                            $productCodes[] = $productId;
+                            $KProductCodes[] = array(
+                                'productId' => $productId,
+                                'position' => $SequenceNoP
+                            );
+                        }
+                    }
+                    $categoryData['products'] = $productCodes;
+                    $categoryData['kplngiPositions'] = $KProductCodes;
+                }
+
+                $checkUpdatedProduct = $this->checkPimCategory($categoryData, $salesChannelId);
+                if (empty($checkUpdatedProduct) || $checkUpdatedProduct == null) {
+                    $this->removeProductFromCategory($categoryData, $context);
+                    $categoryID = $this->categoryInsert($SequenceNo, $cat_Array, $categoryData, $salesChannelId, $context);
+                } else {
+                    $categoryID = $checkUpdatedProduct->getcategoryId();
+                }
+                file_put_contents(
+                    "CategoryImportLog.txt",
+                    date("l jS \of F Y h:i:s A")."> ".$categoryID." Cron Category Import\n",
+                    FILE_APPEND
+                );
+                $cat_Array[$SequenceNo][] = $categoryID;
+                $ChildNodes = $res->ChildNodes;
+                if ($ChildNodes) {
+                    $this->insertProductGroupRecursive($cat_Array, $categoryID, $ChildNodes, $salesChannelId, $context);
+                }
+            }
+
+            if ($Origin == 'Manual' && $res->Description) {
+                $MCategoryCode = $res->Code->Value;
+                $MCategoryName = $res->Description->Value;
+                $MCheckCategoryExist = $this->checkCategoryExist($MCategoryName, $subCategoryID, $MCategoryCode, $context);
+
+                $MCategoryData = array();
+
+                if ($MCheckCategoryExist) {
+                    $MCategoryData['id'] = $MCheckCategoryExist;
+                } else {
+                    $MCategoryData['id'] = Uuid::randomHex();
+                }
+
+                $MCategoryData['code']  = $res->Code->Value;
+                $MCategoryData['parentId'] = $subCategoryID;
+                if($res->CompositeLastModificationDateTime){
+                    $MCategoryData['CompositeLastModificationDateTime'] = $res->CompositeLastModificationDateTime->Value;
+                }
+                else{
+                    $MCategoryData['CompositeLastModificationDateTime'] = null;
+                }
+                $MCommercialDescription = $res->FullDescription->Value;
+
+                $MCategoryData['translations'] = $this->setCategoryTranslation($MCategoryName, $MCommercialDescription, $context);
+
+                //check image exist or not in shopware if not exist so add
+                if ($res->Image) {
+                    $MCatImgUrl = self::DOMAIN . $res->Image->Value;
+                    if ($MCatImgUrl) {
+                        $MMediaId = $this->addImageToMediaFromURL($MCatImgUrl, $context);
+                    } else {
+                        $MMediaId = '';
+                    }
+                    $MCategoryData['mediaId'] = $MMediaId;
+                }
+
+                //find cms id based on default english language
+                if (isset($res->UDF_PubNode_Layout->ValueDescription)) {
+                    $languageKey = $this->getDefaultLanguageKey($context);
+                    $MCmsPageId = $this->findCMSName($res->UDF_PubNode_Layout->ValueDescription->$languageKey, $context);
+                    if ($MCmsPageId) {
+                        $MCategoryData['cmsPageId'] = $MCmsPageId;
+                    }
+                } else {
+                    $MCategoryData['cmsPageId'] = null;
+                }
+
+                $MCategoryData['visible'] = $res->UDF_PubNode_ShowInNav->Value;
+
+                $MProductDatas = $res->PublicationNodeRecordLinks;
+                if ($MProductDatas) {
+                    $MProductCodes = array();
+                    $MKProductCodes = array();
+                    foreach ($MProductDatas as $MProductData) {
+                        $MProductId =  $this->getProductID($MProductData->ProductCode->Value);
+                        $MSequenceNo = $MProductData->SequenceNo->Value;
+                        if ($MProductId) {
+                            $MProductCodes[] = $MProductId;
+                            $MKProductCodes[] = array(
+                                'productId'=>$MProductId,
+                                'position'=>$MSequenceNo
+                            );
+                        }
+                    }
+                    $MCategoryData['products'] = $MProductCodes;
+                    $MCategoryData['kplngiPositions'] = $MKProductCodes;
+                }
+
+                $checkUpdatedProduct = $this->checkPimCategory($MCategoryData, $salesChannelId);
+                if (empty($checkUpdatedProduct) || $checkUpdatedProduct == null) {
+                    $this->removeProductFromCategory($MCategoryData, $context);
+                    $MCategoryID = $this->categoryInsert($SequenceNo, $cat_Array, $MCategoryData, $salesChannelId, $context);
+                } else {
+                    $MCategoryID = $checkUpdatedProduct->getcategoryId();
+                }
+                file_put_contents(
+                    "CategoryImportLog.txt",
+                    date("l jS \of F Y h:i:s A")."> ".$MCategoryID." Cron Category Import\n",
+                    FILE_APPEND
+                );
+                $cat_Array[$SequenceNo][] = $MCategoryID;
+
+                $MChildNodes = $res->ChildNodes;
+                if ($MChildNodes) {
+                    $this->insertProductGroupRecursive($cat_Array, $MCategoryID, $MChildNodes, $salesChannelId, $context);
+                }
+            }
+        }
+    }
+
+    // Insert Category
+    public function categoryInsertSeq($SequenceNo, $cat_Array, array $categoryData, Context $context): string
+    {
+        $categoryID = $categoryData['id'];
+        $data = [
+            'id'            => $categoryData['id'],
+            'parentId'      => $categoryData['parentId']
+        ];
+        if (isset($cat_Array) && isset($cat_Array[$SequenceNo])) {
+            if (end($cat_Array[$SequenceNo])) {
+                $data['afterCategoryId'] = end($cat_Array[$SequenceNo]);
+            }
+        } else {
+            $data['afterCategoryId'] = null;
+        }
+        $this->categoryRepository->upsert([$data], $context);
+        return $categoryData['id'];
+    }
+
+    public function arrayCustomMultiSort($ChildNodes)
+    {
+        $tempArray = array();
+        foreach ($ChildNodes as $childNode) {
+            $tempArray[$childNode->SequenceNo->Value] = $childNode;
+        }
+        ksort($tempArray);
+        return $tempArray;
+    }
+
+
+    public function insertProductGroupRecursiveSeq($count99, $cat_Array, $subCategoryID, $ChildNodes, $context)
+    {
+        foreach ($ChildNodes as $res) {
+            $Origin = $res->Origin->Value;
+
+            if (isset($res->ProductGroupDetails->Level->Value)) {
+                $SequenceNo = $res->ProductGroupDetails->Level->Value;
+            } else {
+                $SequenceNo = $count99;
+            }
+
+            if ($Origin == 'Generated' && $res->ProductGroupDetails) {
+                $categoryName = $res->ProductGroupDetails->Description->Value;
+                $categoryCode = $res->Code->Value;
+                $checkCategoryExist = $this->checkCategoryExist($categoryName, $subCategoryID, $categoryCode, $context);
+                if ($checkCategoryExist) {
+                    $categoryData = array();
+                    $categoryData['id'] = $checkCategoryExist;
+                    $categoryData['parentId'] = $subCategoryID;
+                    $CommercialDescription = $res->ProductGroupDetails->CommercialDescription->Value;
+                    $categoryData['translations'] = $this->setCategoryTranslation($categoryName, $CommercialDescription, $context);
+                    $categoryID = $this->categoryInsertSeq($SequenceNo, $cat_Array, $categoryData, $context);
+                    $cat_Array[$SequenceNo][] = $categoryID;
+                    $ChildNodes = $res->ChildNodes;
+
+                    if ($ChildNodes) {
+                        $count99++;
+                        $ChildNodes = $this->arrayCustomMultiSort($ChildNodes);
+                        $this->insertProductGroupRecursiveSeq($count99, $cat_Array, $categoryID, $ChildNodes, $context);
+                        $count99--;
+                    }
+                }
+            }
+
+            if ($Origin == 'Manual' && $res->Description) {
+                $MCategoryName = $res->Description->Value;
+                $categoryCode = $res->Code->Value;
+                $MCheckCategoryExist = $this->checkCategoryExist($MCategoryName, $subCategoryID, $categoryCode, $context);
+                if ($MCheckCategoryExist) {
+                    $MCategoryData = array();
+                    $MCategoryData['id'] = $MCheckCategoryExist;
+                    $MCategoryData['parentId'] = $subCategoryID;
+                    $MCommercialDescription = $res->FullDescription->Value;
+                    $MCategoryData['translations'] = $this->setCategoryTranslation($MCategoryName, $MCommercialDescription, $context);
+                    $MCategoryID = $this->categoryInsertSeq($SequenceNo, $cat_Array, $MCategoryData, $context);
+                    $cat_Array[$SequenceNo][] = $MCategoryID;
+                    $MChildNodes = $res->ChildNodes;
+                    if ($MChildNodes) {
+                        $count99++;
+                        $MChildNodes = $this->arrayCustomMultiSort($MChildNodes);
+                        $this->insertProductGroupRecursiveSeq($count99, $cat_Array, $MCategoryID, $MChildNodes, $context);
+                        $count99--;
+                    }
+                }
+            }
+        }
+    }
+
+    public function checkPimCategorySeq($checkCategoryExist, $salesChannelId)
+    {
+        $criteria = new Criteria();
+        $criteria->addFilter(new EqualsFilter('categoryId', $checkCategoryExist));
+        $criteria->addFilter(new EqualsFilter('categoryCode', "99"));
+        $criteria->addFilter(new EqualsFilter('salesChannelId', $salesChannelId));
+        return $this->pimCategoryRepository->search($criteria, Context::createDefaultContext())->first();
+    }
+
+    public function checkCategoryChildId($ChildNodes, $subCategoryID, $context, $allCategoryData)
+    {
+        foreach ($ChildNodes as $res) {
+            $Origin = $res->Origin->Value;
+            if ($Origin === 'Generated' && $res->ProductGroupDetails) {
+                $categoryCode = $res->Code->Value;
+                $categoryName = $res->ProductGroupDetails->Description->Value;
+                $checkCategoryExist = $this->checkCategoryExist($categoryName, $subCategoryID, $categoryCode, $context);
+                if ($checkCategoryExist) {
+                    $allCategoryData[] = $checkCategoryExist;
+                    $categoryId = $checkCategoryExist;
+                    $ChildNodes = $res->ChildNodes;
+                    if ($ChildNodes) {
+                        $subarray = $this->checkCategoryChildId($ChildNodes, $categoryId, $context, $allCategoryData);
+
+                        $allCategoryData = array_merge($allCategoryData, $subarray);
+                    } else {
+                        file_put_contents(
+                            "CategoryImportLog.txt",
+                            date("l jS \of F Y h:i:s A") . "> " . "1" . " rGenerated category import manual cron\n",
+                            FILE_APPEND
+                        );
+                    }
+                }
+            }
+
+            if ($Origin === 'Manual' && $res->Description) {
+                $MCategoryCode = $res->Code->Value;
+                $MCategoryName = $res->Description->Value;
+                $MCheckCategoryExist = $this->checkCategoryExist($MCategoryName, $subCategoryID, $MCategoryCode, $context);
+                if ($MCheckCategoryExist) {
+                    $allCategoryData[] = $MCheckCategoryExist;
+                    $MCategoryId = $MCheckCategoryExist;
+                    $MChildNodes = $res->ChildNodes;
+                    if ($MChildNodes) {
+                        $subarray = $this->checkCategoryChildId($MChildNodes, $MCategoryId, $context, $allCategoryData);
+                        $allCategoryData = array_merge($allCategoryData, $subarray);
+                    }
+                } else {
+                    file_put_contents(
+                        "CategoryImportLog.txt",
+                        date("l jS \of F Y h:i:s A") . "> " . "1" . " Manual category import manual cron\n",
+                        FILE_APPEND
+                    );
+                }
+            }
+        }
+        return $allCategoryData;
+    }
+
+    public function checkPimCategoryData($salesChannelId, Context  $context)
+    {
+        $criteria = new Criteria();
+        $criteria->addFilter(new EqualsFilter('salesChannelId', $salesChannelId));
+        $Datas = $this->pimCategoryRepository->search($criteria, $context)->getElements();
+        $allPimCategoryDataID = array();
+        foreach ($Datas as $data) {
+            $allPimCategoryDataID[] = $data->getCategoryId();
+        }
+        return $allPimCategoryDataID;
+    }
+
+    public function removeCategoryIds($finalDiff, Context $context)
+    {
+        foreach ($finalDiff as $categoryId) {
+            $this->categoryRepository->delete([['id' => $categoryId]], $context);
+            $criteria = new Criteria();
+            $criteria->addFilter(new EqualsFilter('categoryId', $categoryId));
+            $Datas = $this->pimCategoryRepository->search($criteria, $context)->first();
+            $this->pimCategoryRepository->delete([['id' => $Datas->id]], $context);
+        }
+    }
+
+    //get all sales channel
+    public function getAllSalesChannel($context): array
+    {
+        $criteria = new Criteria();
+        return $this->salesChannelRepository->search($criteria, $context)->getElements();
+    }
+
+    public function checkExistSalesChannelOneDay($salesChannelId, $context): int
+    {
+        $criteria = new Criteria();
+        $criteria->addFilter(new EqualsFilter('lastUsageAt', date("Y-m-d")));
+        $criteria->addFilter(new EqualsFilter('salesChannelId', $salesChannelId));
+        return $this->categoryCronSalesChannel->search($criteria, $context)->getTotal();
+    }
+
+    public function removeProductFromCategory($categoryData, Context $context)
+    {
+        $criteria = new Criteria();
+        $criteria->addFilter(new EqualsFilter('categoryId', $categoryData['id']));
+        $Datas = $this->productCategoryRepository->searchIds($criteria, $context)->getIds();
+
+        foreach ($Datas as $Id) {
+            $this->productCategoryRepository->delete([$Id], $context);
+        }
+
+        return null;
+    }
+}

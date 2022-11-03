@@ -1,0 +1,18 @@
+{% block element %}
+<div
+    {% sw_include '@RopiFrontendEditing/content-editor/elements/common/editor-attributes.html.twig' %}
+    class="{% block element_class %}
+               ropi-frontend-editing-content-element-hr
+               {% sw_include '@RopiFrontendEditing/content-editor/elements/common/general-classes.html.twig' %}
+           {% endblock %}"
+    style="{% block element_style %}{% endblock %}">
+    {% block element_inner %}
+        <hr class="{% block hr_class %}
+                       m-0 p-0 border
+                       {% sw_include '@RopiFrontendEditing/content-editor/elements/common/border-color-class.html.twig' with {
+                           'borderColor': data.configuration.borderColor
+                       } %}
+                   {% endblock %}" />
+    {% endblock %}
+</div>
+{% endblock %}

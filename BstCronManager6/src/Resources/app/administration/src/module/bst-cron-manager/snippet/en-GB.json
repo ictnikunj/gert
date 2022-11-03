@@ -1,0 +1,52 @@
+{
+    "global": {
+        "entities": {
+            "scheduled_task": "Scheduled Task"
+        }
+    },
+    "bst-cron-manager": {
+        "title": "Cron Manager",
+        "description": "Manage settings for scheduled tasks within backend",
+        "list": {
+            "textCronTasksOverview": "Scheduled Tasks",
+            "placeholderSearchBar": "Search all scheduled tasks ...",
+            "columnName": "Name",
+            "columnClass": "Class",
+            "columnRunInterval": "Interval",
+            "columnLastExecutionTime": "Last Execution",
+            "columnNextExecutionTime": "Next Execution",
+            "columnStatus": "Status",
+            "titleSidebarItemRefresh": "Reload",
+            "contextMenuEdit": "Edit"
+        },
+        "detail": {
+            "textHeadline": "Task",
+            "buttonCancel": "Cancel",
+            "buttonSave": "Save",
+            "cardTitleCronjobInfo": "Task Informationen",
+            "labelName": "Name",
+            "labelClass": "Class",
+            "labelRunInterval": "Interval",
+            "labelLastExecutionTime": "Last Execution",
+            "labelNextExecutionTime": "Next Execution",
+            "labelStatus": "Status",
+            "interval": {
+                "none": "None (0 Sec.)",
+                "2minutes": "2 Minutes (120 Sec.)",
+                "5minutes": "5 Minutes (300 Sec.)",
+                "10minutes": "10 Minutes (600 Sec.)",
+                "15minutes": "15 Minutes (900 Sec.)",
+                "30minutes": "30 Minutes (1800 Sec.)",
+                "1hour": "1 Hour (3600 Sec.)",
+                "2hours": "2 Hours (7200 Sec.)",
+                "4hours": "4 Hours (14400 Sec.)",
+                "8hours": "8 Hours (28800 Sec.)",
+                "12hours": "12 Hours (43200 Sec.)",
+                "1day": "1 Day (86400 Sec.)",
+                "2days": "2 Days (172800 Sec.)",
+                "1week": "1 Week (604800 Sec.)",
+                "seconds": " Sec."
+            }
+        }
+    }
+}

@@ -1,0 +1,63 @@
+{% set categoryH1Config = config('NenoCategoryH1.config')  %}
+
+{% block neno_category_h1 %}
+
+    <div class="neno-category-h1--container">
+        <h1 class="neno-category-h1">{{ page.header.navigation.active.translated.name }}</h1>
+    </div>
+    <style>
+        /*  Mobile / General */
+        .neno-category-h1--container {
+            padding: 0 {{ categoryH1Config.nchMobilePadding }}px;
+            max-width: {{ categoryH1Config.nchMobileMaxWidth }}px;
+            margin: 0 auto;
+        }
+
+        .neno-category-h1 {
+            color: {{ categoryH1Config.nchColor }};
+            line-height: {{ categoryH1Config.nchMobileLineHeight }}px;
+            font-size: {{ categoryH1Config.nchMobileFontSize }}px;
+            font-family: {{ categoryH1Config.nchFontFamily }};
+            font-weight: {{ categoryH1Config.nchFontWeight }};
+        }
+
+        /* Tablet */
+        @media all and (min-width: 480px) {
+            .neno-category-h1--container {
+                padding: 0 {{ categoryH1Config.nchTabletPadding }}px;
+                max-width: {{ categoryH1Config.nchTabletMaxWidth }}px;
+            }
+
+            .neno-category-h1 {
+                line-height: {{ categoryH1Config.nchTabletLineHeight }}px;
+                font-size: {{ categoryH1Config.nchTabletFontSize }}px;
+            }
+        }
+
+        /* Tablet Landsacpe */
+        @media all and (min-width: 768px) {
+            .neno-category-h1--container {
+                padding: 0 {{ categoryH1Config.nchTabletLandscapePadding }}px;
+                max-width: {{ categoryH1Config.nchTabletLandscapeMaxWidth }}px;
+            }
+
+            .neno-category-h1 {
+                line-height: {{ categoryH1Config.nchTabletLandscapeLineHeight }}px;
+                font-size: {{ categoryH1Config.nchTabletLandscapeFontSize }}px;
+            }
+        }
+
+        /* Desktop */
+        @media all and (min-width: 1024px) {
+            .neno-category-h1--container {
+                padding: 0 {{ categoryH1Config.nchDesktopPadding }}px;
+                max-width: {{ categoryH1Config.nchDesktopMaxWidth }}px;
+            }
+
+            .neno-category-h1 {
+                line-height: {{ categoryH1Config.nchDesktopLineHeight }}px;
+                font-size: {{ categoryH1Config.nchDesktopFontSize }}px;
+            }
+        }
+    </style>
+{% endblock %}

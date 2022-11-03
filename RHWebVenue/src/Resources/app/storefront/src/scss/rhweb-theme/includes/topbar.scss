@@ -1,0 +1,20 @@
+.rhweb-topbar{
+    background-color: $rhweb-topbar-background;
+    padding: $rhweb-topbar-padding 0;
+    color: $rhweb-topbar-color;
+}
+
+.languages-menu{
+    &.dropdown{
+        line-height: initial;
+
+        .dropdown-toggle{
+            line-height: initial;
+
+            .language-flag{
+                position: relative;
+                top: 1px;
+            }
+        }
+    }
+}

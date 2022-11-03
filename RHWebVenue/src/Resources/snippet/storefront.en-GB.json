@@ -1,0 +1,73 @@
+{
+    "rhwebTheme": {
+        "footer": {
+            "payment": {
+                "headline" : "Payment Methods"
+            },
+            "shipping": {
+                "headline" : "Shipping Methods"
+            },
+            "social": {
+                "headline": "Social Media"
+            },
+            "certificates": {
+                "headline" : "Certificates"
+            },
+            "newsletter": {
+                "headline" : "Newsletter"
+            }
+        },
+        "buyBox": {
+            "manufacturer": "Manufacturer:",
+            "manufacturerNumber": "Manufacturernumber:",
+            "ean": "EAN:",
+            "availableStock": "Stock:",
+            "sales": "Sales:"
+        }
+    },
+    "venueTheme": {
+        "topBar": {
+            "contact": "Contact - 24/7: 01 23 45/ 67 89 0",
+            "promotion": "Edit this text in your Admin Snippets",
+            "mail": "info@example.com"
+        },
+        "slider": {
+            "subHeadlineOne": "Shopware 6",
+            "headlineOne": "Venue - Theme",
+            "textOne": "This theme comes with countless customization options and color variance. The optimal basis for an all-purpose theme. You can use the Venue theme in many application areas.",
+            "buttonOne": "Example Button",
+            "urlOne": "https://rh-webdesign.com",
+
+            "subHeadlineTwo": "Edit your",
+            "headlineTwo": "Color Management",
+            "textTwo": "The colors of the theme can be edited in the theme settings. Design the theme according to your individual wishes and colors.",
+            "buttonTwo": "Example Button",
+            "urlTwo": "https://rh-webdesign.com",
+
+            "subHeadlineThree": "Edit your",
+            "headlineThree": "Plugin Settings",
+            "textThree": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et.",
+            "buttonThree": "Example Button",
+            "urlThree": "https://rh-webdesign.com"
+        },
+        "mailchimp": {
+            "headline": "Mailchimp Newsletter",
+            "placeholder": "E-Mail Adress",
+            "hint": "I have read the <a href='#'>data protection declaration</a> and accept it.",
+            "button": "Sign up"
+        },
+        "mailchimpPopup": {
+            "headline": "Mailchimp Newsletter",
+            "text": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.",
+            "placeholder": "E-Mail Adress",
+            "hint": "I have read the <a href='#'>data protection declaration</a> and accept it.",
+            "button": "Sign up"
+        },
+        "footer": {
+            "credits": "Copyright RH-Webdesign"
+        }
+    },
+    "cookie": {
+        "acceptAll": "Accept all"
+    }
+}

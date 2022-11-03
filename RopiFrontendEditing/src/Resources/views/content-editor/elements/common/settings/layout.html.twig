@@ -1,0 +1,34 @@
+{% block layout %}
+    <ropi-collapsible>
+        <ropi-subheader slot="header">{% trans %}ropi-frontend-editing.contentElement.definition.subheader.layout{% endtrans %}</ropi-subheader>
+        <div slot="content">
+            {% block layout_content %}
+
+                {% block layout_radio_group %}
+                    <ropi-radio-group>
+                        {% block layout_radio_group_inner %}
+
+                            {% block layout_radio_default %}
+                                <ropi-radio name="{{ name }}" value="default" checked>{% trans %}ropi-frontend-editing.contentElement.definition.label.layoutDefault{% endtrans %}</ropi-radio>
+                            {% endblock %}
+
+                            {% block layout_radio_fluid %}
+                                <ropi-radio name="{{ name }}" value="fluid">{% trans %}ropi-frontend-editing.contentElement.definition.label.layoutFluid{% endtrans %}</ropi-radio>
+                            {% endblock %}
+
+                        {% endblock %}
+                    </ropi-radio-group>
+                {% endblock %}
+
+                {% block stretch_height %}
+                    {% if stretchHeight %}
+                        {% sw_include '@RopiFrontendEditing/content-editor/elements/common/settings/stretch-height.html.twig' with {
+                            'name': stretchHeight.name
+                        } %}
+                    {% endif %}
+                {% endblock %}
+
+            {% endblock %}
+        </div>
+    </ropi-collapsible>
+{% endblock %}

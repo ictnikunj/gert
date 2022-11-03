@@ -1,0 +1,14 @@
+@mixin mxn_submit{
+    button[type=submit]:not(.cart-item-remove-button):not(.btn-link){
+        background-color: $rhweb-forms-button-background-color;
+        color:$rhweb-forms-button-font-color;
+        border-color: $rhweb-forms-button-border-color;
+        border-radius: $rhweb-form-border-radius;
+
+        &:hover{
+            background-color: $rhweb-forms-button-background-color-hover;
+            color:$rhweb-forms-button-font-color-hover;
+            border-color: $rhweb-forms-button-border-color-hover;
+        }
+    }
+}

@@ -1,0 +1,39 @@
+
+.sisi-fields-index {
+    input {
+        width: 95%;
+    }
+
+    .status-box {
+        margin-top: 2rem;
+    }
+
+    .sisi-alert {
+        margin-top: 2rem;
+        display: none;
+    }
+
+    .sisi-alert.sisi-active {
+        display: block;
+    }
+
+    .sisi-alert-delete {
+        margin-top: 2rem;
+        display: none;
+    }
+
+    .sw-grid-column .sw-grid__cell-content .sw-field--checkbox {
+        display: none
+    }
+    .sw-page__back-btn-container{
+        display: none;
+    }
+
+}
+
+.sisi-fields-detail {
+    .sw-page__back-btn-container{
+        display: none;
+    }
+}
+

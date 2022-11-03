@@ -1,0 +1,41 @@
+{% block page_product_detail_downloads %}
+    {% if config('AcrisProductDownloadsCS.config.displayLayout') is null or config('AcrisProductDownloadsCS.config.displayLayout') is same as 'default' %}
+        {% set displayLayout = 'default' %}
+    {% else %}
+        {% set displayLayout = config('AcrisProductDownloadsCS.config.displayLayout') %}
+    {% endif %}
+
+    {% if config('AcrisProductDownloadsCS.config.directDownload') is not empty %}
+        {% set directDonwloadConfig = config('AcrisProductDownloadsCS.config.directDownload') %}
+    {% endif %}
+
+    <ul class="acris-downloads-list{% if displayLayout is same as 'button' %} pl-0 button-layout{% endif %}{% if cmsElement %} mb-0{% endif %}">
+        {% for value in downloads %}
+            {% block page_product_detail_downloads_element %}
+                <li class="acris-downloads-list-item{% if displayLayout is same as 'button' %}{% if not loop.last %} mb-3{% endif %}{% endif %}">
+                    {% if displayLayout is same as 'button' %}
+                        <a class="btn btn-secondary mr-3"
+                           href="{{ value.getMedia().getUrl() }}" target="_blank"
+                           title="{{ value.getMedia().getFileName() }}.{{ value.getMedia().getFileExtension() }}"
+                           {% if directDonwloadConfig == "direct" %}download="{{ value.getMedia().getFileName() }}.{{ value.getMedia().getFileExtension() }}"{% endif %}>
+                            {{ "detail.acrisProductDownloadBtnText"|trans }}
+                        </a>
+                        <a href="{{ value.getMedia().getUrl() }}" target="_blank"
+                           title="{{ value.getMedia().getFileName() }}.{{ value.getMedia().getFileExtension() }}"
+                           {% if directDonwloadConfig == "direct" %}download="{{ value.getMedia().getFileName() }}.{{ value.getMedia().getFileExtension() }}"{% endif %}>
+                            {% if value.translated.title %}{{ value.translated.title }}{% else %}{{ value.getMedia().getFileName() }}.{{ value.getMedia().getFileExtension() }}{% endif %}{% if value.translated.description %} - {{ value.translated.description }}{% endif %}
+                        </a>
+                    {% else %}
+                        <a href="{{ value.getMedia().getUrl() }}" target="_blank"
+                           title="{{ value.getMedia().getFileName() }}.{{ value.getMedia().getFileExtension() }}"
+                           {% if directDonwloadConfig == "direct" %}download="{{ value.getMedia().getFileName() }}.{{ value.getMedia().getFileExtension() }}"{% endif %}>
+                            {% if value.translated.title %}{{ value.translated.title }}{% else %}{{ value.getMedia().getFileName() }}.{{ value.getMedia().getFileExtension() }}{% endif %}
+                        </a>
+                        {% if value.translated.description %} - {{ value.translated.description }}{% endif %}
+                    {% endif %}
+                </li>
+            {% endblock %}
+        {% endfor %}
+    </ul>
+
+{% endblock %}

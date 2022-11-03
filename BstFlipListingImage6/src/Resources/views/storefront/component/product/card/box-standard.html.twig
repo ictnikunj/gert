@@ -1,0 +1,76 @@
+{% sw_extends '@Storefront/storefront/component/product/card/box-standard.html.twig' %}
+
+{% block component_product_box_image %}
+    <div class="product-image-wrapper">
+        {# fallback if display mode is not set #}
+        {% set displayMode = displayMode ?: 'standard' %}
+
+        {# set display mode 'cover' for box-image with standard display mode #}
+        {% if layout == 'image' and displayMode == 'standard' %}
+            {% set displayMode = 'cover' %}
+        {% endif %}
+
+        <a href="{{ seoUrl('frontend.detail.page', {'productId': id}) }}"
+           title="{{ name }}"
+           class="product-image-link is-{{ displayMode }}">
+            {% if cover.url %}
+                {% set attributes = {
+                    'class': 'product-image is-'~displayMode,
+                    'alt': (cover.translated.alt ?: name),
+                    'title': (cover.translated.title ?: name)
+                } %}
+
+                {% if product.extensions.BstFlipListingImage6.media %}
+                    {% if product.extensions.BstFlipListingImage6.media.url %}
+                        {% set attributes = attributes|merge({ 'class': 'product-image has-alternate-image is-'~displayMode }) %}
+                    {% endif %}
+                {% endif %}
+
+                {% if displayMode == 'cover' or displayMode == 'contain' %}
+                    {% set attributes = attributes|merge({ 'data-object-fit': displayMode }) %}
+                {% endif %}
+
+                {% sw_thumbnails 'product-image-thumbnails' with {
+                    media: cover,
+                    sizes: {
+                        'xs': '501px',
+                        'sm': '315px',
+                        'md': '427px',
+                        'lg': '333px',
+                        'xl': '284px'
+                    }
+                } %}
+                {% if product.extensions.BstFlipListingImage6.media %}
+                    {% if product.extensions.BstFlipListingImage6.media.url %}
+                        {% set attributes = attributes|merge({ 'class': 'product-image alternate-image is-'~displayMode }) %}
+                        {% sw_thumbnails 'product-image-thumbnails' with {
+                            media: product.extensions.BstFlipListingImage6.media,
+                            sizes: {
+                                'xs': '501px',
+                                'sm': '315px',
+                                'md': '427px',
+                                'lg': '333px',
+                                'xl': '284px'
+                            }
+                        } %}
+                    {% endif %}
+                {% endif %}
+            {% else %}
+                <div class="product-image-placeholder">
+                    {% sw_icon 'placeholder' style {
+                        'size': 'fluid'
+                    } %}
+                </div>
+            {% endif %}
+        </a>
+
+        {% if product.extensions.BstFlipListingImage6Config.config.wishlistEnabled %}
+            {% block component_product_box_wishlist_action %}
+                {% sw_include '@Storefront/storefront/component/product/card/wishlist.html.twig' with {
+                    appearance: 'circle',
+                    productId: id
+                } %}
+            {% endblock %}
+        {% endif %}
+    </div>
+{% endblock %}

@@ -1,0 +1,57 @@
+@if $rhweb-general-activate-cookie-overlay == 1{
+    body{
+        padding-bottom: 0 !important;
+    }
+
+    .rhweb-overlay-cookie-change{
+        display:none;
+        position: fixed;
+        z-index: 10000;
+        top:0;
+        left:0;
+        right:0;
+        bottom:0;
+        background-color:$rhweb-general-cookie-overlay-background-color;
+        transition: ease all .3s;
+
+        &.fadeOut{
+            background-color:transparent;
+        }
+    }
+
+    .cookie-permission-container{
+        z-index: 10010;
+        background-color: transparent;
+        border: none;
+        height: 100%;
+        width: 100%;
+        padding:0;
+
+        .rhweb-custom-cookie-container{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            width:100%;
+            height:100%;
+
+            .rhweb-custom-cookie-container-inner{
+                background-color: #fff;
+                padding: 30px 15px;
+                max-width: 400px;
+
+                .cookie-permission-content{
+                    text-align: center;
+                    font-size: 1.3em;
+                    margin-bottom: 20px;
+                }
+
+                .js-cookie-configuration-button{
+                    button{
+                        width:100%;
+                    }
+                }
+            }
+        }
+    }
+}

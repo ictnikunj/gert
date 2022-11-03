@@ -1,0 +1,52 @@
+{
+    "error": {
+        "missing-form-parameter": "Bitte ergänzen Sie die fehlenden Informationen um den Einkauf abzuschließen"
+    },
+    "checkout": {
+        "missing-form-parameter": "Bitte ergänzen Sie die fehlenden Informationen um den Einkauf abzuschließen"
+    },
+    "moorl-form-builder": {
+        "general": {
+            "appointmentBlocked": "- bereits vergeben",
+            "taxIdNumberError": "USt-ID Nummer ungültig oder Dienst nicht verfügbar",
+            "yes": "Ja",
+            "no": "Nein",
+            "browse": "Durchsuchen",
+            "repeaterAdd": "Neu",
+            "repeaterRemove": "Entfernen",
+            "star": "\uD83D\uDE48",
+            "sendCopy": "Kopie an meine E-Mail Adresse",
+            "acceptPrivacy": "Ich akzeptiere die Datenschutzbestimmungen",
+            "captchaTitle": "Bitte lösen Sie das Captcha",
+            "captchaRefresh": "Neu",
+            "captchaImgError": "Fehler beim Laden des Captchas",
+            "captchaError": "Das Captcha ist falsch",
+            "internalError": "Wir haben Probleme Ihre Anfrage zu verarbeiten, bitte kontaktieren Sie unseren Support.",
+            "captchaPlaceholder": "Ergebnis",
+            "successMessage": "Ihre Anfrage wurde gesendet.",
+            "mediaTypeError": "Upload Fehler bei %name%.%extension%: Erwartetes Format %expected% falsch",
+            "mediaSizeError": "Upload Fehler maximale Größe von %maxSize% überschritten.",
+            "productRequestTitle": "Produkt Anfrage",
+            "productRequestIntro": "Bitte füllen Sie dieses Antragsformular aus. Wir werden uns umgehend mit Ihnen in Verbindung setzen.",
+            "cancel": "Abbrechen",
+            "dateFormat": "d.m.Y",
+            "dateTimeFormat": "d.m.Y H:i",
+            "editLineItem": "Konfigurieren",
+            "editCart": "Informationen Bearbeiten",
+            "parametersMissing": "Bitte ergänzen Sie die fehlenden Informationen",
+            "parametersMissingCheckout": "Bitte ergänzen Sie die fehlenden Informationen um den Einkauf abzuschließen",
+            "removeMedia": "Entfernen",
+            "allowedFileTypesImagesDocuments": "Unterstützte Dateien: Bilder oder Dokumente",
+            "allowedFileTypesImages": "Unterstützte Dateien: Bilder",
+            "allowedFileTypesDocuments": "Unterstützte Dateien: PDF Dokumente",
+            "allowedFileTypesAll": "Unterstützte Dateien: ",
+            "duplicateError": "Die Eingabe %value% ist nicht gültig, bitte versuchen Sie eine andere.",
+            "requiredError": "Das Feld %value% ist leer.",
+            "blacklistError": "Bitte prüfen Sie Ihre Eingaben (Blacklisted Keyword)",
+            "insertNewsletter": "Newsletter abonnieren",
+            "documentUpload": "Dokumente hochladen",
+            "download": "Download",
+            "review": "wird überprüft"
+        }
+    }
+}

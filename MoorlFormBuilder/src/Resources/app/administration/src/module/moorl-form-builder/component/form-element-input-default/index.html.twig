@@ -1,0 +1,41 @@
+<div class="moorl-form-element-input-default">
+    <moorl-collapse :label="$tc('moorl-form-builder.general.elementInput')"
+                    key="elementInput">
+        <template #content>
+            <sw-field :label="$tc('moorl-form-builder.properties.label')"
+                      v-model="formElement.label[locale.code]"></sw-field>
+            <sw-field :placeholder="$tc('moorl-form-builder.properties.placeholder')"
+                      :label="$tc('moorl-form-builder.properties.placeholder')"
+                      v-model="formElement.placeholder[locale.code]"></sw-field>
+            <sw-field :placeholder="$tc('moorl-form-builder.properties.defaultValue')"
+                      :label="$tc('moorl-form-builder.properties.defaultValue')"
+                      :helpText="$tc('moorl-form-builder.tooltips.defaultValue')"
+                      v-model="formElement.defaultValue[locale.code]"></sw-field>
+            <sw-field :placeholder="$tc('moorl-form-builder.properties.prepend')"
+                      :label="$tc('moorl-form-builder.properties.prepend')"
+                      v-model="formElement.prepend[locale.code]"></sw-field>
+            <sw-field :placeholder="$tc('moorl-form-builder.properties.append')"
+                      :label="$tc('moorl-form-builder.properties.append')"
+                      v-model="formElement.append[locale.code]"></sw-field>
+            <sw-field :placeholder="$tc('moorl-form-builder.properties.pattern')"
+                      :label="$tc('moorl-form-builder.properties.pattern')"
+                      v-model="formElement.pattern"></sw-field>
+            <sw-field :placeholder="$tc('moorl-form-builder.properties.tooltip')"
+                      :label="$tc('moorl-form-builder.properties.tooltip')"
+                      :helpText="$tc('moorl-form-builder.tooltips.tooltip')"
+                      v-model="formElement.tooltip[locale.code]"></sw-field>
+            <sw-field type="switch"
+                      bordered
+                      :label="$tc('moorl-form-builder.properties.required')"
+                      v-model="formElement.required"></sw-field>
+            <sw-field type="switch"
+                      bordered
+                      :label="$tc('moorl-form-builder.properties.disabled')"
+                      v-model="formElement.disabled"></sw-field>
+            <sw-field type="switch"
+                      bordered
+                      :label="$tc('moorl-form-builder.properties.useBlacklist')"
+                      v-model="formElement.useBlacklist"></sw-field>
+        </template>
+    </moorl-collapse>
+</div>

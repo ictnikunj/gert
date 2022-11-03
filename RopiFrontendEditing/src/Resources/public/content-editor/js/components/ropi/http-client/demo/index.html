@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+      <script type="module">
+        import '../../demo-element/demo-element.js?v=1637255330';
+      </script>
+
+      <title>http-client demo</title>
+  </head>
+  <body>
+    <ropi-demo>
+      <div id="example">Waiting for response...</div>
+      <script type="module">
+        import HttpClient from '../http-client.js?v=1637255330';
+        import HttpRequest from '../../http-message/http-request.js?v=1637255330';
+
+        (function() {
+          let responseElement = document.getElementById('example');
+          let httpClient = new HttpClient();
+          httpClient.request(
+            './resources/example.txt',
+            HttpRequest.METHOD_GET
+          ).then((httpResponse) => {
+            responseElement.innerText = httpResponse.getBody();
+          });
+        })();
+      </script>
+    </ropi-demo>
+
+    <ropi-demo name="Error handling">
+      <div id="error">Waiting for response...</div>
+      <script type="module">
+        import HttpClient from '../http-client.js?v=1637255330';
+        import HttpRequest from '../../http-message/http-request.js?v=1637255330';
+        import HttpError from '../../http-message/http-error.js?v=1637255330';
+
+        (function() {
+          let responseElement = document.getElementById('error');
+          let httpClient = new HttpClient();
+          httpClient.request(
+            './resources/error-handling',
+            HttpRequest.METHOD_GET
+          ).then((httpResponse) => {
+            responseElement.innerText = body;
+          }).catch((error) => {
+            let errorText = error.toString();
+
+            if (error instanceof HttpError) {
+              errorText += ' (' + error.getHttpResponse().getStatusCode() + ')';
+            }
+
+            responseElement.innerText = errorText;
+          });
+        })();
+      </script>
+    </ropi-demo>
+
+    <ropi-demo name="Json">
+      <div id="json">Waiting for response...</div>
+      <script type="module">
+        import HttpClient from '../http-client.js?v=1637255330';
+        import HttpRequest from '../../http-message/http-request.js?v=1637255330';
+
+        (function() {
+          let responseElement = document.getElementById('json');
+          let httpClient = new HttpClient();
+          httpClient.request(
+            './resources/json.json',
+            HttpRequest.METHOD_GET
+          )
+          .then(JSON.parse)
+          .then((object) => {
+            responseElement.innerText = object.message;
+          });
+        })();
+      </script>
+    </ropi-demo>
+
+    <ropi-demo name="Complex request">
+      <ropi-code id="complex-request">
+        Waiting for response...
+      </ropi-code>
+      <script type="module">
+        import HttpClient from '../http-client.js?v=1637255330';
+        import HttpRequest from '../../http-message/http-request.js?v=1637255330';
+
+        (function() {
+          let responseElement = document.getElementById('complex-request');
+
+          let httpClient = new HttpClient();
+
+          let httpRequest = (new HttpRequest('./resources/complex-request.json'))
+                              .setMethod(HttpRequest.METHOD_POST)
+                              .setQueryParameters({query: 'param'})
+                              .setHeaders({'Content-Type': 'application/json'})
+                              .setBody(JSON.stringify({json: 'in payload'}));
+
+          httpClient.send(httpRequest).then((httpResponse) => {
+              let string = '// Sent HTTP request\n';
+              string += httpRequest.toString(true);
+
+              string += '\n\n// Received HTTP response\n';
+              string += httpResponse.toString(true);
+
+              responseElement.innerText = string;
+          });
+        })();
+      </script>
+    </ropi-demo>
+
+    <ropi-demo name="Basic authentication">
+      <ropi-code id="basic-authentication">
+        Waiting for response...
+      </ropi-code>
+      <script type="module">
+        import HttpClient from '../http-client.js?v=1637255330';
+        import HttpBasicAuthentication from '../http-basic-authentication.js?v=1637255330';
+        import HttpRequest from '../../http-message/http-request.js?v=1637255330';
+
+        (function() {
+          let responseElement = document.getElementById('basic-authentication');
+
+          let httpClient = (new HttpClient()).setAuthentication(
+            new HttpBasicAuthentication('aUser', 'aPassword')
+          );
+
+          let httpRequest = (new HttpRequest('./resources/basic.json'));
+
+          httpClient.send(httpRequest).then((httpResponse) => {
+              let string = '// Sent HTTP request\n';
+              string += httpRequest.toString(true);
+
+              string += '\n\n// Received HTTP response\n';
+              string += httpResponse.toString(true);
+
+              responseElement.innerText = string;
+          });
+        })();
+      </script>
+    </ropi-demo>
+
+    <ropi-demo name="Bearer authentication">
+      <ropi-code id="bearer">
+        Waiting for response...
+      </ropi-code>
+      <script type="module">
+        import HttpClient from '../http-client.js?v=1637255330';
+        import HttpBearerAuthentication from '../http-bearer-authentication.js?v=1637255330';
+        import HttpRequest from '../../http-message/http-request.js?v=1637255330';
+
+        (function() {
+          let responseElement = document.getElementById('bearer');
+
+          let httpClient = (new HttpClient()).setAuthentication(
+            new HttpBearerAuthentication('token123')
+          );
+
+          let httpRequest = new HttpRequest('./resources/bearer.json');
+
+          httpClient.send(httpRequest).then((httpResponse) => {
+              let string = '// Sent HTTP request\n';
+              string += httpRequest.toString(true);
+
+              string += '\n\n// Received HTTP response\n';
+              string += httpResponse.toString(true);
+
+              responseElement.innerText = string;
+          });
+        })();
+      </script>
+    </ropi-demo>
+
+  </body>
+</html>

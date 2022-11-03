@@ -1,0 +1,41 @@
+{
+    "name": "moorl/moorl-form-builder",
+    "description": "Form Builder for Shopware 6",
+    "version": "1.4.46",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "moori"
+        }
+    ],
+    "require": {
+        "shopware/core": "6.4.*",
+        "moorl/foundation": "1.4.*"
+    },
+    "type": "shopware-platform-plugin",
+    "autoload": {
+        "psr-4": {
+            "MoorlFormBuilder\\": "src/"
+        }
+    },
+    "extra": {
+        "shopware-plugin-class": "MoorlFormBuilder\\MoorlFormBuilder",
+        "copyright": "(c) by moori",
+        "label": {
+            "de-DE": "Formular Baukasten für Shopware 6",
+            "en-GB": "Form Builder for Shopware 6"
+        },
+        "description": {
+            "de-DE": "Formular Baukasten für Shopware 6",
+            "en-GB": "Form Builder for Shopware 6"
+        },
+        "manufacturerLink": {
+            "de-DE": "https://docs.moori.net/",
+            "en-GB": "https://docs.moori.net/"
+        },
+        "supportLink": {
+            "de-DE": "https://docs.moori.net/",
+            "en-GB": "https://docs.moori.net/"
+        }
+    }
+}

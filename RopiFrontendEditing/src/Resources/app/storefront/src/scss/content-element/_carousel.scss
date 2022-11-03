@@ -1,0 +1,13 @@
+.ropi-frontend-editing-content-element-carousel__content-area {
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+.ropi-content-editor-dragging .base-slider-controls,
+.ropi-content-editor-dragging .tns-nav {
+  pointer-events: none;
+}
+
+.ropi-frontend-editing-content-element-carousel__content-area {
+  min-height: 100px !important;
+}

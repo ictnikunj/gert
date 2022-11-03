@@ -1,0 +1,7 @@
+.footer-plus-icon, .footer-minus-icon{
+  .icon{
+    &:before{
+      content: "";
+    }
+  }
+}

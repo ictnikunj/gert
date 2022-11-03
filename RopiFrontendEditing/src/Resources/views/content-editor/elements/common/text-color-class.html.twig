@@ -1,0 +1,9 @@
+{% block text_color_class %}
+
+    {% if textColor and textColor != 'default' %}
+        text-{{ textColor }}
+    {% else %}
+        text-inherit
+    {% endif %}
+
+{% endblock %}

@@ -1,0 +1,82 @@
+<input type="hidden" name="_form_id" value="{{ form.id }}">
+{# Reload after firing form #}
+{% if reloadPage %}
+    <input type="hidden" name="_reload" value="1">
+{% endif %}
+
+{# Stylesheet #}
+{% if form.useSassCompiler and form.stylesheet %}
+    <style type="text/css">{{ form.getStylesheet() }}</style>
+{% elseif form.stylesheet %}
+    <style type="text/css">{% include(template_from_string(form.getStylesheet())) %}</style>
+{% endif %}
+
+<div id="form-{{ form.id }}">
+    {% if form.bootstrapGrid %}
+        <div class="{{ form.bootstrapRow }}">
+            {% sw_include "@MoorlFormBuilder/plugin/moorl-form-builder/component/form-content.html.twig" %}
+        </div>
+    {% else %}
+        {% sw_include "@MoorlFormBuilder/plugin/moorl-form-builder/component/form-content.html.twig" %}
+    {% endif %}
+
+    {% if form.insertNewsletter %}
+        <div class="form-group">
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox"
+                       class="custom-control-input"
+                       name="_insert_newsletter"
+                       value="1"
+                       id="insert_newsletter-{{ form.id }}">
+                <label class="custom-control-label" for="insert_newsletter-{{ form.id }}">
+                    {{ 'moorl-form-builder.general.insertNewsletter'|trans|raw }}
+                </label>
+            </div>
+        </div>
+    {% endif %}
+
+    {% if form.sendCopyType != 'disabled' and form.sendCopyType != 'always' %}
+        <div class="form-group">
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox"
+                       class="custom-control-input"
+                       name="_send_copy"
+                       value="1"
+                       id="send_copy-{{ form.id }}"
+                       {% if form.sendCopyType == 'optionalChecked' %}checked{% endif %}>
+                <label class="custom-control-label" for="send_copy-{{ form.id }}">
+                    {{ 'moorl-form-builder.general.sendCopy'|trans }}
+                </label>
+            </div>
+        </div>
+    {% endif %}
+
+    {% if form.privacy %}
+        <div class="form-group">
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox"
+                       class="custom-control-input"
+                       name="_accept_privacy"
+                       value="1"
+                       id="accept_privacy-{{ form.id }}"
+                       required>
+                <label class="custom-control-label" for="accept_privacy-{{ form.id }}">
+                    {% block form_privacy_label %}
+                        {{ "general.privacyNotice"|trans({
+                            '%url%': path('frontend.cms.page', { id: config('core.basicInformation.privacyPage') }),
+                            '%privacyUrl%': path('frontend.cms.page', { id: config('core.basicInformation.privacyPage') }),
+                            '%tosUrl%': path('frontend.cms.page', { id: config('core.basicInformation.tosPage')} )
+                        })|raw }} *
+                    {% endblock %}
+                </label>
+            </div>
+        </div>
+    {% endif %}
+
+    {% if form.useCaptcha %}
+        {% set formId = form.id %}
+        {% sw_include '@Storefront/storefront/component/captcha/base.html.twig' %}
+    {% endif %}
+</div>
+
+<div class="moorl-form-builder-feedback"></div>

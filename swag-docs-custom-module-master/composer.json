@@ -1,0 +1,32 @@
+{
+    "name": "swag/custom-module",
+    "description": "Example plugin which creates a new custom module for the Administration",
+    "version": "v1.0.0",
+    "type": "shopware-platform-plugin",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "shopware AG"
+        }
+    ],
+    "require": {
+        "shopware/core": "*",
+        "shopware/administration": "*"
+    },
+    "extra": {
+        "shopware-plugin-class": "Swag\\CustomModule\\CustomModule",
+        "label": {
+            "de-DE": "Label für das Plugin CustomModule",
+            "en-GB": "Label for the plugin CustomModule"
+        },
+        "description": {
+            "de-DE": "Beschreibung für das Plugin CustomModule",
+            "en-GB": "Description for the plugin CustomModule"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Swag\\CustomModule\\": "src/"
+        }
+    }
+}

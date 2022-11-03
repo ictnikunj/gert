@@ -1,0 +1,108 @@
+{% block acris_product_download_tab_list %}
+<sw-page class="acris-product-download-tab-list">
+    {% block acris_product_download_tab_list_search_bar %}
+        <template slot="search-bar">
+            <sw-search-bar :initialSearchType="$tc('acris-product-download-tab.general.initialSearchType')"
+                           :placeholder="$tc('acris-product-download-tab.general.placeholderSearchBar')"
+                           :initialSearch="term"
+                           @search="onSearch">
+            </sw-search-bar>
+        </template>
+    {% endblock %}
+
+    {% block acris_product_download_tab_list_smart_bar_header %}
+        <template slot="smart-bar-header">
+            {% block acris_product_download_tab_list_smart_bar_header_title %}
+                <h2>
+                    {% block acris_product_download_tab_list_smart_bar_header_title_text %}
+                        {{ $tc('acris-product-download-tab.list.textHeadline') }}
+                        {% endblock %}
+
+                        {% block acris_product_download_tab_list_smart_bar_header_amount %}
+                        <span v-if="!isLoading" class="sw-page__smart-bar-amount">
+                        ({{ total }})
+                        </span>
+                    {% endblock %}
+                </h2>
+            {% endblock %}
+        </template>
+    {% endblock %}
+
+    {% block acris_product_download_tab_list_smart_bar_language %}
+        <template #language-switch>
+            <sw-language-switch @on-change="onChangeLanguage"></sw-language-switch>
+        </template>
+    {% endblock %}
+
+    {% block acris_product_download_tab_list_smart_bar_actions %}
+    <template slot="smart-bar-actions">
+        {% block acris_product_download_tab_list_smart_bar_actions_add %}
+        <sw-button variant="primary" :routerLink="{ name: 'acris.product.download.tab.create' }">
+            {{ $tc('acris-product-download-tab.list.buttonAdd') }}
+        </sw-button>
+        {% endblock %}
+    </template>
+    {% endblock %}
+
+    {% block acris_product_download_tab_list_cardview %}
+    <template slot="content">
+        <div class="acris-product-download-tab-list__content">
+            {% block acris_product_download_tab_list_content %}
+            <sw-entity-listing class="acris-product-download-tab-list-grid"
+                               v-if="items && total > 0"
+                               :items="items"
+                               :repository="entityRepository"
+                               detailRoute="acris.product.download.tab.detail"
+                               :showSeleciton="true"
+                               :isLoading="isLoading"
+                               :columns="columns">
+
+                {% block acris_product_download_tab_list_grid_columns_actions %}
+                    <template #more-actions="{ item }">
+                        {% block acris_product_download_tab_list_grid_columns_actions_duplicate %}
+                            <sw-context-menu-item
+                                @click="onDuplicate(item)">
+                                {{ $tc('acris-product-download-tab.list.contextMenuDuplicate') }}
+                            </sw-context-menu-item>
+                        {% endblock %}
+                    </template>
+                {% endblock %}
+
+                <template #pagination>
+                    {% block acris_product_download_tab_list_grid_pagination %}
+                    <sw-pagination :page="page"
+                                   :limit="limit"
+                                   :total="total"
+                                   :total-visible="7"
+                                   @page-change="onPageChange">
+                    </sw-pagination>
+                    {% endblock %}
+                </template>
+
+            </sw-entity-listing>
+            {% endblock %}
+
+            {% block acris_product_download_tab_list_empty_state %}
+            <sw-empty-state v-if="!isLoading && total == 0" :title="$tc('acris-product-download-tab.list.contentEmpty')"></sw-empty-state>
+            {% endblock %}
+
+        </div>
+    </template>
+    {% endblock %}
+
+    {% block acris_product_download_tab_list_sidebar %}
+    <template #sidebar>
+        <sw-sidebar class="acris-product-download-tab-list__sidebar">
+            {% block acris_product_download_tab_list_sidebar_item %}
+            <sw-sidebar-item
+                icon="default-arrow-360-left"
+                :title="$tc('acris-product-download-tab.list.titleSidebarItemRefresh')"
+                @click="onRefresh">
+            </sw-sidebar-item>
+            {% endblock %}
+        </sw-sidebar>
+    </template>
+    {% endblock %}
+
+</sw-page>
+{% endblock %}

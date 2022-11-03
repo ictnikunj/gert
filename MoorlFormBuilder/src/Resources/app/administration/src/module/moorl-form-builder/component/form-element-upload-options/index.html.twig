@@ -1,0 +1,22 @@
+<div class="moorl-form-element-upload-options">
+    <moorl-collapse :label="$tc('moorl-form-builder.general.uploadOptions')"
+                    key="uploadOptions">
+        <template #content>
+            <sw-select-field :label="$tc('moorl-form-builder.properties.mediaType')"
+                             :helpText="$tc('moorl-form-builder.tooltips.mediaType')"
+                             v-model="formElement.mediaType">
+                <option value="images_documents">{{ $tc('moorl-form-builder.elementOptions.mediaType.imagesDocuments') }}</option>
+                <option value="images">{{ $tc('moorl-form-builder.elementOptions.mediaType.images') }}</option>
+                <option value="documents">{{ $tc('moorl-form-builder.elementOptions.mediaType.documents') }}</option>
+                <option value="all">{{ $tc('moorl-form-builder.elementOptions.mediaType.all') }}</option>
+                <option value="custom">{{ $tc('moorl-form-builder.elementOptions.mediaType.custom') }}</option>
+            </sw-select-field>
+
+            <sw-field v-if="formElement.mediaType === 'custom'"
+                      :placeholder="$tc('moorl-form-builder.properties.mediaFileExtensions')"
+                      :label="$tc('moorl-form-builder.properties.mediaFileExtensions')"
+                      :helpText="$tc('moorl-form-builder.tooltips.mediaFileExtensions')"
+                      v-model="formElement.mediaFileExtensions"></sw-field>
+        </template>
+    </moorl-collapse>
+</div>

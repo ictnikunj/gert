@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+      <script type="module">
+        import '../../demo-element/demo-element.js?v=1637255330';
+        import '../../styles/styles.js?v=1637255330';
+        import '../../touchable-element/touchable-element.js?v=1637255330';
+        import '../../material-icon-element/material-icon-sprite.js?v=1637255330';
+        import '../../material-icon-element/material-icon-element.js?v=1637255330';
+        import '../menu-element.js?v=1637255330';
+      </script>
+
+      <title>menu-element demo</title>
+  </head>
+  <body>
+    <ropi-demo>
+        <a id="a" style="position: relative;display:block;">
+          Touch to open
+          <ropi-menu id="menu">
+            <ropi-touchable style="padding: 0.75rem 1rem">Entry 1</ropi-touchable>
+            <ropi-touchable style="padding: 0.75rem 1rem">Entry 2</ropi-touchable>
+          </ropi-menu>
+        </a>
+        <script>
+          document.getElementById('a').addEventListener('click', () => {
+            document.getElementById('menu').toggleAttribute('open');
+          });
+        </script>
+    </ropi-demo>
+    <ropi-demo name="Action Menu">
+        <div style="position: relative">
+          <ropi-touchable id="more" style="float:right;height:3rem;width:3rem;text-align:center;line-height:3rem">
+            <ropi-material-icon>more_vert</ropi-material-icon>
+          </ropi-touchable>
+          <div style="clear:both"></div>
+          <ropi-menu type="action-right" id="action-menu">
+            <ropi-touchable style="padding: 0.75rem 1rem">Entry 1</ropi-touchable>
+            <ropi-touchable style="padding: 0.75rem 1rem">Entry 2</ropi-touchable>
+          </ropi-menu>
+        </div>
+        <script>
+          document.getElementById('more').addEventListener('click', () => {
+            document.getElementById('action-menu').toggleAttribute('open');
+          });
+        </script>
+    </ropi-demo>
+  </body>
+</html>

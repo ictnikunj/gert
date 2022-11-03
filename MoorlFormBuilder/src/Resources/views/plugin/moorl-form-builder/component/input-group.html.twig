@@ -1,0 +1,13 @@
+{% if formElementPrepend or formElementAppend %}
+    <div class="input-group">
+        {% if formElementPrepend %}
+            <div class="input-group-prepend">
+                <span class="input-group-text">{{ formElementPrepend|raw }}</span>
+            </div>
+        {% endif %}{{ formElementInput }}{% if formElementAppend %}
+            <div class="input-group-append">
+                <span class="input-group-text">{{ formElementAppend|raw }}</span>
+            </div>
+        {% endif %}
+    </div>
+{% else %}{{ formElementInput }}{% endif %}

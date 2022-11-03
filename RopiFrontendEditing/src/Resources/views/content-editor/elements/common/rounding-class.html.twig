@@ -1,0 +1,13 @@
+{% block rounding_class %}
+
+    {% if rounding %}
+        {% if rounding == 'none' %}
+            rounded-0
+        {% elseif rounding == 'all' %}
+            rounded
+        {% else %}
+            rounded-{{ rounding }}
+        {% endif %}
+    {% endif %}
+
+{% endblock %}

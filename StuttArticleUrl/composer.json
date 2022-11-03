@@ -1,0 +1,33 @@
+{
+    "name": "stutt/article_url",
+    "description": "Plugin providing short URL access to articles via article number and virtual subpath.",
+    "version": "v1.1.0",
+    "type": "shopware-platform-plugin",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "STUTTGART MEDIA GmbH"
+        }
+    ],
+    "require": {
+        "shopware/core": "*",
+        "shopware/storefront": "*",
+        "shopware/administration": "*"
+    },
+    "extra": {
+        "shopware-plugin-class": "Stutt\\ArticleUrl\\StuttArticleUrl",
+        "label": {
+            "de-DE": "Artikelnummer-URL",
+            "en-GB": "Article number URL"
+        },
+        "description": {
+            "de-DE": "Plugin für Kurz-URLs zum Aufrufen von Artikeln via Artikelnummer",
+            "en-GB": "Plugin providing short URL access to articles via article number and virtual subpath."
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Stutt\\ArticleUrl\\": "src/"
+        }
+    }
+}

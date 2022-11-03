@@ -1,0 +1,36 @@
+{% if form.bootstrapGrid %}
+<div class="{{ formElement.behaviourClass }}">
+{% endif %}
+
+<div aria-roledescription="{{ formElement.type }}"
+     data-form-conditions='{{ formConditions }}'
+     class="{{ formElement.cssClass }}"
+     id="{{ formElement.cssId }}"
+     data-form-repeater="{{ formElement.id }}"
+     data-number-min="{{ formElement.numberMin }}"
+     data-number-max="{{ formElement.numberMax }}">
+    {% include(template_from_string(formElement.html)) %}
+
+    <div class="form-group">
+        <div class="{{ form.bootstrapRow }} align-items-center">
+            <div class="col-auto">
+                <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+                    <button type="button" class="btn btn-primary moorl-form-builder-add">
+                        {{ "moorl-form-builder.general.repeaterAdd"|trans|raw }}
+                    </button>
+
+                    <button type="button" class="btn btn-primary moorl-form-builder-remove">
+                        {{ "moorl-form-builder.general.repeaterRemove"|trans|raw }}
+                    </button>
+                </div>
+            </div>
+            <div class="col">
+                {% sw_include "@MoorlFormBuilder/plugin/moorl-form-builder/component/label.html.twig" ignore missing %}
+            </div>
+        </div>
+    </div>
+
+    <div class="d-none list-group form-group" id="{{ formElement.id }}">
+        {% if form.bootstrapGrid %}
+            <div class="{{ form.bootstrapRow }}">
+        {% endif %}

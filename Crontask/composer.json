@@ -1,0 +1,18 @@
+{
+  "name": "swag/cron-job",
+  "description": "CronJob plugin",
+  "type": "shopware-platform-plugin",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "Crontask\\": "src/"
+    }
+  },
+  "extra": {
+    "shopware-plugin-class": "Crontask\\Crontask",
+    "label": {
+      "de-DE": "CronJob",
+      "en-GB": "CronJob"
+    }
+  }
+}

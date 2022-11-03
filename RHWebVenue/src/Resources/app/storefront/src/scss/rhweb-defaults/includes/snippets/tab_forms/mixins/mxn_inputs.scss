@@ -1,0 +1,17 @@
+@mixin mxn_input {
+    input{
+        background-color: $rhweb-forms-textfield-background-color;
+        border-color:$rhweb-forms-textfield-border-color;
+        color:$rhweb-forms-textfield-font-color;
+        border-radius: $rhweb-form-border-radius;
+
+        @include mxn_placeholder($rhweb-forms-textfield-placeholder-color);
+
+        &:focus{
+            background-color: $rhweb-forms-textfield-background-color-focus;
+            border-color:$rhweb-forms-textfield-border-color-focus;
+        }
+    }
+}
+
+

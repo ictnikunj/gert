@@ -1,0 +1,92 @@
+{
+    "sw-product": {
+        "detailBase": {
+            "acrisProductDownloads": {
+                "cardTitle": "Downloads",
+
+                "labelContextMenuAddMediaToProduct": "Add to product images",
+                "labelContextMenuAddDocumentToProduct": "Add to product downloads"
+            },
+            "acrisProductLinks": {
+                "cardTitle": "Links",
+                "modalTitleLink": "Product link",
+                "buttonCancel": "Cancel",
+                "buttonApply": "Apply",
+                "buttonAddLink": "Add link",
+                "contextMenuEdit": "Edit",
+                "contextMenuDelete": "Delete",
+                "modalTitleDeleteLink": "Delete",
+                "textDeleteLinkConfirm": "Do you want to delete the product link?",
+                "buttonDelete": "Delete",
+                "columnUrl": "Url",
+                "columnLinkTarget": "Open in new tab",
+                "columnTitle": "Title",
+                "columnDescription": "Description"
+            }
+        }
+    },
+
+    "global": {
+        "entities": {
+            "acris_product_download": "Product Download"
+        },
+        "acris-document-upload": {
+            "caption": "Drag files here to upload",
+            "buttonUrlUpload": "Upload by URL",
+            "buttonFileUpload": "Upload document",
+            "buttonOpenMedia": "Open document",
+
+            "buttonSwitchToFileUpload": "Upload file from your computer",
+            "buttonSwitchToUrlUpload": "Upload file from url"
+        },
+        "acris-product-download":  {
+            "context":  {
+                "buttonEdit": "Edit"
+            }
+        }
+    },
+
+    "acris-edit-download-modal": {
+        "title": "Edit product download item",
+        "field": {
+            "title": "Title",
+            "titlePlaceholder": "Enter download title...",
+            "description": "Description",
+            "descriptionPlaceholder": "Enter download description...",
+            "position": "Position",
+            "positionHelpText": "The position determines the order in which the product downloads are displayed in the shop. It can be added by drag and drop.",
+            "language": "Download should be available in the following languages",
+            "languagePlaceholder": "Select languages...",
+            "languageHelpText": "If no language is selected, the product download is automatically available in all languages.",
+            "previewImage": "Preview image",
+            "previewImageEnabled": "Enable preview image",
+            "downloadTab": "Download tab",
+            "downloadTabHelpText": "If the download tab is selected, then the download will be displayed in the selected tab if the display in tab option is activated in the plugin configuration. If there are no assigned tab for download, then it will be displayed in default tab.",
+            "downloadTabInfo": "There are no configured download tabs. Please create a download tab configuration in order to assigned it.",
+            "downloadTabInfoRouter": "Click here to create a new download tab",
+            "downloadTabPlaceholder": "Select download tab..."
+        }
+    },
+
+    "acris-product-links-modal-form": {
+        "fieldLabelUrl" : "Url",
+        "fieldPlaceholderUrl" : "Enter url...",
+        "fieldHelpTextUrl" : "The url of the document will be displayed at Storefront, clicking on it will open that document if the entered Url is valid.",
+
+        "fieldTitleLabelLinkTarget" : "Open in new tab",
+        "fieldTitleHelpTextLinkTarget" : "When it's active then it will open the document in new tab.",
+
+        "fieldTitleLabelTitle" : "Title",
+        "fieldTitlePlaceholderTitle" : "Enter link title...",
+
+        "fieldTitleLabelDescription" : "Description",
+        "fieldTitlePlaceholderDescription" : "Enter link description...",
+
+        "fieldTitleLabelPosition" : "Position",
+        "fieldTitleHelpTextPosition" : "The position determines the order in which the product links are displayed in the shop.",
+
+        "fieldTitleLabelLanguage" : "Link should be available in the following languages",
+        "fieldTitlePlaceholderLanguage" : "Select languages...",
+        "fieldTitleHelpTextLanguage" : "If no language is selected, the product link is automatically available in all languages."
+    }
+}

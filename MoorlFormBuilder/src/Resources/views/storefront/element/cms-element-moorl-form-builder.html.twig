@@ -1,0 +1,5 @@
+<div class="cms-element-{{ element.type }}">
+    {% sw_include '@MoorlFormBuilder/plugin/moorl-form-builder/component/form.html.twig' with {
+        form: element.data
+    } %}
+</div>

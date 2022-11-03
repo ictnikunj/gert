@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <script type="module">
+        import '../../demo-element/demo-element.js?v=1637255330';
+        import '../../styles/styles.js?v=1637255330';
+    </script>
+
+    <title>post-download demo</title>
+</head>
+<body>
+<ropi-demo>
+    <a id="link">Click me</a>
+    <script type="module">
+        import Download from '../download.js?v=1637255330';
+
+        let link = document.querySelector('#link');
+
+        link.onclick = () => {
+          let download = new Download('myFileContent', 'text/plain');
+          download.start('download.txt');
+        };
+    </script>
+</ropi-demo>
+</body>
+</html>

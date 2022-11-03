@@ -1,0 +1,60 @@
+{% block rhweb_layout_footer_newsletter %}
+    <div class="rhweb-footer-newsletter-container {{ position }}">
+        <div class="container">
+            {% block rhweb_layout_footer_newsletter_infotext %}
+                <div class="infotext">
+                    <div class="h3 newsletter-headline">{{ "footer.newsletterHeadline"|trans|sw_sanitize }}</div>
+                    <p>{{ "footer.newsletter"|trans|sw_sanitize }}</p>
+                </div>
+            {% endblock %}
+
+            <div class="cms-block cms-block-form">
+                <div class="cms-element-form">
+                    <form action="{{ path('frontend.form.newsletter.register.handle') }}" method="post" data-form-csrf-handler="true" data-form-validation="true">
+                        <div class="rhweb-newsletter-form-container">
+                            {% block rhweb_layout_footer_newsletter_email %}
+                                {% sw_include '@Storefront/storefront/element/cms-element-form/form-components/cms-element-form-input.html.twig'
+                                    with {
+                                    fieldName: 'email',
+                                    type: 'email',
+                                    required: true,
+                                    label: 'newsletter.labelMail',
+                                    placeholder: 'newsletter.placeholderMail'
+                                }
+                                %}
+                            {% endblock %}
+                            {% block rhweb_layout_footer_newsletter_submit %}
+                                <button type="submit" aria-label="Submit" class="btn">
+                                    {% sw_icon 'arrow-right' %}
+                                </button>
+                            {% endblock %}
+                        </div>
+
+                        <div class="rhweb-captcha-container">
+                            {% block cms_form_newsletter_captcha %}
+                                {% sw_include '@Storefront/storefront/component/captcha/base.html.twig' %}
+                            {% endblock %}
+                        </div>
+
+                        {% block rhweb_layout_footer_newsletter_privacy %}
+                            <div class="rhweb-newsletter-privacy">
+                                {% sw_include '@Storefront/storefront/element/cms-element-form/form-components/cms-element-form-privacy.html.twig' %}
+                            </div>
+                        {% endblock %}
+                        {% block cms_form_newsletter_hidden_fields %}
+                            <div class="form-hidden-fields">
+                                {% block cms_form_newsletter_csrf %}
+                                    {{ sw_csrf('frontend.form.newsletter.register.handle') }}
+                                {% endblock %}
+
+                                <input type="hidden" name="option" value="{{ constant('Shopware\\Storefront\\Controller\\FormController::SUBSCRIBE') }}">
+
+                                <input type="submit" class="submit--hidden d-none" />
+                            </div>
+                        {% endblock %}
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

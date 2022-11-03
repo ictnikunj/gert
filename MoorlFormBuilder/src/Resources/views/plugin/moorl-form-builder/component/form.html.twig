@@ -1,0 +1,31 @@
+{# TODO: We have an issue with the generated URL from path() funktion. https://forum.shopware.com/discussion/comment/280146 #}
+<form data-moorl-form-builder="{{ form.id }}"
+      data-moorl-form-builder-options='{{ {useAjax:true}|json_encode }}'
+      data-form-xhr="true"
+      action="{{ seoUrl('moorl-form-builder.fire', {'moorlFormId': form.id}) }}"
+      method="post"
+      enctype="multipart/form-data"
+      data-form-csrf-handler="true"
+      data-form-validation="true">
+    {{ sw_csrf('moorl-form-builder.fire') }}
+
+    {% if form.type == 'cms' and activeRoute == 'frontend.landing.page' %}
+        <input type="hidden" name="_redirect" value="{{ seoUrl(activeRoute, { landingPageId: app.request.attributes.get('landingPageId') }) }}">
+    {% elseif form.type == 'cms' and activeRoute == 'frontend.navigation.page' %}
+        <input type="hidden" name="_redirect" value="{{ seoUrl(activeRoute, { navigationId: app.request.attributes.get('navigationId') }) }}">
+    {% endif %}
+    <input type="hidden" name="_redirect_to" value="{{ form.redirectTo }}">
+
+    {% sw_include "@MoorlFormBuilder/plugin/moorl-form-builder/component/form-wrapper.html.twig" %}
+
+    <p>{{ "general.requiredFields"|trans|sw_sanitize }}</p>
+
+    <div class="form-group">
+        <button class="btn btn-primary" {% if form.submitDisabled %}disabled{% endif %} type="submit">
+            <i class="fas fa-circle-notch fa-spin"></i>
+            {{ form.submitText[app.request.locale] ? form.submitText[app.request.locale] : 'general.formSubmit'|trans }}
+        </button>
+    </div>
+
+    <input type="submit" class="submit--hidden d-none" />
+</form>

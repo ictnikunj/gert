@@ -1,0 +1,176 @@
+{% block element %}
+
+{% set numMaxSlides = 10 %}
+
+{% if data.configuration.arrowNavigation and data.configuration.arrowNavigation != 'none' %}
+    {% set arrowNavigation = data.configuration.arrowNavigation %}
+{% else %}
+    {% set arrowNavigation = '' %}
+{% endif %}
+
+{% if data.configuration.dotNavigation and data.configuration.dotNavigation != 'none' %}
+    {% set dotNavigation = data.configuration.dotNavigation %}
+{% else %}
+    {% set dotNavigation = '' %}
+{% endif %}
+
+{% if data.configuration.rotationInterval > 0 %}
+    {% set rotationInterval = max(data.configuration.rotationInterval, 1) * 1000 %}
+{% else %}
+    {% set rotationInterval = 1000 %}
+{% endif %}
+
+{% if data.configuration.numSlides > 2 %}
+    {% set numSlides = min(data.configuration.numSlides, 10) %}
+{% else %}
+    {% set numSlides = 2 %}
+{% endif %}
+
+<div {% sw_include '@RopiFrontendEditing/content-editor/elements/common/editor-attributes.html.twig' %}
+     class="{% block element_class %}
+                ropi-frontend-editing-content-element-carousel
+                {% sw_include '@RopiFrontendEditing/content-editor/elements/common/general-classes.html.twig' %}
+            {% endblock %}"
+     style="{% block element_style %}{% endblock %}">
+    {% block element_inner %}
+        <div class="{% block carousel_class %}
+                        base-slider ropi-frontend-editing-carousel
+                        {% if arrowNavigation == 'outside' %}ropi-frontend-editing-carousel--has-nav-outside{% endif %}
+                        {% if dotNavigation == 'outside' %}ropi-frontend-editing-carousel--has-dots-outside{% endif %}
+                    {% endblock %}"
+             data-ropi-carousel
+             {% if data.configuration.autoRotate %}data-ropi-carousel-rotation-interval="{{ rotationInterval }}"{% endif %}
+             data-ropi-carousel-num-slides="{{ numSlides }}">
+
+            <div class="ropi-frontend-editing-carousel-elements-container">
+                <ul class="ropi-frontend-editing-carousel-elements"
+                    data-ropi-carousel-slides>
+                    {% for i in range(1, numMaxSlides) %}
+                        {% if ropiFrontendEditingEditorOpened or numSlides >= i %}
+                            <li class="ropi-frontend-editing-carousel-element ropi-frontend-editing-carousel-element-1"
+                                style="{% if numSlides < i %}display: none;{% endif %}">
+                                <div class="ropi-frontend-editing-content-element-carousel__content-area-wrap
+                                            ropi-frontend-editing-flex">
+                                    <div class="ropi-frontend-editing-content-element-carousel__content-area
+                                                ropi-frontend-editing-flex
+                                                ropi-frontend-editing-flex--align-{{ data.configuration.verticalAlign ? data.configuration.verticalAlign : 'center' }}"
+                                         data-ropi-content-area="slide{{ i }}"
+                                         data-ropi-content-area-disallowed="RopiFrontendEditing/carousel"
+                                         {% if numSlides < i %}disabled{% endif %}>
+                                        {{ ropi_frontend_editing_render_content_area('slide' ~ i, data.children) }}
+                                    </div>
+                                </div>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+
+            {% if arrowNavigation %}
+                {% block arrow_navigation %}
+                    <div class="base-slider-controls-container">
+                        <div class="base-slider-controls" data-base-slider-controls="true">
+                            {% block arrow_navigation_left %}
+                                <button data-ropi-carousel-left class="base-slider-controls-prev image-slider-controls-prev is-nav-prev-{{ arrowNavigation }}">
+                                    {% block arrow_navigation_left_icon %}
+                                        {% sw_icon 'arrow-head-left' %}
+                                    {% endblock %}
+                                </button>
+                            {% endblock %}
+                            {% block arrow_navigation_right %}
+                                <button data-ropi-carousel-right class="base-slider-controls-next image-slider-controls-next is-nav-next-{{ arrowNavigation }}">
+                                    {% block arrow_navigation_right_icon %}
+                                        {% sw_icon 'arrow-head-right' %}
+                                    {% endblock %}
+                                </button>
+                            {% endblock %}
+                        </div>
+                    </div>
+                {% endblock %}
+            {% endif %}
+            {% if dotNavigation %}
+                {% block dot_navigation %}
+                    <div class="tns-nav" data-ropi-carousel-dots data-ropi-carousel-dots-class-active="tns-nav-active">
+                        {% for i in range(1, numSlides) %}
+                            {% block dot_navigation_button %}
+                                <button class="{{ i == 1 ? 'tns-nav-active' : '' }}" tabindex="-1"></button>
+                            {% endblock %}
+                        {% endfor %}
+                    </div>
+                {% endblock %}
+            {% endif %}
+        </div>
+    {% endblock %}
+
+    {% block script %}
+        {% if ropiFrontendEditingEditorOpened %}
+        <script>
+            (() => {
+                const carousel = document.querySelector('#ropi-frontend-editing-{{ data.meta.uuid }} [data-ropi-carousel]');
+                carousel.addEventListener('ropicarouselinitialized', () => {
+                    const ropiCarousel = carousel.ropiCarousel;
+                    const slides = ropiCarousel.getSlidesElement();
+
+                    const areas = [];
+                    for (let i = 0; i < slides.children.length; i++) {
+                        let slide = slides.children[i];
+                        areas.push(slide.querySelector('[data-ropi-content-area]'));
+                    }
+
+                    slides.addEventListener('areachange', (event) => {
+                        const areaIndex = areas.indexOf(event.detail.area);
+
+                        if (areaIndex > -1) {
+                            if (ropiCarousel.getCurrent() !== areaIndex) {
+                                ropiCarousel.slideTo(areaIndex);
+                                event.preventDefault();
+                            }
+                        } else {
+                            for (let i = 0; i < carousel.getAttribute('data-ropi-carousel-num-slides'); i++) {
+                                const area = areas[i];
+                                if (area && area.contains(event.detail.area)) {
+                                    if (ropiCarousel.getCurrent() === i) {
+                                        break;
+                                    }
+
+                                    ropiCarousel.slideTo(i);
+                                    event.preventDefault();
+                                }
+                            }
+                        }
+                    });
+
+                    const handleEditModeChanged = () => {
+                        const isEditMode = document.body.classList.contains('ropi-content-editor-editmode');
+                        ropiCarousel.setIntervalPaused(isEditMode);
+                    };
+
+                    document.addEventListener('ropiContentEditorEditModeChanged', handleEditModeChanged);
+                    document.addEventListener('ropiContentEditorDocumentInitialized', handleEditModeChanged);
+
+                    if (ropiCarousel.getLeftElement() && ropiCarousel.getRightElement()) {
+                        ropiCarousel.getLeftElement().addEventListener('click', (event) => {
+                            event.preventRopiContentEditorSettingsPanel = true;
+                        }, true);
+
+                        ropiCarousel.getRightElement().addEventListener('click', (event) => {
+                            event.preventRopiContentEditorSettingsPanel = true;
+                        }, true);
+                    }
+
+                    if (ropiCarousel.getDotsElement()) {
+                        ropiCarousel.getDotsElement().addEventListener('click', (event) => {
+                            event.preventRopiContentEditorSettingsPanel = true;
+                        }, true);
+                    }
+
+                    ropiCarousel.setSwipeable(false);
+
+                    handleEditModeChanged();
+                });
+            })();
+        </script>
+        {% endif %}
+    {% endblock %}
+</div>
+{% endblock %}

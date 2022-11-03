@@ -1,0 +1,105 @@
+li.items-grid.is--drag-element {
+    padding: 10px 20px;
+    background-color: rgba(255,255,255,0.6);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-gap: 5px;
+    .items-options {
+        text-align: right;
+    }
+}
+
+.moorl-form-builder-history-detail {
+    .sw-page__main-content-inner {
+        display: grid;
+        height: 100%;
+        width: 100%;
+        grid-template-columns: 1fr 360px 1fr;
+        grid-gap: 0;
+
+        .sw-field--switch {
+            margin-top: 0;
+        }
+
+        .moorl-form-builder-history-detail-general {
+            background-color: #f9fafb;
+            padding: 20px;
+        }
+
+        .moorl-form-builder-history-detail-item-settings {
+            background-color: #f9fafb;
+            padding: 20px;
+
+            ul.form-element-options {
+                width: 100%;
+                list-style: none;
+                padding: 0;
+                margin-bottom: 22px;
+                li {
+                    .items-grid {
+                        padding: 0;
+                        display: grid;
+                        grid-template-columns: 1fr 1fr 1fr 48px;
+                        grid-gap: 10px;
+                        .items-options {
+                            text-align: right;
+                            cursor: pointer;
+                        }
+                        .sw-field--default {
+                            margin-bottom: 10px;
+                        }
+                    }
+                    .email-receiver {
+                        border-bottom: 1px solid #189eff;
+                        margin-bottom: 10px;
+
+                        .sw-field--default {
+                            margin-bottom: 10px;
+                        }
+                    }
+                }
+            }
+        }
+
+        .moorl-form-builder-history-detail-items {
+            background-color: #ffcab1;
+
+            ul {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+                li {
+                    padding: 10px 20px;
+                    border-bottom: 1px solid #f9fafb;
+                    transition: background 0.2s;
+
+                    &.items-grid {
+                        display: grid;
+                        grid-template-columns: 1fr auto;
+                        grid-gap: 5px;
+                        &:hover {
+                            background: #f9fafb;
+                        }
+                        &.active {
+                            background: #189eff;
+                            color: #ffffff;
+                        }
+                    }
+
+                    &.items-options {
+                        text-align: right;
+                    }
+
+                    span {
+                        cursor: pointer;
+                    }
+
+                    button {
+                        display: block;
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+}

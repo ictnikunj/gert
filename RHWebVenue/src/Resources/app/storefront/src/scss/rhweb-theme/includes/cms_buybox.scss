@@ -1,0 +1,17 @@
+.product-detail-buy{
+    .product-detail-ordernumber-container{
+        margin-bottom:0;
+    }
+
+    .rhweb-buybox-addon-container{
+        margin-bottom:1rem;
+
+        .rhweb-buybox-addon{
+            span{
+                &:first-child{
+                    font-weight: 700;
+                }
+            }
+        }
+    }
+}

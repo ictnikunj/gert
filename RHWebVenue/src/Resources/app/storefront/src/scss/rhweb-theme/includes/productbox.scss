@@ -1,0 +1,107 @@
+.product-box{
+    &.box-standard, &.box-wishlist, &.box-minimal, &.box-image{
+        border-color:$rhweb-listing-box-border;
+        padding:$rhweb-listing-box-padding;
+        background-color:$rhweb-listing-box-background;
+
+        .card-body{
+            padding:0;
+
+            .product-image-wrapper{
+                margin:0;
+                height:auto;
+
+                .product-image-link{
+                    overflow:hidden;
+                }
+
+                .product-wishlist{
+                    margin-top:0;
+                }
+            }
+
+            img{
+                transition: ease all .3s;
+                //max-height: none;
+                height:auto;
+            }
+
+            &:hover{
+                img{
+                    transform: scale(1.05);
+                    -ms-transform: scale(1.05);
+                    -webkit-transform: scale(1.05);
+                }
+            }
+
+            .product-action{
+                .rhweb-action-btn-container{
+                    display: grid;
+                    grid-template-columns: 1fr 4fr;
+                }
+            }
+
+
+            .product-info{
+                .product-variant-characteristics{
+                    min-height:unset;
+
+                    .product-variant-characteristics-text{
+                        height: auto;
+                    }
+                }
+
+                .product-name{
+                    font-size:1.2em;
+                    font-weight: bold;
+                    color:$rhweb-listing-box-headline;
+                    height:auto;
+                }
+
+                .product-price-unit{
+                    height:auto;
+                    margin:0;
+                }
+
+                .product-price-wrapper{
+                    margin:0;
+
+                    .product-cheapest-price{
+                        min-height: unset;
+                    }
+
+                    .product-price{
+
+                        &.with-list-price{
+                            color:$sw-color-danger;
+                        }
+                    }
+                }
+
+                .product-rating{
+                    margin-top:15px;
+
+                    .product-review-rating{
+                        margin:0;
+                        font-size: 1.2em;
+                    }
+                }
+            }
+        }
+    }
+
+    &.box-wishlist{
+        padding:15px;
+
+        .product-variant-characteristics, .product-wishlist-info-item{
+            display:none;
+        }
+
+        .product-price-info{
+
+            .product-price-unit, .product-cheapest-price{
+                display: none;
+            }
+        }
+    }
+}

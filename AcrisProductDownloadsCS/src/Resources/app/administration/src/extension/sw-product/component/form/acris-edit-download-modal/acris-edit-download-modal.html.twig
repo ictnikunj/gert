@@ -1,0 +1,137 @@
+{% block acris_edit_download_modal %}
+    <sw-modal class="acris-edit-download-modal"
+              v-if="!isLoading"
+              :title="$tc('acris-edit-download-modal.title')"
+              @modal-close="onCancel">
+
+        {% block acris_edit_download_modal_form %}
+            {% block acris_edit_download_modal_form_title %}
+                <sw-text-field
+                    :label="$tc('acris-edit-download-modal.field.title')"
+                    :placeholder="$tc('acris-edit-download-modal.field.titlePlaceholder')"
+                    v-model="downloadItem.title">
+                </sw-text-field>
+            {% endblock %}
+            {% block acris_edit_download_modal_form_description %}
+                <sw-textarea-field
+                    :label="$tc('acris-edit-download-modal.field.description')"
+                    :placeholder="$tc('acris-edit-download-modal.field.descriptionPlaceholder')"
+                    v-model="downloadItem.description"
+                    size="medium">
+                </sw-textarea-field>
+            {% endblock %}
+            {% block acris_edit_download_modal_form_download_tab %}
+                <sw-alert variant="info" v-if="tabsTotal === 0">
+                    {{ $tc('acris-edit-download-modal.field.downloadTabInfo') }} <br>
+                    <router-link
+                        :to="{ name: 'acris.product.download.tab.index' }"
+                        target="_blank"
+                        class="acris-edit-download-modal-download-tab-link"
+                    >
+                        {{ $tc('acris-edit-download-modal.field.downloadTabInfoRouter') }} <br>
+                    </router-link>
+                </sw-alert>
+
+                <sw-entity-single-select
+                    :label="$tc('acris-edit-download-modal.field.downloadTab')"
+                    :placeholder="$tc('acris-edit-download-modal.field.downloadTabPlaceholder')"
+                    :helpText="$tc('acris-edit-download-modal.field.downloadTabHelpText')"
+                    v-model="downloadItem.downloadTabId"
+                    labelProperty="internalId"
+                    entity="acris_download_tab"
+                    show-clearable-button
+                    :disabled="tabsTotal === 0">
+                </sw-entity-single-select>
+            {% endblock %}
+            {% block acris_edit_download_modal_form_position %}
+                <sw-number-field
+                    :label="$tc('acris-edit-download-modal.field.position')"
+                    :helpText="$tc('acris-edit-download-modal.field.positionHelpText')"
+                    numberType="int"
+                    v-model="downloadItem.position"
+                    disabled="disabled">
+                </sw-number-field>
+            {% endblock %}
+            {% block acris_edit_download_modal_form_language %}
+                <sw-entity-many-to-many-select
+                    :label="$tc('acris-edit-download-modal.field.language')"
+                    :placeholder="$tc('acris-edit-download-modal.field.languagePlaceholder')"
+                    :helpText="$tc('acris-edit-download-modal.field.languageHelpText')"
+                    :entityCollection="downloadItem.languages"
+                    @change="changeLanguageSelection">
+                </sw-entity-many-to-many-select>
+            {% endblock %}
+
+            {% block acris_edit_download_modal_thumbnail_enable %}
+                <sw-field v-model="downloadItem.previewImageEnabled"
+                          type="switch"
+                          bordered
+                          :label="$tc('acris-edit-download-modal.field.previewImageEnabled')">
+                </sw-field>
+            {% endblock %}
+            {% block acris_edit_download_modal_form_media_upload %}
+                <sw-cms-mapping-field
+                    :label="$tc('acris-edit-download-modal.field.previewImage')"
+                    v-if="downloadItem.previewImageEnabled"
+                    valueTypes="entity"
+                    entity="previewMedia"
+                    v-model="downloadItem.previewMedia"
+                    class="sw-cms-el-config-acris-banner-slider-full">
+                    <sw-media-upload-v2 variant="regular"
+                                        :uploadTag="uploadTag"
+                                        :source="previewSource"
+                                        :allowMultiSelect="false"
+                                        :defaultFolder="productDownloadsEntityName"
+                                        :caption="$tc('sw-cms.elements.general.config.caption.mediaUpload')"
+                                        @media-upload-sidebar-open="onOpenMediaModal"
+                                        @media-upload-remove-image="onImageRemove">
+                    </sw-media-upload-v2>
+                    <div
+                        class="sw-cms-el-config-acris_banner_slider__mapping-preview"
+                        slot="preview" slot-scope="{ demoValue }">
+                        <img :src="demoValue.url" v-if="demoValue.url">
+                        <sw-alert
+                            class="sw-cms-el-config-acris_banner_slider__preview-info"
+                            variant="info" v-else>
+                            {{ $tc('sw-cms.detail.label.mappingEmptyPreview') }}
+                        </sw-alert>
+                    </div>
+                </sw-cms-mapping-field>
+
+                <sw-upload-listener
+                    :uploadTag="uploadTag"
+                    autoUpload
+                    @media-upload-finish="onImageUpload">
+                </sw-upload-listener>
+            {% endblock %}
+            {% block acris_edit_download_modal_form_media_modal %}
+                <sw-media-modal-v2
+                    variant="regular"
+                    v-if="mediaModalIsOpen"
+                    :caption="$tc('sw-cms.elements.general.config.caption.mediaUpload')"
+                    :allowMultiSelect="false"
+                    @media-upload-remove-image="onImageRemove"
+                    @media-modal-selection-change="onSelectionChanges"
+                    @modal-close="onCloseModal">
+                </sw-media-modal-v2>
+            {% endblock %}
+        {% endblock %}
+
+        {% block acris_edit_download_modal_footer %}
+            <template slot="modal-footer">
+
+                {% block acris_edit_download_modal_footer_button_cancel %}
+                    <sw-button size="small" @click="onCancel">
+                        {{ $tc('global.default.cancel') }}
+                    </sw-button>
+                {% endblock %}
+
+                {% block acris_edit_download_modal_footer_button_apply %}
+                    <sw-button variant="primary" size="small" @click="onApply">
+                        {{ $tc('global.default.apply') }}
+                    </sw-button>
+                {% endblock %}
+            </template>
+        {% endblock %}
+    </sw-modal>
+{% endblock %}

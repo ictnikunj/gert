@@ -1,0 +1,20 @@
+header{
+    .rhweb-header-actions{
+        .rhweb-header-action{
+            color:$rhweb-navigation-linkcolor;
+
+            &:hover{
+                color:lighten($rhweb-navigation-active-linkcolor, 10%);
+            }
+            &.rhweb-action-cart{
+                a{
+                    color:$rhweb-navigation-linkcolor;
+
+                    &:hover{
+                        color:lighten($rhweb-navigation-active-linkcolor, 10%);
+                    }
+                }
+            }
+        }
+    }
+}

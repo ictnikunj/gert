@@ -1,0 +1,94 @@
+#fixedNavigation{
+    transition: ease top .3s;
+}
+
+.main-navigation{
+
+    .main-navigation-menu{
+        justify-content: center;
+
+        .main-navigation-link{
+            font-size: .8rem;
+            text-transform: uppercase;
+            letter-spacing: .14em;
+            padding:10px 20px;
+
+            .main-navigation-link-text{
+                border:none;
+            }
+        }
+    }
+}
+
+.navigation-flyout{
+    box-shadow: none;
+    border-bottom:5px solid $rhweb-navigation-background;
+
+    .navigation-flyout-content{
+        padding-top:20px;
+        padding-bottom:20px;
+
+        .navigation-flyout-categories{
+
+            &.is-level-1{
+                margin:0;
+
+                > .navigation-flyout-col{
+                    margin-bottom:5px;
+                }
+            }
+
+            &.is-level-2{
+                margin-left:10px;
+
+                > .navigation-flyout-col{
+                    margin:0;
+                }
+            }
+
+            .navigation-flyout-col{
+                &:before{
+                    border:none;
+                }
+
+                margin-bottom:10px;
+
+                .navigation-flyout-link{
+                    margin:0;
+                    font-size: 1em;
+                    padding:0;
+                    color:$rhweb-navigation-flyout-linkcolor;
+
+                    &:hover{
+                        padding:0;
+                        color:darken($rhweb-navigation-flyout-linkcolor,10%)
+                    }
+
+                    &.is-level-0{
+                        font-weight: 700;
+                        text-transform: uppercase;
+                        margin-bottom:15px;
+                    }
+                }
+            }
+        }
+
+        .navigation-flyout-teaser{
+            .navigation-flyout-teaser-image-container{
+                height: auto;
+            }
+        }
+    }
+}
+
+.sticky {
+    position: fixed;
+    top: -100%;
+    left:0;
+    width: 100%;
+    z-index:1000;
+    background-color:$rhweb-navigation-background;
+    max-width: 100%;
+    opacity: 1;
+    box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075);
+}

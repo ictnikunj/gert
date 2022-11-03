@@ -1,0 +1,11 @@
+.product-detail-buy, .carousel-caption, .mailchimp-container, .offcanvas-cart-actions a, .login-form, .register-card{
+    .btn, &.btn{
+        padding: 9px 26px;
+        font-size: 1em;
+        font-weight: 500;
+        line-height: 2em;
+        letter-spacing: .14em;
+        text-transform: uppercase;
+        border-radius: 0;
+    }
+}

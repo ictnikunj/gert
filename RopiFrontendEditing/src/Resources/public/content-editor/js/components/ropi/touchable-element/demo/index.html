@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+      <script type="module">
+        import '../../demo-element/demo-element.js?v=1637255330';
+        import '../touchable-element.js?v=1637255330';
+      </script>
+
+      <title>touchable-element demo</title>
+  </head>
+  <body>
+    <ropi-demo>
+        <ropi-touchable>
+          <div style="padding: 1rem;">Touch me</div>
+        </ropi-touchable>
+    </ropi-demo>
+
+    <ropi-demo>
+        <ropi-touchable disabled>
+          <div style="padding: 1rem;">
+            I am a disabled touchable
+          </div>
+        </ropi-touchable>
+    </ropi-demo>
+  </body>
+</html>

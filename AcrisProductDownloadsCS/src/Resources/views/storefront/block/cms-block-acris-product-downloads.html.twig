@@ -1,0 +1,13 @@
+{% block block_acris_product_downloads %}
+    {% set columns = 1 %}
+
+    {% block block_acris_product_downloads_column %}
+        {% set element = block.slots.getSlot('column') %}
+
+        <div class="col-12" data-cms-element-id="{{ element.id }}">
+            {% block block_acris_product_downloads_column_inner %}
+                {% sw_include "@Storefront/storefront/element/cms-element-" ~ element.type ~ ".html.twig" ignore missing %}
+            {% endblock %}
+        </div>
+    {% endblock %}
+{% endblock %}

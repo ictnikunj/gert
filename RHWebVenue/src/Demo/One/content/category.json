@@ -1,0 +1,271 @@
+[
+    {
+        "id": "{NAVIGATION_CATEGORY_ID}",
+        "cmsPageId": "{ID:CMS_PAGE_VENUE_FRONTPAGE}"
+    },
+    {
+        "id": "{ID:CATEGORY_MEGAMENU}",
+        "parentId": "{NAVIGATION_CATEGORY_ID}",
+        "type": "folder",
+        "mediaId": "{MEDIA_FILE:category/category_onlineshop.jpg|category}",
+        "active": true,
+        "translations": {
+            "{de-DE}": {
+                "name": "Shop",
+                "description": "{READ_FILE:html/de/category_description.html}"
+            },
+            "{en-GB}": {
+                "name": "Shop",
+                "description": "{READ_FILE:html/en/category_description.html}"
+            }
+        }
+    },
+
+    {
+        "id": "{ID:CATEGORY_MEGAMENU_SUB_01}",
+        "parentId": "{ID:CATEGORY_MEGAMENU}",
+
+        "mediaId": "{MEDIA_FILE:category/category_onlineshop.jpg|category}",
+        "active": true,
+        "type": "folder",
+        "translations": {
+            "{de-DE}": {
+                "name": "Shop Layouts",
+                "description": "{READ_FILE:html/de/category_description.html}"
+            },
+            "{en-GB}": {
+                "name": "Shop Layouts",
+                "description": "{READ_FILE:html/en/category_description.html}"
+            }
+        }
+    },
+
+    {
+        "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_01}",
+        "parentId": "{ID:CATEGORY_MEGAMENU_SUB_01}",
+        "cmsPageId": "{ID:CMS_PAGE_VENUE_CATEGORYPROMOTION}",
+        "mediaId": "{MEDIA_FILE:category/category_onlineshop.jpg|category}",
+        "active": true,
+        "translations": {
+            "{de-DE}": {
+                "name": "Kategorie Promotion",
+                "description": "{READ_FILE:html/de/category_description.html}"
+            },
+            "{en-GB}": {
+                "name": "Category Promotion",
+                "description": "{READ_FILE:html/en/category_description.html}"
+            }
+        }
+    },
+    {
+        "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_02}",
+        "parentId": "{ID:CATEGORY_MEGAMENU_SUB_01}",
+        "afterCategoryId": "{ID:CATEGORY_MEGAMENU_SUB_SUB_01}",
+        "cmsPageId": "{ID:CMS_PAGE_VENUE_LISTING}",
+        "mediaId": "{MEDIA_FILE:category/category_onlineshop.jpg|category}",
+        "active": true,
+        "translations": {
+            "{de-DE}": {
+                "name": "Shop - Volle Breite",
+                "description": "{READ_FILE:html/de/category_description.html}"
+            },
+            "{en-GB}": {
+                "name": "Shop - Full Width",
+                "description": "{READ_FILE:html/en/category_description.html}"
+            }
+        }
+    },
+    {
+        "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_03}",
+        "parentId": "{ID:CATEGORY_MEGAMENU_SUB_01}",
+        "afterCategoryId": "{ID:CATEGORY_MEGAMENU_SUB_SUB_02}",
+        "cmsPageId": "{ID:CMS_PAGE_VENUE_LISTING_SIDEBAR}",
+        "mediaId": "{MEDIA_FILE:category/category_onlineshop.jpg|category}",
+        "active": true,
+        "translations": {
+            "{de-DE}": {
+                "name": "Shop - Sidebar aktiv",
+                "description": "{READ_FILE:html/de/category_description.html}"
+            },
+            "{en-GB}": {
+                "name": "Shop - Sidebar active",
+                "description": "{READ_FILE:html/en/category_description.html}"
+            }
+        }
+    },
+    {
+        "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_04}",
+        "parentId": "{ID:CATEGORY_MEGAMENU_SUB_01}",
+        "afterCategoryId": "{ID:CATEGORY_MEGAMENU_SUB_SUB_03}",
+
+        "type": "link",
+        "active": true,
+        "translations": {
+            "{de-DE}": {
+                "name": "Produkt - Detailseite",
+                "linkType": "product",
+                "internalLink": "{ID:PRODUCT_015}"
+            },
+            "{en-GB}": {
+                "name": "Product - Detailpage",
+                "linkType": "product",
+                "internalLink": "{ID:PRODUCT_015}"
+            }
+        }
+    },
+    {
+        "id": "{ID:CATEGORY_MEGAMENU_SUB_02}",
+        "parentId": "{ID:CATEGORY_MEGAMENU}",
+        "afterCategoryId": "{ID:CATEGORY_MEGAMENU_SUB_01}",
+
+        "mediaId": "{MEDIA_FILE:category/category_onlineshop.jpg|category}",
+        "active": true,
+        "type": "folder",
+        "translations": {
+            "{de-DE}": {
+                "name": "Content Seiten",
+                "description": "{READ_FILE:html/de/category_description.html}"
+            },
+            "{en-GB}": {
+                "name": "Content Pages",
+                "description": "{READ_FILE:html/en/category_description.html}"
+            }
+        }
+    },
+
+
+    {
+        "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_05}",
+        "parentId": "{ID:CATEGORY_MEGAMENU_SUB_02}",
+        "cmsPageId": "{ID:CMS_PAGE_VENUE_ABOUTUS}",
+        "mediaId": "{MEDIA_FILE:category/category_onlineshop.jpg|category}",
+        "active": true,
+        "translations": {
+            "{de-DE}": {
+                "name": "Über Uns",
+                "description": "{READ_FILE:html/de/category_description.html}"
+            },
+            "{en-GB}": {
+                "name": "About us",
+                "description": "{READ_FILE:html/en/category_description.html}"
+            }
+        }
+    },
+
+    {
+        "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_06}",
+        "parentId": "{ID:CATEGORY_MEGAMENU_SUB_02}",
+        "afterCategoryId": "{ID:CATEGORY_MEGAMENU_SUB_SUB_05}",
+        "cmsPageId": "{ID:CMS_PAGE_VENUE_PAYMENTSHIPPING}",
+        "mediaId": "{MEDIA_FILE:category/category_onlineshop.jpg|category}",
+        "active": true,
+        "translations": {
+            "{de-DE}": {
+                "name": "Zahlung & Versand",
+                "description": "{READ_FILE:html/de/category_description.html}"
+            },
+            "{en-GB}": {
+                "name": "Payment & Shipping",
+                "description": "{READ_FILE:html/en/category_description.html}"
+            }
+        }
+    },
+    {
+        "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_07}",
+        "parentId": "{ID:CATEGORY_MEGAMENU_SUB_02}",
+        "afterCategoryId": "{ID:CATEGORY_MEGAMENU_SUB_SUB_06}",
+        "cmsPageId": "{ID:CMS_PAGE_VENUE_CONTACT}",
+        "mediaId": "{MEDIA_FILE:category/category_onlineshop.jpg|category}",
+        "active": true,
+        "translations": {
+            "{de-DE}": {
+                "name": "Kontakt",
+                "description": "{READ_FILE:html/de/category_description.html}"
+            },
+            "{en-GB}": {
+                "name": "Contact",
+                "description": "{READ_FILE:html/en/category_description.html}"
+            }
+        }
+    },
+    {
+        "id": "{ID:CATEGORY_MEGAMENU_SUB_03}",
+        "parentId": "{ID:CATEGORY_MEGAMENU}",
+        "afterCategoryId": "{ID:CATEGORY_MEGAMENU_SUB_02}",
+        "mediaId": "{MEDIA_FILE:category/category_onlineshop.jpg|category}",
+        "active": true,
+        "type": "folder",
+        "translations": {
+            "{de-DE}": {
+                "name": "Zusätzlich",
+                "description": "{READ_FILE:html/de/category_description.html}"
+            },
+            "{en-GB}": {
+                "name": "Additional",
+                "description": "{READ_FILE:html/en/category_description.html}"
+            }
+        }
+    },
+
+    {
+        "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_08}",
+        "parentId": "{ID:CATEGORY_MEGAMENU_SUB_03}",
+        "type": "link",
+        "active": true,
+        "translations": {
+            "{de-DE}": {
+                "name": "Checkout",
+                "linkType": "external",
+                "externalLink": "/checkout/confirm",
+                "linkNewTab": false
+            },
+            "{en-GB}": {
+                "name": "Checkout",
+                "linkType": "external",
+                "externalLink": "/en/checkout/confirm",
+                "linkNewTab": false
+            }
+        }
+    },
+
+    {
+        "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_9}",
+        "parentId": "{ID:CATEGORY_MEGAMENU_SUB_03}",
+        "type": "link",
+        "active": true,
+        "translations": {
+            "{de-DE}": {
+                "name": "404 - Seite",
+                "linkType": "external",
+                "externalLink": "404/test",
+                "linkNewTab": false
+            },
+            "{en-GB}": {
+                "name": "404 - Page",
+                "linkType": "external",
+                "externalLink": "404/test",
+                "linkNewTab": false
+            }
+        }
+    },
+    {
+        "id": "{ID:CATEGORY_DOCUMENTATION}",
+        "parentId": "{NAVIGATION_CATEGORY_ID}",
+        "type": "link",
+        "active": true,
+        "translations": {
+            "{de-DE}": {
+                "name": "Dokumentation",
+                "linkType": "external",
+                "externalLink": "https://rh-webdesign.com/dokumentation/shopware-6/",
+                "linkNewTab": true
+            },
+            "{en-GB}": {
+                "name": "Documentation",
+                "linkType": "external",
+                "externalLink": "https://rh-webdesign.com/en/documentation/shopware-6/",
+                "linkNewTab": true
+            }
+        }
+    }
+]

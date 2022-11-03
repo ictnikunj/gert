@@ -1,0 +1,40 @@
+{
+  "name": "bst/flip-listing-image",
+  "description": "Flip Listing Image plugin",
+  "version": "v1.3.0",
+  "type": "shopware-platform-plugin",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "brainstation GbR",
+      "role": "Plugin Developer"
+    }
+  ],
+  "require": {
+    "shopware/core": ">=6.4"
+  },
+  "autoload": {
+    "psr-4": {
+      "BstFlipListingImage6\\": "src/"
+    }
+  },
+  "extra": {
+    "shopware-plugin-class": "BstFlipListingImage6\\BstFlipListingImage6",
+    "label": {
+      "de-DE": "Flip Listing Image",
+      "en-GB": "Flip Listing Image"
+    },
+    "description": {
+      "de-DE": "Pro Produkt kann auf dem Listing ein alternatives Bild dargestellt werden welches wechselt, wenn der Kunde mit der Maus über die Produktbox fährt. Beispielsweise Vorder- und Rückseite.",
+      "en-GB": "An alternative image can be shown on the listing for each product, which changes when the customer moves the mouse over the product box. For example, front and back."
+    },
+    "manufacturerLink": {
+      "de-DE": "https://store.shopware.com/brainstation.html",
+      "en-GB": "https://store.shopware.com/brainstation.html"
+    },
+    "supportLink": {
+      "de-DE": "https://www.brainstation.de/shopware-partner-landau-pfalz/",
+      "en-GB": "https://www.brainstation.de/shopware-partner-landau-pfalz/"
+    }
+  }
+}

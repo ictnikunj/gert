@@ -1,0 +1,10 @@
+{% sw_extends '@Storefront/storefront/page/content/index.html.twig' %}
+{% set categoryH1Config = config('NenoCategoryH1.config')  %}
+
+{% block page_content_blocks %}
+    {% if categoryH1Config.nhcHideHome and controllerAction is same as('home') %}
+    {% else %}
+        {% sw_include "@Storefront/storefront/category-h1.html.twig" %}
+    {% endif %}
+    {{ parent() }}
+{% endblock %}

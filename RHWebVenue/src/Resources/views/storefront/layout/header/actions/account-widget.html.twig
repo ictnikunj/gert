@@ -1,0 +1,14 @@
+{% sw_extends '@Storefront/storefront/layout/header/actions/account-widget.html.twig' %}
+
+{% block layout_header_actions_account_widget_dropdown_button %}
+    <div class="account-menu-btn header-actions-btn top-bar-nav-btn"
+            id="accountWidget"
+         title="Account"
+            data-offcanvas-account-menu="true"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+            aria-label="{{ "account.myAccount"|trans }}">
+        <i class="rhweb-header-account-icon fa fa-user" aria-hidden="true"></i> {{ "account.myAccount"|trans|sw_sanitize }}
+    </div>
+{% endblock %}

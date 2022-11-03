@@ -1,0 +1,74 @@
+<div class="form-group form-{{ formElement.type }}-{{ formElement.name }}">
+    {% if formElement.mediaType == 'images' %}
+        {% set accept = [
+            'image/*'
+        ] %}
+        {% set acceptLabel = "moorl-form-builder.general.allowedFileTypesImages"|trans %}
+    {% elseif formElement.mediaType == 'documents' %}
+        {% set accept = [
+            'application/msword',
+            'application/vnd.ms-excel',
+            'application/vnd.ms-powerpoint',
+            'text/plain',
+            'application/pdf'
+        ] %}
+        {% set acceptLabel = "moorl-form-builder.general.allowedFileTypesDocuments"|trans %}
+    {% elseif formElement.mediaType == 'images_documents' %}
+        {% set accept = [
+            'application/msword',
+            'application/vnd.ms-excel',
+            'application/vnd.ms-powerpoint',
+            'text/plain',
+            'application/pdf',
+            'image/*',
+        ] %}
+        {% set acceptLabel = "moorl-form-builder.general.allowedFileTypesImagesDocuments"|trans %}
+    {% elseif formElement.mediaType == 'custom' %}
+        {% set accept = moorlFormBuilderFileWhitelist(formElement.mediaFileExtensions) %}
+        {% set acceptLabel = "#{'moorl-form-builder.general.allowedFileTypesAll'|trans}#{accept|join(', ')}" %}
+    {% else %}
+        {% set accept = moorlFormBuilderFileWhitelist() %}
+        {% set acceptLabel = "#{'moorl-form-builder.general.allowedFileTypesAll'|trans}#{accept|join(', ')}" %}
+    {% endif %}
+
+    {% if formElementLabel %}
+        {% sw_include "@MoorlFormBuilder/plugin/moorl-form-builder/component/label.html.twig" ignore missing %}
+    {% endif %}
+
+    <div class="custom-file">
+        <input type="file"
+               accept="{{ accept|join(',') }}"
+               name="{{ formElementName }}"
+               placeholder="{{ formElementPlaceholder ?: formElementLabel }}"
+               {% if formElement.required %}required{% endif %}
+               class="custom-file-input"
+               id="{{ formElementId }}">
+        <label class="custom-file-label" title="{{ "moorl-form-builder.general.browse"|trans }}"
+               for="{{ formElementId }}">{{ formElementPlaceholder ?: formElementLabel }}</label>
+    </div>
+    <small class="text-muted">{{ acceptLabel }}</small>
+</div>
+
+{% set formElementMedia = mediaCollection.get(formElementValue) %}
+{% if formElementMedia %}
+    <div class="form-group" id="media-{{ formElementMedia.id }}">
+        <input type="hidden"
+               value="{{ formElementValue }}"
+               name="{{ formElementName }}">
+        <div class="moorl-form-builder-media">
+            <a href="{{ formElementMedia.url }}" download="{{ formElementMedia.fileName|slice(33) }}.{{ formElementMedia.fileExtension }}">
+                {% if formElementMedia.fileExtension in ['png','jpg','jpeg','gif'] %}
+                    <img alt="{{ formElementMedia.fileName }}" src="{{ formElementMedia.url }}">
+                {% else %}
+                    {{ formElementMedia.fileName|slice(33) }}.{{ formElementMedia.fileExtension }}
+                {% endif %}
+            </a>
+            <button class="btn btn-danger"
+                    type="button"
+                    data-action-remove="{{ seoUrl('moorl-form-builder.remove.media', {'mediaId': formElementMedia.id}) }}"
+                    data-confirm="{{ "moorl-form-builder.general.removeMedia"|trans }}">
+                {{ "moorl-form-builder.general.removeMedia"|trans }}
+            </button>
+        </div>
+    </div>
+{% endif %}

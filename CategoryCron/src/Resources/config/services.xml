@@ -1,0 +1,37 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services https://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+
+        <service id="CategoryCron\Core\Content\CategoryCron\CategoryCronSalesChannelDefinition">
+            <tag name="shopware.entity.definition" entity="category_cron_saleschannel" />
+        </service>
+
+        <service id="CategoryCron\Service\ScheduledTask\CategoryCronTask">
+            <tag name="shopware.scheduled.task" />
+        </service>
+
+        <service id="CategoryCron\Service\ScheduledTask\CategoryCronTaskHandler">
+            <argument type="service" id="scheduled_task.repository" />
+            <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService" />
+            <argument type="service" id="category.repository"/>
+            <argument type="service" id="language.repository"/>
+            <argument type="service" id="media.repository"/>
+            <argument type="service" id="Shopware\Core\Content\Media\MediaService" />
+            <argument type="service" id="Shopware\Core\Content\Media\File\FileSaver" />
+            <argument type="service" id="cms_page.repository" />
+            <argument type="service" id="product.repository"/>
+            <argument type="service" id="product_category.repository"/>
+            <argument type="service" id="sales_channel.repository" />
+            <argument type="service" id="pim_category.repository" />
+            <argument type="service" id="kplngi_productcategoryposition.repository" />
+            <argument type="service" id="kplngi_orderactive.repository" />
+            <argument type="service" id="category_cron_saleschannel.repository" />
+            <tag name="messenger.message_handler" />
+        </service>
+
+    </services>
+</container>

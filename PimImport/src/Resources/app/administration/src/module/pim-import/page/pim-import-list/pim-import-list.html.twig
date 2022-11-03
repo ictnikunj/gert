@@ -1,0 +1,149 @@
+{% block pim_import_list %}
+    <sw-page class="pim-import-list">
+        <template slot="content">
+            <sw-card class="sw-settings-shipping-detail__condition_container">
+                <div class="collection-container">
+
+                    <div style="width:100%;"><h1>{{ $t('pim-import.label.title') }}</h1></div>
+
+                    <sw-button ref="pimMainButton" id="pim_main_button" :disabled="false" variant="primary"
+                               :square="false" :block="false" :isLoading="false"
+                               @click="onSave">{{ $t('pim-import.label.btn') }}</sw-button>
+                    <p id="pim_main_p_counter"
+                       style="display:none">{{ PimImportSetting['PimImport.config.mainProductCounter'] }}</p>
+                    <p v-if="counter" id="pim_main_status">{{ counter }}{{ ' import product successfully.' }}</p>
+
+                    <br>
+                    <br>
+
+                    <h2>Cross Selling</h2>
+
+                    <sw-button ref="pimRelatedButton" id="pim_related_button" :disabled="false" variant="primary"
+                               :square="false" :block="false" :isLoading="false"
+                               @click="onCrosssellingRelated">{{ $t('pim-import.label.crossRlatedItemsbtn') }}</sw-button>
+
+                    <sw-button ref="pimProductPartButton" id="pim_product_part_button" :disabled="false"
+                               variant="primary" :square="false" :block="false" :isLoading="false"
+                               @click="onCrosssellingProductPart">{{ $t('pim-import.label.crossProductPartsbtn') }}</sw-button>
+
+                    <sw-button ref="pimAddonButton" id="pim_addon_button" :disabled="false" variant="primary"
+                               :square="false" :block="false" :isLoading="false"
+                               @click="onCrosssellingAddon">{{ $t('pim-import.label.crossAddonbtn') }}</sw-button>
+
+                    <br>
+                    <br>
+
+                    <div>
+                        <p id="pim_related_counter"
+                           style="display:none">{{ PimImportSetting['PimImport.config.relatedProductCounter'] }}</p>
+                        <p v-if="vrelatedProductCounter"
+                           id="pim_related_status">{{ vrelatedProductCounter }}{{ ' import related product in cross selling successfully.' }}</p>
+
+                        <p id="pim_product_part_counter"
+                           style="display:none">{{ PimImportSetting['PimImport.config.productPartCounter'] }}</p>
+                        <p v-if="vproductPartCounter"
+                           id="pim_product_part_status">{{ vproductPartCounter }}{{ ' import subproduct in cross selling successfully.' }}</p>
+
+                        <p id="pim_addon_counter"
+                           style="display:none">{{ PimImportSetting['PimImport.config.addonProductCounter'] }}</p>
+                        <p v-if="vaddonProductCounter"
+                           id="pim_addon_status">{{ vaddonProductCounter }}{{ ' import addon product in cross selling successfully.' }}</p>
+                    </div>
+
+                    <br>
+
+                    <h2>Category Import</h2>
+                    <sw-entity-single-select v-model="currentValue"
+                                             :label="$tc('sw-newsletter-recipient.general.salesChannel')"
+                                             labelProperty="name"
+                                             entity="sales_channel">
+                    </sw-entity-single-select>
+                    <sw-button ref="pimCategoryButton" id="pim_category_button" :disabled="false" variant="primary"
+                               :square="false" :block="false" :isLoading="false"
+                               @click="onCategory">{{ $t('pim-import.label.categoryButton') }}</sw-button>
+                    <sw-button ref="pimCategoryOrderButton" id="pim_category_order_button" :disabled="false"
+                               variant="primary" :square="false" :block="false" :isLoading="false"
+                               @click="onCategoryOrder">
+                        {{ $t('pim-import.label.categoryOrderButton') }}
+                    </sw-button>
+                    <sw-button ref="pimCategoryDeleteButton"
+                               id="pim_category_delete_button"
+                               :disabled="false"
+                               variant="primary"
+                               :square="false"
+                               :block="false"
+                               :isLoading="false"
+                               @click="onDeleteCategory">
+                        {{ $t('pim-import.label.deleteCategory') }}
+                    </sw-button>
+
+                    <p id="pim_category_counter"
+                       style="display:none">{{ PimImportSetting['PimImport.config.CategoryCounter'] }}</p>
+                    <p v-if="vcategory_counter">{{ vcategory_counter }}{{ ' import category successfully.' }}</p>
+
+                    <sw-button ref="pimManualRunCronButton"
+                               id="pim_manual_run_cron_button"
+                               :disabled="false"
+                               variant="primary"
+                               :square="false"
+                               :block="false"
+                               :isLoading="false"
+                               @click="onManageCron">
+                        Manual Cron Run
+                    </sw-button>
+                    <br><br>
+
+                    <h2>Properties Import</h2>
+                    <sw-button ref="pimPropertyButton"
+                               id="pim_property_button"
+                               :disabled="false"
+                               variant="primary"
+                               :square="false"
+                               :block="false"
+                               :isLoading="false"
+                               @click="onProperty">
+                        {{ $t('pim-import.label.PropertyButton') }}
+                    </sw-button>
+                    <p id="pim_property_counter"
+                       style="display:none">{{ PimImportSetting['PimImport.config.PropertyCounter'] }}</p>
+                    <p v-if="pim_property_counter">{{ pim_property_counter }}{{ ' Import Property Successfully.' }}</p>
+
+                    <br><br>
+
+                    <h2>Product Properties Import</h2>
+                    <sw-button ref="pimProductPropertyButton"
+                               id="pim_product_property_button"
+                               :disabled="false"
+                               variant="primary"
+                               :square="false"
+                               :block="false"
+                               :isLoading="false"
+                               @click="onProductProperty">
+                        {{ $t('pim-import.label.ProductPropertyButton') }}
+                    </sw-button>
+                    <p id="pim_product_property_counter"
+                       style="display:none">{{ PimImportSetting['PimImport.config.ProductPropertyCounter'] }}</p>
+                    <p v-if="pim_product_property_counter">{{ pim_product_property_counter }}{{ ' Import Product Property Successfully.' }}</p>
+
+                </div>
+
+                <div>
+                    <h2>Category Cron Button</h2>
+                    <sw-button ref="pimCategoryCronButton"
+                               id="pim_category_cron_button"
+                               :disabled="false"
+                               variant="primary"
+                               :square="false"
+                               :block="false"
+                               :isLoading="false"
+                               @click="onCategoryCron">{{ $t('pim-import.label.CategoryCronButton') }}</sw-button>
+
+                    <p id="pim_category_cron_counter"
+                       style="display:none">{{ PimImportSetting['PimImport.config.CategoryCronCounter'] }}</p>
+                    <p v-if="pim_category_cron_counter">{{ pim_category_cron_counter }}{{ ' Import Category Cron Successfully.' }}</p>
+
+                </div>
+            </sw-card>
+        </template>
+    </sw-page>
+{% endblock %}

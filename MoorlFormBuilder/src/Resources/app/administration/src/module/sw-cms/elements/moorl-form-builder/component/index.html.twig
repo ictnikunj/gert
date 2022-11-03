@@ -1,0 +1,35 @@
+<div class="sw-cms-el-moorl-default">
+    <template v-if="form">
+        <div>
+            {{ $t('moorl-form-builder.general.mainMenuItemGeneral') }}
+        </div>
+
+        <div class="small">
+            {{ form.name }}
+        </div>
+
+        <router-link class="sw-button"
+                     target="_blank"
+                     rel="noopener"
+                     :to="{ name: 'moorl.form.builder.detail', params: { id: form.id } }">
+            {{ $tc('moorl-form-builder.buttons.edit') }}
+        </router-link>
+    </template>
+
+    <template v-else>
+        <div>
+            {{ $t('moorl-form-builder.general.mainMenuItemGeneral') }}
+        </div>
+
+        <div class="small">
+            {{ $t('moorl-form-builder.general.notConfigured') }}
+        </div>
+
+        <router-link class="sw-button"
+                     target="_blank"
+                     rel="noopener"
+                     :to="{ name: 'moorl.form.builder.create' }">
+            {{ $tc('moorl-form-builder.buttons.new') }}
+        </router-link>
+    </template>
+</div>

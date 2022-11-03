@@ -1,0 +1,92 @@
+#sliderVenue{
+    .carousel-control-prev, .carousel-control-next{
+        display: flex;
+        position: absolute;
+        z-index: 100;
+        bottom: auto;
+        width: auto;
+        top: 50%;
+        height: 70px;
+        background: $rhweb-slider-button-background;
+        color:$rhweb-slider-button-color;
+        opacity: 1;
+        padding: 5px;
+        align-items: center;
+        justify-content: center;
+        transform: translateY(-50%);
+        transition: ease all .3s;
+        font-size: 1.4em;
+    }
+
+    .carousel-control-prev{
+        &:hover{
+            padding-left:15px;
+        }
+    }
+
+    .carousel-control-next{
+        &:hover{
+            padding-right:15px;
+        }
+    }
+
+    .carousel-caption {
+        display:flex;
+        align-items: center;
+        height: 100%;
+        text-align: left;
+        max-width: 40%;
+        width: 40%;
+        top: 50%;
+        transform: translateY(-50%);
+        bottom: auto;
+        right: auto;
+        padding: 15px 0;
+        left:15%;
+        background: $rhweb-slider-caption-background;
+        color:$rhweb-slider-color;
+
+        .caption-content{
+            .h1{
+                color:$rhweb-slider-headline-color
+            }
+
+            .h5{
+                color:$rhweb-slider-color
+            }
+        }
+
+
+
+        .btn{
+            background-color: $rhweb-slider-button-background;
+            color:$rhweb-slider-button-color;
+
+            &:hover{
+                background-color: darken($rhweb-slider-button-background,10%);
+            }
+        }
+
+        &.caption-right {
+            right: 15%;
+            left: auto;
+        }
+
+        @media(max-width: 1300px){
+            max-width:none;
+            width:auto;
+        }
+
+        @media(max-width: 1080px){
+            max-width:none;
+            width:auto;
+            position: relative;
+            right: 0 !important;
+            left: 0 !important;
+            transform:none;
+            margin:40px 0;
+            padding: 20px;
+            border: 1px solid lightgrey;
+        }
+    }
+}

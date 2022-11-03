@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/shopware/platform/master/src/Core/System/SystemConfig/Schema/config.xsd">
+
+    <card>
+        <title>Laudert | TinyMCE</title>
+        <title lang="de-DE">Laudert | TinyMCE</title>
+        <input-field type="single-select">
+            <name>skin</name>
+            <label>Skin</label>
+            <label lang="de-DE">Aussehen</label>
+            <options>
+                <option>
+                    <id>oxide</id>
+                    <name>bright</name>
+                    <name lang="de-DE">Hell</name>
+                </option>
+                <option>
+                    <id>oxide-dark</id>
+                    <name>dark</name>
+                    <name lang="de-DE">Dunkel</name>
+                </option>
+            </options>
+        </input-field>
+        <input-field type="int">
+            <name>height</name>
+            <label>Height</label>
+            <label lang="de-DE">Höhe</label>
+        </input-field>
+        <input-field type="bool">
+            <name>spellcheck</name>
+            <label>Spell check</label>
+            <label lang="de-DE">Rechtschreibüberprüfung</label>
+        </input-field>
+        <input-field type="textarea">
+            <name>contentcss</name>
+            <label>Additional CSS files</label>
+            <label lang="de-DE">Zusätzliche CSS-Dateien</label>
+        </input-field>
+        <input-field>
+            <name>apiKey</name>
+            <label>API Key</label>
+            <label lang="de-DE">API Key</label>
+        </input-field>
+        <input-field type="bool">
+            <name>enablePro</name>
+            <label>Enable pro</label>
+            <label lang="de-DE">Pro aktivieren</label>
+        </input-field>
+        <input-field type="bool">
+            <name>relativeUrls</name>
+            <label>Relative urls</label>
+            <label lang="de-DE">Relative URLs</label>
+        </input-field>
+        <input-field type="bool">
+            <name>convertUrls</name>
+            <label>Convert urls</label>
+            <label lang="de-DE">URLs konvertieren</label>
+        </input-field>
+        <input-field type="bool">
+            <name>removeScriptHost</name>
+            <label>Remove script host</label>
+            <label lang="de-DE">Skript Host entfernen</label>
+        </input-field>
+        <component name="sw-code-editor">
+            <name>styleformats</name>
+            <label>Advanced style formats</label>
+            <label lang="de-DE">Erweiterte Style Formate</label>
+        </component>
+        <component name="sw-code-editor">
+            <name>templates</name>
+            <label>Format templates</label>
+            <label lang="de-DE">Format Templates</label>
+        </component>
+        <input-field type="bool">
+            <name>disableCleanup</name>
+            <label>Disable HTML tag cleanup</label>
+            <label lang="de-DE">HTML Tags nicht aufräumen</label>
+            <defaultValue>1</defaultValue>
+        </input-field>
+        <component name="she-api-test-button">
+            <name>apiTest</name>
+            <btnLabel>Test API key</btnLabel>
+            <btnLabel lang="de-DE">API Key testen</btnLabel>
+        </component>
+    </card>
+</config>

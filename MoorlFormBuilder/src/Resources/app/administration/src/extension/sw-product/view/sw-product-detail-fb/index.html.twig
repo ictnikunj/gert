@@ -1,0 +1,19 @@
+<div v-if="product.extensions" class="sw-product-detail-base">
+    <sw-card :title="$tc('moorl-form-builder.general.mainMenuItemGeneral')"
+             :isLoading="isLoading">
+        <sw-entity-many-to-many-select
+                v-if="!isLoading"
+                :localMode="true"
+                :label="$tc('moorl-form-builder.properties.assignedForms')"
+                v-model="product.extensions.forms"
+                labelProperty="name"
+                :criteria="formCriteria">
+        </sw-entity-many-to-many-select>
+    </sw-card>
+
+    <sw-card :isLoading="isLoading"
+             :title="$tc('moorl-form-builder.general.appointments')"
+             class="moorl-entity-grid">
+        <moorl-form-builder-appointment :productId="product.id"/>
+    </sw-card>
+</div>

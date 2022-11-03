@@ -1,0 +1,30 @@
+{% block link %}
+    <ropi-collapsible>
+        <ropi-subheader slot="header">
+            {% trans %}ropi-frontend-editing.contentElement.definition.subheader.link{% endtrans %}
+        </ropi-subheader>
+        <div slot="content">
+            {% block link_content %}
+
+                {% block link_textfield %}
+                    <div class="ropi-margin-h" style="display:flex">
+                        <ropi-textfield name="{{ name.href }}" style="flex:2">
+                            <div slot="placeholder">{% trans %}ropi-frontend-editing.contentElement.definition.label.href{% endtrans %}</div>
+                        </ropi-textfield>
+                    </div>
+                {% endblock %}
+
+                {% block link_target_checkbox_group %}
+                    <ropi-checkbox-group>
+                        {% block link_target_checkbox_group_inner %}
+                            {% block link_target_checkbox_blank %}
+                                <ropi-checkbox name="target" value="_blank">{% trans %}ropi-frontend-editing.contentElement.definition.label.openInNewTab{% endtrans %}</ropi-checkbox>
+                            {% endblock %}
+                        {% endblock %}
+                    </ropi-checkbox-group>
+                {% endblock %}
+
+            {% endblock %}
+        </div>
+    </ropi-collapsible>
+{% endblock %}

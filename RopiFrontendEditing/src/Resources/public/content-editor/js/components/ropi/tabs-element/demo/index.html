@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+      <script type="module">
+        import '../../demo-element/demo-element.js?v=1637255330';
+        import '../../styles/styles.js?v=1637255330';
+        import '../../touchable-element/touchable-element.js?v=1637255330';
+        import '../tabs-element.js?v=1637255330';
+      </script>
+
+      <title>tabs-element demo</title>
+  </head>
+  <body>
+    <ropi-demo>
+      <ropi-tabs style="position: relative;height:50vh;">
+        <ropi-touchable slot="tab">Tab 1</ropi-touchable>
+        <ropi-touchable slot="tab">Tab 2</ropi-touchable>
+        <div slot="tabpanel">
+          Content of Tab 1
+        </div>
+        <div slot="tabpanel">
+          Content of Tab 2
+        </div>
+      </ropi-tabs>
+    </ropi-demo>
+
+    <ropi-demo name="tablist at bottom and scrollable">
+      <ropi-tabs scrollable tablistposition="bottom" style="position: relative;height:50vh">
+        <ropi-touchable slot="tab">This is the first tab</ropi-touchable>
+        <ropi-touchable slot="tab">This is the second tab</ropi-touchable>
+        <ropi-touchable slot="tab">This is the third tab</ropi-touchable>
+        <ropi-touchable slot="tab">This is the fourth tab</ropi-touchable>
+        <div slot="tabpanel">
+          Content of Tab 1
+        </div>
+        <div slot="tabpanel">
+          Content of Tab 2
+        </div>
+        <div slot="tabpanel">
+          Content of Tab 3
+        </div>
+        <div slot="tabpanel">
+          Content of Tab 4
+        </div>
+      </ropi-tabs>
+    </ropi-demo>
+  </body>
+</html>

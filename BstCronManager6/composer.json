@@ -1,0 +1,41 @@
+{
+  "name": "bst/cron_manager6",
+  "description": "Manage settings for scheduled tasks within backend",
+  "version": "v1.0.2",
+  "type": "shopware-platform-plugin",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "brainstation GbR",
+      "role": "Plugin Developer"
+    }
+  ],
+  "require": {
+    "shopware/core": ">=6.2",
+    "shopware/administration": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "BstCronManager6\\": "src/"
+    }
+  },
+  "extra": {
+    "shopware-plugin-class": "BstCronManager6\\BstCronManager6",
+    "label": {
+      "de-DE": "Cron Manager",
+      "en-GB": "Cron Manager"
+    },
+    "description": {
+      "de-DE": "Einstellen der Cronjobs direkt über das Backend",
+      "en-GB": "Manage settings for scheduled tasks within backend"
+    },
+    "manufacturerLink": {
+      "de-DE": "https://store.shopware.com/brainstation.html",
+      "en-GB": "https://store.shopware.com/brainstation.html"
+    },
+    "supportLink": {
+      "de-DE": "https://www.brainstation.de/shopware-partner-landau-pfalz/",
+      "en-GB": "https://www.brainstation.de/shopware-partner-landau-pfalz/"
+    }
+  }
+}

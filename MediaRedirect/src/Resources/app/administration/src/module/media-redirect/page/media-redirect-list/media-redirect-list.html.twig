@@ -1,0 +1,27 @@
+{% block swag_faq_list %}
+    <sw-page class="faq-bundle-list">
+        {% block swag_faq_list_smart_bar_actions %}
+            <template slot="smart-bar-actions">
+                <sw-button variant="primary" :routerLink="{ name: 'media.redirect.create' }">
+                    {{ $t('media-redirect.list.addButtonText') }}
+                </sw-button>
+            </template>
+        {% endblock %}
+
+        <template slot="content">
+            {% block swag_faq_list_content %}
+                <sw-entity-listing
+                    v-if="mediaredirect"
+                    :items="mediaredirect"
+                    :repository="repository"
+                    :showSelection="false"
+                    :columns="columns">
+                    <template #preview-mediaData="{ item }">
+                        <sw-media-preview-v2 :source="item.mediaId" />
+                        <label>{{ item.media.fileName }}</label>
+                    </template>
+                </sw-entity-listing>
+            {% endblock %}
+        </template>
+    </sw-page>
+{% endblock %}

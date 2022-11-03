@@ -1,0 +1,14 @@
+{% block stretch_height %}
+    <ropi-checkbox-group>
+        {% block stretch_checkbox_group_inner %}
+
+            {% block stretch_checkbox %}
+                <ropi-checkbox name="{{ name }}" value="1">
+                    {% trans %}ropi-frontend-editing.contentElement.definition.label.stretchHeight{% endtrans %}
+                </ropi-checkbox>
+            {% endblock %}
+
+        {% endblock %}
+    </ropi-checkbox-group>
+    <ropi-hint>{% trans %}ropi-frontend-editing.contentElement.definition.hint.stretchHeight{% endtrans %}</ropi-hint>
+{% endblock %}

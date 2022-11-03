@@ -1,0 +1,15 @@
+{% block sw_search_bar_item_cms_page %}
+    {% parent %}
+    <router-link v-else-if="type === 'scheduled_task'"
+                 v-bind:to="{ name: 'bst.cron.manager.detail', params: { id: item.id } }"
+                 ref="routerLink"
+                 class="sw-search-bar-item__link">
+        {% block sw_search_bar_bst_cron_manager_label %}
+            <span class="sw-search-bar-item__label">
+                <sw-highlight-text v-bind:searchTerm="searchTerm"
+                                   :text="`${item.name}`">
+                </sw-highlight-text>
+            </span>
+        {% endblock %}
+    </router-link>
+{% endblock %}

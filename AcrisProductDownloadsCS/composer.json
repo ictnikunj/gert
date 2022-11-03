@@ -1,0 +1,42 @@
+{
+    "name": "acris/product-downloads",
+    "description": "ACRIS Product Downloads",
+    "version": "v3.5.0",
+    "type": "shopware-platform-plugin",
+    "license": "proprietary",
+    "autoload": {
+        "psr-4": {
+            "Acris\\ProductDownloads\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "ACRIS E-Commerce GmbH",
+            "homepage": "https://www.acris-ecommerce.at/"
+        }
+    ],
+    "require": {
+        "shopware/core": ">=6.4.0.0"
+    },
+    "extra": {
+        "shopware-plugin-class": "Acris\\ProductDownloads\\AcrisProductDownloadsCS",
+        "plugin-icon": "src/Resources/config/plugin.png",
+        "copyright": "(c) by ACRIS E-Commerce GmbH",
+        "label": {
+            "de-DE": "ACRIS Produkt Downloads",
+            "en-GB": "ACRIS Product Downloads"
+        },
+        "description": {
+            "de-DE": "Es können Dateien als Produkt Downloads hinzugefügt werden. Diese können pro Sprache und mit einer passenden Beschreibung sowie einer gewählten Position eingefügt werden.",
+            "en-GB": "Files can be added as product downloads. These can be inserted per language and with a suitable description and a position for display."
+        },
+        "manufacturerLink": {
+            "de-DE": "https://www.acris-ecommerce.at/",
+            "en-GB": "https://www.acris-ecommerce.at/"
+        },
+        "supportLink": {
+            "de-DE": "https://www.acris-ecommerce.at/kontakt/",
+            "en-GB": "https://www.acris-ecommerce.at/kontakt/"
+        }
+    }
+}

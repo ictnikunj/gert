@@ -1,0 +1,90 @@
+{% block definition %}
+<ropi-content-element
+        type="RopiFrontendEditing/image-container"
+        icon="crop_original"
+        color="#20c997"
+        group="{% trans %}ropi-frontend-editing.contentElement.definition.group.media{% endtrans %}"
+        name="{% trans %}ropi-frontend-editing.contentElement.definition.element.imageContainer{% endtrans %}"
+        languagespecificsettings="{% block languagespecificsettings %}alt,href{% endblock %}"
+        src="{{ path('ropi.frontend-editing.element.render') }}">
+    <template>
+        {% block settings_template %}
+        <ropi-tabs scrollable tablistposition="bottom">
+            {% block tab_general %}
+                <ropi-touchable slot="tab">{% trans %}ropi-frontend-editing.contentElement.definition.tab.general{% endtrans %}</ropi-touchable>
+            {% endblock %}
+            {% block tabpanel_general %}
+                <div slot="tabpanel">
+                    {% block tabpanel_general_inner %}
+
+                        {% block image %}
+                            {% sw_include '@RopiFrontendEditing/content-editor/elements/common/settings/image.html.twig' with {
+                                'name': 'image'
+                            } %}
+                        {% endblock %}
+
+                        {% block image_scaling_behavior %}
+                            {% sw_include '@RopiFrontendEditing/content-editor/elements/common/settings/image-scaling-behavior.html.twig' with {
+                                'name': 'imageScalingBehavior',
+                                'checkedDefaultOption': 'cover'
+                            } %}
+                        {% endblock %}
+
+                        {% block aspect_ratio %}
+                            {% sw_include '@RopiFrontendEditing/content-editor/elements/common/settings/aspect-ratio.html.twig' with {
+                                'name': 'aspectRatio',
+                                'minHeight': {
+                                    'name': 'minHeight'
+                                }
+                            } %}
+                        {% endblock %}
+
+                        {% block image_seo %}
+                            {% sw_include '@RopiFrontendEditing/content-editor/elements/common/settings/image-seo.html.twig' with {
+                                'alt': {
+                                    'name': 'alt'
+                                }
+                            } %}
+                        {% endblock %}
+
+                        {% block link %}
+                            {% sw_include '@RopiFrontendEditing/content-editor/elements/common/settings/link.html.twig' with {
+                                'name': {
+                                    'href': 'href',
+                                    'target': 'target'
+                                }
+                            } %}
+                        {% endblock %}
+
+                        {% block vertical_align %}
+                            {% sw_include '@RopiFrontendEditing/content-editor/elements/common/settings/vertical-align.html.twig' with {
+                                'name': 'verticalAlign'
+                            } %}
+                        {% endblock %}
+
+                    {% endblock %}
+                </div>
+            {% endblock %}
+            {% block breakpoints_tabs %}
+                {% for breakpoint in breakpoints %}
+                    {% block tab_breakpoint %}
+                        <ropi-touchable slot="tab">{{ breakpoint.name }}</ropi-touchable>
+                    {% endblock %}
+                    {% block tabpanel_breakpoint %}
+                        <div slot="tabpanel">
+                            {% block tabpanel_breakpoint_inner %}
+
+                                    {% block general %}
+                                        {% sw_include '@RopiFrontendEditing/content-editor/elements/common/settings/general.html.twig' %}
+                                    {% endblock %}
+
+                            {% endblock %}
+                        </div>
+                    {% endblock %}
+                {% endfor %}
+            {% endblock %}
+        </ropi-tabs>
+        {% endblock %}
+    </template>
+</ropi-content-element>
+{% endblock %}

@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+      <script type="module">
+        import '../../demo-element/demo-element.js?v=1637255330';
+      </script>
+
+      <title>dom-template demo</title>
+  </head>
+  <body>
+    <ropi-demo>
+      <div id="element">
+        <div
+          data-person="name"
+          onclick="alert('My name is {{person.name}}')">
+        </div>
+      </div>
+      <script type="module">
+        import DOMTemplate from '../dom-template.js?v=1637255330'
+        DOMTemplate.process(
+          document.getElementById('element'),
+          {
+            person: {
+              name: "Robert"
+            }
+          }
+        );
+      </script>
+    </ropi-demo>
+  </body>
+</html>

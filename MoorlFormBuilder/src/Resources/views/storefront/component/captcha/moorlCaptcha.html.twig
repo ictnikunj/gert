@@ -1,0 +1,19 @@
+<div class="form-group">
+    <label class="form-label">{{ 'moorl-form-builder.general.captchaTitle'|trans }}</label>
+    <div class="moorl-captcha">
+        <button class="btn btn-light"
+                data-moorl-captcha=".captcha-{{ formId }}"
+                data-src="{{ seoUrl('moorl-form-builder.captcha', {'id': formId}) }}"
+                type="button"><i class="fas fa-sync"></i> {{ 'moorl-form-builder.general.captchaRefresh'|trans }}</button>
+        <img src="{{ seoUrl('moorl-form-builder.captcha', {'id': formId}) }}"
+             class="p-1 border captcha-{{ formId }}"
+             alt="{{ 'moorl-form-builder.general.captchaImgError'|trans }}">
+        <input type="text"
+               name="moorl_captcha_confirm"
+               class="form-control"
+               style="height: auto; font-size: 1.7em"
+               required
+               placeholder="{{ 'moorl-form-builder.general.captchaPlaceholder'|trans }}">
+        <input type="hidden" name="formId" value="{{ formId }}">
+    </div>
+</div>

@@ -1,0 +1,12 @@
+.footer-minimal{
+    color:$rhweb-footer-minimal-font-color;
+    background-color: $rhweb-footer-minimal-background-color;
+
+    a{
+        color:$rhweb-footer-minimal-link-color;
+
+        &:hover{
+            color:$rhweb-footer-minimal-link-color-hover;
+        }
+    }
+}

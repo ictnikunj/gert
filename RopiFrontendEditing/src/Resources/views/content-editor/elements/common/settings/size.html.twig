@@ -1,0 +1,65 @@
+{% block size %}
+    <ropi-radio-group>
+        {% block size_radio_group_inner %}
+
+            {% block size_radio_inherit %}
+                {% if breakpoint and breakpoint.inheritsFrom %}
+                    <ropi-radio name="{{ name }}" value="inherit" checked>
+                        {% trans with {'%breakpointName%': breakpoints[breakpoint.inheritsFrom].name} %}ropi-frontend-editing.contentElement.definition.label.inheritFromBreakpoint{% endtrans %}
+                    </ropi-radio>
+                {% endif %}
+            {% endblock %}
+
+            {% block size_radio_default %}
+                {% if not hideDefaultOption %}
+                    <ropi-radio name="{{ name }}" value="default" {% if checkedDefaultOption == 'default' or not checkedDefaultOption %}checked{% endif %}>
+                        {% trans %}ropi-frontend-editing.contentElement.definition.label.default{% endtrans %}
+                    </ropi-radio>
+                {% endif %}
+            {% endblock %}
+
+            {% block size_radio_none %}
+                {% if showNoneOption %}
+                    <ropi-radio name="{{ name }}" value="none" {% if checkedDefaultOption == 'none' %}checked{% endif %}>
+                        {% if masculine %}
+                            {% trans %}ropi-frontend-editing.contentElement.definition.label.noneMasculine{% endtrans %}
+                        {% else %}
+                            {% trans %}ropi-frontend-editing.contentElement.definition.label.none{% endtrans %}
+                        {% endif %}
+                    </ropi-radio>
+                {% endif %}
+            {% endblock %}
+
+            {% block size_radio_xs %}
+                <ropi-radio name="{{ name }}" value="xs" {% if checkedDefaultOption == 'xs' %}checked{% endif %}>
+                    {% trans %}ropi-frontend-editing.contentElement.definition.label.xs{% endtrans %}
+                </ropi-radio>
+            {% endblock %}
+
+            {% block size_radio_sm %}
+                <ropi-radio name="{{ name }}" value="sm" {% if checkedDefaultOption == 'sm' %}checked{% endif %}>
+                    {% trans %}ropi-frontend-editing.contentElement.definition.label.sm{% endtrans %}
+                </ropi-radio>
+            {% endblock %}
+
+            {% block size_radio_md %}
+                <ropi-radio name="{{ name }}" value="md" {% if checkedDefaultOption == 'md' %}checked{% endif %}>
+                    {% trans %}ropi-frontend-editing.contentElement.definition.label.md{% endtrans %}
+                </ropi-radio>
+            {% endblock %}
+
+            {% block size_radio_lg %}
+                <ropi-radio name="{{ name }}" value="lg" {% if checkedDefaultOption == 'lg' %}checked{% endif %}>
+                    {% trans %}ropi-frontend-editing.contentElement.definition.label.lg{% endtrans %}
+                </ropi-radio>
+            {% endblock %}
+
+            {% block size_radio_xl %}
+                <ropi-radio name="{{ name }}" value="xl" {% if checkedDefaultOption == 'xl' %}checked{% endif %}>
+                    {% trans %}ropi-frontend-editing.contentElement.definition.label.xl{% endtrans %}
+                </ropi-radio>
+            {% endblock %}
+
+        {% endblock %}
+    </ropi-radio-group>
+{% endblock %}

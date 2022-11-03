@@ -1,0 +1,52 @@
+{
+    "acris-product-downloads": {
+        "blocks": {
+            "commerce": {
+                "productDownloads": {
+                    "label": "Product downloads"
+                }
+            }
+        },
+        "elements": {
+            "general": {
+                "config": {
+                    "label": {
+                        "backgroundColor": "Background color",
+                        "spacingTop": "Spacing top",
+                        "spacingBottom": "Spacing bottom",
+                        "spacingRight": "Spacing right",
+                        "spacingLeft": "Spacing left",
+                        "spacingSelect": "Spacing",
+                        "optionSpacingNo": "No spacing (0)",
+                        "optionSpacingSmall": "Very small spacing (1)",
+                        "optionSpacingMediumSmall": "Small spacing (2)",
+                        "optionSpacingNormal": "Normal spacing (3)",
+                        "optionSpacingMediumLarge": "Medium large spacing (4)",
+                        "optionSpacingLarge": "Large spacing (5)",
+                        "optionSpacingPixel": "Pixel input",
+                        "individualSpacingTop": "Individual spacing top",
+                        "individualSpacingBottom": "Individual spacing bottom",
+                        "individualSpacingLeft": "Individual spacing left",
+                        "individualSpacingRight": "Individual spacing right",
+                        "borderActive": "Show border",
+                        "borderColor": "Border color",
+                        "borderSize": "Border size",
+                        "borderRadius": "Border radius"
+                    }
+                }
+            },
+            "productDownloads": {
+                "label": "Product downloads",
+                "config": {
+                    "showHeadline": "Show headline"
+                },
+                "placeholder": {
+                    "title": "Downloads"
+                },
+                "info": {
+                    "empty": "There are no downloads associated with the selected product."
+                }
+            }
+        }
+    }
+}

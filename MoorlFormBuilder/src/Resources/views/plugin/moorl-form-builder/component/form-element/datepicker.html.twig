@@ -1,0 +1,20 @@
+<div class="form-group form-{{ formElement.type }}-{{ formElement.name }}">
+    {% sw_include "@MoorlFormBuilder/plugin/moorl-form-builder/component/label.html.twig" ignore missing %}
+
+    {% set formElementInput %}
+        <input
+            type="date"
+            min="{{ moorl_get_date(formElement.dateMin) }}"
+            max="{{ moorl_get_date(formElement.dateMax) }}"
+            step="{{ formElement.numberStep }}"
+            data-excluded-days='{{ formElement.dateExclude|json_encode }}'
+            name="{{ formElementName }}"
+            id="{{ formElementId }}"
+            value="{{ formElementValue }}"
+            placeholder="{{ formElementPlaceholder }}"
+            {% if formElement.required %}required{% endif %}
+            {% if formElement.disabled %}readonly{% endif %}
+            class="form-control">
+    {% endset %}
+    {% sw_include "@MoorlFormBuilder/plugin/moorl-form-builder/component/input-group.html.twig" ignore missing %}
+</div>

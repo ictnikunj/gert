@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+      <script type="module">
+        import '../../demo-element/demo-element.js?v=1637255330';
+        import '../../javascript-test-element/javascript-test-element.js?v=1637255330';
+      </script>
+
+      <title>object-util demo</title>
+  </head>
+  <body>
+    <ropi-demo sourcehidden name="Get key/property path">
+      <ropi-javascript-test dependencies="import ObjectUtil from '../object-util.js?v=1637255330'" expect="'Rob'">
+        let object = {name: 'Rob'};
+        ObjectUtil.getKeyPath(object, 'name');
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import ObjectUtil from '../object-util.js?v=1637255330'" expect="12">
+        let object = {ingredients: {sugar: 12}};
+        ObjectUtil.getKeyPath(
+          object,
+          'ingredients.sugar'
+        );
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import ObjectUtil from '../object-util.js?v=1637255330'" expect="undefined">
+        ObjectUtil.getKeyPath({}, 'nonExistingKey');
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import ObjectUtil from '../object-util.js?v=1637255330'" expect="'value1'">
+        let func = function() {};
+        func.myKey = 'value1';
+        ObjectUtil.getKeyPath(func, 'myKey');
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import ObjectUtil from '../object-util.js?v=1637255330'" expect="'value2'">
+        let array = [];
+        array.myKey = 'value2';
+        ObjectUtil.getKeyPath(array, 'myKey');
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import ObjectUtil from '../object-util.js?v=1637255330'" expect="undefined">
+        //
+        // Primitive values will just be ignored; no error will be raised
+        //
+        ObjectUtil.getKeyPath(1, 'a.path');
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import ObjectUtil from '../object-util.js?v=1637255330'" expect="undefined">
+        ObjectUtil.getKeyPath(null, 'a.path');
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import ObjectUtil from '../object-util.js?v=1637255330'" expect="undefined">
+        ObjectUtil.getKeyPath(undefined, 'a.path');
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import ObjectUtil from '../object-util.js?v=1637255330'" expect="undefined">
+        ObjectUtil.getKeyPath('string', 'a.path');
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import ObjectUtil from '../object-util.js?v=1637255330'" expect="undefined">
+        ObjectUtil.getKeyPath();
+      </ropi-javascript-test>
+    </ropi-demo>
+
+    <ropi-demo sourcehidden name="Set key/property path">
+      <ropi-javascript-test dependencies="import ObjectUtil from '../object-util.js?v=1637255330'" expect="'value'">
+        let object = {};
+        ObjectUtil.setKeyPath(object, 'key', 'value');
+        object.key;
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import ObjectUtil from '../object-util.js?v=1637255330'" expect="'hello'">
+        let object = {};
+        ObjectUtil.setKeyPath(object, 'deep.property', 'hello');
+        object.deep.property;
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import ObjectUtil from '../object-util.js?v=1637255330'" expect="'value1'">
+        let func = function() {};
+        ObjectUtil.setKeyPath(func, 'myKey.subKey', 'value1');
+        func.myKey.subKey;
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import ObjectUtil from '../object-util.js?v=1637255330'" expect="'value2'">
+        let array = [];
+        ObjectUtil.setKeyPath(array, 'myKey.subKey', 'value2');
+        array.myKey.subKey;
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import ObjectUtil from '../object-util.js?v=1637255330'" expect="undefined">
+        //
+        // Primitive values will just be ignored; no error will be raised
+        //
+        ObjectUtil.setKeyPath(1, 'a.path', 'value');
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import ObjectUtil from '../object-util.js?v=1637255330'" expect="undefined">
+        ObjectUtil.setKeyPath(null, 'a.path', 'value');
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import ObjectUtil from '../object-util.js?v=1637255330'" expect="undefined">
+        ObjectUtil.setKeyPath(undefined, 'a.path', 'value');
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import ObjectUtil from '../object-util.js?v=1637255330'" expect="undefined">
+        ObjectUtil.setKeyPath('string', 'a.path', 'value');
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import ObjectUtil from '../object-util.js?v=1637255330'" expect="undefined">
+        ObjectUtil.setKeyPath();
+      </ropi-javascript-test>
+    </ropi-demo>
+  </body>
+</html>

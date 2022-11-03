@@ -1,0 +1,32 @@
+{
+  "rhweb-theme-config": {
+    "serviceBox": {
+      "addons": {
+        "cms": {
+          "badge": "+ Addon",
+          "headline": "CMS BUNDLE - Erweiterung der Erlebniswelten",
+          "content": "Du hast meine Erweiterung für die Erlebniswelten noch nicht installiert? Das CMS Bundle Addon ist perfekt auf das Theme abgestimmt und gibt dir unzählige neue Möglichkeiten für den Aufbau deiner Contentseiten.",
+          "button": "Zum Shopware Store",
+          "buttonUrl": "https://store.shopware.com/rhweb22714054070/cms-bundle-erweiterung-der-erlebniswelten.html"
+        }
+      },
+      "two": {
+        "headline": "Photoshop Designvorlagen",
+        "content": "Ich habe dir die Vorlagen zum Theme als kostenlosen Download bereitgestellt. Diese Vorlagen kannst du oder deine Designer frei nutzen und erweitern.",
+        "button": "Kostenlos herunterladen",
+        "buttonUrl": "https://rh-webdesign.com/theme-downloads?theme={theme}"
+      },
+      "three": {
+        "headline": "Du kommst nicht weiter?",
+        "content": "Du hängst schon länger an einem Problem und kommst einfach nicht weiter? Melde dich bitte bei mir und wir finden eine Lösung. Support wird bei mir groß geschrieben.",
+        "button": "shopware@rh-webdesign.com",
+        "buttonUrl": "mailto:shopware@rh-webdesign.com?subject=Ich%20ben%C3%B6tige%20Hilfe%20%7C%20{theme}%20Theme&body=Hey%2C%20bitte%20achte%20darauf%2C%20dass%20du%20dein%20Anliegen%20ausf%C3%BChrlich%20beschreibst.%20Am%20besten%20sogar%20mit%20Screenshots!%20%3B)%0D%0A%0D%0A-%20Du%20suchst%20vergeblich%20eine%20Funktion%20im%20Theme%3F%20-%0D%0A-%20Du%20hast%20einen%20Fehler%20gefunden%3F%20-%0D%0A-%20Du%20m%C3%B6chtest%20eine%20Theme%20Anpassung%20beauftragen%3F%20-%0D%0A%0D%0A"
+      },
+      "label": {
+        "welcomeContent": "\"Hallo! Schön, dass du dich für mein Theme entschieden hast. Du hast nicht nur ein extrem umfangreich konfigurierbares Werkzeug für deinen Online-Shop an der Hand, sondern gleichzeitig auch meinen grandiosen Support kostenlos mit dazu! <br>Ich begleite dich auf deiner Reise zu deinem perfekten Online-Shop. Meine höchste Priorität ist, dass du langfristig mit meinem Theme erfolgreich bist, deshalb wird jeder Supportfall sehr hoch priorisiert und gewissenhaft bearbeitet!<br><br>Weiter unten findst du die Grundeinstellungen des Themes. Diese ändern das Layout deines Shops maßgeblich. Wenn du weiter ins Detail gehen möchtest, schaue durch die weiteren Reiter und Einstellungen. Alternativ helfe ich dir auch gerne bei der Einrichtung deines gesamten Shops! ✌\"<br><a target='_blank' href='https://rh-webdesign.com/mein-angebot'>Einrichtungsservice buchen</a>",
+        "welcomeSignature": "- Robin, RH-Webdesign -",
+        "welcomeHelptext": "Du kannst diese Informationsfelder in der Konfiguration des Themes deaktivieren.<br><br><b>Erweiterungen > Meine Erweiterungen > Themes</b>"
+      }
+    }
+  }
+}

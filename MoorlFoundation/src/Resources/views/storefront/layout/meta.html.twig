@@ -1,0 +1,26 @@
+{% sw_extends '@Storefront/storefront/layout/meta.html.twig' %}
+
+{% block layout_head_stylesheet %}
+    {{ parent() }}
+
+    {% if config('MoorlFoundation.config.fontawesome') %}
+        <!-- Deprecated: Will be completely removed and replaced by SVG -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"/>
+    {% endif %}
+
+    {% if config('MoorlFoundation.config.animate') %}
+        <link rel="stylesheet" href="{{ asset('bundles/moorlfoundation/storefront/css/animate.css') }}">
+    {% endif %}
+
+    {% if config('MoorlFoundation.config.moorlAnimation') %}
+        <script type="application/javascript">window.moorlAnimation = {{ config('MoorlFoundation.config.moorlAnimation')|json_encode|raw }};</script>
+    {% endif %}
+
+    {% if config('MoorlFoundation.config.advancedSearchWidth') %}
+        <style>
+            :root {
+                --moorl-advanced-search-width: {{ config('MoorlFoundation.config.advancedSearchWidth') }};
+            }
+        </style>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+      <script type="module">
+        import '../../demo-element/demo-element.js?v=1637255330';
+        import '../../styles/styles.js?v=1637255330';
+        import '../textarea-element.js?v=1637255330';
+      </script>
+
+      <title>textarea-element demo</title>
+  </head>
+  <body>
+    <ropi-demo>
+      <ropi-textarea>
+        <div slot="placeholder">Lorem Ipsum</div>
+        <div slot="description">Please enter a value</div>
+      </ropi-textarea>
+      <ropi-textarea value="A prefilled
+long
+text value">
+        <div slot="placeholder">Prefilled</div>
+        <div slot="description">Please enter a value</div>
+      </ropi-textarea>
+      <ropi-textarea disabled>
+        <div slot="placeholder">Disabled</div>
+        <div slot="description">Please enter a value</div>
+      </ropi-textarea>
+      <ropi-textarea disabled value="A prefilled value">
+        <div slot="placeholder">Disabled and prefilled</div>
+        <div slot="description">Please enter a value</div>
+      </ropi-textarea>
+    </ropi-demo>
+
+    <ropi-demo name="Color support">
+      <ropi-textarea style="--ropi-textarea-color: var(--ropi-color-purple);">
+        <div slot="placeholder">purple</div>
+      </ropi-textarea>
+    </ropi-demo>
+  </body>
+</html>

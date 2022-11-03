@@ -1,0 +1,17 @@
+.ropi-frontend-editing-image--block {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.ropi-frontend-editing-image--cover {
+  object-fit: cover;
+}
+
+.ropi-frontend-editing-image--contain {
+  object-fit: contain;
+}
+
+.ropi-frontend-editing-image-objectfit {
+  overflow: hidden;
+}

@@ -1,0 +1,7 @@
+{
+    "she-api-test-button": {
+        "title": "API Test",
+        "success": "Test successful!",
+        "error": "The provided API-Key is invalid."
+    }
+}

@@ -1,0 +1,19 @@
+@if $rhweb-general-activate-theme-scrollbar == 1{
+    *{
+        &::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        &::-webkit-scrollbar-track {
+            background: $sw-border-color;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background: $rhweb-general-theme-scrollbar-color;
+        }
+
+        &::-webkit-scrollbar-thumb:hover {
+            background: darken($rhweb-general-theme-scrollbar-color, 10%);
+        }
+    }
+}

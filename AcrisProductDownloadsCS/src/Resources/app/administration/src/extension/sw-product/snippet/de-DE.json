@@ -1,0 +1,93 @@
+{
+    "sw-product": {
+        "detailBase": {
+            "acrisProductDownloads": {
+                "cardTitle": "Downloads",
+
+                "labelContextMenuAddMediaToProduct": "Zu Produkt Bildern hinzufügen",
+                "labelContextMenuAddDocumentToProduct": "Zu Produkt Downloads hinzufügen"
+            },
+            "acrisProductLinks": {
+                "cardTitle": "Links",
+                "modalTitleLink": "Produktlink",
+                "buttonCancel": "Abbrechen",
+                "buttonApply": "Speichern",
+                "buttonAddLink": "Link hinzufügen",
+                "contextMenuEdit": "Bearbeiten",
+                "contextMenuDelete": "Löschen",
+                "modalTitleDeleteLink": "Löschen",
+                "textDeleteLinkConfirm": "Möchten Sie den Produktlink löschen?",
+                "buttonDelete": "Löschen",
+                "columnUrl": "URL",
+                "columnLinkTarget": "In neuem Tab öffnen",
+                "columnTitle": "Titel",
+                "columnDescription": "Beschreibung"
+            }
+        }
+    },
+
+    "global": {
+        "entities": {
+            "acris_product_download": "Produkt Download"
+        },
+        "acris-document-upload": {
+            "caption": "Dateien zum Hochladen hierhin ziehen",
+            "buttonUrlUpload": "Über URL hochladen",
+            "buttonFileUpload": "Dokumente hochladen",
+            "buttonOpenMedia": "Dokument auswählen",
+
+            "buttonSwitchToFileUpload": "Datei von Deinem Computer hochladen",
+            "buttonSwitchToUrlUpload": "Datei von URL hochladen"
+        },
+        "acris-product-download":  {
+            "context":  {
+                "buttonEdit": "Bearbeiten"
+            }
+        }
+    },
+
+    "acris-edit-download-modal": {
+        "title": "Produkt Download bearbeiten",
+        "description": "Beschreibung",
+        "field": {
+            "title": "Titel",
+            "titlePlaceholder": "Gib einen Dokumententitel ein...",
+            "description": "Beschreibung",
+            "descriptionPlaceholder": "Gib eine Dokumentenbeschreibung ein...",
+            "position": "Position",
+            "positionHelpText": "Die Position bestimmt die Reihenfolge der Anzeige der Produktdownloads im Shop. Diese kann über Drag & Drop in der Downloadübersicht angepasst werden.",
+            "language": "Download in folgenden Sprachen verfügbar",
+            "languagePlaceholder": "Wähle die Sprachen...",
+            "languageHelpText": "Wird keine Sprache gewählt, ist der Produktdownload in allen Sprachen automatisch verfügbar.",
+            "previewImage": "Vorschaubild",
+            "previewImageEnabled": "Vorschaubild aktivieren",
+            "downloadTab": "Download Tab",
+            "downloadTabHelpText": "Wenn die Produkt Download Tab ausgewählt ist, wird der Download in der ausgewählten Registerkarte angezeigt, wenn die Option In Produkt Download anzeigen in der Plugin-Konfiguration aktiviert ist. Wenn es keine zugewiesene Produkt Download Tab für den Download gibt, wird er in der Standard Produkt Download Tab angezeigt.",
+            "downloadTabInfo": "Es sind keine Download Tabs konfiguriert. Bitte erstellen Sie eine Download-Tab-Konfiguration, um sie zuzuweisen.",
+            "downloadTabInfoRouter": "Klicken Sie hier, um eine neue Download-Registerkarte zu erstellen",
+            "downloadTabPlaceholder": "Download-Tab auswählen..."
+        }
+    },
+
+    "acris-product-links-modal-form": {
+        "fieldLabelUrl" : "URL",
+        "fieldPlaceholderUrl" : "URL eingeben...",
+        "fieldHelpTextUrl" : "Die Url des Dokuments wird in der Storefront angezeigt, ein Klick darauf öffnet das Dokument, wenn die eingegebene Url gültig ist.",
+
+        "fieldTitleLabelLinkTarget" : "In neuem Tab öffnen",
+        "fieldTitleHelpTextLinkTarget" : "Wenn es aktiv ist, wird das Dokument in einem neuen Tab geöffnet.",
+
+        "fieldTitleLabelTitle" : "Titel",
+        "fieldTitlePlaceholderTitle" : "Link-Titel eingeben...",
+
+        "fieldTitleLabelDescription" : "Beschreibung",
+        "fieldTitlePlaceholderDescription" : "Beschreibung des Links eingeben...",
+
+        "fieldTitleLabelPosition" : "Position",
+        "fieldTitleHelpTextPosition" : "Die Position bestimmt die Reihenfolge, in der die Produktlinks im Shop angezeigt werden.",
+
+        "fieldTitleLabelLanguage" : "Link sollte in den folgenden Sprachen verfügbar sein",
+        "fieldTitlePlaceholderLanguage" : "Sprachen auswählen...",
+        "fieldTitleHelpTextLanguage" : "Wenn keine Sprache ausgewählt wird, ist der Produktlink automatisch in allen Sprachen verfügbar."
+    }
+}

@@ -1,0 +1,82 @@
+{% block definition %}
+<ropi-content-element
+        type="RopiFrontendEditing/columns"
+        icon="view_column"
+        color="#e373d0"
+        group="{% trans %}ropi-frontend-editing.contentElement.definition.group.layout{% endtrans %}"
+        name="{% trans %}ropi-frontend-editing.contentElement.definition.element.columns{% endtrans %}"
+        languagespecificsettings="{% block languagespecificsettings %}{% endblock %}"
+        src="{{ path('ropi.frontend-editing.element.render') }}">
+    <template>
+        {% block settings_template %}
+        <ropi-tabs scrollable tablistposition="bottom">
+            {% block tab_general %}
+                <ropi-touchable slot="tab">{% trans %}ropi-frontend-editing.contentElement.definition.tab.general{% endtrans %}</ropi-touchable>
+            {% endblock %}
+            {% block tabpanel_general %}
+                <div slot="tabpanel">
+                    {% block tabpanel_general_inner %}
+
+                        {% block colspacing %}
+                            <ropi-collapsible>
+                                <ropi-subheader slot="header">{% trans %}ropi-frontend-editing.contentElement.definition.subheader.columnSpacing{% endtrans %}</ropi-subheader>
+                                <div slot="content">
+                                    {% block colspacing_content %}
+
+                                        {% block colspacing_radio_group %}
+                                            <ropi-radio-group>
+                                                {% block colspacing_radio_group_inner %}
+                                                    <ropi-radio name="colspacing" value="default" checked>{% trans %}ropi-frontend-editing.contentElement.definition.label.default{% endtrans %}</ropi-radio>
+                                                    <ropi-radio name="colspacing" value="none">{% trans %}ropi-frontend-editing.contentElement.definition.label.none{% endtrans %}</ropi-radio>
+                                                {% endblock %}
+                                            </ropi-radio-group>
+                                        {% endblock %}
+
+                                    {% endblock %}
+                                </div>
+                            </ropi-collapsible>
+                        {% endblock %}
+
+                        {% block layout %}
+                            {% sw_include '@RopiFrontendEditing/content-editor/elements/common/settings/layout.html.twig' with {
+                                'name': 'layout'
+                            } %}
+                        {% endblock %}
+
+                        {% block vertical_align %}
+                            {% sw_include '@RopiFrontendEditing/content-editor/elements/common/settings/vertical-align.html.twig' with {
+                                'name': 'verticalAlign'
+                            } %}
+                        {% endblock %}
+
+                    {% endblock %}
+                </div>
+            {% endblock %}
+            {% block breakpoints_tabs %}
+                {% for breakpoint in breakpoints %}
+                    {% block tab_breakpoint %}
+                        <ropi-touchable slot="tab">{{ breakpoint.name }}</ropi-touchable>
+                    {% endblock %}
+                    {% block tabpanel_breakpoint %}
+                        <div slot="tabpanel">
+                            {% block tabpanel_breakpoint_inner %}
+
+                                    {% block columns %}
+                                        {% sw_include '@RopiFrontendEditing/content-editor/elements/common/settings/columns.html.twig' with {
+                                            'name': 'columns.' ~ breakpoint.key
+                                        } %}
+                                    {% endblock %}
+                                    {% block general %}
+                                        {% sw_include '@RopiFrontendEditing/content-editor/elements/common/settings/general.html.twig' %}
+                                    {% endblock %}
+
+                            {% endblock %}
+                        </div>
+                    {% endblock %}
+                {% endfor %}
+            {% endblock %}
+        </ropi-tabs>
+        {% endblock %}
+    </template>
+</ropi-content-element>
+{% endblock %}

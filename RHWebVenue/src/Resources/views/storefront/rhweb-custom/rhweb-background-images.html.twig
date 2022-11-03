@@ -1,0 +1,19 @@
+{% set rhwebHeaderBackgroundImage = theme_config('rhweb-header-background-image') %}
+    {% set rhwebBodyBackgroundImage = theme_config('rhweb-body-background-image') %}
+    {% set rhwebNewsletterBackgroundImage = theme_config('rhweb-newsletter-background-image') %}
+    {% set rhwebFooterBackgroundImage = theme_config('rhweb-footer-background-image') %}
+
+<style>
+    {% if rhwebHeaderBackgroundImage != "" and rhwebHeaderBackgroundImage != "none" %}
+    header{background-image:url({{ rhwebHeaderBackgroundImage|sw_encode_url }});}
+    {% endif %}
+    {% if rhwebBodyBackgroundImage != "" and rhwebBodyBackgroundImage != "none" %}
+    body{background-image:url({{ rhwebBodyBackgroundImage|sw_encode_url }});}
+    {% endif %}
+    {% if rhwebNewsletterBackgroundImage != "" and rhwebNewsletterBackgroundImage != "none" %}
+    .rhweb-footer-newsletter-container{background-image:url({{ rhwebNewsletterBackgroundImage|sw_encode_url }});}
+    {% endif %}
+    {% if rhwebFooterBackgroundImage != "" and rhwebFooterBackgroundImage != "none" %}
+    footer{background-image:url({{ rhwebFooterBackgroundImage|sw_encode_url }});}
+    {% endif %}
+</style>

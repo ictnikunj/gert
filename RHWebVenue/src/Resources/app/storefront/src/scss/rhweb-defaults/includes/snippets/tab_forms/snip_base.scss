@@ -1,0 +1,73 @@
+@import "mixins/mxn_card_title";
+@import "mixins/mxn_inputs";
+@import "mixins/mxn_label";
+@import "mixins/mxn_selects";
+@import "mixins/mxn_submit";
+@import "mixins/mxn_textareas";
+
+$rhweb-form-border-radius: $border-radius;
+
+@if $rhweb-forms-general-activate-cms == 1{
+    .cms-element-form{
+        @include mxn_card_title;
+
+        form{
+            color:$rhweb-forms-general-font-color;
+
+            .form-content{
+
+                .form-row{
+
+                    .form-group{
+                        @include mxn_label;
+                        @include mxn_select;
+                        @include mxn_input;
+                        @include mxn_textarea;
+                    }
+                }
+            }
+
+            @include mxn_submit;
+        }
+    }
+}
+
+@if $rhweb-forms-general-activate-checkout == 1{
+    #addressEditorAccordion, .checkout-main{
+        form{
+            color:$rhweb-forms-general-font-color;
+
+            .form-row, .collapse{
+
+                .form-group{
+                    @include mxn_label;
+                    @include mxn_select;
+                    @include mxn_input;
+                    @include mxn_textarea;
+                }
+            }
+
+            @include mxn_submit;
+        }
+    }
+}
+
+@if $rhweb-forms-general-activate-account == 1{
+    .account-content-main, .account-register{
+        form{
+            color:$rhweb-forms-general-font-color;
+
+            .form-row{
+
+                .form-group{
+                    @include mxn_label;
+                    @include mxn_select;
+                    @include mxn_input;
+                    @include mxn_textarea;
+                }
+            }
+
+            @include mxn_submit;
+        }
+    }
+}

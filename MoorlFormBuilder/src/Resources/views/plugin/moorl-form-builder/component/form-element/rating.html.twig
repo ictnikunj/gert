@@ -1,0 +1,18 @@
+<div class="form-group form-{{ formElement.type }}-{{ formElement.name }}">
+    {% sw_include "@MoorlFormBuilder/plugin/moorl-form-builder/component/label.html.twig" ignore missing %}
+
+    {% set ratingStart = formElement.numberMin ?: 1 %}
+    {% set ratingStop = formElement.numberMax ?: 5 %}
+    {% set formElementInput %}
+        <div>
+            <div class="mfb-rating">
+                {% for i in ratingStop..ratingStart %}
+                    <input id="{{ formElementId }}-{{ i }}" type="radio" name="{{ formElementName }}" value="{{ i }}" {% if formElementValue == i %}checked{% endif %}>
+                    <label for="{{ formElementId }}-{{ i }}">{{ "moorl-form-builder.general.star"|trans|raw }}</label>
+                {% endfor %}
+            </div>
+        </div>
+    {% endset %}
+
+    {% sw_include "@MoorlFormBuilder/plugin/moorl-form-builder/component/input-group.html.twig" ignore missing %}
+</div>

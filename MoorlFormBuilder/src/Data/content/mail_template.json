@@ -1,0 +1,23 @@
+[
+  {
+    "id": "{DEMO_WILD_201}",
+    "mailTemplateTypeId": "{DEMO_WILD_200}",
+    "systemDefault": true,
+    "translations": {
+      "{de-DE}": {
+        "senderName": "{{ salesChannel.name }}",
+        "subject": "moori - Formular Baukasten - {{ salesChannel.name }}",
+        "description": "moori - Formular Baukasten - Standard Template",
+        "contentHtml": "{READ_FILE:mail-templates/mail_template-de-DE.html.twig}",
+        "contentPlain": "{READ_FILE:mail-templates/mail_template-de-DE.txt.twig}"
+      },
+      "{en-GB}": {
+        "senderName": "{{ salesChannel.name }}",
+        "subject": "moori - Form Builder - {{ salesChannel.name }}",
+        "description": "moori - Form Builder - Standard Template",
+        "contentHtml": "{READ_FILE:mail-templates/mail_template-en-GB.html.twig}",
+        "contentPlain": "{READ_FILE:mail-templates/mail_template-en-GB.txt.twig}"
+      }
+    }
+  }
+]

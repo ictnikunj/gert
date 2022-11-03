@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+      <script type="module">
+        import '../../demo-element/demo-element.js?v=1637255330';
+        import '../../styles/styles.js?v=1637255330';
+        import '../../material-icon-element/material-icon-sprite.js?v=1637255330';
+        import '../sw-media-image-element.js?v=1637255330';
+      </script>
+
+      <title>sw-media-image-element demo</title>
+  </head>
+  <body>
+    <ropi-demo>
+        <ropi-sw-media-image name="media" accept="image/jpeg,image/png,image/gif" apibaseuri="./api/" id="media"></ropi-sw-media-image>
+        <script>
+          document.getElementById('media').addEventListener('change', (event) => {
+            console.log(event.currentTarget.value);
+          });
+        </script>
+    </ropi-demo>
+    <ropi-demo>
+        <ropi-sw-media-image name="media" value='{"id":"6d8621309f114c4dab3afaea09b5120c","url":"http://sw6.robertpiplica.de/media/13/ba/f6/1591296336/2-nature.jpg"}' accept="image/jpeg,image/png,image/gif" apibaseuri="./api/" id="media"></ropi-sw-media-image>
+    </ropi-demo>
+  </body>
+</html>

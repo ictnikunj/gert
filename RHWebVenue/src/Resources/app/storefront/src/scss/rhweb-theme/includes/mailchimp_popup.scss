@@ -1,0 +1,93 @@
+.rhweb-modal-box{
+    &.newsletter{
+        color:$rhweb-rhwebmailchimp-popup-main-color;
+
+        .h3{
+            color:$rhweb-rhwebmailchimp-popup-main-color;
+        }
+
+        a{
+            color:$rhweb-rhwebmailchimp-popup-main-color;
+
+            &:hover{
+                color:darken($rhweb-rhwebmailchimp-popup-main-color,10%);
+            }
+        }
+
+        .modal-header{
+            padding: 0;
+            border: 0;
+        }
+
+        .modal-body{
+            padding:0;
+        }
+
+        .popup-content{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
+            height:100%;
+        }
+
+        .close{
+            position: absolute;
+            right: -10px;
+            top: -10px;
+            background: $primary;
+            opacity: 1;
+            color: #fff;
+            border-radius: 100%;
+            padding: 0;
+            width: 35px;
+            height: 35px;
+        }
+
+        .newsletter-input{
+            color:$rhweb-mailchimp-popup-email-text-color;
+            border-bottom: 1px solid $rhweb-mailchimp-popup-email-border-color;
+
+            &:focus{
+                border-bottom-color: $rhweb-mailchimp-popup-email-border-color-focus;
+            }
+
+            @include mxn_placeholder($rhweb-mailchimp-popup-email-placeholder-color);
+        }
+
+        .optin-check{
+            .b-contain input[type="checkbox"] ~ .b-input{
+                border-color:$rhweb-rhwebmailchimp-popup-main-color !important;
+            }
+
+            .b-contain input:focus ~ .b-input {
+                box-shadow: 0 0 0 2px darken($rhweb-rhwebmailchimp-popup-main-color, 15%);
+            }
+
+            .b-contain input:checked ~ .b-input {
+                background: $rhweb-rhwebmailchimp-popup-main-color;
+                border-color: $rhweb-rhwebmailchimp-popup-main-color;
+            }
+
+            .b-contain input:checked:focus ~ .b-input, .b-contain:hover input:not([disabled]):checked ~ .b-input {
+                background: $rhweb-rhwebmailchimp-popup-main-color;
+                border-color: $rhweb-rhwebmailchimp-popup-main-color;
+            }
+
+            .b-contain .b-input::before {
+                background: $rhweb-rhwebmailchimp-popup-main-color;
+            }
+        }
+
+        .btn{
+            background-color: $rhweb-rhwebmailchimp-popup-button-background-color !important;
+            color:$rhweb-rhwebmailchimp-popup-button-color !important;
+
+            &:hover{
+                background-color:$rhweb-rhwebmailchimp-popup-button-background-color-hover !important;
+                color:$rhweb-rhwebmailchimp-popup-button-color-hover !important;
+            }
+        }
+    }
+}

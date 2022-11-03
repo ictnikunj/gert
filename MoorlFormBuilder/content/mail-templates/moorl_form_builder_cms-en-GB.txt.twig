@@ -1,0 +1,21 @@
+This is a standard e-mail template, please do not change this template, but create a duplicate.
+
+{% for formElement in form.data %}
+{% if formElement.value %}
+{{ formElement.translated.label }}:
+{% if formElement.type in ['select','multiselect','radio-group','checkbox-group'] %}
+{% for option in formElement.options %}
+{% if option.value == formElement.value or option.value in formElement.value %}
+{{ option.translated.label }}
+{% endif %}
+{% endfor %}
+{% else %}
+{{ formElement.value|nl2br }}
+{% endif %}
+{% endif %}
+{% endfor %}
+
+form.summaryPlain
+{{ form.summaryPlain }}
+
+1.3.22

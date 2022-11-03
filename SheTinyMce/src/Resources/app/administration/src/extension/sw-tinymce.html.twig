@@ -1,0 +1,49 @@
+{% block sw_text_editor_box %}
+    <div class="sw-text-editor sw-field" :class="classes">
+        {% block sw_text_editor_box %}
+            <div class="sw-text-editor__box">
+                <textarea v-if="!isInlineEdit && !isCodeEdit"
+                          ref="textArea"
+                          :placeholder="placeholder"
+                          :disabled="disabled"
+                          :value="value"
+                />
+
+                {% block sw_text_editor_box_content %}
+                    <sw-code-editor v-if="isCodeEdit"
+                                    :value="value"
+                                    setFocus
+                                    @blur="emitHtmlContent"
+                                    ref="codeEditor">
+                    </sw-code-editor>
+
+                    <div class="sw-text-editor__content" v-if="!isCodeEdit && isInlineEdit">
+                        <div class="sw-text-editor__content-editor"
+                             ref="textEditor"
+                             :contenteditable="!disabled"
+                             :style="verticalAlignStyle"
+                             spellcheck="false"
+                             @focus="onFocus"
+                             @paste="onPaste"
+                             @blur="emitContent"
+                             @input="onContentChange"
+                             tabindex="-1"
+                             v-html="$sanitize(content, { ADD_ATTR: ['target'] })">
+                        </div>
+                        <div v-if="placeholderVisible" class="sw-text-editor__content-placeholder" v-html="$sanitize(placeholder)"></div>
+                    </div>
+                {% endblock %}
+            </div>
+        {% endblock %}
+        {% block sw_media_modal %}
+            <sw-media-modal-v2
+                    variant="regular"
+                    allowMultiSelect="false"
+                    v-if="mediaModalIsOpen"
+                    :caption="$tc('sw-cms.elements.general.config.caption.mediaUpload')"
+                    @media-modal-selection-change="onMediaSelectionChange"
+                    @modal-close="onCloseMediaModal">
+            </sw-media-modal-v2>
+        {% endblock %}
+    </div>
+{% endblock %}

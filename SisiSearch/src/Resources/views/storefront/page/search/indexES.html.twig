@@ -1,0 +1,80 @@
+{% block page_search %}
+    <div class="cms-page search-page">
+        {% block page_search_headline %}
+            {% set totalPages = (page.ESorginalResult.hits.total.value // page.sisi_search_hits)|round(0, 'ceil')+1 %}
+            <h1 class="search-headline" data-count="{{ page.ESorginalResult.hits.total.value }}"
+                data-hits="{{ page.sisi_search_hits }}" data-last="{{ totalPages }}"
+                data-scrolling="{{ page.sisi_sytemconfig.filterscrolling }}" data-reset="{{ 'sisi.reset'|trans|raw }}"  data-ajax="{{ seoUrl('frontend.search.onorder') }}" >
+                {% if page.sisi_elasticsearchAktive %}
+                    {% set total=page.ESorginalResult.hits.total.value %}
+                {% else %}
+                    {% set total=page.listing.total %}
+                {% endif %}
+                {% block page_search_headline_text %}
+                    {{ "search.headline"|trans({
+                        '%searchTerm%': page.searchTerm,
+                        '%count%': total,
+                    })|sw_sanitize }}
+                {% endblock %}
+            </h1>
+        {% endblock %}
+        {% block page_search_listing %}
+            <div class="cms-element-product-listing-wrapper" data-listing-pagination="true"
+                 data-listing-pagination-options='{{ paginationConfig }}'
+                 data-listing="true"
+                 data-listing-options='{{ listingPagination|json_encode }}'>
+
+                <div class="cms-element-product-listing">
+                    {% block page_search_listing_row %}
+                        {% if page.sisi_elasticsearchResults.total > 0 and page.sisi_elasticsearchAktive %}
+                            <div
+                                class="cms-element-product-listing-actions row justify-content-between sisi-paging">
+                                <div class="col-md-auto">
+                                    {% sw_include '@Storefront/storefront/component/pagination-ES.html.twig' with {} %}
+                                </div>
+                            </div>
+                        {% endif %}
+                        <div id="filter-panel-wrapper"
+                             class="filter-panel-wrapper sisiFilter"
+                             data-offcanvas-filter-content="true">
+                            <div class="filter-panel">
+                                <div class="filter-panel-items-container">
+                                    {% sw_include '@Storefront/storefront/component/listing/filter-panel.html.twig' %}
+                                </div>
+                            </div>
+                            {% block component_filter_panel_active_container %}
+                                <div class="filter-panel">
+                                    <div class="filter-panel-active-container">
+                                        {% block component_filter_panel_active_container_inner %}{% endblock %}
+                                    </div>
+                                </div>
+                            {% endblock %}
+                        </div>
+                        <div class="row cms-listing-row">
+                            {% if page.sisi_elasticsearchAktive %}
+                                {% for product in page.sisi_elasticsearchResults %}
+                                    <div
+                                        class="cms-listing-col col-sm-6 col-lg-4 col-xl-3 {% if loop.last %} sisi-last-row {% endif %}">
+                                        {% sw_include '@Storefront/storefront/component/product/card/box.html.twig' with {layout: 'standard'}  %}
+                                    </div>
+                                {% endfor %}
+                            {% else %}
+                                {% sw_include '@Storefront/storefront/page/search/search-pagelet.html.twig' with { page: page } %}
+                            {% endif %}
+                        </div>
+
+                        {% if page.sisi_elasticsearchResults.total > 0  and page.sisi_elasticsearchAktive %}
+                            <div
+                                class="cms-element-product-listing-actions row justify-content-between sisi-paging">
+                                <div class="col-md-auto">
+                                    {% sw_include '@Storefront/storefront/component/pagination-ES.html.twig' with {} %}
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endblock %}
+                </div>
+            </div>
+        {% endblock %}
+    </div>
+{% endblock %}
+

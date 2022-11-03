@@ -1,0 +1,52 @@
+{
+    "acris-product-downloads": {
+        "blocks": {
+            "commerce": {
+                "productDownloads": {
+                    "label": "Produkt Downloads"
+                }
+            }
+        },
+        "elements": {
+            "general": {
+                "config": {
+                    "label": {
+                        "backgroundColor": "Hintergrundfarbe",
+                        "spacingTop": "Abstand oben",
+                        "spacingBottom": "Abstand unten",
+                        "spacingRight": "Spacing Rechts",
+                        "spacingLeft": "Spacing Links",
+                        "spacingSelect": "Abstand",
+                        "optionSpacingNo": "Kein Abstand (0)",
+                        "optionSpacingSmall": "Sehr kleiner Abstand (1)",
+                        "optionSpacingMediumSmall": "Kleiner Abstand (2)",
+                        "optionSpacingNormal": "Normaler Abstand (3)",
+                        "optionSpacingMediumLarge": "Mittelgroßer Abstand (4)",
+                        "optionSpacingLarge": "Großer Abstand (5)",
+                        "optionSpacingPixel": "Pixelangabe",
+                        "individualSpacingTop": "Individueller Abstand Oben",
+                        "individualSpacingBottom": "Individueller Abstand Unten",
+                        "individualSpacingLeft": "Individueller Abstand Links",
+                        "individualSpacingRight": "Individueller Abstand Rechts",
+                        "borderActive": "Rahmen anzeigen",
+                        "borderColor": "Rahmen-Farbe",
+                        "borderSize": "Rahmen-Größe",
+                        "borderRadius": "Rahmen-Radius"
+                    }
+                }
+            },
+            "productDownloads": {
+                "label": "Produkt Downloads",
+                "config": {
+                    "showHeadline": "Überschrift anzeigen"
+                },
+                "placeholder": {
+                    "title": "Downloads"
+                },
+                "info": {
+                    "empty": "Für das ausgewählte Produkt sind keine Downloads zugeordnet."
+                }
+            }
+        }
+    }
+}

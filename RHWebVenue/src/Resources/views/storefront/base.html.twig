@@ -1,0 +1,110 @@
+{% sw_extends '@Storefront/storefront/base.html.twig' %}
+
+{% block base_body_classes %}
+    {{ parent() }} {{ theme_config('rhweb-custom-body-class') }}
+{% endblock %}
+
+{% block base_header %}
+    {% if theme_config('rhweb-topbar-activate-topbar') %}
+        <div class="d-none d-lg-block">
+            {% sw_include '@Storefront/storefront/layout/header/top-bar.html.twig' %}
+        </div>
+    {% endif %}
+    {{ parent() }}
+{% endblock %}
+
+{% block base_navigation %}
+    <div id="fixedNavigation" class="nav-main">
+        {% block base_navigation_inner %}
+            {% sw_include '@Storefront/storefront/layout/navigation/navigation.html.twig' %}
+        {% endblock %}
+    </div>
+{% endblock %}
+
+{% block base_body %}
+    <div class="rhweb-overlay-cookie-change"></div>
+
+    {% if theme_config('rhweb-general-activate-cookie-overlay') %}
+        <script>
+            window.activateCookieOverlay = true;
+        </script>
+    {% endif %}
+
+    {% if theme_config('rhweb-header-layout-header-fixed') and controllerName != 'Checkout' and controllerName != 'Register' %}
+        <script>
+            window.activateFixedNavigation = true;
+        </script>
+    {% endif %}
+
+    {{ parent() }}
+{% endblock %}
+
+{% block base_main %}
+    <main class="content-main">
+        {% if theme_config('rhweb-slider-activate-slider') %}
+            {% if theme_config('rhweb-slider-activate-slider-onlyfrontpage') %}
+                {% if controllerAction|lower == 'home' %}
+                    {% sw_include '@Storefront/storefront/rhweb-custom/home/slider.html.twig' %}
+                {% endif %}
+            {% else %}
+                {% sw_include '@Storefront/storefront/rhweb-custom/home/slider.html.twig' %}
+            {% endif %}
+        {% endif %}
+        {% block base_flashbags %}
+            {{ parent() }}
+        {% endblock %}
+
+        {% block base_main_inner %}
+            {{ parent() }}
+        {% endblock %}
+    </main>
+{% endblock %}
+
+{% block base_body_script %}
+    {{ parent() }}
+
+    {% if theme_config('rhweb-custom-js') %}
+        <script>
+            {{ theme_config('rhweb-custom-js') | raw }}
+        </script>
+    {% endif %}
+{% endblock %}
+
+{% block base_footer %}
+    {% if theme_config('rhweb-mailchimp-activate-footer') %}
+        {% if theme_config('rhweb-mailchimp-activate-onlyfrontpage') %}
+            {% if controllerAction|lower == 'home' %}
+                {% sw_include '@Storefront/storefront/rhweb-custom/home/mailchimp.html.twig' %}
+            {% endif %}
+        {% else %}
+            {% sw_include '@Storefront/storefront/rhweb-custom/home/mailchimp.html.twig' %}
+        {% endif %}
+    {% endif %}
+
+    {% if theme_config('rhweb-footer-activate-service') %}
+        <div class="service-menu-container text-center d-none d-lg-block">
+            <div class="container">
+                {% sw_include '@Storefront/storefront/layout/header/actions/service-menu-widget.html.twig' %}
+            </div>
+        </div>
+    {% endif %}
+
+    {% if theme_config('rhweb-footer-activate-socials') %}
+        <div class="social-footer-container">
+            <div class="container">
+                {% sw_include '@Storefront/storefront/rhweb-custom/social.html.twig' %}
+            </div>
+        </div>
+    {% endif %}
+    {% if theme_config('rhweb-footer-activate-newsletter') and theme_config('rhweb-newsletter-position') != 'column' %}
+        {% sw_include '@Storefront/storefront/rhweb-custom/snippets/footer/rhweb-newsletter.html.twig' with{
+            position: 'footer-above'
+        } %}
+    {% endif %}
+
+    {% if theme_config('rhweb-mailchimp-activate-popup') and not theme_config('rhweb-general-activate-cookie-overlay') %}
+        {% sw_include '@Storefront/storefront/rhweb-custom/newsletter-popup.html.twig' %}
+    {% endif %}
+    {{ parent() }}
+{% endblock %}
+

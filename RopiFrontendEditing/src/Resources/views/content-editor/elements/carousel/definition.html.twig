@@ -1,0 +1,143 @@
+{% block definition %}
+<ropi-content-element
+        type="RopiFrontendEditing/carousel"
+        icon="view_carousel"
+        color="#ef7b4a"
+        group="{% trans %}ropi-frontend-editing.contentElement.definition.group.layout{% endtrans %}"
+        name="{% trans %}ropi-frontend-editing.contentElement.definition.element.carousel{% endtrans %}"
+        languagespecificsettings="{% block languagespecificsettings %}{% endblock %}"
+        src="{{ path('ropi.frontend-editing.element.render') }}">
+    <template>
+        {% block settings_template %}
+        <ropi-tabs scrollable tablistposition="bottom">
+            {% block tab_general %}
+                <ropi-touchable slot="tab">{% trans %}ropi-frontend-editing.contentElement.definition.tab.general{% endtrans %}</ropi-touchable>
+            {% endblock %}
+            {% block tabpanel_general %}
+                <div slot="tabpanel">
+                    {% block tabpanel_general_inner %}
+
+                        {% block num_slides_textfield %}
+                            <div class="ropi-margin-h">
+                                <ropi-textfield name="numSlides" type="number" value="2" min="2" max="6">
+                                    <div slot="placeholder">{% trans %}ropi-frontend-editing.contentElement.definition.label.numberOfSlides{% endtrans %}</div>
+                                </ropi-textfield>
+                            </div>
+                            <ropi-hint>{% trans %}ropi-frontend-editing.contentElement.definition.hint.numberOfSlides{% endtrans %}</ropi-hint>
+                        {% endblock %}
+
+                        {% block arrow_navigation %}
+                            <ropi-collapsible>
+                                <ropi-subheader slot="header">{% trans %}ropi-frontend-editing.contentElement.definition.subheader.arrowNavigation{% endtrans %}</ropi-subheader>
+                                <div slot="content">
+                                    {% block arrow_navigation_content %}
+
+                                        {% block arrow_navigation_radio_group %}
+                                            <ropi-radio-group>
+                                                {% block arrow_navigation_radio_group_inner %}
+                                                    {% block arrow_navigation_radio_none %}
+                                                        <ropi-radio name="arrowNavigation" value="none">{% trans %}ropi-frontend-editing.contentElement.definition.label.none{% endtrans %}</ropi-radio>
+                                                    {% endblock %}
+                                                    {% block arrow_navigation_radio_inside %}
+                                                        <ropi-radio name="arrowNavigation" value="inside" checked>{% trans %}ropi-frontend-editing.contentElement.definition.label.inside{% endtrans %}</ropi-radio>
+                                                    {% endblock %}
+                                                    {% block arrow_navigation_radio_outside %}
+                                                        <ropi-radio name="arrowNavigation" value="outside">{% trans %}ropi-frontend-editing.contentElement.definition.label.outside{% endtrans %}</ropi-radio>
+                                                    {% endblock %}
+                                                {% endblock %}
+                                            </ropi-radio-group>
+                                        {% endblock %}
+
+                                    {% endblock %}
+                                </div>
+                            </ropi-collapsible>
+                        {% endblock %}
+
+                        {% block dot_navigation %}
+                            <ropi-collapsible>
+                                <ropi-subheader slot="header">{% trans %}ropi-frontend-editing.contentElement.definition.subheader.dotNavigation{% endtrans %}</ropi-subheader>
+                                <div slot="content">
+                                    {% block dot_navigation_content %}
+                                        {% block dot_navigation_radio_group %}
+                                            <ropi-radio-group>
+                                                {% block dot_navigation_radio_group_inner %}
+                                                    {% block dot_navigation_radio_none %}
+                                                        <ropi-radio name="dotNavigation" value="none">{% trans %}ropi-frontend-editing.contentElement.definition.label.none{% endtrans %}</ropi-radio>
+                                                    {% endblock %}
+                                                    {% block dot_navigation_radio_inside %}
+                                                        <ropi-radio name="dotNavigation" value="inside" checked>{% trans %}ropi-frontend-editing.contentElement.definition.label.inside{% endtrans %}</ropi-radio>
+                                                    {% endblock %}
+                                                    {% block dot_navigation_radio_outside %}
+                                                        <ropi-radio name="dotNavigation" value="outside">{% trans %}ropi-frontend-editing.contentElement.definition.label.outside{% endtrans %}</ropi-radio>
+                                                    {% endblock %}
+                                                {% endblock %}
+                                            </ropi-radio-group>
+                                        {% endblock %}
+                                    {% endblock %}
+                                </div>
+                            </ropi-collapsible>
+                        {% endblock %}
+
+                        {% block behavior %}
+                            <ropi-collapsible>
+                                <ropi-subheader slot="header">{% trans %}ropi-frontend-editing.contentElement.definition.subheader.behavior{% endtrans %}</ropi-subheader>
+                                <div slot="content">
+                                    {% block behavior_content %}
+
+                                        {% block behavior_checkbox_group %}
+                                            <ropi-checkbox-group>
+                                                {% block behavior_checkbox_group_inner %}
+
+                                                    {% block behavior_checkbox_auto_rotate %}
+                                                        <ropi-checkbox name="autoRotate" value="1" checked>{% trans %}ropi-frontend-editing.contentElement.definition.label.autoRotate{% endtrans %}</ropi-checkbox>
+                                                    {% endblock %}
+
+                                                {% endblock %}
+                                            </ropi-checkbox-group>
+                                        {% endblock %}
+
+                                        {% block rotation_interval_textfield %}
+                                            <div class="ropi-margin-h">
+                                                <ropi-textfield name="rotationInterval" type="number" value="5" min="1">
+                                                    <div slot="placeholder">{% trans %}ropi-frontend-editing.contentElement.definition.label.rotationInterval{% endtrans %}</div>
+                                                </ropi-textfield>
+                                            </div>
+                                        {% endblock %}
+                                    {% endblock %}
+                                </div>
+                            </ropi-collapsible>
+                        {% endblock %}
+
+                        {% block vertical_align %}
+                            {% sw_include '@RopiFrontendEditing/content-editor/elements/common/settings/vertical-align.html.twig' with {
+                                'name': 'verticalAlign',
+                                'checkedDefaultOption': 'center'
+                            } %}
+                        {% endblock %}
+
+                    {% endblock %}
+                </div>
+            {% endblock %}
+            {% block breakpoints_tabs %}
+                {% for breakpoint in breakpoints %}
+                    {% block tab_breakpoint %}
+                        <ropi-touchable slot="tab">{{ breakpoint.name }}</ropi-touchable>
+                    {% endblock %}
+                    {% block tabpanel_breakpoint %}
+                        <div slot="tabpanel">
+                            {% block tabpanel_breakpoint_inner %}
+
+                                    {% block general %}
+                                        {% sw_include '@RopiFrontendEditing/content-editor/elements/common/settings/general.html.twig' %}
+                                    {% endblock %}
+
+                            {% endblock %}
+                        </div>
+                    {% endblock %}
+                {% endfor %}
+            {% endblock %}
+        </ropi-tabs>
+        {% endblock %}
+    </template>
+</ropi-content-element>
+{% endblock %}

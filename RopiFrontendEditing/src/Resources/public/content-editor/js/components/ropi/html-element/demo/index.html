@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+      <script type="module">
+        import '../../demo-element/demo-element.js?v=1637255330';
+      </script>
+
+      <title>html-element demo</title>
+  </head>
+  <body>
+    <ropi-demo>
+
+      <ropi-example-webcomponent id="component">
+        Hello World
+      </ropi-example-webcomponent>
+
+      <script type="module">
+      import RopiHTMLElement from '../html-element.js?v=1637255330';
+
+      // Component definition start---------------------------------------------
+      class RopiExampleWebcomponent extends RopiHTMLElement {
+
+        connectedCallback() {
+          setTimeout(() => {
+            this.dispatchEvent(new CustomEvent('onesecondpassed', {
+              detail: {
+                someEventInfo: "1 second passed"
+              }
+            }));
+          }, 1000);
+        }
+      }
+
+      import html from '../../html-tag/html-tag.js?v=1637255330';
+
+      RopiExampleWebcomponent._template = html`
+      <style>
+        :host {
+          display: block;
+          font-size: 2rem;
+          color: #f00;
+          background-color: #faa;
+          padding: 1rem;
+        }
+      </style>
+      <slot></slot>`;
+
+      customElements.define('ropi-example-webcomponent', RopiExampleWebcomponent);
+      // Component definition end-----------------------------------------------
+
+      // Property event listener example----------------------------------------
+      window.onload = () => {
+        let component = document.getElementById('component');
+        component.ononesecondpassed = (event) => {
+          component.innerHTML += ' (' + event.detail.someEventInfo + ')';
+        }
+      }
+      </script>
+    </ropi-demo>
+  </body>
+</html>

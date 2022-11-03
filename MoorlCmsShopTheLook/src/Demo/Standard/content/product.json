@@ -1,0 +1,54 @@
+[
+  {
+    "id": "{ID:PRODUCT_0}",
+    "active": true,
+    "name": "Demo Belt",
+    "description": "{LOREM_IPSUM_50}",
+    "productNumber": "MSTL000",
+    "stock": 100,
+    "taxId": "{TAX_ID_STANDARD}",
+    "price": 115.50,
+    "visibilities": [{"salesChannelId": "{SALES_CHANNEL_ID}", "visibility": 30}],
+    "categories": [{"id": "{ID:CATEGORY_0}"}],
+    "cover": {"mediaId": "{MEDIA_FILE:product/belts-belt-buckle-leather-metal-89783.jpg}"}
+  },
+  {
+    "id": "{ID:PRODUCT_1}",
+    "active": true,
+    "name": "Demo Boots",
+    "description": "{LOREM_IPSUM_50}",
+    "productNumber": "MSTL001",
+    "stock": 100,
+    "taxId": "{TAX_ID_STANDARD}",
+    "price": 350,
+    "visibilities": [{"salesChannelId": "{SALES_CHANNEL_ID}", "visibility": 30}],
+    "categories": [{"id": "{ID:CATEGORY_0}"}],
+    "cover": {"mediaId": "{MEDIA_FILE:product/boots-pexels-photo-1755386.jpg}"}
+  },
+  {
+    "id": "{ID:PRODUCT_2}",
+    "active": true,
+    "name": "Demo Camera",
+    "description": "{LOREM_IPSUM_50}",
+    "productNumber": "MSTL003",
+    "stock": 100,
+    "taxId": "{TAX_ID_STANDARD}",
+    "price": 230,
+    "visibilities": [{"salesChannelId": "{SALES_CHANNEL_ID}", "visibility": 30}],
+    "categories": [{"id": "{ID:CATEGORY_0}"}],
+    "cover": {"mediaId": "{MEDIA_FILE:product/camera-pexels-photo-1203803.webp}"}
+  },
+  {
+    "id": "{ID:PRODUCT_3}",
+    "active": true,
+    "name": "Demo Sunglasses",
+    "description": "{LOREM_IPSUM_50}",
+    "productNumber": "MSTL004",
+    "stock": 100,
+    "taxId": "{TAX_ID_STANDARD}",
+    "price": 90,
+    "visibilities": [{"salesChannelId": "{SALES_CHANNEL_ID}", "visibility": 30}],
+    "categories": [{"id": "{ID:CATEGORY_0}"}],
+    "cover": {"mediaId": "{MEDIA_FILE:product/sunglasses-pexels-photo-3725531.webp}"}
+  }
+]

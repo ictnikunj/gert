@@ -1,0 +1,123 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <!-- Subscriber -->
+        <service id="Acris\ProductDownloads\Storefront\Subscriber\ProductPageSubscriber">
+            <argument type="service" id="Acris\ProductDownloads\Components\ProductDownloadService"/>
+            <argument type="service" id="media_folder.repository"/>
+            <argument type="service" id="media.repository"/>
+                        <argument type="service" id="ict_media_redirect.repository"/>
+            <tag name="kernel.event_subscriber"/>
+        </service>
+
+        <service id="Acris\ProductDownloads\Storefront\Subscriber\CartSubscriber">
+            <argument type="service" id="Acris\ProductDownloads\Components\ProductDownloadService"/>
+            <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService"/>
+            <tag name="kernel.event_subscriber"/>
+        </service>
+
+        <!-- Entities -->
+        <service id="Acris\ProductDownloads\Custom\ProductDownloadDefinition">
+            <tag name="shopware.entity.definition" entity="acris_product_download" />
+        </service>
+        <service id="Acris\ProductDownloads\Custom\Aggregate\DownloadTabRuleDefinition\DownloadTabRuleDefinition">
+            <tag name="shopware.entity.definition" entity="acris_download_tab_rule" />
+        </service>
+        <service id="Acris\ProductDownloads\Custom\Aggregate\ProductDownloadLanguage\ProductDownloadLanguageDefinition">
+            <tag name="shopware.entity.definition" entity="acris_product_download_language" />
+        </service>
+        <service id="Acris\ProductDownloads\Custom\Aggregate\ProductDownloadTranslation\ProductDownloadTranslationDefinition">
+            <tag name="shopware.entity.definition" entity="acris_product_download_translation" />
+        </service>
+        <service id="Acris\ProductDownloads\Custom\ProductLinkDefinition">
+            <tag name="shopware.entity.definition" entity="acris_product_link" />
+        </service>
+        <service id="Acris\ProductDownloads\Custom\Aggregate\ProductLinkLanguage\ProductLinkLanguageDefinition">
+            <tag name="shopware.entity.definition" entity="acris_product_link_language" />
+        </service>
+        <service id="Acris\ProductDownloads\Custom\Aggregate\ProductLinkTranslation\ProductLinkTranslationDefinition">
+            <tag name="shopware.entity.definition" entity="acris_product_link_translation" />
+        </service>
+        <service id="Acris\ProductDownloads\Custom\LanguageExtension">
+            <tag name="shopware.entity.extension"/>
+        </service>
+        <service id="Acris\ProductDownloads\Custom\ProductExtension">
+            <tag name="shopware.entity.extension"/>
+        </service>
+        <service id="Acris\ProductDownloads\Custom\MediaExtension">
+            <tag name="shopware.entity.extension"/>
+        </service>
+
+        <service id="Acris\ProductDownloads\Custom\RuleExtension">
+            <tag name="shopware.entity.extension"/>
+        </service>
+        <service id="Acris\ProductDownloads\Custom\ProductDownloadTabDefinition">
+            <tag name="shopware.entity.definition" entity="acris_download_tab" />
+        </service>
+        <service id="Acris\ProductDownloads\Custom\Aggregate\ProductDownloadTabTranslation\ProductDownloadTabTranslationDefinition">
+            <tag name="shopware.entity.definition" entity="acris_download_tab_translation" />
+        </service>
+
+        <!-- Import download media by path -->
+        <service id="Acris\ProductDownloads\Core\Framework\DataAbstractionLayer\Write\WriteCommandExtractor"
+                 decorates="Shopware\Core\Framework\DataAbstractionLayer\Write\WriteCommandExtractor">
+            <argument type="service" id="Acris\ProductDownloads\Core\Framework\DataAbstractionLayer\Write\WriteCommandExtractor.inner"/>
+            <argument type="service" id="Shopware\Core\Framework\DataAbstractionLayer\DefinitionInstanceRegistry"/>
+            <argument type="service" id="service_container"/>
+            <argument type="service" id="Doctrine\DBAL\Connection"/>
+        </service>
+
+        <!-- Downloads in listing -->
+        <service id="Acris\ProductDownloads\Core\Content\Product\SalesChannel\Listing\ProductListingLoader" decorates="Shopware\Core\Content\Product\SalesChannel\Listing\ProductListingLoader">
+            <argument type="service" id="Acris\ProductDownloads\Core\Content\Product\SalesChannel\Listing\ProductListingLoader.inner"/>
+            <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService"/>
+            <argument id="Acris\ProductDownloads\Components\ProductDownloadService" type="service" />
+        </service>
+
+        <!-- Shows slider in shopping experiences product box -->
+        <service id="Acris\ProductDownloads\Core\Content\Product\Cms\ProductBoxCmsElementResolver" decorates="Shopware\Core\Content\Product\Cms\ProductBoxCmsElementResolver">
+            <tag name="shopware.cms.data_resolver" />
+            <argument type="service" id="Acris\ProductDownloads\Core\Content\Product\Cms\ProductBoxCmsElementResolver.inner" />
+            <argument type="service" id="Acris\ProductDownloads\Components\ProductDownloadService"/>
+            <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService"/>
+        </service>
+
+        <!-- Shows slider in shopping experiences product slider -->
+        <service id="Acris\ProductDownloads\Core\Content\Product\Cms\ProductSliderCmsElementResolver" decorates="Shopware\Core\Content\Product\Cms\ProductSliderCmsElementResolver">
+            <tag name="shopware.cms.data_resolver" />
+            <argument type="service" id="Acris\ProductDownloads\Core\Content\Product\Cms\ProductSliderCmsElementResolver.inner" />
+            <argument type="service" id="Acris\ProductDownloads\Components\ProductDownloadService"/>
+            <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService"/>
+        </service>
+
+        <!-- Cart processor -->
+        <service id="Acris\ProductDownloads\Core\Content\Product\Cart\AcrisProductDownloadCartProcessor">
+            <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService"/>
+            <argument type="service" id="Acris\ProductDownloads\Components\ProductDownloadService"/>
+            <tag name="shopware.cart.collector" priority="4000"/>
+        </service>
+
+        <!-- Services -->
+        <service id="Acris\ProductDownloads\Components\ProductDownloadService">
+            <argument id="acris_product_download.repository" type="service" />
+            <argument id="acris_product_link.repository" type="service" />
+            <argument id="media.repository" type="service" />
+            <argument id="Shopware\Core\System\SystemConfig\SystemConfigService" type="service" />
+        </service>
+
+        <service id="Acris\ProductDownloads\Core\Content\Cms\DataResolver\Element\ProductResolver">
+            <argument type="service" id="Shopware\Core\Content\Product\SalesChannel\Detail\ProductConfiguratorLoader"/>
+            <tag name="shopware.cms.data_resolver"/>
+        </service>
+
+        <service id="Acris\ProductDownloads\Core\Content\Cms\DataResolver\Element\ProductDownloadsResolver">
+            <argument type="service" id="Shopware\Core\Content\Product\SalesChannel\Detail\ProductConfiguratorLoader"/>
+            <argument type="service" id="Acris\ProductDownloads\Components\ProductDownloadService"/>
+            <tag name="shopware.cms.data_resolver"/>
+        </service>
+    </services>
+</container>

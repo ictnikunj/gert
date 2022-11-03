@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+      <script type="module">
+        import '../../demo-element/demo-element.js?v=1637255330';
+        import '../../javascript-test-element/javascript-test-element.js?v=1637255330';
+      </script>
+
+      <title>dom-util demo</title>
+  </head>
+  <body>
+    <ropi-demo sourcehidden>
+      <ropi-javascript-test dependencies="import DOMUtil from '../dom-util.js?v=1637255330'" noreturn>
+        DOMUtil.forceReflow(document.body);
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import DOMUtil from '../dom-util.js?v=1637255330'">
+        DOMUtil.remToPixels(1);
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import DOMUtil from '../dom-util.js?v=1637255330'">
+        DOMUtil.relativeScrollTop(document.body);
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import DOMUtil from '../dom-util.js?v=1637255330'" noreturn>
+        DOMUtil.lock(document.body); // Body is not interactive (e.g. clickable) anymore
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import DOMUtil from '../dom-util.js?v=1637255330'" noreturn>
+        DOMUtil.unlock(document.body); // Body is now interactive (e.g. clickable) again
+      </ropi-javascript-test>
+    </ropi-demo>
+  </body>
+</html>

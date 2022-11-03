@@ -1,0 +1,11 @@
+{% block browser_detection %}
+
+    <script>
+        {% block browser_detection_script_inner %}
+        if (!window.chrome && !window.InstallTrigger) {
+            alert("Frontend Editing is officially only supported by Chrome and Firefox. If the Frontend Editor does not work properly, please use Chrome or Firefox instead.");
+        }
+        {% endblock %}
+    </script>
+
+{% endblock %}

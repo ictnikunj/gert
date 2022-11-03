@@ -1,0 +1,52 @@
+{
+    "error": {
+        "missing-form-parameter": "Remplissez les informations manquantes"
+    },
+    "checkout": {
+        "missing-form-parameter": "Remplissez les informations manquantes"
+    },
+    "moorl-form-builder": {
+        "general": {
+            "appointmentBlocked": "- not available",
+            "taxIdNumberError": "Tax-ID number unknown or service unavailable",
+            "yes": "Yes",
+            "no": "No",
+            "browse": "Parcourir",
+            "repeaterAdd": "Nouveau",
+            "repeaterRemove": "Supprimer",
+            "star": "\uD83D\uDE48",
+            "sendCopy": "Copie par e-mail",
+            "acceptPrivacy": "J'accepte la politique de protection des données personnelles",
+            "captchaTitle": "Effacez la Captcha",
+            "captchaRefresh": "Nouveau",
+            "captchaImgError": "Erreur de chargement de la Captcha",
+            "captchaError": "La Captcha est erronée",
+            "internalError": "Nous avons des problème de traitement. Merci de contacter notre support.",
+            "captchaPlaceholder": "Résultat",
+            "successMessage": "Votre demande a été envoyée",
+            "mediaTypeError": "Erreur de chargement de %name%.%extension%: Formats autorisés %expected%",
+            "mediaSizeError": "Erreur de chargement, taille maximale de %maxSize% dépassée.",
+            "productRequestTitle": "Demande de produit",
+            "productRequestIntro": "Remplissez ce formulaire, nous allons vous contacter rapidement.",
+            "cancel": "Annuler",
+            "dateFormat": "d.m.A",
+            "dateTimeFormat": "d.m.A H:i",
+            "editLineItem": "Configurer",
+            "editCart": "èditer les informations",
+            "parametersMissing": "Remplissez les informations manquantes",
+            "parametersMissingCheckout": "Remplissez les informations manquantes",
+            "removeMedia": "Supprimer",
+            "allowedFileTypesImagesDocuments": "Fichier autorisés : Images et documents",
+            "allowedFileTypesImages": "Fichier autorisés : Images",
+            "allowedFileTypesDocuments": "Fichier autorisés : Documents PDF",
+            "allowedFileTypesAll": "Fichier autorisés : ",
+            "duplicateError": "Le champ %value% n'est pas valide, saisissez une autre valeur.",
+            "requiredError": "Le champ %value% es vide.",
+            "blacklistError": "Verifiez vos valeurs (Blacklisted Keyword)",
+            "insertNewsletter": "Abonnement à la Newsletter",
+            "documentUpload": "Télécharger des documents",
+            "download": "Download",
+            "review": "Vérification"
+        }
+    }
+}

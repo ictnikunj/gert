@@ -1,0 +1,7 @@
+@mixin mxn_label{
+    label{
+        text-align: $rhweb-forms-label-alignment;
+        color:$rhweb-forms-label-font-color;
+        display: block;
+    }
+}

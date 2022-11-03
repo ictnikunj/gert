@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+      <script type="module">
+        import '../../demo-element/demo-element.js?v=1637255330';
+        import '../../styles/styles.js?v=1637255330';
+        import '../draggable-element.js?v=1637255330';
+      </script>
+
+      <title>draggable-element demo</title>
+  </head>
+  <body>
+    <ropi-demo>
+        <ropi-draggable style="background-color:green;padding:1rem">Drag me</ropi-draggable>
+
+        <div class="droparea" style="padding:1rem;
+                    margin-top:50px;
+                    background-color:blue;
+                    width:100px;
+                    height:100px;
+                    color:white">
+          Drop me here
+        </div>
+        <script type="module">
+          let draggable = document.querySelector('ropi-draggable');
+
+          draggable.ondragstart = (event) => {
+            document.querySelector('.droparea').style.backgroundColor = 'blue';
+          };
+
+          draggable.ondragleave = (event) => {
+            if (event.detail.element.classList.contains('droparea')) {
+              event.detail.element.style.backgroundColor = 'blue';
+            }
+          };
+
+          draggable.ondragenter = (event) => {
+            if (event.detail.element.classList.contains('droparea')) {
+              event.detail.element.style.backgroundColor = 'lightblue';
+            }
+          };
+
+          draggable.ondrop = (event) => {
+            if (event.detail.element.classList.contains('droparea')) {
+              event.detail.element.style.backgroundColor = 'green';
+            }
+          };
+        </script>
+    </ropi-demo>
+  </body>
+</html>

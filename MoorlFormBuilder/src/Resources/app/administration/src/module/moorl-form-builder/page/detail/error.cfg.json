@@ -1,0 +1,8 @@
+{
+    "moorl.form.builder.detail": {
+        "form": [
+            "name",
+            "label"
+        ]
+    }
+}

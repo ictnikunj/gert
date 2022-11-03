@@ -1,0 +1,26 @@
+.is-ctl-product{
+
+    .product-review-point{
+        font-size: 1.2em;
+
+        .point-container{
+
+            .point-rating{
+
+                &.point-blank{
+
+                    i{
+                        color:$rhweb-listing-box-rating-color-blank;
+                    }
+                }
+
+                &.point-full{
+
+                    i{
+                        color:$rhweb-listing-box-rating-color-full;
+                    }
+                }
+            }
+        }
+    }
+}

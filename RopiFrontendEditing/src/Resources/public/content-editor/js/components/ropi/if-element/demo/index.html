@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+      <script type="module">
+        import '../../demo-element/demo-element.js?v=1637255330';
+        import '../if-element.js?v=1637255330';
+      </script>
+
+      <title>if-element demo</title>
+  </head>
+  <body>
+    <ropi-demo>
+      <ropi-if condition="1 == 1">
+        <div slot="then">
+          true
+        </div>
+        <div slot="else">
+          false
+        </div>
+      </ropi-if>
+    </ropi-demo>
+    <ropi-demo name="false">
+      <ropi-if condition="1 === '1'">
+        <div slot="then">
+          true
+        </div>
+        <div slot="else">
+          false
+        </div>
+      </ropi-if>
+    </ropi-demo>
+    <ropi-demo name="Invalid syntax does not render anything">
+      <ropi-if condition="invalid javascript">
+        <div slot="then">
+          true
+        </div>
+        <div slot="else">
+          false
+        </div>
+      </ropi-if>
+    </ropi-demo>
+    <ropi-demo name="No condition does not render anything">
+      <ropi-if>
+        <div slot="then">
+          true
+        </div>
+        <div slot="else">
+          false
+        </div>
+      </ropi-if>
+    </ropi-demo>
+  </body>
+</html>

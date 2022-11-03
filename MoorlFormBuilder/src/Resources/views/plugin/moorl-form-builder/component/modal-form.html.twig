@@ -1,0 +1,60 @@
+{# Set unique DOM Id #}
+{% if not uniqueFormId %}
+    {% set uniqueFormId = form.id %}
+{% endif %}
+
+{% set modalTitle = form.label[app.request.locale] %}
+
+<button
+    data-toggle="modal"
+    data-target="#modal-{{ uniqueFormId }}"
+    class="{{ btnClass ? btnClass : 'btn btn-primary'}}">{{ buttonLabel ? buttonLabel : modalTitle }}
+</button>
+
+<div class="modal fade" id="modal-{{ uniqueFormId }}" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog {{ modalClass ? modalClass : ''}}" role="document">
+        <form data-moorl-form-builder="{{ form.id }}"
+              data-moorl-form-builder-options='{{ {useAjax:true}|json_encode }}'
+              data-form-xhr="true"
+              action="{% if path %}{{ seoUrl(path, pathParameters) }}{% else %}{{ seoUrl('moorl-form-builder.fire', {'moorlFormId': form.id}) }}{% endif %}"
+              method="post"
+              enctype="multipart/form-data"
+              data-form-csrf-handler="true"
+              data-form-validation="true"
+              class="modal-content">
+            {% if path %}
+                {{ sw_csrf(path) }}
+            {% else %}
+                {{ sw_csrf('moorl-form-builder.fire') }}
+            {% endif %}
+            <input type="hidden" name="_redirect_to" value="{{ form.redirectTo }}">
+
+            <div class="modal-header">
+                <h3 class="modal-title">
+                    {{ modalTitle }}
+                </h3>
+                <button type="button" class="modal-close close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">{% sw_icon 'x' %}</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                {% sw_include "@MoorlFormBuilder/plugin/moorl-form-builder/component/form-wrapper.html.twig" %}
+
+                <p>{{ "general.requiredFields"|trans|sw_sanitize }}</p>
+            </div>
+
+            <div class="modal-footer text-right">
+                <button type="button" class="btn btn-light" data-dismiss="modal" aria-label="Close">
+                    {{ 'moorl-form-builder.general.cancel'|trans }}
+                </button>
+                <button class="btn btn-primary" type="submit">
+                    <i class="fas fa-circle-notch fa-spin"></i>
+                    {{ form.submitText[app.request.locale] ? form.submitText[app.request.locale] : 'general.formSubmit'|trans }}
+                </button>
+            </div>
+
+            <input type="submit" class="submit--hidden d-none" />
+        </form>
+    </div>
+</div>

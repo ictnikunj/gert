@@ -1,0 +1,19 @@
+{% block sw_dashboard_index_content_info_grid %}
+    {% parent %}
+
+    <div class="sw-dashboard-index__card-headline">
+        <h1>{{ $tc('sw-dashboard.appointments.headline') }}</h1>
+
+        <span class="sw-dashboard-index__card-headline-timerange">
+            {{ $tc('sw-dashboard.appointments.description') }}
+        </span>
+    </div>
+
+    <sw-card position-identifier="moorl-form-builder-appointment">
+        <template slot="grid">
+            <moorl-form-builder-appointment/>
+        </template>
+    </sw-card>
+
+    <moorl-fb2-hint/>
+{% endblock %}

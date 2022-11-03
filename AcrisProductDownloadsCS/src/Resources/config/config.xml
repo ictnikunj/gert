@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/shopware/platform/master/src/Core/System/SystemConfig/Schema/config.xsd">
+
+    <card>
+        <title>Downloads display settings</title>
+        <title lang="de-DE">Downloads Anzeigeeinstellungen</title>
+
+        <input-field type="single-select">
+            <name>displayPosition</name>
+            <label>Display position of the downloads tab</label>
+            <label lang="de-DE">Anzeigeposition des Downloads-Tabs</label>
+            <placeholder>Select display position...</placeholder>
+            <placeholder lang="de-DE">Wähle die Position...</placeholder>
+            <defaultValue>afterReviews</defaultValue>
+            <options>
+                <option>
+                    <id>beforeDescription</id>
+                    <name>Display downloads tab before description tab</name>
+                    <name lang="de-DE">Tab "Downloads" vor dem Tab "Beschreibung" anzeigen</name>
+                </option>
+                <option>
+                    <id>afterDescription</id>
+                    <name>Display downloads tab after description tab and before reviews tab</name>
+                    <name lang="de-DE">Tab "Downloads" nach dem Tab "Beschreibung" und vor dem Tab "Bewertungen" anzeigen</name>
+                </option>
+                <option>
+                    <id>afterReviews</id>
+                    <name>Display downloads tab after reviews tab</name>
+                    <name lang="de-DE">Tab "Downloads" nach dem, Tab "Bewertungen" anzeigen</name>
+                </option>
+                <option>
+                    <id>noDisplay</id>
+                    <name>Don't display downloads tab</name>
+                    <name lang="de-DE">"Downloads" nicht als Tab anzeigen</name>
+                </option>
+            </options>
+        </input-field>
+
+        <input-field type="single-select">
+            <name>displayLayout</name>
+            <label>Display layout</label>
+            <label lang="de-DE">Layout anzeigen</label>
+            <placeholder>Select display layout...</placeholder>
+            <placeholder lang="de-DE">Wähle die layout...</placeholder>
+            <defaultValue>default</defaultValue>
+            <options>
+                <option>
+                    <id>default</id>
+                    <name>Default</name>
+                    <name lang="de-DE">Standard</name>
+                </option>
+                <option>
+                    <id>button</id>
+                    <name>Download button</name>
+                    <name lang="de-DE">Download button</name>
+                </option>
+            </options>
+        </input-field>
+
+        <input-field type="single-select">
+            <name>acrisShowDownloadsInDescription</name>
+            <label>Show downloads in product description</label>
+            <label lang="de-DE">Downloads in der Produktbeschreibung anzeigen</label>
+            <placeholder>Select display position...</placeholder>
+            <placeholder lang="de-DE">Wähle die Position...</placeholder>
+            <defaultValue>acrisShowDownloadsInDescriptionNo</defaultValue>
+            <options>
+                <option>
+                    <id>acrisShowDownloadsInDescriptionNo</id>
+                    <name>No</name>
+                    <name lang="de-DE">Nein</name>
+                </option>
+                <option>
+                    <id>acrisShowDownloadsInDescriptionBefore</id>
+                    <name>Before Description</name>
+                    <name lang="de-DE">Vor Beschreibung</name>
+                </option>
+                <option>
+                    <id>acrisShowDownloadsInDescriptionMiddle</id>
+                    <name>Between description and technical data</name>
+                    <name lang="de-DE">Zwischen Beschreibung und technischen Daten</name>
+                </option>
+                <option>
+                    <id>acrisShowDownloadsInDescriptionAfter</id>
+                    <name>According to technical data</name>
+                    <name lang="de-DE">Nach technischen Daten</name>
+                </option>
+            </options>
+        </input-field>
+
+        <input-field type="single-select">
+            <name>loadDataProductBox</name>
+            <label>Downloads in product boxes</label>
+            <label lang="de-DE">Downloads in Produkt Boxen</label>
+            <placeholder>Select if data is loaded...</placeholder>
+            <placeholder lang="de-DE">Wähle ob die Downloads in Produktboxen geladen werden sollen...</placeholder>
+            <defaultValue>no</defaultValue>
+            <options>
+                <option>
+                    <id>no</id>
+                    <name>Do not display and do not load</name>
+                    <name lang="de-DE">Nicht anzeigen und nicht laden</name>
+                </option>
+                <option>
+                    <id>load</id>
+                    <name>Do not display, load information for individual positioning via theme</name>
+                    <name lang="de-DE">Nicht anzeigen, Downloads aber für individuelle Positionierung über Theme laden</name>
+                </option>
+            </options>
+        </input-field>
+        <input-field type="single-select">
+            <name>loadDataCheckout</name>
+            <label>Downloads in the checkout</label>
+            <label lang="de-DE">Downloads in the checkout</label>
+            <placeholder>Select if data is loaded...</placeholder>
+            <placeholder lang="de-DE">Wähle ob die Downloads im Checkout geladen werden sollen...</placeholder>
+            <defaultValue>no</defaultValue>
+            <options>
+                <option>
+                    <id>no</id>
+                    <name>Do not display and do not load</name>
+                    <name lang="de-DE">Nicht anzeigen und nicht laden</name>
+                </option>
+                <option>
+                    <id>load</id>
+                    <name>Do not display, load information for individual positioning via theme</name>
+                    <name lang="de-DE">Nicht anzeigen, Downloads aber für individuelle Positionierung über Theme laden</name>
+                </option>
+            </options>
+        </input-field>
+
+        <input-field type="single-select">
+            <name>sortDownloads</name>
+            <label>Downloads sorting</label>
+            <label lang="de-DE">Sortierung der Downloads</label>
+            <placeholder>Select sorting...</placeholder>
+            <placeholder lang="de-DE">Sortierung auswählen...</placeholder>
+            <defaultValue>default</defaultValue>
+            <options>
+                <option>
+                    <id>default</id>
+                    <name>Sort downloads by position (default)</name>
+                    <name lang="de-DE">Downloads nach Position sortieren (Standard)</name>
+                </option>
+                <option>
+                    <id>alphabetically</id>
+                    <name>Sort downloads alphabetically</name>
+                    <name lang="de-DE">Downloads alphabetisch sortieren</name>
+                </option>
+            </options>
+        </input-field>
+
+        <input-field type="single-select">
+            <name>directDownload</name>
+            <label>Direct download</label>
+            <label lang="de-DE">Download Dateien direkt herunterladen</label>
+            <defaultValue>openIfPossible</defaultValue>
+            <options>
+                <option>
+                    <id>openIfPossible</id>
+                    <name>Open in browser if possible (depending on file extension)</name>
+                    <name lang="de-DE">Im Browser öffnen wenn möglich (je nach Dateiendung)</name>
+                </option>
+                <option>
+                    <id>direct</id>
+                    <name>Direct download</name>
+                    <name lang="de-DE">Direkt herunterladen</name>
+                </option>
+            </options>
+        </input-field>
+    </card>
+
+    <card>
+        <title>Links display settings</title>
+        <title lang="de-DE">Anzeigeeinstellungen für Links</title>
+
+        <input-field type="single-select">
+            <name>linkDisplayPosition</name>
+            <label>Display position of the links tab</label>
+            <label lang="de-DE">Anzeigeposition des Links-Tabs</label>
+            <placeholder>Select display position...</placeholder>
+            <placeholder lang="de-DE">Wähle die Position...</placeholder>
+            <defaultValue>afterReviews</defaultValue>
+            <options>
+                <option>
+                    <id>inDownloads</id>
+                    <name>Display links tab inside downloads tab</name>
+                    <name lang="de-DE">Tab "Links" innen dem Tab "Downloads" anzeigen</name>
+                </option>
+                <option>
+                    <id>beforeDescription</id>
+                    <name>Display links tab before description tab</name>
+                    <name lang="de-DE">Tab "Links" vor dem Tab "Beschreibung" anzeigen</name>
+                </option>
+                <option>
+                    <id>afterDescription</id>
+                    <name>Display links tab after description tab and before reviews tab</name>
+                    <name lang="de-DE">Tab "Links" nach dem Tab "Beschreibung" und vor dem Tab "Bewertungen" anzeigen</name>
+                </option>
+                <option>
+                    <id>afterReviews</id>
+                    <name>Display links tab after reviews tab</name>
+                    <name lang="de-DE">Tab "Links" nach dem, Tab "Bewertungen" anzeigen</name>
+                </option>
+                <option>
+                    <id>noDisplay</id>
+                    <name>Don't display links tab</name>
+                    <name lang="de-DE">"Links" nicht als Tab anzeigen</name>
+                </option>
+            </options>
+        </input-field>
+
+        <input-field type="single-select">
+            <name>linkShowDownloadsInDescription</name>
+            <label>Show links in product description</label>
+            <label lang="de-DE">Links in der Produktbeschreibung anzeigen</label>
+            <placeholder>Select display position...</placeholder>
+            <placeholder lang="de-DE">Wähle die Position...</placeholder>
+            <defaultValue>linkShowDownloadsInDescriptionNo</defaultValue>
+            <options>
+                <option>
+                    <id>linkShowDownloadsInDescriptionNo</id>
+                    <name>No</name>
+                    <name lang="de-DE">Nein</name>
+                </option>
+                <option>
+                    <id>linkShowDownloadsInDescriptionBefore</id>
+                    <name>Before Description</name>
+                    <name lang="de-DE">Vor Beschreibung</name>
+                </option>
+                <option>
+                    <id>linkShowDownloadsInDescriptionMiddle</id>
+                    <name>Between description and technical data</name>
+                    <name lang="de-DE">Zwischen Beschreibung und technischen Daten</name>
+                </option>
+                <option>
+                    <id>linkShowDownloadsInDescriptionAfter</id>
+                    <name>According to technical data</name>
+                    <name lang="de-DE">Nach technischen Daten</name>
+                </option>
+            </options>
+        </input-field>
+
+        <input-field type="single-select">
+            <name>linkLoadDataProductBox</name>
+            <label>Links in product boxes</label>
+            <label lang="de-DE">Links in Produkt Boxen</label>
+            <placeholder>Select if data is loaded...</placeholder>
+            <placeholder lang="de-DE">Wähle ob die Links in Produktboxen geladen werden sollen...</placeholder>
+            <defaultValue>no</defaultValue>
+            <options>
+                <option>
+                    <id>no</id>
+                    <name>Do not display and do not load</name>
+                    <name lang="de-DE">Nicht anzeigen und nicht laden</name>
+                </option>
+                <option>
+                    <id>load</id>
+                    <name>Do not display, load information for individual positioning via theme</name>
+                    <name lang="de-DE">Nicht anzeigen, Links aber für individuelle Positionierung über Theme laden</name>
+                </option>
+            </options>
+        </input-field>
+        <input-field type="single-select">
+            <name>linkLoadDataCheckout</name>
+            <label>Links in the checkout</label>
+            <label lang="de-DE">Links in the checkout</label>
+            <placeholder>Select if data is loaded...</placeholder>
+            <placeholder lang="de-DE">Wähle ob die Links im Checkout geladen werden sollen...</placeholder>
+            <defaultValue>no</defaultValue>
+            <options>
+                <option>
+                    <id>no</id>
+                    <name>Do not display and do not load</name>
+                    <name lang="de-DE">Nicht anzeigen und nicht laden</name>
+                </option>
+                <option>
+                    <id>load</id>
+                    <name>Do not display, load information for individual positioning via theme</name>
+                    <name lang="de-DE">Nicht anzeigen, Links aber für individuelle Positionierung über Theme laden</name>
+                </option>
+            </options>
+        </input-field>
+    </card>
+
+    <card>
+        <title>Import settings</title>
+        <title lang="de-DE">Import Einstellungen</title>
+
+        <input-field>
+            <name>importFilePath</name>
+            <copyable>true</copyable>
+            <label>Media path</label>
+            <label lang="de-DE">Medien Pfad</label>
+            <placeholder>file:///var/www/clients/clientX/webX/private/media/documents/</placeholder>
+            <placeholder lang="de-DE">file:///var/www/clients/clientX/webX/private/media/documents/</placeholder>
+            <helpText>Media from inserted path will be uploaded.</helpText>
+            <helpText lang="de-DE">Medien werden vom eingefügten Pfad hochgeladen.</helpText>
+        </input-field>
+    </card>
+</config>

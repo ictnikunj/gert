@@ -1,0 +1,62 @@
+{% block rounding %}
+    <ropi-collapsible>
+        <ropi-subheader slot="header">
+            {% trans %}ropi-frontend-editing.contentElement.definition.subheader.rounding{% endtrans %}
+        </ropi-subheader>
+        <div slot="content">
+            {% block rounding_content %}
+                <ropi-radio-group>
+                    {% block rounding_radio_group_inner %}
+
+                        {% block rounding_radio_default %}
+                            {% if not hideDefaultOption %}
+                                <ropi-radio name="{{ name }}" value="default" {% if checkedDefaultOption == 'default' or not checkedDefaultOption %}checked{% endif %}>
+                                    {% trans %}ropi-frontend-editing.contentElement.definition.label.default{% endtrans %}
+                                </ropi-radio>
+                            {% endif %}
+                        {% endblock %}
+
+                        {% block rounding_radio_none %}
+                            {% if showNoneOption %}
+                                <ropi-radio name="{{ name }}" value="none" {% if checkedDefaultOption == 'none' %}checked{% endif %}>
+                                    {% trans %}ropi-frontend-editing.contentElement.definition.label.none{% endtrans %}
+                                </ropi-radio>
+                            {% endif %}
+                        {% endblock %}
+
+                        {% block rounding_radio_top %}
+                            <ropi-radio name="{{ name }}" value="top" {% if checkedDefaultOption == 'top' %}checked{% endif %}>
+                                {% trans %}ropi-frontend-editing.contentElement.definition.label.top{% endtrans %}
+                            </ropi-radio>
+                        {% endblock %}
+
+                        {% block rounding_radio_right %}
+                            <ropi-radio name="{{ name }}" value="right" {% if checkedDefaultOption == 'right' %}checked{% endif %}>
+                                {% trans %}ropi-frontend-editing.contentElement.definition.label.right{% endtrans %}
+                            </ropi-radio>
+                        {% endblock %}
+
+                        {% block rounding_radio_bottom %}
+                            <ropi-radio name="{{ name }}" value="bottom" {% if checkedDefaultOption == 'bottom' %}checked{% endif %}>
+                                {% trans %}ropi-frontend-editing.contentElement.definition.label.bottom{% endtrans %}
+                            </ropi-radio>
+                        {% endblock %}
+
+                        {% block rounding_radio_left %}
+                            <ropi-radio name="{{ name }}" value="left" {% if checkedDefaultOption == 'left' %}checked{% endif %}>
+                                {% trans %}ropi-frontend-editing.contentElement.definition.label.left{% endtrans %}
+                            </ropi-radio>
+                        {% endblock %}
+
+                        {% block rounding_radio_all %}
+                            <ropi-radio name="{{ name }}" value="all" {% if checkedDefaultOption == 'all' %}checked{% endif %}>
+                                {% trans %}ropi-frontend-editing.contentElement.definition.label.all{% endtrans %}
+                            </ropi-radio>
+                        {% endblock %}
+
+                    {% endblock %}
+                </ropi-radio-group>
+            {% endblock %}
+        </div>
+    </ropi-collapsible>
+{% endblock %}

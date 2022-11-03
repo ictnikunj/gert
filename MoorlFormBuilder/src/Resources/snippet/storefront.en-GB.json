@@ -1,0 +1,52 @@
+{
+    "error": {
+        "missing-form-parameter": "Please complete the missing information to proceed the checkout"
+    },
+    "checkout": {
+        "missing-form-parameter": "Please complete the missing information to proceed the checkout"
+    },
+    "moorl-form-builder": {
+        "general": {
+            "appointmentBlocked": "- not available",
+            "taxIdNumberError": "Tax-ID number unknown or service unavailable",
+            "yes": "Yes",
+            "no": "No",
+            "browse": "Browse",
+            "repeaterAdd": "New",
+            "repeaterRemove": "Remove",
+            "star": "\uD83D\uDE48",
+            "sendCopy": "Send me a copy to my mail address",
+            "acceptPrivacy": "I accept the privacy conditions",
+            "captchaTitle": "Please solve the captcha",
+            "captchaRefresh": "Refresh",
+            "captchaImgError": "Failed to load captcha",
+            "captchaError": "The captcha is invalid",
+            "internalError": "We have problems to process your request. Please contact our shop support.",
+            "captchaPlaceholder": "Result",
+            "successMessage": "Your request has been sent.",
+            "mediaTypeError": "Upload Error on %name%.%extension%: Expected %expected% not valid",
+            "mediaSizeError": "Upload Error max file size of %maxSize% exceeded.",
+            "productRequestTitle": "Product request",
+            "productRequestIntro": "Please fill up this request form. We will touch in contact immediately.",
+            "cancel": "Cancel",
+            "dateFormat": "Y-m-d",
+            "dateTimeFormat": "Y-m-d H:i",
+            "editLineItem": "Configure",
+            "editCart": "Edit information",
+            "parametersMissing": "Please complete the missing information",
+            "parametersMissingCheckout": "Please complete the missing information to proceed the checkout",
+            "removeMedia": "Remove",
+            "allowedFileTypesImagesDocuments": "Supported files: Images or documents",
+            "allowedFileTypesImages": "Supported files: Images",
+            "allowedFileTypesDocuments": "Supported files: PDF Documents",
+            "allowedFileTypesAll": "Supported filetypes: ",
+            "duplicateError": "The value %value% is not valid, please try another one.",
+            "requiredError": "The value %value% is required.",
+            "blacklistError": "You have entered a blacklisted keyword.",
+            "insertNewsletter": "Subscribe newsletter",
+            "documentUpload": "Document upload",
+            "download": "Download",
+            "review": "is being reviewed"
+        }
+    }
+}

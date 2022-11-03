@@ -1,0 +1,77 @@
+{% sw_extends '@Storefront/storefront/base.html.twig' %}
+
+{% block base_body_script %}
+
+    {% if ropiFrontendEditingEditorOpened %}
+        {% block ropi_frontend_editing_script_document_context %}
+            <script>
+                document.body.setAttribute('data-ropi-document-context', '{{ ropiFrontendEditingDocumentContext|json_encode|raw }}');
+            </script>
+        {% endblock %}
+        {% block ropi_frontend_editing_script_document_versions %}
+            <script>
+                document.body.setAttribute('data-ropi-document-versions', '{{ ropiFrontendEditingDocumentVersions|json_encode|raw }}');
+            </script>
+        {% endblock %}
+    {% endif %}
+
+    {% if ropiFrontendEditingEditorOpened or ropiFrontendEditingContentDocument.structure.children is not empty %}
+        {% block ropi_frontend_editing_script_internet_explorer_objectfit %}
+            <script>
+                if (!!window.MSInputMethodContext && !!document.documentMode) {
+                    document.write('<scr' + 'ipt src="{{ asset("bundles/ropifrontendediting/content-editor/js/scripts/ie11-objectfit.js?v=1637255330") }}">' + '</scr' + 'ipt>');
+                }
+            </script>
+        {% endblock %}
+
+        {% block ropi_frontend_editing_script_internet_explorer_image_heights %}
+            <script>
+                if (!!window.MSInputMethodContext && !!document.documentMode) {
+                    document.write('<scr' + 'ipt src="{{ asset("bundles/ropifrontendediting/content-editor/js/scripts/ie11-image-heights.js?v=1637255330") }}">' + '</scr' + 'ipt>');
+                }
+            </script>
+        {% endblock %}
+
+        {% block ropi_frontend_editing_script_carousel %}
+            <script src="{{ asset('bundles/ropifrontendediting/content-editor/js/scripts/carousel.js?v=1637255330') }}"></script>
+        {% endblock %}
+    {% endif %}
+
+    {{ parent() }}
+
+{% endblock %}
+
+{% block base_body_inner %}
+    {{ parent() }}
+
+    {% block ropi_frontend_editing_version_preview %}
+
+        {% if ropiFrontendEditingVersionPreview %}
+            <div id="ropi-content-editor-preview-mode">
+                <div id="ropi-content-editor-preview-mode-text">
+                    {% trans with {'%versionId%': ropiFrontendEditingContentDocument.getId()} %}ropi-frontend-editing.document.preview{% endtrans %}
+                </div>
+                <div id="ropi-content-editor-preview-mode-actions">
+                    <a id="ropi-content-editor-preview-mode-close">X</a>
+                </div>
+                <script>
+                    (function() {
+                        var previewMode = document.getElementById('ropi-content-editor-preview-mode');
+                        var close = document.getElementById('ropi-content-editor-preview-mode-close');
+
+                        close.addEventListener('click', function() {
+                            if (previewMode.parentNode) {
+                                previewMode.parentNode.removeChild(previewMode);
+                            }
+                        });
+
+                        if (window.parent !== window.top) {
+                            previewMode.style.display = 'none';
+                        }
+                    })();
+                </script>
+            </div>
+        {% endif %}
+
+    {% endblock %}
+{% endblock %}

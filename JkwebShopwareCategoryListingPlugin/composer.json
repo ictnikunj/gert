@@ -1,0 +1,46 @@
+{
+    "name": "jkweb/shopware-category-listing-plugin",
+    "description": "A Shopware 6 plugin for CMS elements with tile view of categories in the storefront",
+    "type": "shopware-platform-plugin",
+    "license": "proprietary",
+    "version": "1.0.6",
+    "authors": [
+        {
+            "name": "jkweb ag",
+            "email": "info@jkweb.ch",
+            "homepage": "https://jkweb.ch",
+            "role": "Manufacturer"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Jkweb\\Shopware\\Plugin\\CategoryListing\\": "src/"
+        }
+    },
+    "config": {
+        "optimize-autoloader": true
+    },
+    "extra": {
+        "plugin-icon": "src/Resources/config/plugin.png",
+        "shopware-plugin-class": "Jkweb\\Shopware\\Plugin\\CategoryListing\\JkwebShopwareCategoryListingPlugin",
+        "label": {
+            "de-DE": "Unterkategorien und Kategorien in Erlebniswelten",
+            "en-GB": "Subcategories and categories in shopping experiences"
+        },
+        "description": {
+            "de-DE": "Ein Shopware 6 Plugin um Kategorien oder Unterkategorien inklusive Bild in der Storefront anzuzeigen. Dadurch verbesserst du die Navigation in deinem Shop für deine Kunden.",
+            "en-GB": "A Shopware 6 plugin to display categories or subcategories including image in the storefront. This makes the navigation in your shop clear and easy for your visitors."
+        },
+        "manufacturerLink": {
+            "de-DE": "https://jkweb.ch/",
+            "en-GB": "https://jkweb.ch/en/"
+        },
+        "supportLink": {
+            "de-DE": "https://jkweb.ch/",
+            "en-GB": "https://jkweb.ch/en/"
+        }
+    },
+    "require": {
+        "shopware/core": "~6.4"
+    }
+}

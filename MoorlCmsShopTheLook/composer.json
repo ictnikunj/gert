@@ -1,0 +1,41 @@
+{
+    "name": "moorl/moorl-cms-shop-the-look",
+    "description": "CMS Element - Shop The Look",
+    "version": "1.4.11",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "moori"
+        }
+    ],
+    "require": {
+        "shopware/core": "6.4.*",
+        "moorl/foundation": "1.4.*"
+    },
+    "type": "shopware-platform-plugin",
+    "autoload": {
+        "psr-4": {
+            "MoorlCmsShopTheLook\\": "src/"
+        }
+    },
+    "extra": {
+        "shopware-plugin-class": "MoorlCmsShopTheLook\\MoorlCmsShopTheLook",
+        "copyright": "(c) by moori",
+        "label": {
+            "de-DE": "CMS Element - Shop The Look",
+            "en-GB": "CMS Element - Shop The Look"
+        },
+        "description": {
+            "de-DE": "CMS Element - Shop The Look",
+            "en-GB": "CMS Element - Shop The Look"
+        },
+        "manufacturerLink": {
+            "de-DE": "https://docs.moori.net/",
+            "en-GB": "https://docs.moori.net/"
+        },
+        "supportLink": {
+            "de-DE": "https://docs.moori.net/",
+            "en-GB": "https://docs.moori.net/"
+        }
+    }
+}

@@ -1,0 +1,134 @@
+.header-main{
+    background-color: $rhweb-header-background;
+    padding:$rhweb-header-padding 0;
+    color:$rhweb-header-color;
+
+
+    .header-logo-main{
+        text-align: unset;
+    }
+
+    .header-logo-main-img{
+        max-height:$rhweb-additional-maxlogoheight;
+    }
+
+    .dropdown{
+        cursor:pointer;
+    }
+
+    .dropdown-toggle{
+        &:after{
+            display:none;
+        }
+    }
+
+    .icon-container{
+        .icon{
+            font-size:1.2rem;
+        }
+    }
+
+    .header-search{
+        margin: 30px auto 0 auto;
+        //max-width: 700px;
+
+        .header-search-form{
+            > .input-group{
+                border:1px solid $rhweb-header-searchbar-border-color;
+
+                &:focus-within{
+                    border-color:darken($rhweb-header-searchbar-border-color, 20%);
+                }
+            }
+
+            .header-search-input{
+                border:none;
+            }
+
+            button[type=submit]{
+                border:none;
+            }
+        }
+    }
+
+    .rhweb-search-icon{
+        cursor: pointer;
+    }
+
+    .top-bar-nav-btn{
+        color:$rhweb-header-color;
+
+        &:hover{
+            color:darken($rhweb-header-color, 10%)
+        }
+    }
+
+    .rhweb-currencies-container{
+        border-left:1px solid $rhweb-header-color;
+    }
+
+    .header-icon-row{
+        .icon-container{
+            margin-right:20px;
+
+            &:last-child{
+                margin-right: 0;
+            }
+
+            .rhweb-header-cart{
+                display: flex;
+                align-items: center;
+
+                .cart-amount-header{
+                    border-radius: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 20px;
+                    height: 20px;
+                    margin-left: 5px;
+                }
+            }
+
+            &.rhweb-wishlist-icon{
+
+                margin-right: 20px;
+
+                .header-wishlist-btn{
+                    display: flex;
+
+                    .header-wishlist-badge{
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        width: 20px;
+                        height: 20px;
+                        font-weight: 500;
+                        padding: 0;
+                        font-size: 1em;
+                        position: relative;
+                        top: 1px;
+
+                        &:empty {
+                            display:none;
+                        }
+                    }
+                }
+            }
+
+            .icon{
+                color:$rhweb-header-color;
+
+                &:hover{
+                    color:darken($rhweb-header-color, 10%)
+                }
+            }
+
+            a{
+                &:hover{
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+}

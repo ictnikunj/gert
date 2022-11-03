@@ -1,0 +1,21 @@
+[
+  {
+    "id": "{DEMO_WILD_200}",
+    "technicalName": "moorl_form_builder_cms",
+    "availableEntities": {
+      "salesChannel": "sales_channel",
+      "form": "moorl_form",
+      "product": "product",
+      "order": "order",
+      "customer": "customer"
+    },
+    "translations": {
+      "{de-DE}": {
+        "name": "moori - Formular Baukasten"
+      },
+      "{en-GB}": {
+        "name": "moori - Form Builder"
+      }
+    }
+  }
+]

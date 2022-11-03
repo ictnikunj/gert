@@ -1,0 +1,39 @@
+{% sw_extends '@Storefront/storefront/layout/meta.html.twig' %}
+
+{% block layout_head_stylesheet %}
+    {{ parent() }}
+
+    {% block layout_head_stylesheet_fonts %}
+        <link rel="stylesheet" href="//assets.rh-webdesign.com/css/apps/font-awesome-4-min.css">
+        <link rel="stylesheet" href="//assets.rh-webdesign.com/css/apps/line-awesome.css">
+        <link rel="stylesheet" href="//assets.rh-webdesign.com/css/apps/simple-line-icons.css">
+    {% endblock %}
+
+    {% block layout_head_includes %}
+        {% sw_include '@Storefront/storefront/rhweb-custom/rhweb-background-images.html.twig' %}
+    {% endblock %}
+
+    {% block layout_head_stylesheet_custom_css %}
+        {% if theme_config('rhweb-custom-css') %}
+            <style>
+                {{ theme_config('rhweb-custom-css') | raw }}
+            </style>
+        {% endif %}
+    {% endblock %}
+
+{% endblock %}
+
+{% block layout_head_meta_tags %}
+    {{ parent() }}
+
+    {% block layout_head_custom_head %}
+        {% if theme_config('rhweb-custom-head') %}
+            {{ theme_config('rhweb-custom-head') | raw }}
+        {% endif %}
+    {% endblock %}
+{% endblock %}
+
+{% block layout_head_javascript_tracking %}
+    {{ parent() }}
+{% endblock %}
+

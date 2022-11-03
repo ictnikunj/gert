@@ -1,0 +1,33 @@
+{
+    "name": "ict/article-number",
+    "description": "short URL access to articles via article number.",
+    "version": "v1.0.0",
+    "type": "shopware-platform-plugin",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "iCreative Technologies"
+        }
+    ],
+    "require": {
+        "shopware/core": "*",
+        "shopware/storefront": "*",
+        "shopware/administration": "*"
+    },
+    "extra": {
+        "shopware-plugin-class": "Ict\\ArticleUrl\\IctArticleUrl",
+        "label": {
+            "de-DE": "Artikel nummer",
+            "en-GB": "Article number"
+        },
+        "description": {
+            "de-DE": "Short-URL-Zugriff auf Artikel über Artikelnummer",
+            "en-GB": "short URL access to articles via article number."
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Ict\\ArticleUrl\\": "src/"
+        }
+    }
+}

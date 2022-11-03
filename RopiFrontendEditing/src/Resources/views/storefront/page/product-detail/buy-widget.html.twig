@@ -1,0 +1,17 @@
+{% sw_extends '@Storefront/storefront/page/product-detail/buy-widget.html.twig' %}
+
+{% block page_product_detail_buy_inner %}
+    {% block ropi_frontend_editing_content_area_product_buy_top %}
+        <div data-ropi-content-area="product-buy-top">
+            {{ ropi_frontend_editing_render_content_area('product-buy-top', ropiFrontendEditingContentDocument.structure.children) }}
+        </div>
+    {% endblock %}
+
+    {{ parent() }}
+
+    {% block ropi_frontend_editing_content_area_product_buy_bottom %}
+        <div data-ropi-content-area="product-buy-bottom">
+            {{ ropi_frontend_editing_render_content_area('product-buy-bottom', ropiFrontendEditingContentDocument.structure.children) }}
+        </div>
+    {% endblock %}
+{% endblock %}

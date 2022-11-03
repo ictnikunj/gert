@@ -1,0 +1,27 @@
+<div class="form-group form-{{ formElement.type }}-{{ formElement.name }}">
+    {% sw_include "@MoorlFormBuilder/plugin/moorl-form-builder/component/label.html.twig" ignore missing %}
+
+    {% set formElementInput %}
+        <select name="{{ formElementName }}"
+                id="{{ formElementId }}"
+                {% if formElement.required %}required{% endif %}
+                class="custom-select">
+            {% if formElementPlaceholder %}
+                <option value="" disabled selected>{{ formElementPlaceholder }}</option>
+            {% endif %}
+            {% for optgroup in formElement.options %}
+                <optgroup label="{{ optgroup.label|format_date('long', locale=app.request.locale) }}">
+                    {% for option in optgroup.options %}
+                        <option value="{{ option.value }}"
+                                {% if option.blocked %}disabled{% endif %}
+                                {% if option.value == formElementValue %}selected{% endif %}>
+                            {{ option.value|format_datetime('long', locale=app.request.locale) }}
+                            {% if option.blocked %}{{ "moorl-form-builder.general.appointmentBlocked"|trans }}{% endif %}
+                        </option>
+                    {% endfor %}
+                </optgroup>
+            {% endfor %}
+        </select>
+    {% endset %}
+    {% sw_include "@MoorlFormBuilder/plugin/moorl-form-builder/component/input-group.html.twig" ignore missing %}
+</div>

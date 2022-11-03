@@ -1,0 +1,21 @@
+{% sw_extends '@Storefront/storefront/layout/header/header-minimal.html.twig' %}
+
+{% block layout_header %}
+    <header class="header-minimal">
+        {% block layout_header_minimal_inner %}
+            {{ parent() }}
+        {% endblock %}
+    </header>
+{% endblock %}
+
+{% block layout_header_minimal_logo %}
+    <div class="col-6 col-md-4 header-minimal-logo">
+        {% if theme_config('rhweb-header-checkout-logo-link') %}
+            <a class="header-checkout-logo-link" href="{{ path('frontend.home.page') }}" title="{{ "header.logoLink"|trans|striptags }}">
+                <img alt="Logo Checkout" src="{{ theme_config('rhweb-header-checkout-logo') |sw_encode_url }}">
+            </a>
+        {% else %}
+            <img alt="Logo Checkout" src="{{ theme_config('rhweb-header-checkout-logo') |sw_encode_url }}">
+        {% endif %}
+    </div>
+{% endblock %}

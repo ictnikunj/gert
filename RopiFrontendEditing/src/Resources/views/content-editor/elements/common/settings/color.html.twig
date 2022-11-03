@@ -1,0 +1,93 @@
+{% block color %}
+    <ropi-radio-group>
+        {% block color_radio_group_inner %}
+            {% block color_radio_default %}
+                {% if not hideDefaultOption %}
+                    <ropi-radio name="{{ name }}" value="default" {% if checkedDefaultOption == 'default' or not checkedDefaultOption %}checked{% endif %}>
+                        {% trans %}ropi-frontend-editing.contentElement.definition.label.default{% endtrans %}
+                    </ropi-radio>
+                {% endif %}
+            {% endblock %}
+
+            {% block color_radio_none %}
+                {% if showNoneOption %}
+                    <ropi-radio name="{{ name }}" value="none" {% if checkedDefaultOption == 'none' %}checked{% endif %}>
+                        {% trans %}ropi-frontend-editing.contentElement.definition.label.none{% endtrans %}
+                    </ropi-radio>
+                {% endif %}
+            {% endblock %}
+
+            {% block color_radio_primary %}
+                <ropi-radio name="{{ name }}" value="primary" {% if checkedDefaultOption == 'primary' %}checked{% endif %}>
+                    {% trans %}ropi-frontend-editing.contentElement.definition.label.primary{% endtrans %}
+                </ropi-radio>
+            {% endblock %}
+
+            {% block color_radio_secondary %}
+                <ropi-radio name="{{ name }}" value="secondary" {% if checkedDefaultOption == 'secondary' %}checked{% endif %}>
+                    {% trans %}ropi-frontend-editing.contentElement.definition.label.secondary{% endtrans %}
+                </ropi-radio>
+            {% endblock %}
+
+            {% block color_radio_success %}
+                <ropi-radio name="{{ name }}" value="success" {% if checkedDefaultOption == 'success' %}checked{% endif %}>
+                    {% trans %}ropi-frontend-editing.contentElement.definition.label.success{% endtrans %}
+                </ropi-radio>
+            {% endblock %}
+
+            {% block color_radio_danger %}
+                <ropi-radio name="{{ name }}" value="danger" {% if checkedDefaultOption == 'danger' %}checked{% endif %}>
+                    {% trans %}ropi-frontend-editing.contentElement.definition.label.danger{% endtrans %}
+                </ropi-radio>
+            {% endblock %}
+
+            {% block color_radio_warning %}
+                <ropi-radio name="{{ name }}" value="warning" {% if checkedDefaultOption == 'warning' %}checked{% endif %}>
+                    {% trans %}ropi-frontend-editing.contentElement.definition.label.warning{% endtrans %}
+                </ropi-radio>
+            {% endblock %}
+
+            {% block color_radio_info %}
+                <ropi-radio name="{{ name }}" value="info" {% if checkedDefaultOption == 'info' %}checked{% endif %}>
+                    {% trans %}ropi-frontend-editing.contentElement.definition.label.info{% endtrans %}
+                </ropi-radio>
+            {% endblock %}
+
+            {% if not hideExtraColors %}
+
+                {% block color_radio_light %}
+                    {% if not hideLightOption %}
+                        <ropi-radio name="{{ name }}" value="light" {% if checkedDefaultOption == 'light' %}checked{% endif %}>
+                            {% trans %}ropi-frontend-editing.contentElement.definition.label.light{% endtrans %}
+                        </ropi-radio>
+                    {% endif %}
+                {% endblock %}
+
+                {% block color_radio_dark %}
+                    {% if not hideDarkOption %}
+                        <ropi-radio name="{{ name }}" value="dark" {% if checkedDefaultOption == 'dark' %}checked{% endif %}>
+                            {% trans %}ropi-frontend-editing.contentElement.definition.label.dark{% endtrans %}
+                        </ropi-radio>
+                    {% endif %}
+                {% endblock %}
+
+                {% block color_radio_muted %}
+                    {% if not hideMutedOption %}
+                    <ropi-radio name="{{ name }}" value="muted" {% if checkedDefaultOption == 'muted' %}checked{% endif %}>
+                        {% trans %}ropi-frontend-editing.contentElement.definition.label.muted{% endtrans %}
+                    </ropi-radio>
+                    {% endif %}
+                {% endblock %}
+
+                {% block color_radio_white %}
+                    {% if not hideWhiteOption %}
+                    <ropi-radio name="{{ name }}" value="white" {% if checkedDefaultOption == 'white' %}checked{% endif %}>
+                        {% trans %}ropi-frontend-editing.contentElement.definition.label.white{% endtrans %}
+                    </ropi-radio>
+                    {% endif %}
+                {% endblock %}
+
+            {% endif %}
+        {% endblock %}
+    </ropi-radio-group>
+{% endblock %}

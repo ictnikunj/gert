@@ -1,0 +1,42 @@
+{
+    "name": "ultra/ultra-store-switcher",
+    "description": "Verkaufskanal Header Dropdown Menü",
+    "version": "v1.2.0",
+    "type": "shopware-platform-plugin",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Ultra Media Agentur"
+        }
+    ],
+    "require": {
+        "shopware/core": "*",
+        "shopware/storefront": "*",
+        "shopware/administration": "*"
+    },
+    "extra": {
+        "shopware-plugin-class": "Ultra\\Store\\Switcher\\UltraStoreSwitcher",
+		 "copyright": "(c) by Ultra Media Agentur",
+        "label": {
+            "de-DE": "Verkaufskanal Header Dropdown Menü",
+            "en-GB": "Sales channel header dropdown menu"
+        },
+        "description": {
+            "de-DE": "Verkaufskanal Header Dropdown Menü",
+            "en-GB": "Sales channel header dropdown menu"
+        },
+        "manufacturerLink": {
+            "de-DE": "https://ultra-media.de",
+            "en-GB": "https://ultra-media.de"
+        },
+        "supportLink": {
+            "de-DE": "https://ultra-media.de",
+            "en-GB": "https://ultra-media.de"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Ultra\\Store\\Switcher\\": "src/"
+        }
+    }
+}

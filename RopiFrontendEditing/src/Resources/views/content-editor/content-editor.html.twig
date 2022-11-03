@@ -1,0 +1,33 @@
+<ropi-content-editor
+    id="ropi-content-editor"
+    src="{{ src }}"
+    breakpoints="{{ breakpoints|json_encode }}"
+    sites="{{ sites|json_encode }}"
+    snippets="{{ contentEditorSnippets|json_encode }}">
+    {% block content_presets %}
+        {% for preset in presets %}
+            <ropi-content-preset name="{{ preset.getName() }}" time="{{ preset.getCreationTime().getTimestamp() }}"  type="{{ preset.getType() }}" structure="{{ preset.getStructure()|json_encode }}"></ropi-content-preset>
+        {% endfor %}
+    {% endblock %}
+    {% block content_elements %}
+        {% sw_include '@RopiFrontendEditing/content-editor/elements/carousel/definition.html.twig' %}
+        {% sw_include '@RopiFrontendEditing/content-editor/elements/columns/definition.html.twig' %}
+        {% sw_include '@RopiFrontendEditing/content-editor/elements/container/definition.html.twig' %}
+
+        {% sw_include '@RopiFrontendEditing/content-editor/elements/headline/definition.html.twig' %}
+        {% sw_include '@RopiFrontendEditing/content-editor/elements/text/definition.html.twig' %}
+
+        {% sw_include '@RopiFrontendEditing/content-editor/elements/button/definition.html.twig' %}
+        {% sw_include '@RopiFrontendEditing/content-editor/elements/hr/definition.html.twig' %}
+
+        {% sw_include '@RopiFrontendEditing/content-editor/elements/product-teaser/definition.html.twig' %}
+
+        {% sw_include '@RopiFrontendEditing/content-editor/elements/image/definition.html.twig' %}
+        {% sw_include '@RopiFrontendEditing/content-editor/elements/image-container/definition.html.twig' %}
+        {% sw_include '@RopiFrontendEditing/content-editor/elements/vimeo/definition.html.twig' %}
+        {% sw_include '@RopiFrontendEditing/content-editor/elements/youtube/definition.html.twig' %}
+
+        {% sw_include '@RopiFrontendEditing/content-editor/elements/iframe/definition.html.twig' %}
+        {% sw_include '@RopiFrontendEditing/content-editor/elements/html/definition.html.twig' %}
+    {% endblock %}
+</ropi-content-editor>

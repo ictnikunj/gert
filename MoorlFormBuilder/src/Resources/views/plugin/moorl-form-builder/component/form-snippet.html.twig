@@ -1,0 +1,7 @@
+{% set form = moorl_get_form(name, context.context) %}
+
+{% if modal %}
+    {% sw_include "@MoorlFormBuilder/plugin/moorl-form-builder/component/modal-form.html.twig" %}
+{% else %}
+    {% sw_include "@MoorlFormBuilder/plugin/moorl-form-builder/component/form.html.twig" %}
+{% endif %}

@@ -1,0 +1,29 @@
+{
+    "name": "swag/pim-import",
+    "description": "PIM Import",
+    "type": "shopware-platform-plugin",
+    "authors": [
+        {
+          "name": "Gert-Jan"
+        }
+    ],
+    "license": "MIT",
+    "version": "v1.0.6",
+    "autoload": {
+        "psr-4": {
+            "PimImport\\": "src/"
+        }
+    },
+    "extra": {
+        "shopware-plugin-class": "PimImport\\PimImport",
+        "plugin-icon": "shopware_icon.png",
+        "label": {
+          "de-DE": "PIM Import",
+          "en-GB": "PIM Import"
+        },
+        "description": {
+          "de-DE": "PIM API Import",
+          "en-GB": "PIM API Import"
+        }
+    }
+}

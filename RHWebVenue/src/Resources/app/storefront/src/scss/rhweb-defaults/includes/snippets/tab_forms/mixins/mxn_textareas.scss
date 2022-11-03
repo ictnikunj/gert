@@ -1,0 +1,15 @@
+@mixin mxn_textarea{
+    textarea{
+        background-color: $rhweb-forms-multiline-background-color;
+        border-color:$rhweb-forms-multiline-border-color;
+        color:$rhweb-forms-multiline-font-color;
+        border-radius: $rhweb-form-border-radius;
+
+        @include mxn_placeholder($rhweb-forms-multiline-placeholder-color);
+
+        &:focus{
+            background-color: $rhweb-forms-multiline-background-color-focus;
+            border-color:$rhweb-forms-multiline-border-color-focus;
+        }
+    }
+}

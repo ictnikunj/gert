@@ -1,0 +1,96 @@
+{% block padding %}
+    {% if breakpoint %}
+
+        {% block padding_top %}
+            <ropi-collapsible>
+                <ropi-subheader slot="header">
+                    {% trans %}ropi-frontend-editing.contentElement.definition.subheader.paddingTop{% endtrans %}
+                </ropi-subheader>
+                <div slot="content">
+                    {% block padding_top_content %}
+
+                        {% block padding_top_fields %}
+                            {% sw_include '@RopiFrontendEditing/content-editor/elements/common/settings/size.html.twig' with {
+                                'name': name ~ '.t.' ~ breakpoint.key,
+                                'hideDefaultOption': top.hideDefaultOption,
+                                'showNoneOption': true,
+                                'checkedDefaultOption': breakpoint.inheritsFrom ? 'inherit' : 'default',
+                                'masculine': true
+                            } %}
+                        {% endblock %}
+
+                    {% endblock %}
+                </div>
+            </ropi-collapsible>
+        {% endblock %}
+
+        {% block padding_bottom %}
+            <ropi-collapsible>
+                <ropi-subheader slot="header">
+                    {% trans %}ropi-frontend-editing.contentElement.definition.subheader.paddingBottom{% endtrans %}
+                </ropi-subheader>
+                <div slot="content">
+                    {% block padding_bottom_content %}
+
+                        {% block padding_bottom_fields %}
+                            {% sw_include '@RopiFrontendEditing/content-editor/elements/common/settings/size.html.twig' with {
+                                'name': name ~ '.b.' ~ breakpoint.key,
+                                'hideDefaultOption': bottom.hideDefaultOption,
+                                'showNoneOption': true,
+                                'checkedDefaultOption': breakpoint.inheritsFrom ? 'inherit' : 'default',
+                                'masculine': true
+                            } %}
+                        {% endblock %}
+
+                    {% endblock %}
+                </div>
+            </ropi-collapsible>
+        {% endblock %}
+
+        {% block padding_left %}
+            <ropi-collapsible>
+                <ropi-subheader slot="header">
+                    {% trans %}ropi-frontend-editing.contentElement.definition.subheader.paddingLeft{% endtrans %}
+                </ropi-subheader>
+                <div slot="content">
+                    {% block padding_left_content %}
+
+                        {% block padding_left_fields %}
+                            {% sw_include '@RopiFrontendEditing/content-editor/elements/common/settings/size.html.twig' with {
+                                'name': name ~ '.l.' ~ breakpoint.key,
+                                'hideDefaultOption': left.hideDefaultOption,
+                                'showNoneOption': true,
+                                'checkedDefaultOption': breakpoint.inheritsFrom ? 'inherit' : 'default',
+                                'masculine': true
+                            } %}
+                        {% endblock %}
+
+                    {% endblock %}
+                </div>
+            </ropi-collapsible>
+        {% endblock %}
+
+        {% block padding_right %}
+            <ropi-collapsible>
+                <ropi-subheader slot="header">
+                    {% trans %}ropi-frontend-editing.contentElement.definition.subheader.paddingRight{% endtrans %}
+                </ropi-subheader>
+                <div slot="content">
+                    {% block padding_right_content %}
+
+                        {% block padding_right_fields %}
+                            {% sw_include '@RopiFrontendEditing/content-editor/elements/common/settings/size.html.twig' with {
+                                'name': name ~ '.r.' ~ breakpoint.key,
+                                'hideDefaultOption': right.hideDefaultOption,
+                                'showNoneOption': true,
+                                'checkedDefaultOption': breakpoint.inheritsFrom ? 'inherit' : 'default',
+                                'masculine': true
+                            } %}
+                        {% endblock %}
+
+                    {% endblock %}
+                </div>
+            </ropi-collapsible>
+        {% endblock %}
+    {% endif %}
+{% endblock %}

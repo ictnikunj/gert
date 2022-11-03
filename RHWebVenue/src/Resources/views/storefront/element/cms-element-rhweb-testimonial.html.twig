@@ -1,0 +1,35 @@
+{% sw_extends '@Storefront/storefront/element/cms-element-rhweb-testimonial.html.twig' %}
+
+{% block element_rhweb_testimonial_inner %}
+    <div class="testimonial-top">
+        <div class="image" style="color: {{ config.boxColor.value }};">
+            {% block element_rhweb_testimonial_thumbnail %}
+                {{ parent() }}
+            {% endblock %}
+        </div>
+
+        {% block element_rhweb_testimonial_company_customer %}
+            <div class="h4 customer-name" style="color: {{ config.boxColor.value }};">
+                {{ parent() }}
+            </div>
+        {% endblock %}
+
+        {% block element_rhweb_testimonial_quote %}
+            <div class="customer-quote">
+                {{ config.quote.value }}
+            </div>
+        {% endblock %}
+    </div>
+
+    <div class="testimonial-bottom" style="background-color:{{ config.boxBackground.value }}">
+        {% block element_rhweb_testimonial_company_name %}
+            <div class="company h5" style="color: {{ config.boxHighlightColor.value }};">
+                {{ parent() }}
+            </div>
+        {% endblock %}
+
+        {% block element_rhweb_testimonial_rating %}
+            {{ parent() }}
+        {% endblock %}
+    </div>
+{% endblock %}

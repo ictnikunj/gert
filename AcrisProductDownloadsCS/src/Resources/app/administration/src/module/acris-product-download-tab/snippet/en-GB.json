@@ -1,0 +1,40 @@
+{
+    "acris-product-download-tab": {
+        "general": {
+            "mainMenuItemGeneral": "Download tab",
+            "descriptionTextModule": "Configure download tab configuration.",
+            "placeholderSearchBar": "Search download tab configuration",
+            "initialSearchType": "Download tab"
+        },
+        "list": {
+            "textHeadline": "Download tab",
+            "buttonAdd": "Add download tab",
+            "columnInternalId": "Internal id",
+            "columnDisplayName": "Display name",
+            "columnPriority": "Priority",
+            "contentEmpty": "There are no download tab configurations.",
+            "contextMenuDuplicate": "Duplicate",
+            "titleSidebarItemRefresh": "Refresh"
+        },
+        "detail": {
+            "textHeadline": "Download tab",
+            "buttonSave": "Save",
+            "buttonCancel": "Cancel",
+            "cardGeneral": "General",
+            "fieldTitleLabelInternalId": "Internal id",
+            "fieldTitlePlaceholderInternalId": "Enter internal id...",
+            "fieldTitleLabelDisplayName": "Display name",
+            "fieldTitlePlaceholderDisplayName": "Enter display name...",
+            "fieldTitleLabelPriority": "Priority",
+            "fieldTitlePlaceholderPriority": "Enter priority...",
+            "fieldTitleHelpTextPriority": "Download tabs will be sorted by priority in the Storefront from highest to lowest.",
+            "rulesSelectFieldLabel": "Additional rules",
+            "rulesSelectFieldHelpText": "Active if at least one of the assigned rules applies (OR operation). If no rule is assigned, this is considered always active.",
+
+            "titleSaveError": "Error",
+            "titleSaveSuccess": "Success",
+            "messageSaveError": "Download tab could not be saved.",
+            "messageSaveSuccess": "Download tab has been saved."
+        }
+    }
+}

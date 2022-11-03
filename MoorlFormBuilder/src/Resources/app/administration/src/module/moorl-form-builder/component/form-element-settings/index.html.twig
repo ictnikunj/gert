@@ -1,0 +1,54 @@
+<div class="moorl-form-element-settings">
+    <moorl-collapse :label="$tc('moorl-form-builder.general.elementSettings')"
+                    :expandOnLoading="true"
+                    key="elementSettings">
+        <template #content>
+            <sw-select-field :label="$tc('moorl-form-builder.properties.type')"
+                             ref="selectFieldType"
+                             v-model="formElement.type">
+                {% block el_type %}
+                    <optgroup :label="$tc('moorl-form-builder.elementOptions.group.input')">
+                        <option value="text">{{ $tc('moorl-form-builder.elementOptions.type.text') }}</option>
+                        <option value="email">{{ $tc('moorl-form-builder.elementOptions.type.email') }}</option>
+                        <option value="textarea">{{ $tc('moorl-form-builder.elementOptions.type.textarea') }}</option>
+                        <option value="select">{{ $tc('moorl-form-builder.elementOptions.type.select') }}</option>
+                        <option value="multiselect">{{ $tc('moorl-form-builder.elementOptions.type.multiselect') }}</option>
+                        <option value="switch">{{ $tc('moorl-form-builder.elementOptions.type.switch') }}</option>
+                        <option value="checkbox">{{ $tc('moorl-form-builder.elementOptions.type.checkbox') }}</option>
+                        <option value="checkbox-group">{{ $tc('moorl-form-builder.elementOptions.type.checkbox-group') }}</option>
+                        <option value="radio-group">{{ $tc('moorl-form-builder.elementOptions.type.radio-group') }}</option>
+                        <option value="upload">{{ $tc('moorl-form-builder.elementOptions.type.upload') }}</option>
+                        <option value="datepicker">{{ $tc('moorl-form-builder.elementOptions.type.datepicker') }}</option>
+                        <option value="timepicker">{{ $tc('moorl-form-builder.elementOptions.type.timepicker') }}</option>
+                        <option value="password">{{ $tc('moorl-form-builder.elementOptions.type.password') }}</option>
+                        <option value="number">{{ $tc('moorl-form-builder.elementOptions.type.number') }}</option>
+                        <option value="range">{{ $tc('moorl-form-builder.elementOptions.type.range') }}</option>
+                        <option value="rating">{{ $tc('moorl-form-builder.elementOptions.type.rating') }}</option>
+                        <option value="tax-id-number">{{ $tc('moorl-form-builder.elementOptions.type.tax-id-number') }}</option>
+                        <option value="appointment">{{ $tc('moorl-form-builder.elementOptions.type.appointment') }}</option>
+                    </optgroup>
+                    <optgroup :label="$tc('moorl-form-builder.elementOptions.group.technical')">
+                        <option value="hidden">{{ $tc('moorl-form-builder.elementOptions.type.hidden') }}</option>
+                        <option value="html">{{ $tc('moorl-form-builder.elementOptions.type.html') }}</option>
+                        <option value="section-open">{{ $tc('moorl-form-builder.elementOptions.type.section-open') }}</option>
+                        <option value="section-close">{{ $tc('moorl-form-builder.elementOptions.type.section-close') }}</option>
+                        <option value="repeater-open">{{ $tc('moorl-form-builder.elementOptions.type.repeater-open') }}</option>
+                        <option value="repeater-close">{{ $tc('moorl-form-builder.elementOptions.type.repeater-close') }}</option>
+                    </optgroup>
+                    <optgroup :label="$tc('moorl-form-builder.elementOptions.group.bootstrapFive')">
+                        <option value="checkbox-button-group">{{ $tc('moorl-form-builder.elementOptions.type.checkbox-button-group') }}</option>
+                        <option value="radio-button-group">{{ $tc('moorl-form-builder.elementOptions.type.radio-button-group') }}</option>
+                    </optgroup>
+                    <optgroup :label="$tc('moorl-form-builder.elementOptions.group.notAvailable')">
+                        <option value="colorpicker" {% block el_type_colorpicker %}disabled{% endblock %}>{{ $tc('moorl-form-builder.elementOptions.type.colorpicker') }}</option>
+                        <option value="dropzone" {% block el_type_dropzone %}disabled{% endblock %}>{{ $tc('moorl-form-builder.elementOptions.type.dropzone') }}</option>
+                    </optgroup>
+                {% endblock %}
+            </sw-select-field>
+            <sw-field :placeholder="$tc('moorl-form-builder.properties.name')"
+                      :label="$tc('moorl-form-builder.properties.technicalName')"
+                      :helpText="$tc('moorl-form-builder.tooltips.technicalName')"
+                      v-model="formElement.name"></sw-field>
+        </template>
+    </moorl-collapse>
+</div>

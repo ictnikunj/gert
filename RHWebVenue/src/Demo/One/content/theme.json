@@ -1,0 +1,83 @@
+[
+  {
+    "_skipEnrichData": true,
+    "id": "{THEME_ID}",
+    "configValues": {
+      "sw-background-color": {
+        "value": "#f6f6f6"
+      },
+      "rhweb-cms-general-background-color-block": {
+        "value": "#ffffff"
+      },
+      "rhweb-cms-general-margin-block": {
+        "value": "0px"
+      },
+      "rhweb-social-facebook": {
+        "value": "https://facebook.com"
+      },
+      "rhweb-social-twitter": {
+        "value": "https://twitter.com"
+      },
+      "rhweb-social-instagram": {
+        "value": "https://instagram.com"
+      },
+      "rhweb-social-youtube": {
+        "value": "https://youtube.com"
+      },
+      "rhweb-social-googleplay":{
+        "value": "https://google.com"
+      },
+      "rhweb-social-appstore":{
+        "value": "https://apple.com"
+      },
+      "rhweb-certificate-1": {
+        "value": "{MEDIA_FILE:theme/venue_certificate_1.png|theme}"
+      },
+      "rhweb-certificate-1-url": {
+        "value": "https://reputationboost.trustedshops.com/?a_aid=009KMWKKM1V19MZ56A97"
+      },
+      "rhweb-certificate-1-url-new-tab": {
+        "value": true
+      },
+      "rhweb-certificate-2": {
+        "value": "{MEDIA_FILE:theme/venue_certificate_2.png|theme}"
+      },
+      "rhweb-certificate-2-url": {
+        "value": "https://reputationboost.trustedshops.com/?a_aid=009KMWKKM1V19MZ56A97"
+      },
+      "rhweb-certificate-2-url-new-tab": {
+        "value": true
+      },
+      "rhweb-detail-buybox-activate-ean": {
+        "value": true
+      },
+      "rhweb-detail-buybox-activate-stock": {
+        "value": true
+      },
+      "rhweb-topbar-background": {
+        "value": "#f9f9f9"
+      },
+      "rhweb-service-background-color": {
+        "value": "#f9f9f9"
+      },
+      "rhweb-social-background-color": {
+        "value": "#f9f9f9"
+      },
+      "rhweb-body-background-image": {
+        "value": "{MEDIA_FILE:theme/venue_bg_pattern.jpg|theme}"
+      },
+      "rhweb-header-background-image": {
+        "value": "{MEDIA_FILE:theme/venue_bg_pattern.jpg|theme}"
+      },
+      "rhweb-footer-background-image": {
+        "value": "{MEDIA_FILE:theme/venue_bg_pattern.jpg|theme}"
+      },
+      "rhweb-footer-activate-socials": {
+        "value": true
+      },
+      "rhweb-footer-activate-certificates": {
+        "value": true
+      }
+    }
+  }
+]

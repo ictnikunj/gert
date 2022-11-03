@@ -1,0 +1,29 @@
+{% sw_extends '@Storefront/storefront/layout/header/top-bar.html.twig' %}
+
+{% block layout_header_top_bar %}
+    <div class="rhweb-topbar">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-4">
+                    {% if theme_config('rhweb-topbar-activate-topbar-left') %}
+                        <div>{{ "venueTheme.topBar.contact"|trans|sw_sanitize }}</div>
+                    {% endif %}
+                </div>
+                <div class="col-md-4">
+                    {% if theme_config('rhweb-topbar-activate-topbar-center') %}
+                        <div class="text-center">
+                            <div>{{ "venueTheme.topBar.promotion"|trans|sw_sanitize }}</div>
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="col-md-4">
+                    {% if theme_config('rhweb-topbar-activate-topbar-right') %}
+                        <div class="text-right">
+                            <div>{{ "venueTheme.topBar.mail"|trans|sw_sanitize }}</div>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

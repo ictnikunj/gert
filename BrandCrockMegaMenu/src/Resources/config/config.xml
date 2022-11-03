@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/shopware/platform/master/src/Core/System/SystemConfig/Schema/config.xsd">
+
+    <card>
+        <title>Basic Configuration</title>
+        <title lang="de-DE">Grundeinstellungen</title>
+            <input-field type="text">
+                <name>bcLimit</name>
+                <label>Display Subcategory limit</label>
+                <label lang="de-DE">Unterkategorie-Limit anzeigen</label>
+                <placeholder>Enter limit to display subcategory on mega menu</placeholder>
+                <placeholder lang="de-DE">Beschränken Sie die Anzeige der Unterkategorie im Menü</placeholder>
+                <helpText>Enter limit to display subcategory on mega menu</helpText>
+                <helpText lang="de-DE">Beschränken Sie die Anzeige der Unterkategorie im Menü</helpText>
+                <defaultValue>10</defaultValue>
+            </input-field>
+           <input-field type="single-select">
+            <name>SubMenuHoverEffects</name>
+            <options>
+                <option>
+                    <id>shine_effect</id>
+                    <name>Shine Effect</name>
+                    <name lang="de-DE">Glanzeffekt</name>
+                </option>
+                <option>
+                    <id>background_effect</id>
+                    <name>Background color Effect</name>
+                    <name lang="de-DE">Hintergrundfarbe Effekt</name>
+                </option>
+                <option>
+                    <id>vertical_effect</id>
+                    <name>Vertical Hover Effect</name>
+                    <name lang="de-DE">Vertikaler Schwebeeffekt</name>
+                </option>
+            </options>
+            <label>Select SubMenu Hover Effects</label>
+            <label lang="de-DE">Untermenü Hover-Effekte auswählen</label>
+            <placeholder>Select</placeholder>
+            <placeholder lang="de-DE">Auswählen</placeholder>            
+        </input-field>      
+    </card>
+</config>

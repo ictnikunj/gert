@@ -1,0 +1,19 @@
+{% block element %}
+<div
+    {% sw_include '@RopiFrontendEditing/content-editor/elements/common/editor-attributes.html.twig' %}
+    class="{% block element_class %}
+               ropi-frontend-editing-content-element-button
+               {% sw_include '@RopiFrontendEditing/content-editor/elements/common/general-classes.html.twig' %}
+           {% endblock %}"
+    style="{% block element_style %}{% if data.configuration.align != 'stretch' %}text-align: {{ data.configuration.align }}{% endif %}{% endblock %}">
+    {% block element_inner %}
+        <a class="btn btn-{{ data.configuration.type }}"
+           href="{{ data.configuration.href }}"
+           {% if data.configuration.target %}target="{{ data.configuration.target }}" rel="noopener"{% endif %}
+           title="{{ data.contents.text|striptags }}"
+           style="{% if data.configuration.align == 'stretch' %}display:block;{% else %}display:inline-block;{% endif %}">
+            <div data-ropi-content-editable="text" data-ropi-content-editable-commands="italic,underline,justifyleft,justifycenter,justifyright">{{ data.contents.text|raw }}</div>
+        </a>
+    {% endblock %}
+</div>
+{% endblock %}

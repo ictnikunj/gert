@@ -1,0 +1,18 @@
+{% block sw_product_detail_content %}
+    {% parent() %}
+
+    <template slot="sidebar">
+        <sw-sidebar :propagateWidth="true">
+            <sw-sidebar-media-item ref="mediaSidebarItem">
+                <template slot="context-menu-items" slot-scope="media">
+                    <sw-context-menu-item @click="onAddItemToProduct(media.mediaItem)">
+                        {{ $tc('sw-product.detailBase.acrisProductDownloads.labelContextMenuAddMediaToProduct') }}
+                    </sw-context-menu-item>
+                    <sw-context-menu-item @click="onAddDownloadItemToProduct(media.mediaItem)">
+                        {{ $tc('sw-product.detailBase.acrisProductDownloads.labelContextMenuAddDocumentToProduct') }}
+                    </sw-context-menu-item>
+                </template>
+            </sw-sidebar-media-item>
+        </sw-sidebar>
+    </template>
+{% endblock %}

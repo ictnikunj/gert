@@ -1,0 +1,22 @@
+{% sw_extends '@Storefront/storefront/element/cms-element-product-listing.html.twig' %}
+
+{% block element_product_listing_wrapper %}
+
+    {% set rhwebListingColumnXl = theme_config('rhweb-listing-amount-colums-xl') %}
+    {% set rhwebListingColumnLg = theme_config('rhweb-listing-amount-colums-lg') %}
+    {% set rhwebListingColumnMd = theme_config('rhweb-listing-amount-colums-md') %}
+    {% set rhwebListingColumnSm = theme_config('rhweb-listing-amount-colums-sm') %}
+
+    {% set rhwebListingColumnSidebarXl = theme_config('rhweb-listing-amount-colums-sidebar-xl') %}
+    {% set rhwebListingColumnSidebarLg = theme_config('rhweb-listing-amount-colums-sidebar-lg') %}
+    {% set rhwebListingColumnSidebarMd = theme_config('rhweb-listing-amount-colums-sidebar-md') %}
+    {% set rhwebListingColumnSidebarSm = theme_config('rhweb-listing-amount-colums-sidebar-sm') %}
+
+    {% set listingColumns = 'col-xl-'~ 12 / rhwebListingColumnXl ~' col-lg-'~ 12 / rhwebListingColumnLg ~' col-md-'~ 12 / rhwebListingColumnMd ~' col-'~ 12 / rhwebListingColumnSm %}
+
+    {% if section and section.type == 'sidebar' %}
+        {% set listingColumns = 'col-xl-'~ 12 / rhwebListingColumnSidebarXl ~' col-lg-'~ 12 / rhwebListingColumnSidebarLg ~' col-md-'~ 12 / rhwebListingColumnSidebarMd ~' col-'~ 12 / rhwebListingColumnSidebarSm %}
+    {% endif %}
+
+    {{ parent() }}
+{% endblock %}

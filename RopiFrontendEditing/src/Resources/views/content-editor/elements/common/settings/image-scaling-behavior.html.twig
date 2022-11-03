@@ -1,0 +1,32 @@
+{% block image_scaling_behavior %}
+    <ropi-collapsible>
+        <ropi-subheader slot="header">
+            {% trans %}ropi-frontend-editing.contentElement.definition.subheader.imageScalingBehavior{% endtrans %}
+        </ropi-subheader>
+        <div slot="content">
+            {% block image_scaling_behavior_content %}
+
+                {% block image_scaling_behavior_radio_group %}
+                    <ropi-radio-group>
+                        {% block image_scaling_behavior_radio_group_inner %}
+    
+                            {% block image_scaling_behavior_radio_contain %}
+                                <ropi-radio name="{{ name }}" value="contain" {% if checkedDefaultOption == 'contain' or not checkedDefaultOption %}checked{% endif %}>
+                                    {% trans %}ropi-frontend-editing.contentElement.definition.label.contain{% endtrans %}
+                                </ropi-radio>
+                            {% endblock %}
+    
+                            {% block image_scaling_behavior_radio_cover %}
+                                <ropi-radio name="{{ name }}" value="cover" {% if checkedDefaultOption == 'cover' %}checked{% endif %}>
+                                    {% trans %}ropi-frontend-editing.contentElement.definition.label.cover{% endtrans %}
+                                </ropi-radio>
+                            {% endblock %}
+    
+                        {% endblock %}
+                    </ropi-radio-group>
+                {% endblock %}
+
+            {% endblock %}
+        </div>
+    </ropi-collapsible>
+{% endblock %}

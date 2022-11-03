@@ -1,0 +1,52 @@
+{
+    "global": {
+        "entities": {
+            "scheduled_task": "Geplante Aufgaben"
+        }
+    },
+    "bst-cron-manager": {
+        "title": "Cron Manager",
+        "description": "Verwalten Sie Einstellungen für geplante Aufgaben innerhalb des Backend",
+        "list": {
+            "textCronTasksOverview": "Geplante Aufgaben",
+            "placeholderSearchBar": "Durchsuche alle geplanten Aufgaben ...",
+            "columnName": "Name",
+            "columnClass": "Klasse",
+            "columnRunInterval": "Interval",
+            "columnLastExecutionTime": "Letzte Ausführung",
+            "columnNextExecutionTime": "Nächste Ausführung",
+            "columnStatus": "Status",
+            "titleSidebarItemRefresh": "Aktualisieren",
+            "contextMenuEdit": "Bearbeiten"
+        },
+        "detail": {
+            "textHeadline": "Task",
+            "buttonCancel": "Abbrechen",
+            "buttonSave": "Speichern",
+            "cardTitleCronjobInfo": "Task Informationen",
+            "labelName": "Name",
+            "labelClass": "Klasse",
+            "labelRunInterval": "Interval",
+            "labelLastExecutionTime": "Letzte Ausführung",
+            "labelNextExecutionTime": "Nächste Ausführung",
+            "labelStatus": "Status",
+            "interval": {
+                "none": "Kein (0 Sek.)",
+                "2minutes": "2 Minuten (120 Sek.)",
+                "5minutes": "5 Minuten (300 Sek.)",
+                "10minutes": "10 Minuten (600 Sek.)",
+                "15minutes": "15 Minuten (900 Sek.)",
+                "30minutes": "30 Minuten (1800 Sek.)",
+                "1hour": "1 Stunde (3600 Sek.)",
+                "2hours": "2 Stunden (7200 Sek.)",
+                "4hours": "4 Stunden (14400 Sek.)",
+                "8hours": "8 Stunden (28800 Sek.)",
+                "12hours": "12 Stunden (43200 Sek.)",
+                "1day": "1 Tag (86400 Sek.)",
+                "2days": "2 Tage (172800 Sek.)",
+                "1week": "1 Woche (604800 Sek.)",
+                "seconds": " Sek."
+            }
+        }
+    }
+}

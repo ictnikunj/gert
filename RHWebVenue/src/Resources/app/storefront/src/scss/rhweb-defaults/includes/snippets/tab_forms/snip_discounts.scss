@@ -1,0 +1,41 @@
+form{
+    &.offcanvas-cart-promotion-form, &.cart-add-product, &.cart-add-promotion{
+
+        .input-group{
+
+            input{
+                background-color: $rhweb-forms-discount-background-color;
+                border-color:$rhweb-forms-discount-border-color;
+                color:$rhweb-forms-discount-font-color;
+
+                @include mxn_placeholder($rhweb-forms-discount-placeholder-color);
+
+                &:focus{
+                    background-color: $rhweb-forms-discount-background-color-focus;
+                    border-color:$rhweb-forms-discount-border-color-focus;
+                }
+            }
+
+            .input-group-append{
+
+                button{
+                    background-color: $rhweb-forms-discount-button-background-color;
+                    border-color:$rhweb-forms-discount-button-border-color;
+
+                    span{
+                        color:$rhweb-forms-discount-button-icon-color;
+                    }
+
+                    &:hover{
+                        background-color: $rhweb-forms-discount-button-background-color-hover;
+                        border-color:$rhweb-forms-discount-button-border-color-hover;
+
+                        span{
+                            color:$rhweb-forms-discount-button-icon-color-hover;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

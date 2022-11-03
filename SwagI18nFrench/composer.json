@@ -1,0 +1,44 @@
+{
+    "name": "swag/i18n-french",
+    "description": "Language pack for Shopware 6: French",
+    "version": "2.2.5",
+    "type": "shopware-platform-plugin",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Shopware"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "SwagI18nFrench\\": "src/"
+        }
+    },
+    "require": {
+        "shopware/core": "6.2.0-RC1 || ~6.2.0 || ~6.3.0"
+    },
+    "conflict": {
+        "swag/language-pack": "*"
+    },
+    "prefer-stable": true,
+    "extra": {
+        "shopware-plugin-class": "SwagI18nFrench\\SwagI18nFrench",
+        "copyright": "(c) by shopware AG",
+        "label": {
+            "de-DE": "Sprachpaket für Shopware 6: Französisch",
+            "en-GB": "Language pack for Shopware 6: French"
+        },
+        "description":{
+            "de-DE": "Sprachpaket für Shopware 6: Französisch",
+            "en-GB": "Language pack for Shopware 6: French"
+        },
+        "manufacturerLink": {
+            "de-DE": "https://store.shopware.com/shopware-ag.html",
+            "en-GB": "https://store.shopware.com/en/shopware-ag.html"
+        },
+        "supportLink": {
+            "de-DE": "https://issues.shopware.com/",
+            "en-GB": "https://issues.shopware.com/"
+        }
+    }
+}

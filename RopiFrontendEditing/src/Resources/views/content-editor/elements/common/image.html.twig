@@ -1,0 +1,21 @@
+{% block image %}
+
+    {% if additionalClass is not defined %}
+        {% set additionalClass = '' %}
+    {% endif %}
+
+    {% if imageMedia %}
+        {% sw_thumbnails 'ropi-frontend-editing-image-thumbnails' with {
+            media: imageMedia,
+            attributes: {
+                'alt': alt,
+                'class': 'ropi-frontend-editing-image--block ' ~ additionalClass
+            }
+        } %}
+    {% else %}
+        <img src="{% block src_no_picture %}{{ asset("bundles/ropifrontendediting/img/no-picture.gif") }}{% endblock %}"
+             class="ropi-frontend-editing-image--block {{ additionalClass }}"
+             alt="{{ alt }}" />
+    {% endif %}
+
+{% endblock %}

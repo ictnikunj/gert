@@ -1,0 +1,48 @@
+{% block rhweb_page_product_detail_buybox_addon_container %}
+    <div class="rhweb-buybox-addon-container">
+        {% block rhweb_page_product_detail_buybox_addon_manufacturer %}
+            {% if theme_config('rhweb-detail-buybox-activate-manufacturer') and product.manufacturer.translated.name %}
+                <div class="rhweb-buybox-addon">
+                    <span>{{ 'rhwebTheme.buyBox.manufacturer' |trans }}</span>
+                    <span>{{ page.product.manufacturer.translated.name }}</span>
+                </div>
+            {% endif %}
+        {% endblock %}
+
+        {% block rhweb_page_product_detail_buybox_addon_manufacturernumber %}
+            {% if theme_config('rhweb-detail-buybox-activate-manufacturernumber') and product.manufacturerNumber %}
+                <div class="rhweb-buybox-addon">
+                    <span>{{ 'rhwebTheme.buyBox.manufacturerNumber' |trans }}</span>
+                    <span>{{ page.product.manufacturerNumber }}</span>
+                </div>
+            {% endif %}
+        {% endblock %}
+
+        {% block rhweb_page_product_detail_buybox_addon_ean %}
+            {% if theme_config('rhweb-detail-buybox-activate-ean') and product.ean %}
+                <div class="rhweb-buybox-addon">
+                    <span>{{ 'rhwebTheme.buyBox.ean' |trans }}</span>
+                    <span>{{ page.product.ean }}</span>
+                </div>
+            {% endif %}
+        {% endblock %}
+
+        {% block rhweb_page_product_detail_buybox_addon_stock %}
+            {% if theme_config('rhweb-detail-buybox-activate-stock') %}
+                <div class="rhweb-buybox-addon">
+                    <span>{{ 'rhwebTheme.buyBox.availableStock' |trans }}</span>
+                    <span>{{ page.product.availableStock }}</span>
+                </div>
+            {% endif %}
+        {% endblock %}
+
+        {% block rhweb_page_product_detail_buybox_addon_sales %}
+            {% if theme_config('rhweb-detail-buybox-activate-sales') and product.sales >= theme_config('rhweb-detail-buybox-sales-threshold') %}
+                <div class="rhweb-buybox-addon">
+                    <span>{{ 'rhwebTheme.buyBox.sales' |trans }}</span>
+                    <span>{{ page.product.sales }}</span>
+                </div>
+            {% endif %}
+        {% endblock %}
+    </div>
+{% endblock %}

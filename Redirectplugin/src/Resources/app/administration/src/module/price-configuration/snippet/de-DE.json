@@ -1,0 +1,8 @@
+{
+    "priceconfiguration":{
+        "name": "Import Redirects",
+        "buttonText": "Import Redirects",
+        "titleSaveSuccess" : "Success",
+        "messageSaveSuccess" : "Price import start."
+    }
+}

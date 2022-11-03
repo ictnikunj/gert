@@ -1,0 +1,33 @@
+{% sw_extends '@Storefront/storefront/component/review/point.html.twig' %}
+
+
+{% block component_review_point %}
+    {% if size is not defined %}
+        {% set size = 'xs' %}
+    {% endif %}
+
+    <span class="product-review-point">
+        {% if type == 'half' %}
+            <div class="point-container">
+                <div class="point-rating point-partial-placeholder">
+                    <i class="las la-star-half"></i>
+                </div>
+                <div class="point-rating point-partial" style="clip-path: inset(0 {{ (1 - left) * 100 }}% 0 0)">
+                    <i class="las la-star-half"></i>
+                </div>
+            </div>
+        {% elseif type == 'blank' %}
+            <div class="point-container">
+                <div class="point-rating point-blank">
+                    <i class="las la-star"></i>
+                </div>
+            </div>
+        {% else %}
+            <div class="point-container">
+                <div class="point-rating point-full">
+                    <i class="las la-star"></i>
+                </div>
+            </div>
+        {% endif %}
+    </span>
+{% endblock %}

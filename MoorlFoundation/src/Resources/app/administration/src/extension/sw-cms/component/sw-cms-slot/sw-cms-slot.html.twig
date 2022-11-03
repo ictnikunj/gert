@@ -1,0 +1,108 @@
+{% block sw_cms_slot_content_component %}
+    <sw-cms-el-moorl-default
+            v-if="elementConfig.component === true"
+            class="sw-cms-slot__element-preview"
+            v-bind="{ element:elementConfig }"
+    />
+
+    <component v-else
+            :is="elementConfig.component"
+            v-model="element"
+            :disabled="disabled"
+    />
+{% endblock %}
+
+{% block sw_cms_slot_content_element_modal_selection_element_component %}
+    <sw-cms-el-preview-moorl-default
+        v-if="getPlugin(element)"
+        class="sw-cms-slot__element-preview"
+        v-bind="{ element:element, plugin:getPlugin(element) }"
+    />
+
+    <component v-else
+            :is="element.previewComponent"
+            class="sw-cms-slot__element-preview"
+    />
+{% endblock %}
+
+{% block sw_cms_slot_content_overlay_action_settings %}
+    {% parent %}
+
+    <template v-if="moorlIsUnlocked">
+        <div class="sw-cms-slot__settings-action"
+             @click="onCmsElementConfigSaverButtonClick"
+             v-tooltip.bottom="tooltipDisabled">
+            <sw-icon name="default-action-save" size="16"/>
+        </div>
+
+        <div class="sw-cms-slot__settings-action"
+             @click="showCmsElementAnimationModal = true"
+             v-tooltip.bottom="tooltipDisabled">
+            <sw-icon name="default-web-loading-circle" size="16"/>
+        </div>
+    </template>
+{% endblock %}
+
+{% block sw_cms_slot_content_settings_modal %}
+    {% parent %}
+
+    <sw-modal v-if="showCmsElementAnimationModal"
+              :title="$tc('sw-cms.component.sw-cms-slot.cmsElementAnimation')"
+              @modal-close="showCmsElementAnimationModal = false">
+        <moorl-element-animation v-model="element"/>
+
+        <template slot="modal-footer">
+            <sw-button variant="primary" @click="showCmsElementAnimationModal = false">
+                {{ $tc('sw-cms.detail.label.buttonElementSettingsConfirm') }}
+            </sw-button>
+        </template>
+    </sw-modal>
+
+    <sw-modal class="sw-cms-slot__config-modal"
+              v-if="showCmsElementConfigSaver"
+              :title="$tc('sw-cms.component.sw-cms-slot.cmsElementConfigSaver')"
+              @modal-close="showCmsElementConfigSaver = false">
+        <sw-field v-model="cmsElementConfig.name"
+                  type="text"
+                  :label="$tc('sw-cms.component.sw-cms-slot.label.name')">
+        </sw-field>
+
+        <div class="sw-field">
+            <sw-button variant="primary" @click="onSaveCmsElementConfig">
+                {{ $tc('sw-cms.component.sw-cms-slot.label.save') }}
+            </sw-button>
+        </div>
+
+        <div class="moorl-link-field">
+            <sw-entity-single-select
+                    :label="$tc('sw-cms.component.sw-cms-slot.label.selectConfig')"
+                    :criteria="cmsElementConfigCriteria"
+                    entity="moorl_cms_element_config"
+                    v-model="cmsElementConfigId">
+                <template #result-item="{ item, index }">
+                    <slot name="result-item" v-bind="{ item, index }">
+                        <li is="sw-select-result" v-bind="{ item, index }">
+                            {{ item.type }} | {{ item.name }}
+                        </li>
+                    </slot>
+                </template>
+            </sw-entity-single-select>
+
+            <router-link target="_blank"
+                         rel="noopener"
+                         :to="{ name: 'moorl.foundation.settings.cmselementconfig' }">
+                {{ $tc('sw-cms.component.sw-cms-slot.label.manageConfigs') }}
+            </router-link>
+        </div>
+
+        <sw-button variant="primary" @click="onLoadCmsElementConfig">
+            {{ $tc('sw-cms.component.sw-cms-slot.label.load') }}
+        </sw-button>
+
+        <template slot="modal-footer">
+            <sw-button variant="primary" @click="showCmsElementConfigSaver = false">
+                {{ $tc('sw-cms.detail.label.buttonElementSettingsConfirm') }}
+            </sw-button>
+        </template>
+    </sw-modal>
+{% endblock %}

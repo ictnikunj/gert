@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+      <script type="module">
+        import '../../demo-element/demo-element.js?v=1637255330';
+        import '../../styles/styles.js?v=1637255330';
+        import '../../subheader-element/subheader-element.js?v=1637255330';
+        import '../../hint-element/hint-element.js?v=1637255330';
+        import '../radio-element.js?v=1637255330';
+        import '../radio-group-element.js?v=1637255330';
+      </script>
+
+      <title>radio-element demo</title>
+  </head>
+  <body>
+    <ropi-demo>
+      <ropi-subheader id="label">Group label</ropi-subheader>
+      <ropi-radio-group class="ropi-grid" id="group" aria-labelledby="label" aria-describedby="description">
+        <ropi-radio value="1">Radio 1</ropi-radio>
+        <ropi-radio value="2">Radio 2</ropi-radio>
+        <ropi-radio disabled value="disabled">Disabled</ropi-radio>
+        <ropi-radio disabled checked value="disabled">Disabled and checked</ropi-radio>
+      </ropi-radio-group>
+      <ropi-hint id="description" class="ropi-grid-container no-outer-gutter-height">
+        Description for group
+      </ropi-hint>
+      <script type="module">
+        let group = document.getElementById('group');
+        // The change event is triggered by the ropi-radio elements
+        group.addEventListener('change', function() {
+          console.log("checked value: ", group.checkedValue);
+        });
+      </script>
+    </ropi-demo>
+
+    <ropi-demo name="Color support">
+      <ropi-radio-group class="ropi-grid">
+        <ropi-radio value="cyan" style="--ropi-radio-color: var(--ropi-color-cyan)">
+          cyan
+        </ropi-radio>
+        <ropi-radio value="cyan" style="--ropi-radio-color: var(--ropi-color-cyan);
+                                           --ropi-radio-color-unchecked: var(--ropi-color-cyan)">
+          always cyan
+        </ropi-radio>
+      </ropi-radio-group>
+    </ropi-demo>
+  </body>
+</html>

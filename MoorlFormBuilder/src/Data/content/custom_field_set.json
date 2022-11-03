@@ -1,0 +1,129 @@
+[
+  {
+    "id": "{ID:CUSTOM_FIELD}",
+    "name": "moorl_fb",
+    "config": {
+      "label": {
+        "en-GB": "moori - Form Builder",
+        "de-DE": "moori - Formular Baukasten"
+      }
+    },
+    "relations": [
+      {
+        "id": "{ID:category}",
+        "entityName": "category"
+      },
+      {
+        "id": "{ID:product}",
+        "entityName": "product"
+      },
+      {
+        "id": "{ID:customer}",
+        "entityName": "customer"
+      },
+      {
+        "id": "{ID:order}",
+        "entityName": "order"
+      },
+      {
+        "id": "{ID:media}",
+        "entityName": "media"
+      },
+        {"id": "{ID:order_line_item}",
+        "entityName": "order_line_item"
+      }
+    ],
+    "customFields": [
+      {
+        "name": "moorl_fb_text",
+        "type": "text",
+        "config": {
+          "componentName": "sw-field",
+          "customFieldType": "text",
+          "label": {
+            "en-GB": "Example text",
+            "de-DE": "Beispiel Text"
+          }
+        }
+      },
+      {
+        "name": "moorl_fb_html",
+        "type": "html",
+        "config": {
+          "componentName": "sw-text-editor",
+          "customFieldType": "textEditor",
+          "label": {
+            "en-GB": "Example HTML",
+            "de-DE": "Beispiel HTML"
+          }
+        }
+      },
+      {
+        "name": "moorl_fb_code",
+        "type": "text",
+        "config": {
+          "componentName": "sw-code-editor",
+          "customFieldType": "text",
+          "label": {
+            "en-GB": "Example code",
+            "de-DE": "Beispiel Code"
+          }
+        }
+      },
+      {
+        "name": "moorl_fb_number",
+        "type": "float",
+        "config": {
+          "componentName": "sw-field",
+          "customFieldType": "number",
+          "numberType": "float",
+          "label": {
+            "en-GB": "Example number",
+            "de-DE": "Beispiel Zahl"
+          }
+        }
+      },
+      {
+        "name": "moorl_fb_bool",
+        "type": "bool",
+        "config": {
+          "componentName": "sw-field",
+          "customFieldType": "switch",
+          "label": {
+            "en-GB": "Example switch",
+            "de-DE": "Beispiel an\/aus"
+          }
+        }
+      },
+      {
+        "name": "moorl_fb_media",
+        "type": "media",
+        "config": {
+          "componentName": "sw-media-field",
+          "customFieldType": "media",
+          "label": {
+            "en-GB": "Example media",
+            "de-DE": "Beispiel Medien"
+          }
+        }
+      },
+      {
+        "name": "moorl_fb_date",
+        "type": "text",
+        "config": {
+          "type": "date",
+          "componentName": "sw-field",
+          "customFieldType": "date",
+          "dateType": "date",
+          "config": {
+            "time_24hr": true
+          },
+          "label": {
+            "en-GB": "Example date",
+            "de-DE": "Beispiel Datum"
+          }
+        }
+      }
+    ]
+  }
+]

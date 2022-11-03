@@ -1,0 +1,106 @@
+{% block rhweb_venue_social_media %}
+    {% set socials = [
+        {
+            'title': 'Facebook',
+            'icon': 'lab la-facebook-f',
+            'url': theme_config('rhweb-social-facebook')
+        },
+        {
+            'title': 'Twitter',
+            'icon': 'lab la-twitter',
+            'url': theme_config('rhweb-social-twitter')
+        },
+        {
+            'title': 'Instagram',
+            'icon': 'lab la-instagram',
+            'url': theme_config('rhweb-social-instagram')
+        },
+        {
+            'title': 'Youtube',
+            'icon': 'lab la-youtube',
+            'url': theme_config('rhweb-social-youtube')
+        },
+        {
+            'title': 'Pinterest',
+            'icon': 'lab la-pinterest-p',
+            'url': theme_config('rhweb-social-pinterest')
+        },
+        {
+            'title': 'Vimeo',
+            'icon': 'lab la-vimeo',
+            'url': theme_config('rhweb-social-vimeo')
+        },
+        {
+            'title': 'Google Plus +',
+            'icon': 'lab la-google-plus-g',
+            'url': theme_config('rhweb-social-googleplus')
+        },
+        {
+            'title': 'Tumblr',
+            'icon': 'lab la-tumblr',
+            'url': theme_config('rhweb-social-tumblr')
+        },
+        {
+            'title': 'Linked In',
+            'icon': 'lab la-linkedin',
+            'url': theme_config('rhweb-social-linkedin')
+        },
+        {
+            'title': 'Xing',
+            'icon': 'lab la-xing',
+            'url': theme_config('rhweb-social-xing')
+        },
+        {
+            'title': 'Skype',
+            'icon': 'lab la-skype',
+            'url': theme_config('rhweb-social-skype')
+        },
+        {
+            'title': 'Snapchat',
+            'icon': 'lab la-snapchat',
+            'url': theme_config('rhweb-social-snapchat')
+        },
+        {
+            'title': 'Amazon',
+            'icon': 'lab la-amazon',
+            'url': theme_config('rhweb-social-amazon')
+        },
+        {
+            'title': 'Ebay',
+            'icon': 'lab la-ebay',
+            'url': theme_config('rhweb-social-ebay')
+        },
+        {
+            'title': 'Etsy',
+            'icon': 'lab la-etsy',
+            'url': theme_config('rhweb-social-etsy')
+        },
+        {
+            'title': 'Appstore',
+            'icon': 'lab la-app-store',
+            'url': theme_config('rhweb-social-appstore')
+        },
+        {
+            'title': 'Google Play',
+            'icon': 'lab la-google-play',
+            'url': theme_config('rhweb-social-googleplay')
+        },
+        {
+            'title': 'Kickstarter',
+            'icon': 'lab la-kickstarter-k',
+            'url': theme_config('rhweb-social-kickstarter')
+        },
+    ] %}
+
+    <ul class="list-unstyled list-inline m-0">
+        {% for social in socials %}
+            {% if social.url %}
+                <li class="list-inline-item">
+                    <a rel="noopener" aria-label="{{ social.title }} Page" target="_blank" href="{{ social.url }}" title="{{ social.title }}">
+                        <i aria-hidden="true" aria-label="{{ social.title }} Page" class="{{ social.icon }}"></i>
+                    </a>
+                </li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+{% endblock %}

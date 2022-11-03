@@ -1,0 +1,8 @@
+<label class="form-label{% if formElementTooltip %} d-block{% endif %}"
+       for="{{ formElementId }}">
+    {{ formElementLabel }}
+    {% if formElement.required %}*{% endif %}
+    {% if formElementTooltip %}
+        <span class="form-tooltip" data-toggle="tooltip" data-placement="top" title="{{ formElementTooltip }}">?</span>
+    {% endif %}
+</label>

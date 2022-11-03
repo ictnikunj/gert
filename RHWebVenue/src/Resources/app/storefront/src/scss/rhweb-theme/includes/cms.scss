@@ -1,0 +1,13 @@
+.cms-element-image{
+    .cms-image-link{
+        overflow:hidden;
+        img{
+            transition: ease all .3s;
+            &:hover{
+                transform: scale(1.05);
+                -ms-transform: scale(1.05);
+                -webkit-transform: scale(1.05);
+            }
+        }
+    }
+}

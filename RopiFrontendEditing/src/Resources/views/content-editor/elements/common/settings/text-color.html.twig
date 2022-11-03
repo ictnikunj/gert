@@ -1,0 +1,20 @@
+{% block text_color %}
+    <ropi-collapsible>
+
+        <ropi-subheader slot="header">
+            {% trans %}ropi-frontend-editing.contentElement.definition.subheader.textColor{% endtrans %}
+        </ropi-subheader>
+        <div slot="content">
+            {% block text_color_content %}
+
+                {% block text_color_fields %}
+                    {% sw_include '@RopiFrontendEditing/content-editor/elements/common/settings/color.html.twig' with {
+                        'name': name
+                    } %}
+                {% endblock %}
+
+            {% endblock %}
+        </div>
+
+    </ropi-collapsible>
+{% endblock %}

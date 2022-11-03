@@ -1,0 +1,30 @@
+{% block page_product_detail_all_downloads %}
+    
+    {% set previewedDownloadList = [] %}
+    {% set downloadList = [] %}
+    {% if downloads is not empty %}
+        {% for element in downloads %}
+            {% if element.previewImageEnabled %}
+                {% set previewedDownloadList = previewedDownloadList|merge([element]) %}
+            {% else %}
+                {% set downloadList = downloadList|merge([element]) %}
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+
+    {% if previewedDownloadList is not empty %}
+        {% block page_product_detail_previewed_downloads_content %}
+            {% sw_include '@Storefront/storefront/page/product-detail/acris-downloads/previewed-downloads.html.twig' with {
+                downloads: previewedDownloadList
+            } %}
+        {% endblock %}
+    {% endif %}
+
+    {% if downloadList is not empty %}
+        {% block page_product_detail_downloads_content %}
+            {% sw_include '@Storefront/storefront/page/product-detail/acris-downloads/downloads.html.twig' with {
+                downloads: downloadList
+            } %}
+        {% endblock %}
+    {% endif %}
+{% endblock %}

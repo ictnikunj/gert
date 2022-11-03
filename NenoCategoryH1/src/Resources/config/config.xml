@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/shopware/platform/master/src/Core/System/SystemConfig/Schema/config.xsd">
+    <card>
+        <title>Basic settings</title>
+        <title lang="de-DE">Grundeinstellungen</title>
+
+        <input-field type="bool">
+            <name>nhcHideHome</name>
+            <label>Disable on home page</label>
+            <label lang="de-DE">Auf Startseite deaktivieren</label>
+            <helpText>Disable the H1 header on the home page</helpText>
+            <helpText lang="de-DE">Die H1-Überschrift auf der Startseite deaktivieren</helpText>
+            <defaultValue>true</defaultValue>
+        </input-field>
+
+        <input-field type="colorpicker">
+            <name>nchColor</name>
+            <defaultValue>#000000</defaultValue>
+            <label>Text color</label>
+            <label lang="de-DE">Text Farbe</label>
+        </input-field>
+
+        <input-field type="text">
+            <name>nchFontFamily</name>
+            <label>Typeface</label>
+            <label lang="de-DE">Schriftart</label>
+            <helpText>If no typeface is specified, the standard font is loaded</helpText>
+            <helpText lang="de-DE">Ist keine Schriftart angegeben wird die Standard Schrift geladen</helpText>
+        </input-field>
+
+        <input-field type="float">
+            <name>nchFontWeight</name>
+            <min>100</min>
+            <max>900</max>
+            <defaultValue>400</defaultValue>
+            <label>Font weight</label>
+            <label lang="de-DE">Schriftstärke</label>
+            <helpText>Possible values are: 100, 200, 300, 400, 500, 600, 700, 800, 900. 100 is very thin and 900 is very thick</helpText>
+            <helpText lang="de-DE">Mögliche Werte sind: 100, 200, 300, 400, 500, 600, 700, 800, 900. 100 ist dabei ganz Dünn und 900 ganz Dick</helpText>
+        </input-field>
+    </card>
+
+    <card>
+        <title>Mobile - 0px - 479px</title>
+        <title lang="de-DE">Mobile - 0px - 479px</title>
+
+        <input-field type="float">
+            <name>nchMobilePadding</name>
+            <min>0</min>
+            <defaultValue>20</defaultValue>
+            <label>Distance left and right</label>
+            <label lang="de-DE">Abstand links und rechts</label>
+        </input-field>
+
+        <input-field type="float">
+            <name>nchMobileMaxWidth</name>
+            <min>0</min>
+            <defaultValue>1400</defaultValue>
+            <label>Max. width</label>
+            <label lang="de-DE">Max. Breite</label>
+        </input-field>
+
+        <input-field type="float">
+            <name>nchMobileLineHeight</name>
+            <min>0</min>
+            <defaultValue>40</defaultValue>
+            <label>Line height</label>
+            <label lang="de-DE">Zeilenabstand</label>
+        </input-field>
+
+        <input-field type="float">
+            <name>nchMobileFontSize</name>
+            <min>0</min>
+            <defaultValue>32</defaultValue>
+            <label>Font size</label>
+            <label lang="de-DE">Schriftgröße</label>
+        </input-field>
+    </card>
+
+    <card>
+        <title>Tablet - 480px - 767px</title>
+        <title lang="de-DE">Tablet - 480px - 767px</title>
+
+        <input-field type="float">
+            <name>nchTabletPadding</name>
+            <min>0</min>
+            <defaultValue>20</defaultValue>
+            <label>Distance left and right</label>
+            <label lang="de-DE">Abstand links und rechts</label>
+        </input-field>
+
+        <input-field type="float">
+            <name>nchTabletMaxWidth</name>
+            <min>0</min>
+            <defaultValue>1400</defaultValue>
+            <label>Max. width</label>
+            <label lang="de-DE">Max. Breite</label>
+        </input-field>
+
+        <input-field type="float">
+            <name>nchTabletLineHeight</name>
+            <min>0</min>
+            <defaultValue>40</defaultValue>
+            <label>Line height</label>
+            <label lang="de-DE">Zeilenabstand</label>
+        </input-field>
+
+        <input-field type="float">
+            <name>nchTabletFontSize</name>
+            <min>0</min>
+            <defaultValue>32</defaultValue>
+            <label>Font size</label>
+            <label lang="de-DE">Schriftgröße</label>
+        </input-field>
+    </card>
+
+    <card>
+        <title>Tablet Landscape - 768px - 1023px</title>
+        <title lang="de-DE">Tablet Landscape - 768px - 1023px</title>
+
+        <input-field type="float">
+            <name>nchTabletLandscapePadding</name>
+            <min>0</min>
+            <defaultValue>20</defaultValue>
+            <label>Distance left and right</label>
+            <label lang="de-DE">Abstand links und rechts</label>
+        </input-field>
+
+        <input-field type="float">
+            <name>nchTabletLandscapeMaxWidth</name>
+            <min>0</min>
+            <defaultValue>1400</defaultValue>
+            <label>Max. width</label>
+            <label lang="de-DE">Max. Breite</label>
+        </input-field>
+
+        <input-field type="float">
+            <name>nchTabletLandscapeLineHeight</name>
+            <min>0</min>
+            <defaultValue>40</defaultValue>
+            <label>Line height</label>
+            <label lang="de-DE">Zeilenabstand</label>
+        </input-field>
+
+        <input-field type="float">
+            <name>nchTabletLandscapeFontSize</name>
+            <min>0</min>
+            <defaultValue>32</defaultValue>
+            <label>Font size</label>
+            <label lang="de-DE">Schriftgröße</label>
+        </input-field>
+    </card>
+
+    <card>
+        <title>Desktop - 1024px - ...</title>
+        <title lang="de-DE">Desktop - 1024px - ...</title>
+
+        <input-field type="float">
+            <name>nchDesktopPadding</name>
+            <min>0</min>
+            <defaultValue>20</defaultValue>
+            <label>Distance left and right</label>
+            <label lang="de-DE">Abstand links und rechts</label>
+        </input-field>
+
+        <input-field type="float">
+            <name>nchDesktopMaxWidth</name>
+            <min>0</min>
+            <defaultValue>1400</defaultValue>
+            <label>Max. width</label>
+            <label lang="de-DE">Max. Breite</label>
+        </input-field>
+
+        <input-field type="float">
+            <name>nchDesktopLineHeight</name>
+            <min>0</min>
+            <defaultValue>40</defaultValue>
+            <label>Line height</label>
+            <label lang="de-DE">Zeilenabstand</label>
+        </input-field>
+
+        <input-field type="float">
+            <name>nchDesktopFontSize</name>
+            <min>0</min>
+            <defaultValue>32</defaultValue>
+            <label>Font size</label>
+            <label lang="de-DE">Schriftgröße</label>
+        </input-field>
+
+        <input-field type="bool">
+            <name>zzzNenoCacheClear</name>
+            <defaultValue>true</defaultValue>
+            <label>Cache clearer hidden field</label>
+            <label lang="de-DE">Cache clearer hidden field</label>
+        </input-field>
+    </card>
+</config>

@@ -1,0 +1,8 @@
+@mixin mxn_card_title{
+    .card-title{
+        text-align: $rhweb-forms-headline-alignment;
+        color:$rhweb-forms-headline-font-color;
+        border-color:$rhweb-forms-headline-border-color;
+    }
+}
+

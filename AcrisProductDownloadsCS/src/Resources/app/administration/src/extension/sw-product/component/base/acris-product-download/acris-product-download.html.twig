@@ -1,0 +1,28 @@
+{% block acris_product_download %}
+<div class="sw-product-image" :class="productImageClasses">
+    <template v-if="!isPlaceholder">
+        {% block acris_product_download_preview %}
+            <sw-media-preview-v2 class="sw-product-image__image"
+                              :source="mediaId"
+                              :hideTooltip="false">
+            </sw-media-preview-v2>
+        {% endblock %}
+        <sw-context-button class="sw-product-image__context-button" :icon="'small-pencil'">
+            {% block acris_product_download_context %}
+                {% block acris_product_download_context_cover_action %}
+                    <sw-context-menu-item @click="$emit('acris-product-download-edit')">{{ $tc('global.acris-product-download.context.buttonEdit') }}</sw-context-menu-item>
+                {% endblock %}
+
+                {% block acris_product_download_context_delete_action %}
+                    <sw-context-menu-item variant="danger" @click="$emit('acris-product-download-delete')">{{ $tc('global.sw-product-image.context.buttonRemove') }}</sw-context-menu-item>
+                {% endblock %}
+            {% endblock %}
+        </sw-context-button>
+    </template>
+    <template v-else class="is--invalid-drag">
+        {% block acris_product_download_placeholder %}
+            <sw-icon class="sw-product-image__placeholder-icon" :name="'default-object-image'" :small="true"></sw-icon>
+        {% endblock %}
+    </template>
+</div>
+{% endblock %}

@@ -1,0 +1,9 @@
+[
+  {
+    "id": "{ID:CATEGORY_0}",
+    "parentId": "{NAVIGATION_CATEGORY_ID}",
+    "cmsPageId": "{ID:CMS_PAGE_0}",
+    "active": true,
+    "name": "Shop-The-Look Demo"
+  }
+]

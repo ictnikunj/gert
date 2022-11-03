@@ -1,0 +1,8 @@
+.rhweb-footer-newsletter-container{
+    @if $rhweb-newsletter-background-image != "" and $rhweb-newsletter-background-image != "none" {
+        background-attachment: $rhweb-newsletter-background-image-attachement;
+        background-repeat: $rhweb-newsletter-background-image-repeat;
+        background-size: $rhweb-newsletter-background-image-size;
+        background-position: $rhweb-newsletter-background-image-position;
+    }
+}

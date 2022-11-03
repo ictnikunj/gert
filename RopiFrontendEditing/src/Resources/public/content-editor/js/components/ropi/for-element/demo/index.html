@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+      <script type="module">
+        import '../../demo-element/demo-element.js?v=1637255330';
+        import '../for-element.js?v=1637255330';
+      </script>
+
+      <style>
+        ul {
+          margin: 0;
+          padding: 1rem;
+        }
+
+        .width-50 {
+          width: 50%;
+          float: left;
+        }
+
+        .clearfix::after {
+          content: " ";
+          clear: both;
+        }
+      </style>
+
+      <title>for-element demo</title>
+  </head>
+  <body>
+    <ropi-demo sourcehidden>
+      <ropi-for each='["apple", "banana", "lemon"]'>
+        <div>
+          <span data-key></span>:
+          <span data-value></span>
+        </div>
+      </ropi-for>
+    </ropi-demo>
+
+    <ropi-demo sourcehidden name="variable aliases">
+      <ropi-for each='["apple", "banana", "lemon"]' as="v" key="k">
+        <div>
+          <span data-k></span>:
+          <span data-v></span>
+        </div>
+      </ropi-for>
+    </ropi-demo>
+
+    <ropi-demo sourcehidden name="Object property access">
+      <ropi-for each='[{"name": "Robert"}, {"name": "Jason"}, {"name": "Dwayne"}]' as="person">
+        <div>
+          <span data-key></span>:
+          <span data-person="name"></span>
+        </div>
+      </ropi-for>
+    </ropi-demo>
+
+    <ropi-demo sourcehidden name="Template">
+      <ropi-for each='[{"name": "Robert"}, {"name": "Jason"}, {"name": "Dwayne"}]' as="person">
+        <template>
+          <div>
+            <span data-key></span>:
+            <span data-person="name"></span>
+          </div>
+        </template>
+      </ropi-for>
+    </ropi-demo>
+
+    <ropi-demo sourcehidden name="Nested loop">
+      <ropi-for each='[{"name": "Cool Zoo", "pets": [{"names": ["Cat", "Kitten"]}, {"names": ["Puma", "Cougar"]}]}]' as="zoo">
+        <ul>
+          <li>
+            <h2 data-zoo="name"></h2>
+            <ul class="clearfix">
+              <ropi-for data-zoo="pets" as="pet" key="petKey">
+                <li class="width-50">
+                  <h2 data-zoo="name"></h2>
+                  <span data-petKey></span>:
+                  <ul>
+                    <ropi-for data-pet="names" as="petName">
+                      <li>
+                        <a style="font-weight: bold;
+                                  color:lightblue;
+                                  text-decoration:underline;"
+                           onclick="alert('clicked {{petName}}');">
+                          <span data-petName></span>
+                        </a>
+                      </li>
+                    </ropi-for>
+                  </ul>
+                </li>
+              </ropi-for>
+            </ul>
+          </li>
+        </ul>
+      </ropi-for>
+    </ropi-demo>
+  </body>
+</html>

@@ -1,0 +1,110 @@
+.cms-element-rhweb-testimonial {
+    .testimonial-top{
+        padding:0 15px 20px 15px;
+
+
+        .image{
+            text-align: center;
+            margin-bottom: 20px;;
+
+            img {
+                border: 5px solid #fff;
+                box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075);
+                width: 100px;
+                height: 100px;
+                border-radius: 50%;
+                object-fit: cover;
+            }
+        }
+
+        .customer-name{
+            text-align: center;
+        }
+
+        .customer-quote{
+            text-align: center;
+            font-size: 1.1em;
+        }
+    }
+
+    .testimonial-bottom{
+        padding:20px;
+
+        .company{
+            text-align: center;
+            margin-bottom: 5px;
+        }
+
+        .rating {
+            color: #ffba3b;
+            text-align: center;
+            font-size: 1.3em;
+        }
+    }
+}
+
+
+.cms-block-rhweb-testimonial-two-slider, .cms-block-rhweb-testimonial-three-slider, .cms-block-rhweb-testimonial-four-slider, .cms-block-rhweb-testimonial-five-slider {
+
+    .cms-element-rhweb-testimonial{
+        max-width: 90%;
+        margin: 0 auto;
+    }
+
+
+    .base-slider-controls-prev, .base-slider-controls-next{
+        display: flex;
+        position: absolute;
+        z-index: 100;
+        bottom: auto;
+        width: auto;
+        top: 50%;
+        height: 70px;
+        background: $rhweb-slider-button-background;
+        color:$rhweb-slider-button-color;
+        opacity: 1;
+        padding: 5px;
+        align-items: center;
+        justify-content: center;
+        transform: translateY(-50%);
+        transition: ease all .3s;
+        font-size: 1.4em;
+        border:none;
+    }
+
+    .base-slider-controls-prev{
+        &:hover{
+            padding-left:15px;
+        }
+    }
+
+    .base-slider-controls-next{
+        &:hover{
+            padding-right:15px;
+        }
+    }
+
+    .tns-nav{
+        margin:0;
+
+        button{
+            width:30px;
+            height:3px;
+            border-radius: 0;
+            padding:0;
+        }
+    }
+
+    .has--sidebar{
+        .base-slider-controls-prev, .base-slider-controls-next{
+            opacity: .2 !important;
+
+            &:hover{
+                opacity: 1 !important;
+            }
+        }
+    }
+}
+
+
+

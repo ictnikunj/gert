@@ -1,0 +1,27 @@
+@import "~scss/variables";
+@import "../../../scss/acris-variables";
+
+.sw-cms-el-acris-product-downloads {
+    padding: 20px;
+    width: 100%;
+
+    .acris-product-downloads-headline {
+        margin-bottom: 4px;
+    }
+
+    .acris-product-downloads-list {
+        ul {
+            padding-left: 15px;
+
+            li {
+                span {
+                    font-size: $font-size-small;
+                }
+
+                .acris-product-downloads-list-item-name {
+                    color: $acris-green;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,45 @@
+<div class="moorl-form-element-options-date">
+    <moorl-collapse
+            :label="$tc('moorl-form-builder.general.elementOptions')"
+            key="elementOptions">
+        <template #content>
+            <sw-field
+                    :label="$tc('moorl-form-builder.properties.dateMin')"
+                    :helpText="$tc('moorl-form-builder.tooltips.dateMin')"
+                    v-model="formElement.dateMin"
+            />
+
+            <sw-field
+                    :label="$tc('moorl-form-builder.properties.dateMax')"
+                    :helpText="$tc('moorl-form-builder.tooltips.dateMax')"
+                    v-model="formElement.dateMax"
+            />
+
+            <sw-number-field
+                    :label="$tc('moorl-form-builder.properties.dateStep')"
+                    v-model="formElement.dateStep"
+            />
+
+            <sw-number-field
+                    :label="$tc('moorl-form-builder.properties.timeMin')"
+                    v-model="formElement.timeMin"
+            />
+
+            <sw-number-field
+                    :label="$tc('moorl-form-builder.properties.timeMax')"
+                    v-model="formElement.timeMax"
+            />
+
+            <sw-number-field
+                    :label="$tc('moorl-form-builder.properties.timeStep')"
+                    v-model="formElement.timeStep"
+            />
+
+            <sw-multi-select
+                    :label="$tc('moorl-form-builder.properties.dateExclude')"
+                    :options="weekdays"
+                    v-model="formElement.dateExclude"
+            />
+        </template>
+    </moorl-collapse>
+</div>

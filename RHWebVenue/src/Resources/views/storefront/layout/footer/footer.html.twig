@@ -1,0 +1,331 @@
+{% sw_extends '@Storefront/storefront/layout/footer/footer.html.twig' %}
+
+{% block layout_footer_inner_container %}
+
+    {% set activateContact = theme_config('rhweb-footer-activate-contact') %}
+    {% set activatePayment = theme_config('rhweb-footer-activate-payment') %}
+    {% set activateShipping = theme_config('rhweb-footer-activate-shipping') %}
+    {% set activateCertificates = theme_config('rhweb-footer-activate-certificates') %}
+
+    {% if activatePayment or activateShipping or activateCertificates %}
+        {% set additionalColumnSize = 0 %}
+    {% else %}
+        {% set additionalColumnSize = 1 %}
+    {% endif %}
+    {% if activatePayment %}
+        {% set additionalColumnSize = additionalColumnSize + 1 %}
+    {% endif %}
+    {% if activateShipping %}
+        {% set additionalColumnSize = additionalColumnSize + 1 %}
+    {% endif %}
+    {% if activateCertificates %}
+        {% set additionalColumnSize = additionalColumnSize + 1 %}
+    {% endif %}
+
+    {% set additionalColumn = 'col-md-6 col-lg-'~12/additionalColumnSize %}
+
+    {% set columnAmount = theme_config('rhweb-footer-column-amount') %}
+    {% set columnBootstrap = 12/columnAmount %}
+
+
+    {% block layout_footer_navigation %}
+        <div class="container">
+            <div id="footerColumns"
+                 class="row footer-columns"
+                 data-collapse-footer="true">
+                {% block layout_footer_navigation_hotline %}
+                    {% if activateContact %}
+                        <div class="col-md-4 col-lg-{{ columnBootstrap }} footer-column js-footer-column">
+                            {% block layout_footer_navigation_hotline_headline %}
+                                {{ parent() }}
+                            {% endblock %}
+
+                            {% block layout_footer_navigation_hotline_content %}
+                                {{ parent() }}
+                            {% endblock %}
+                        </div>
+                    {% endif %}
+                {% endblock %}
+
+                {% block layout_footer_navigation_columns %}
+                    {% for root in page.footer.navigation.tree %}
+                        {% block layout_footer_navigation_column %}
+                            <div class="col-md-4 col-lg-{{ columnBootstrap }} footer-column js-footer-column">
+                                {% block layout_footer_navigation_information_headline %}
+                                    <div class="footer-column-headline footer-headline js-collapse-footer-column-trigger pb-md-4 pt-md-5"
+                                         data-target="#collapseFooter{{ loop.index }}"
+                                         aria-expanded="true"
+                                         aria-controls="collapseFooter{{ loop.index }}">
+
+                                        {{ root.category.translated.name }}
+                                        {% block layout_footer_navigation_information_icons %}
+                                            {{ parent() }}
+                                        {% endblock %}
+                                    </div>
+
+                                {% endblock %}
+
+                                {% block layout_footer_navigation_information_content %}
+                                    {{ parent() }}
+                                {% endblock %}
+                            </div>
+                        {% endblock %}
+                    {% endfor %}
+                {% endblock %}
+
+                {% block layout_footer_navigation_columns_newsletter %}
+                    {% if theme_config('rhweb-footer-activate-newsletter') and theme_config('rhweb-newsletter-position') != 'above' %}
+                        <div class="col-md-4 col-lg-{{ columnBootstrap }} footer-column js-footer-column">
+                            <div class="footer-column-headline footer-headline js-collapse-footer-column-trigger pb-md-4 pt-md-5"
+                                 data-target="#collapseFooterNewsletter"
+                                 aria-expanded="true"
+                                 aria-controls="collapseFooterNewsletter">
+                                {{ "rhwebTheme.footer.newsletter.headline"|trans|sw_sanitize }}
+
+                                <div class="footer-column-toggle">
+                                        <span class="footer-plus-icon">
+                                            {% sw_icon 'plus' %}
+                                        </span>
+                                    <span class="footer-minus-icon">
+                                            {% sw_icon 'minus' %}
+                                        </span>
+                                </div>
+                            </div>
+                            <div id="collapseFooterNewsletter" class="footer-column-content collapse js-footer-column-content" aria-labelledby="collapseFooterNewsletterTitle">
+                                <div class="footer-column-content-inner">
+                                    {% sw_include '@Storefront/storefront/rhweb-custom/snippets/footer/rhweb-newsletter.html.twig' with {
+                                        position: 'column-footer'
+                                    } %}
+                                </div>
+                            </div>
+                        </div>
+
+                    {% endif %}
+                {% endblock %}
+            </div>
+        </div>
+
+    {% endblock %}
+
+    <div class="container">
+        <div class="row rhweb-logo-row footer-columns pt-md-5" data-collapse-footer="true">
+            {% if activatePayment %}
+                {% block rhweb_layout_footer_payment_logos %}
+                    <div class="{{ additionalColumn }} footer-column js-footer-column">
+                        {% block layout_footer_payment_logos_headline %}
+                            <div class="footer-column-headline footer-headline js-footer-column-headline js-collapse-footer-column-trigger"
+                                 id="collapseFooterPaymentTitle"
+                                 data-target="#collapseFooterPayment"
+                                 aria-expanded="true"
+                                 aria-controls="collapseFooterPayment">
+                                {{ 'rhwebTheme.footer.payment.headline'|trans }}
+                                <div class="footer-column-toggle">
+                                    <span class="footer-plus-icon">
+                                        {% sw_icon 'plus' %}
+                                    </span>
+                                    <span class="footer-minus-icon">
+                                        {% sw_icon 'minus' %}
+                                    </span>
+                                </div>
+                            </div>
+                        {% endblock %}
+
+
+                        <div id="collapseFooterPayment" class="footer-column-content collapse js-footer-column-content" aria-labelledby="collapseFooterPaymentTitle">
+                            <div class="footer-column-content-inner mt-md-3">
+                                {% block layout_footer_payment_logos_content %}
+                                    <div class="logo-container">
+                                        {% for paymentMethod in page.salesChannelPaymentMethods %}
+                                            {% block layout_footer_payment_logo %}
+                                                {% if paymentMethod.media %}
+                                                    <div class="footer-logo is-payment">
+                                                        {% sw_thumbnails 'footer-payment-image-thumbnails' with {
+                                                            media: paymentMethod.media,
+                                                            sizes: {
+                                                                'default': '100px'
+                                                            },
+                                                            attributes: {
+                                                                'class': 'img-fluid footer-logo-image',
+                                                                'alt': (paymentMethod.media.translated.alt ?: paymentMethod.translated.name),
+                                                                'title': (paymentMethod.media.translated.title ?: paymentMethod.translated.name)
+                                                            }
+                                                        } %}
+                                                    </div>
+                                                {% else %}
+                                                    <div class="logo-text">
+                                                        {{ paymentMethod.translated.name }}
+                                                    </div>
+                                                {% endif %}
+                                            {% endblock %}
+                                        {% endfor %}
+                                    </div>
+                                {% endblock %}
+                            </div>
+                        </div>
+                    </div>
+                {% endblock %}
+            {% endif %}
+
+
+            {% if activateShipping %}
+                {% block layout_footer_shipping_logos %}
+                    <div class="{{ additionalColumn }} footer-column js-footer-column">
+                        {% block layout_footer_shipping_logos_headline %}
+                            <div class="footer-column-headline footer-headline js-footer-column-headline js-collapse-footer-column-trigger"
+                                 id="collapseFooterShippingTitle"
+                                 data-target="#collapseFooterShipping"
+                                 aria-expanded="true"
+                                 aria-controls="collapseFooterShipping">
+                                {{ 'rhwebTheme.footer.shipping.headline'|trans }}
+                                <div class="footer-column-toggle">
+                                    <span class="footer-plus-icon">
+                                        {% sw_icon 'plus' %}
+                                    </span>
+                                    <span class="footer-minus-icon">
+                                        {% sw_icon 'minus' %}
+                                    </span>
+                                </div>
+                            </div>
+                        {% endblock %}
+
+
+                        <div id="collapseFooterShipping" class="footer-column-content collapse js-footer-column-content" aria-labelledby="collapseFooterShippingTitle">
+                            <div class="footer-column-content-inner mt-md-3">
+                                <div class="logo-container">
+                                    {% block layout_footer_shipping_logos_content %}
+                                        {% for shippingMethod in page.salesChannelShippingMethods %}
+                                            {% block layout_footer_shipping_logo %}
+                                                {% if shippingMethod.media %}
+                                                    <div class="footer-logo is-shipping">
+                                                        {% sw_thumbnails 'footer-shipping-image-thumbnails' with {
+                                                            media: shippingMethod.media,
+                                                            sizes: {
+                                                                'default': '100px'
+                                                            },
+                                                            attributes: {
+                                                                'class': 'img-fluid footer-logo-image',
+                                                                'alt': (shippingMethod.media.translated.alt ?: shippingMethod.translated.name),
+                                                                'title': (shippingMethod.media.translated.title ?: shippingMethod.translated.name)
+                                                            }
+                                                        } %}
+                                                    </div>
+                                                {% else %}
+                                                    <div class="logo-text">
+                                                        {{ shippingMethod.translated.name }}
+                                                    </div>
+                                                {% endif %}
+                                            {% endblock %}
+                                        {% endfor %}
+                                    {% endblock %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endblock %}
+            {% endif %}
+
+
+            {% if activateCertificates %}
+                {% block rhweb_footer_certificates %}
+                    <div class="{{ additionalColumn }} footer-column js-footer-column">
+                        {% block rhweb_footer_certificates_headline %}
+                            <div class="footer-column-headline footer-headline js-footer-column-headline js-collapse-footer-column-trigger"
+                                 id="collapseFooterCertificatesTitle"
+                                 data-target="#collapseFooterCertificates"
+                                 aria-expanded="true"
+                                 aria-controls="collapseFooterCertificates">
+                                {{ 'rhwebTheme.footer.certificates.headline'|trans }}
+                                <div class="footer-column-toggle">
+                                    <span class="footer-plus-icon">
+                                        {% sw_icon 'plus' %}
+                                    </span>
+                                    <span class="footer-minus-icon">
+                                        {% sw_icon 'minus' %}
+                                    </span>
+                                </div>
+                            </div>
+                        {% endblock %}
+
+
+                        {% block rhweb_footer_certificates_content %}
+                            <div id="collapseFooterCertificates" class="footer-column-content collapse js-footer-column-content" aria-labelledby="collapseFooterCertificatesTitle">
+                                <div class="footer-column-content-inner mt-md-3">
+                                    <div class="footer-certificates">
+                                        {% if theme_config('rhweb-certificate-1') %}
+                                            {% if theme_config('rhweb-certificate-1-url') %}
+                                                <a href="{{ theme_config('rhweb-certificate-1-url') }}" {% if theme_config('rhweb-certificate-1-url-new-tab') %}target="_blank"{% endif %}>
+                                                    <img alt="certificate" title="Certificate" src="{{ theme_config('rhweb-certificate-1') |sw_encode_url }}">
+                                                </a>
+                                            {% else %}
+                                                <img alt="certificate" title="Certificate" src="{{ theme_config('rhweb-certificate-1') |sw_encode_url }}">
+                                            {% endif %}
+                                        {% endif %}
+                                        {% if theme_config('rhweb-certificate-2') %}
+                                            {% if theme_config('rhweb-certificate-2-url') %}
+                                                <a href="{{ theme_config('rhweb-certificate-2-url') }}" {% if theme_config('rhweb-certificate-2-url-new-tab') %}target="_blank"{% endif %}>
+                                                    <img alt="certificate" title="Certificate" src="{{ theme_config('rhweb-certificate-2') |sw_encode_url }}">
+                                                </a>
+                                            {% else %}
+                                                <img alt="certificate" title="Certificate" src="{{ theme_config('rhweb-certificate-2') |sw_encode_url }}">
+                                            {% endif %}
+                                        {% endif %}
+                                        {% if theme_config('rhweb-certificate-3') %}
+                                            {% if theme_config('rhweb-certificate-3-url') %}
+                                                <a href="{{ theme_config('rhweb-certificate-3-url') }}" {% if theme_config('rhweb-certificate-3-url-new-tab') %}target="_blank"{% endif %}>
+                                                    <img alt="certificate" title="Certificate" src="{{ theme_config('rhweb-certificate-3') |sw_encode_url }}">
+                                                </a>
+                                            {% else %}
+                                                <img alt="certificate" title="Certificate" src="{{ theme_config('rhweb-certificate-3') |sw_encode_url }}">
+                                            {% endif %}
+                                        {% endif %}
+                                        {% if theme_config('rhweb-certificate-4') %}
+                                            {% if theme_config('rhweb-certificate-4-url') %}
+                                                <a href="{{ theme_config('rhweb-certificate-4-url') }}" {% if theme_config('rhweb-certificate-4-url-new-tab') %}target="_blank"{% endif %}>
+                                                    <img alt="certificate" title="Certificate" src="{{ theme_config('rhweb-certificate-4') |sw_encode_url }}">
+                                                </a>
+                                            {% else %}
+                                                <img alt="certificate" title="Certificate" src="{{ theme_config('rhweb-certificate-4') |sw_encode_url }}">
+                                            {% endif %}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        {% endblock %}
+                    </div>
+                {% endblock %}
+            {% endif %}
+        </div>
+    </div>
+
+    {% block layout_footer_bottom %}
+        <div class="container">
+            <div class="footer-bottom">
+                {% block layout_footer_vat %}
+                    <div class="footer-vat">
+                        {% if context.taxState == "gross" %}
+                            <p>
+                                {{ "footer.includeVat"|trans({
+                                    '%url%': path('frontend.cms.page',{ id: config('core.basicInformation.shippingPaymentInfoPage') })
+                                })|raw }}
+                            </p>
+                        {% else %}
+                            <p>
+                                {{ "footer.excludeVat"|trans({
+                                    '%url%': path('frontend.cms.page',{ id: config('core.basicInformation.shippingPaymentInfoPage') })
+                                })|raw }}
+                            </p>
+                        {% endif %}
+                    </div>
+                {% endblock %}
+
+                {% block rhweb_layout_footer_copyright %}
+                    <div class="py-md-3">
+                        <div class="text-center">
+                            &#169; Copyright {{ 'now' | date('Y') }} | Shopware Theme by <a href="https://rh-webdesign.com" rel="noopener" target="_blank"><u>RH-Webdesign</u></a>
+                        </div>
+                    </div>
+                {% endblock %}
+            </div>
+        </div>
+    {% endblock %}
+{% endblock %}

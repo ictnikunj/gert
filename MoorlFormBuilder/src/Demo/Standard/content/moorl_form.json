@@ -1,0 +1,5738 @@
+[
+  {
+    "id": "{ID:FORM_1}",
+    "active": true,
+    "privacy": true,
+    "useCaptcha": true,
+    "sendCopy": true,
+    "locked": true,
+    "bootstrapGrid": true,
+    "sendMail": true,
+    "insertHistory": true,
+    "maxFileSize": 10,
+    "name": "Example: Simple contact form",
+    "mediaFolder": "user",
+    "submitText": {},
+    "type": "cms",
+    "emailReceiver": null,
+    "successMessage": {},
+    "label": {
+      "de-DE": "Kontakt",
+      "en-GB": "Contact"
+    },
+    "data": [
+      {
+        "id": "36fd0c787dc14c28b755dea50ebb6bbd",
+        "html": "<hr>",
+        "name": "firstname",
+        "type": "text",
+        "label": {
+          "de-DE": "Vorname",
+          "en-GB": "Firstname"
+        },
+        "value": "",
+        "append": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "pseudo": null,
+        "dateMax": "+6 months",
+        "dateMin": "+3 days",
+        "mapping": "customFields.my_value",
+        "options": [
+          {
+            "id": "3b72225a0d644f679e27fbba362c5d8b",
+            "label": {
+              "de-DE": "Option 1",
+              "en-GB": "Option 1"
+            },
+            "value": "option1",
+            "useTrans": null,
+            "customField1": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField2": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField3": {
+              "de-DE": "",
+              "en-GB": ""
+            }
+          },
+          {
+            "id": "8d1d83f78e414a90af588af6eecb5c3e",
+            "label": {
+              "de-DE": "path.to.translation.snippet.option2",
+              "en-GB": "path.to.translation.snippet.option2"
+            },
+            "value": "option2",
+            "useTrans": true,
+            "customField1": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField2": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField3": {
+              "de-DE": "",
+              "en-GB": ""
+            }
+          }
+        ],
+        "prepend": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "tooltip": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "dateStep": "1",
+        "required": true,
+        "condition": {
+          "hidden": "",
+          "disabled": ""
+        },
+        "lineBreak": false,
+        "numberMax": "100",
+        "numberMin": "0",
+        "conditions": [],
+        "gridSizeLg": "4",
+        "numberStep": "0.1",
+        "htmlWrapper": "<div class=\"mb-2\">{{ element }}</div>",
+        "placeholder": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "autocomplete": {
+          "property": null,
+          "relatedEntity": null
+        },
+        "defaultValue": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "entitySelect": {
+          "labelProperty": "name",
+          "relatedEntity": "country",
+          "valueProperty": "id"
+        },
+        "isEntitySelect": null,
+        "hasEmailReceiver": null,
+        "useImageSelection": null
+      },
+      {
+        "id": "08f8fde2acc94f05b9d835b41c9730b1",
+        "html": "<hr>",
+        "name": "lastname",
+        "type": "text",
+        "label": {
+          "de-DE": "Nachname",
+          "en-GB": "Lastname"
+        },
+        "value": "",
+        "append": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "pseudo": null,
+        "dateMax": "+6 months",
+        "dateMin": "+3 days",
+        "mapping": "customFields.my_value",
+        "options": [
+          {
+            "id": "010e07427eeb40598c9972e3ee56d3a1",
+            "label": {
+              "de-DE": "Option 1",
+              "en-GB": "Option 1"
+            },
+            "value": "option1",
+            "useTrans": null,
+            "customField1": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField2": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField3": {
+              "de-DE": "",
+              "en-GB": ""
+            }
+          },
+          {
+            "id": "465980fab8c747faa54870ae80c3b736",
+            "label": {
+              "de-DE": "path.to.translation.snippet.option2",
+              "en-GB": "path.to.translation.snippet.option2"
+            },
+            "value": "option2",
+            "useTrans": true,
+            "customField1": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField2": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField3": {
+              "de-DE": "",
+              "en-GB": ""
+            }
+          }
+        ],
+        "prepend": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "tooltip": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "dateStep": "1",
+        "required": true,
+        "condition": {
+          "hidden": "",
+          "disabled": ""
+        },
+        "lineBreak": true,
+        "numberMax": "100",
+        "numberMin": "0",
+        "conditions": [],
+        "gridSizeLg": "4",
+        "numberStep": "0.1",
+        "htmlWrapper": "<div class=\"mb-2\">{{ element }}</div>",
+        "placeholder": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "autocomplete": {
+          "property": null,
+          "relatedEntity": null
+        },
+        "defaultValue": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "entitySelect": {
+          "labelProperty": "name",
+          "relatedEntity": "country",
+          "valueProperty": "id"
+        },
+        "isEntitySelect": null,
+        "hasEmailReceiver": null,
+        "useImageSelection": null
+      },
+      {
+        "id": "807bd1af687048aea85cbf1b865feba5",
+        "html": "<hr>",
+        "name": "email",
+        "type": "email",
+        "label": {
+          "de-DE": "E-Mail",
+          "en-GB": "E-Mail"
+        },
+        "value": "",
+        "append": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "pseudo": null,
+        "dateMax": "+6 months",
+        "dateMin": "+3 days",
+        "mapping": "customFields.my_value",
+        "options": [
+          {
+            "id": "67e00d6d6ac2425c9240c4cc70d9920d",
+            "label": {
+              "de-DE": "Option 1",
+              "en-GB": "Option 1"
+            },
+            "value": "option1",
+            "useTrans": null,
+            "customField1": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField2": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField3": {
+              "de-DE": "",
+              "en-GB": ""
+            }
+          },
+          {
+            "id": "13aaea99e913418ca28b28f336cdc873",
+            "label": {
+              "de-DE": "path.to.translation.snippet.option2",
+              "en-GB": "path.to.translation.snippet.option2"
+            },
+            "value": "option2",
+            "useTrans": true,
+            "customField1": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField2": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField3": {
+              "de-DE": "",
+              "en-GB": ""
+            }
+          }
+        ],
+        "prepend": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "tooltip": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "dateStep": "1",
+        "required": true,
+        "condition": {
+          "hidden": "",
+          "disabled": ""
+        },
+        "lineBreak": true,
+        "numberMax": "100",
+        "numberMin": "0",
+        "conditions": [],
+        "gridSizeLg": "8",
+        "numberStep": "0.1",
+        "htmlWrapper": "<div class=\"mb-2\">{{ element }}</div>",
+        "placeholder": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "autocomplete": {
+          "property": null,
+          "relatedEntity": null
+        },
+        "defaultValue": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "entitySelect": {
+          "labelProperty": "name",
+          "relatedEntity": "country",
+          "valueProperty": "id"
+        },
+        "isEntitySelect": null,
+        "hasEmailReceiver": null,
+        "useImageSelection": null
+      },
+      {
+        "id": "09336a6b2b2b4223a6002b0baaf04d3c",
+        "html": "<hr>",
+        "name": "countryId",
+        "type": "select",
+        "label": {
+          "de-DE": "Land",
+          "en-GB": "Country"
+        },
+        "value": "",
+        "append": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "pseudo": null,
+        "dateMax": "+6 months",
+        "dateMin": "+3 days",
+        "mapping": "customFields.my_value",
+        "options": [
+          {
+            "id": "02fe5dcec0b9404b864db661bf5d1625",
+            "label": {
+              "de-DE": "Support Anfrage",
+              "en-GB": "Support request"
+            },
+            "value": "support",
+            "useTrans": null,
+            "customField1": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField2": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField3": {
+              "de-DE": "",
+              "en-GB": ""
+            }
+          },
+          {
+            "id": "905e1592c6d64c0c9202fa65abfddad8",
+            "label": {
+              "de-DE": "Allgemeine Frage",
+              "en-GB": "General question"
+            },
+            "value": "general",
+            "useTrans": true,
+            "customField1": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField2": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField3": {
+              "de-DE": "",
+              "en-GB": ""
+            }
+          },
+          {
+            "id": "44e3eacf389e433a8df159795bddf124",
+            "label": {
+              "de-DE": "Hilfe",
+              "en-GB": "Help"
+            },
+            "value": "help",
+            "customField1": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField2": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField3": {
+              "de-DE": "",
+              "en-GB": ""
+            }
+          }
+        ],
+        "prepend": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "tooltip": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "dateStep": "1",
+        "required": true,
+        "condition": {
+          "hidden": "",
+          "disabled": ""
+        },
+        "lineBreak": true,
+        "numberMax": "100",
+        "numberMin": "0",
+        "conditions": [],
+        "gridSizeLg": "8",
+        "numberStep": "0.1",
+        "htmlWrapper": "<div class=\"mb-2\">{{ element }}</div>",
+        "placeholder": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "autocomplete": {
+          "property": null,
+          "relatedEntity": null
+        },
+        "defaultValue": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "entitySelect": {
+          "labelProperty": "name",
+          "relatedEntity": "country",
+          "valueProperty": "id"
+        },
+        "isEntitySelect": true,
+        "hasEmailReceiver": null,
+        "useImageSelection": null
+      },
+      {
+        "id": "22abbb03dbee46b2b432b9055f0e86f6",
+        "html": "<hr>",
+        "name": "message",
+        "type": "textarea",
+        "label": {
+          "de-DE": "Nachricht",
+          "en-GB": "Message"
+        },
+        "value": "",
+        "append": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "pseudo": null,
+        "dateMax": "+6 months",
+        "dateMin": "+3 days",
+        "mapping": "customFields.my_value",
+        "options": [
+          {
+            "id": "1dcbb4b013ac413c9e1dca67c696d1f6",
+            "label": {
+              "de-DE": "Option 1",
+              "en-GB": "Option 1"
+            },
+            "value": "option1",
+            "useTrans": null,
+            "customField1": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField2": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField3": {
+              "de-DE": "",
+              "en-GB": ""
+            }
+          },
+          {
+            "id": "c55fd750053547ee92a9d9339eb3a2c6",
+            "label": {
+              "de-DE": "path.to.translation.snippet.option2",
+              "en-GB": "path.to.translation.snippet.option2"
+            },
+            "value": "option2",
+            "useTrans": true,
+            "customField1": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField2": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField3": {
+              "de-DE": "",
+              "en-GB": ""
+            }
+          }
+        ],
+        "prepend": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "tooltip": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "dateStep": "1",
+        "required": null,
+        "condition": {
+          "hidden": "",
+          "disabled": ""
+        },
+        "lineBreak": true,
+        "numberMax": "100",
+        "numberMin": "0",
+        "conditions": [],
+        "gridSizeLg": "12",
+        "numberStep": "0.1",
+        "htmlWrapper": "<div class=\"mb-2\">{{ element }}</div>",
+        "placeholder": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "autocomplete": {
+          "property": null,
+          "relatedEntity": null
+        },
+        "defaultValue": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "entitySelect": {
+          "labelProperty": "name",
+          "relatedEntity": "country",
+          "valueProperty": "id"
+        },
+        "isEntitySelect": null,
+        "hasEmailReceiver": null,
+        "useImageSelection": null
+      },
+      {
+        "id": "c8c7f101c622464e857656b8e4600cd8",
+        "html": "<hr>",
+        "name": "file",
+        "type": "upload",
+        "label": {
+          "de-DE": "Wähle eine Datei",
+          "en-GB": "Select a file"
+        },
+        "value": "",
+        "append": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "pseudo": null,
+        "dateMax": "+6 months",
+        "dateMin": "+3 days",
+        "mapping": "customFields.my_value",
+        "options": [
+          {
+            "id": "200a3aa2d39a468897a51502df50f47d",
+            "label": {
+              "de-DE": "Option 1",
+              "en-GB": "Option 1"
+            },
+            "value": "option1",
+            "useTrans": null,
+            "customField1": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField2": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField3": {
+              "de-DE": "",
+              "en-GB": ""
+            }
+          },
+          {
+            "id": "9d6babe78b2345d4a201994612d30fe5",
+            "label": {
+              "de-DE": "path.to.translation.snippet.option2",
+              "en-GB": "path.to.translation.snippet.option2"
+            },
+            "value": "option2",
+            "useTrans": true,
+            "customField1": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField2": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField3": {
+              "de-DE": "",
+              "en-GB": ""
+            }
+          }
+        ],
+        "prepend": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "tooltip": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "dateStep": "1",
+        "required": null,
+        "condition": {
+          "hidden": "",
+          "disabled": ""
+        },
+        "lineBreak": true,
+        "mediaType": "all",
+        "numberMax": "100",
+        "numberMin": "0",
+        "conditions": [],
+        "gridSizeLg": "8",
+        "numberStep": "0.1",
+        "htmlWrapper": "<div class=\"mb-2\">{{ element }}</div>",
+        "placeholder": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "autocomplete": {
+          "property": null,
+          "relatedEntity": null
+        },
+        "defaultValue": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "entitySelect": {
+          "labelProperty": "name",
+          "relatedEntity": "country",
+          "valueProperty": "id"
+        },
+        "mediaDropzone": true,
+        "isEntitySelect": null,
+        "hasEmailReceiver": null,
+        "noMediaValidation": true,
+        "useImageSelection": null
+      }
+    ],
+    "products": []
+  },
+  {
+    "id": "{ID:FORM_2}",
+    "mailTemplateId": null,
+    "salesChannelId": null,
+    "mediaFolderId": null,
+    "active": true,
+    "privacy": true,
+    "useCaptcha": true,
+    "useTrans": null,
+    "sendCopy": null,
+    "insertDatabase": null,
+    "locked": true,
+    "bootstrapGrid": true,
+    "sendMail": true,
+    "insertNewsletter": null,
+    "insertHistory": null,
+    "maxFileSize": 10,
+    "name": "Example: Survey form",
+    "mediaFolder": "user",
+    "action": null,
+    "submitText": {
+      "de-DE": null,
+      "en-GB": null
+    },
+    "type": "cms",
+    "emailReceiver": null,
+    "successMessage": {
+      "de-DE": null,
+      "en-GB": null
+    },
+    "redirectTo": null,
+    "redirectParams": null,
+    "relatedEntity": "customer",
+    "stylesheet": "#form-{ID:FORM_2} .form-group {\n    display: grid;\n    grid-column-gap: 20px;\n    grid-template-columns: 200px 1fr;\n    padding-bottom: 20px;\n    border-bottom: 1px solid #bbb;\n}\n\n#form-{ID:FORM_2} .form-label {\n    font-weight: 600;\n}\n\n#form-{ID:FORM_2} [class^='form-radio-group'] .form-input-group {\n    display: grid;\n    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;\n}",
+    "label": {
+      "de-DE": "Umfrage",
+      "en-GB": "Survey"
+    },
+    "data": [
+      {
+        "id": "e2b3d9d5df3e46bba39a43bc9286dafe",
+        "html": "<hr>",
+        "name": "was_good_guy",
+        "type": "radio-group",
+        "label": {
+          "de-DE": "Ich war letztes Jahr brav",
+          "en-GB": "I was good last year"
+        },
+        "value": "",
+        "append": [],
+        "pseudo": null,
+        "dateMax": "+6 months",
+        "dateMin": "+3 days",
+        "mapping": "customFields.my_value",
+        "options": [
+          {
+            "id": "a98a3d9ef2d545a2b246d4827eee4966",
+            "label": {
+              "de-DE": "No",
+              "en-GB": "No"
+            },
+            "value": "no",
+            "useTrans": null,
+            "customField1": [],
+            "customField2": [],
+            "customField3": []
+          },
+          {
+            "id": "cf55d6539be1479988b281e27fda4831",
+            "label": {
+              "de-DE": "A little less",
+              "en-GB": "A little less"
+            },
+            "value": "little_less",
+            "useTrans": true,
+            "customField1": [],
+            "customField2": [],
+            "customField3": []
+          },
+          {
+            "id": "e855cb525c504598bf30d7de5a35188d",
+            "label": {
+              "de-DE": "Half",
+              "en-GB": "Half"
+            },
+            "value": "half",
+            "customField1": [],
+            "customField2": [],
+            "customField3": []
+          },
+          {
+            "id": "992d44d558f942f7b310d0e24a642eb0",
+            "label": {
+              "de-DE": "A little more",
+              "en-GB": "A little more"
+            },
+            "value": "little_more",
+            "customField1": [],
+            "customField2": [],
+            "customField3": []
+          },
+          {
+            "id": "8f8e527db497475482c7abf5878777c2",
+            "label": {
+              "de-DE": "Yes of course!",
+              "en-GB": "Yes of course!"
+            },
+            "value": "yes",
+            "customField1": [],
+            "customField2": [],
+            "customField3": []
+          }
+        ],
+        "prepend": [],
+        "tooltip": [],
+        "dateStep": "1",
+        "required": null,
+        "condition": [],
+        "lineBreak": true,
+        "numberMax": "100",
+        "numberMin": "0",
+        "conditions": [],
+        "gridSizeLg": "12",
+        "numberStep": "0.1",
+        "htmlWrapper": "<div class=\"mb-2\">{{ element }}</div>",
+        "placeholder": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "autocomplete": {
+          "property": null,
+          "relatedEntity": null
+        },
+        "defaultValue": [],
+        "entitySelect": {
+          "labelProperty": "name",
+          "relatedEntity": "country",
+          "valueProperty": "id"
+        },
+        "isEntitySelect": null,
+        "hasEmailReceiver": null,
+        "useImageSelection": null
+      },
+      {
+        "id": "562aaa3adf9640a4a3d4efeb1c8f131f",
+        "html": "<hr>",
+        "name": "shopware_nice",
+        "type": "radio-group",
+        "label": {
+          "de-DE": "Shopware 6 ist schön",
+          "en-GB": "Shopware 6 is pretty nice"
+        },
+        "value": "",
+        "append": [],
+        "pseudo": null,
+        "dateMax": "+6 months",
+        "dateMin": "+3 days",
+        "mapping": "customFields.my_value",
+        "options": [
+          {
+            "id": "a98a3d9ef2d545a2b246d4827eee4966",
+            "label": {
+              "de-DE": "No",
+              "en-GB": "No"
+            },
+            "value": "no",
+            "useTrans": null,
+            "customField1": [],
+            "customField2": [],
+            "customField3": []
+          },
+          {
+            "id": "cf55d6539be1479988b281e27fda4831",
+            "label": {
+              "de-DE": "A little less",
+              "en-GB": "A little less"
+            },
+            "value": "little_less",
+            "useTrans": true,
+            "customField1": [],
+            "customField2": [],
+            "customField3": []
+          },
+          {
+            "id": "e855cb525c504598bf30d7de5a35188d",
+            "label": {
+              "de-DE": "Half",
+              "en-GB": "Half"
+            },
+            "value": "half",
+            "customField1": [],
+            "customField2": [],
+            "customField3": []
+          },
+          {
+            "id": "992d44d558f942f7b310d0e24a642eb0",
+            "label": {
+              "de-DE": "A little more",
+              "en-GB": "A little more"
+            },
+            "value": "little_more",
+            "customField1": [],
+            "customField2": [],
+            "customField3": []
+          },
+          {
+            "id": "8f8e527db497475482c7abf5878777c2",
+            "label": {
+              "de-DE": "Yes of course!",
+              "en-GB": "Yes of course!"
+            },
+            "value": "yes",
+            "customField1": [],
+            "customField2": [],
+            "customField3": []
+          }
+        ],
+        "prepend": [],
+        "tooltip": [],
+        "dateStep": "1",
+        "required": null,
+        "condition": [],
+        "lineBreak": true,
+        "numberMax": "100",
+        "numberMin": "0",
+        "conditions": [],
+        "gridSizeLg": "12",
+        "numberStep": "0.1",
+        "htmlWrapper": "<div class=\"mb-2\">{{ element }}</div>",
+        "placeholder": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "autocomplete": {
+          "property": null,
+          "relatedEntity": null
+        },
+        "defaultValue": [],
+        "entitySelect": {
+          "labelProperty": "name",
+          "relatedEntity": "country",
+          "valueProperty": "id"
+        },
+        "isEntitySelect": null,
+        "hasEmailReceiver": null,
+        "useImageSelection": null
+      },
+      {
+        "id": "37437cdf39f14071b13126a8e463c07d",
+        "html": "<hr>",
+        "name": "im_am_rich",
+        "type": "radio-group",
+        "label": {
+          "de-DE": "Ich möchte viel Geld für Plugins ausgeben",
+          "en-GB": "I want to pay much bucks for this plugin"
+        },
+        "value": "",
+        "append": [],
+        "pseudo": null,
+        "dateMax": "+6 months",
+        "dateMin": "+3 days",
+        "mapping": "customFields.my_value",
+        "options": [
+          {
+            "id": "a98a3d9ef2d545a2b246d4827eee4966",
+            "label": {
+              "de-DE": "No",
+              "en-GB": "No"
+            },
+            "value": "no",
+            "useTrans": null,
+            "customField1": [],
+            "customField2": [],
+            "customField3": []
+          },
+          {
+            "id": "cf55d6539be1479988b281e27fda4831",
+            "label": {
+              "de-DE": "A little less",
+              "en-GB": "A little less"
+            },
+            "value": "little_less",
+            "useTrans": true,
+            "customField1": [],
+            "customField2": [],
+            "customField3": []
+          },
+          {
+            "id": "e855cb525c504598bf30d7de5a35188d",
+            "label": {
+              "de-DE": "Half",
+              "en-GB": "Half"
+            },
+            "value": "half",
+            "customField1": [],
+            "customField2": [],
+            "customField3": []
+          },
+          {
+            "id": "992d44d558f942f7b310d0e24a642eb0",
+            "label": {
+              "de-DE": "A little more",
+              "en-GB": "A little more"
+            },
+            "value": "little_more",
+            "customField1": [],
+            "customField2": [],
+            "customField3": []
+          },
+          {
+            "id": "8f8e527db497475482c7abf5878777c2",
+            "label": {
+              "de-DE": "Yes of course!",
+              "en-GB": "Yes of course!"
+            },
+            "value": "yes",
+            "customField1": [],
+            "customField2": [],
+            "customField3": []
+          }
+        ],
+        "prepend": [],
+        "tooltip": [],
+        "dateStep": "1",
+        "required": null,
+        "condition": [],
+        "lineBreak": true,
+        "numberMax": "100",
+        "numberMin": "0",
+        "conditions": [],
+        "gridSizeLg": "12",
+        "numberStep": "0.1",
+        "htmlWrapper": "<div class=\"mb-2\">{{ element }}</div>",
+        "placeholder": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "autocomplete": {
+          "property": null,
+          "relatedEntity": null
+        },
+        "defaultValue": [],
+        "entitySelect": {
+          "labelProperty": "name",
+          "relatedEntity": "country",
+          "valueProperty": "id"
+        },
+        "isEntitySelect": null,
+        "hasEmailReceiver": null,
+        "useImageSelection": null
+      },
+      {
+        "id": "43e60b8cf39a4f29a62e24879bbde7d4",
+        "html": "<hr>",
+        "name": "moorleiche_best",
+        "type": "radio-group",
+        "label": {
+          "de-DE": "moori macht tolle Plugins",
+          "en-GB": "moori is the best plugin maker"
+        },
+        "value": "",
+        "append": [],
+        "pseudo": null,
+        "dateMax": "+6 months",
+        "dateMin": "+3 days",
+        "mapping": "customFields.my_value",
+        "options": [
+          {
+            "id": "a98a3d9ef2d545a2b246d4827eee4966",
+            "label": {
+              "de-DE": "No",
+              "en-GB": "No"
+            },
+            "value": "no",
+            "useTrans": null,
+            "customField1": [],
+            "customField2": [],
+            "customField3": []
+          },
+          {
+            "id": "cf55d6539be1479988b281e27fda4831",
+            "label": {
+              "de-DE": "A little less",
+              "en-GB": "A little less"
+            },
+            "value": "little_less",
+            "useTrans": true,
+            "customField1": [],
+            "customField2": [],
+            "customField3": []
+          },
+          {
+            "id": "e855cb525c504598bf30d7de5a35188d",
+            "label": {
+              "de-DE": "Half",
+              "en-GB": "Half"
+            },
+            "value": "half",
+            "customField1": [],
+            "customField2": [],
+            "customField3": []
+          },
+          {
+            "id": "992d44d558f942f7b310d0e24a642eb0",
+            "label": {
+              "de-DE": "A little more",
+              "en-GB": "A little more"
+            },
+            "value": "little_more",
+            "customField1": [],
+            "customField2": [],
+            "customField3": []
+          },
+          {
+            "id": "8f8e527db497475482c7abf5878777c2",
+            "label": {
+              "de-DE": "Yes of course!",
+              "en-GB": "Yes of course!"
+            },
+            "value": "yes",
+            "customField1": [],
+            "customField2": [],
+            "customField3": []
+          }
+        ],
+        "prepend": [],
+        "tooltip": [],
+        "dateStep": "1",
+        "required": null,
+        "condition": [],
+        "lineBreak": true,
+        "numberMax": "100",
+        "numberMin": "0",
+        "conditions": [],
+        "gridSizeLg": "12",
+        "numberStep": "0.1",
+        "htmlWrapper": "<div class=\"mb-2\">{{ element }}</div>",
+        "placeholder": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "autocomplete": {
+          "property": null,
+          "relatedEntity": null
+        },
+        "defaultValue": [],
+        "entitySelect": {
+          "labelProperty": "name",
+          "relatedEntity": "country",
+          "valueProperty": "id"
+        },
+        "isEntitySelect": null,
+        "hasEmailReceiver": null,
+        "useImageSelection": null
+      },
+      {
+        "id": "c8864067aa644832bf13588b27b06041",
+        "html": "<hr>",
+        "name": "need_holiday",
+        "type": "radio-group",
+        "label": {
+          "de-DE": "Ich brauche Urlaub",
+          "en-GB": "I need some holiday"
+        },
+        "value": "",
+        "append": [],
+        "pseudo": null,
+        "dateMax": "+6 months",
+        "dateMin": "+3 days",
+        "mapping": "customFields.my_value",
+        "options": [
+          {
+            "id": "a98a3d9ef2d545a2b246d4827eee4966",
+            "label": {
+              "de-DE": "No",
+              "en-GB": "No"
+            },
+            "value": "no",
+            "useTrans": null,
+            "customField1": [],
+            "customField2": [],
+            "customField3": []
+          },
+          {
+            "id": "cf55d6539be1479988b281e27fda4831",
+            "label": {
+              "de-DE": "A little less",
+              "en-GB": "A little less"
+            },
+            "value": "little_less",
+            "useTrans": true,
+            "customField1": [],
+            "customField2": [],
+            "customField3": []
+          },
+          {
+            "id": "e855cb525c504598bf30d7de5a35188d",
+            "label": {
+              "de-DE": "Half",
+              "en-GB": "Half"
+            },
+            "value": "half",
+            "customField1": [],
+            "customField2": [],
+            "customField3": []
+          },
+          {
+            "id": "992d44d558f942f7b310d0e24a642eb0",
+            "label": {
+              "de-DE": "A little more",
+              "en-GB": "A little more"
+            },
+            "value": "little_more",
+            "customField1": [],
+            "customField2": [],
+            "customField3": []
+          },
+          {
+            "id": "8f8e527db497475482c7abf5878777c2",
+            "label": {
+              "de-DE": "Yes of course!",
+              "en-GB": "Yes of course!"
+            },
+            "value": "yes",
+            "customField1": [],
+            "customField2": [],
+            "customField3": []
+          }
+        ],
+        "prepend": [],
+        "tooltip": [],
+        "dateStep": "1",
+        "required": null,
+        "condition": [],
+        "lineBreak": true,
+        "numberMax": "100",
+        "numberMin": "0",
+        "conditions": [],
+        "gridSizeLg": "12",
+        "numberStep": "0.1",
+        "htmlWrapper": "<div class=\"mb-2\">{{ element }}</div>",
+        "placeholder": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "autocomplete": {
+          "property": null,
+          "relatedEntity": null
+        },
+        "defaultValue": [],
+        "entitySelect": {
+          "labelProperty": "name",
+          "relatedEntity": "country",
+          "valueProperty": "id"
+        },
+        "isEntitySelect": null,
+        "hasEmailReceiver": null,
+        "useImageSelection": null
+      },
+      {
+        "id": "a55b8bb900b34701b4b12979d1d89856",
+        "html": "<hr>",
+        "name": "comment",
+        "type": "textarea",
+        "label": {
+          "de-DE": "Hinterlasse ein Kommentar",
+          "en-GB": "Leave a comment"
+        },
+        "value": "",
+        "append": [],
+        "pseudo": null,
+        "dateMax": "+6 months",
+        "dateMin": "+3 days",
+        "mapping": "customFields.my_value",
+        "options": [
+          {
+            "id": "f68c66bd814844718fef43a1dbb0501b",
+            "label": {
+              "de-DE": "Option 1",
+              "en-GB": "Option 1"
+            },
+            "value": "option1",
+            "useTrans": null,
+            "customField1": [],
+            "customField2": [],
+            "customField3": []
+          },
+          {
+            "id": "5ce03d3282bc4af1a5db19bd1f1d811b",
+            "label": {
+              "de-DE": "path.to.translation.snippet.option2",
+              "en-GB": "path.to.translation.snippet.option2"
+            },
+            "value": "option2",
+            "useTrans": true,
+            "customField1": [],
+            "customField2": [],
+            "customField3": []
+          }
+        ],
+        "prepend": [],
+        "tooltip": [],
+        "dateStep": "1",
+        "required": null,
+        "condition": [],
+        "lineBreak": true,
+        "numberMax": "100",
+        "numberMin": "0",
+        "conditions": [],
+        "gridSizeLg": "12",
+        "numberStep": "0.1",
+        "htmlWrapper": "<div class=\"mb-2\">{{ element }}</div>",
+        "placeholder": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "autocomplete": {
+          "property": null,
+          "relatedEntity": null
+        },
+        "defaultValue": [],
+        "entitySelect": {
+          "labelProperty": "name",
+          "relatedEntity": "country",
+          "valueProperty": "id"
+        },
+        "isEntitySelect": null,
+        "hasEmailReceiver": null,
+        "useImageSelection": null
+      },
+      {
+        "id": "711d3fe0d9c4493e99880ee24fbcb6b0",
+        "html": "<hr>",
+        "name": "stuff",
+        "type": "upload",
+        "label": {
+          "de-DE": "Sende uns eine Datei",
+          "en-GB": "Send some stuff"
+        },
+        "value": "",
+        "append": [],
+        "pseudo": null,
+        "dateMax": "+6 months",
+        "dateMin": "+3 days",
+        "mapping": "customFields.my_value",
+        "options": [
+          {
+            "id": "cb316fd5fc7f4af99d5515c932948d1b",
+            "label": {
+              "de-DE": "Option 1",
+              "en-GB": "Option 1"
+            },
+            "value": "option1",
+            "useTrans": null,
+            "customField1": [],
+            "customField2": [],
+            "customField3": []
+          },
+          {
+            "id": "e8ce0b021f394253b5f09ba458427e74",
+            "label": {
+              "de-DE": "path.to.translation.snippet.option2",
+              "en-GB": "path.to.translation.snippet.option2"
+            },
+            "value": "option2",
+            "useTrans": true,
+            "customField1": [],
+            "customField2": [],
+            "customField3": []
+          }
+        ],
+        "prepend": [],
+        "tooltip": [],
+        "dateStep": "1",
+        "required": null,
+        "condition": [],
+        "lineBreak": true,
+        "mediaType": "images",
+        "numberMax": "100",
+        "numberMin": "0",
+        "conditions": [],
+        "gridSizeLg": "12",
+        "numberStep": "0.1",
+        "htmlWrapper": "<div class=\"mb-2\">{{ element }}</div>",
+        "placeholder": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "autocomplete": {
+          "property": null,
+          "relatedEntity": null
+        },
+        "defaultValue": [],
+        "entitySelect": {
+          "labelProperty": "name",
+          "relatedEntity": "country",
+          "valueProperty": "id"
+        },
+        "isEntitySelect": null,
+        "hasEmailReceiver": null,
+        "useImageSelection": null
+      }
+    ],
+    "products": []
+  },
+  {
+    "id": "{ID:FORM_3}",
+    "mediaFolderId": null,
+    "active": true,
+    "privacy": true,
+    "useCaptcha": false,
+    "useTrans": null,
+    "sendCopy": false,
+    "insertDatabase": null,
+    "locked": true,
+    "bootstrapGrid": true,
+    "sendMail": true,
+    "insertNewsletter": true,
+    "insertHistory": true,
+    "maxFileSize": 20,
+    "name": "Example: Multipurpose form",
+    "mediaFolder": "user",
+    "submitText": {
+      "de-DE": null,
+      "en-GB": null
+    },
+    "type": "cms",
+    "successMessage": {
+      "de-DE": null,
+      "en-GB": null
+    },
+    "redirectTo": null,
+    "redirectParams": null,
+    "relatedEntity": null,
+    "stylesheet": "#form-{{ form.id }} .social-links label {\n    display: none;\n}\n\n#form-{{ form.id }} .form-radio-group-categoryId .form-input-group,\n#form-{{ form.id }} .form-radio-group-productId .form-input-group {\n    display: grid;\n    grid-template-columns: 1fr 1fr;\n    grid-gap: 10px;\n}",
+    "label": {
+      "de-DE": "Kontakt",
+      "en-GB": "Contact"
+    },
+    "data": [
+      {
+        "id": "edcc7dd8e73944e7b8751319014adfb1",
+        "html": null,
+        "name": "reason",
+        "type": "select",
+        "label": {
+          "de-DE": "Welches Anliegen hast du?",
+          "en-GB": "What is your concern?"
+        },
+        "value": "",
+        "append": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "pseudo": null,
+        "mapping": null,
+        "options": [
+          {
+            "id": "60d072c163dc4c2fad8c4f2536ceef42",
+            "label": {
+              "de-DE": "Marketing",
+              "en-GB": "Marketing"
+            },
+            "value": "marketing"
+          },
+          {
+            "id": "496371429532498d9812ec25b480d0a8",
+            "label": {
+              "de-DE": "Sponsoring",
+              "en-GB": "Sponsoring"
+            },
+            "value": "sponsoring"
+          },
+          {
+            "id": "4b817a4938aa437199e98a85d6d57faf",
+            "label": {
+              "de-DE": "Kontakt",
+              "en-GB": "Contact"
+            },
+            "value": "contact"
+          },
+          {
+            "id": "baf4337f543b46d9bef93492745510b5",
+            "label": {
+              "de-DE": "Händleranfrage",
+              "en-GB": "Salesrequest"
+            },
+            "value": "sales"
+          },
+          {
+            "id": "f423ff74442f4e2a9d1fcde86bd19005",
+            "label": {
+              "de-DE": "Produkttest",
+              "en-GB": "Producttest"
+            },
+            "value": "producttest"
+          },
+          {
+            "id": "d4548c1c956142929eb9ca5952fd4d38",
+            "label": {
+              "de-DE": "Presse",
+              "en-GB": "Press"
+            },
+            "value": "presse"
+          },
+          {
+            "id": "14cd45033e5b4a3cadf0fb53259c1607",
+            "label": {
+              "de-DE": "Bestellung",
+              "en-GB": "Order"
+            },
+            "value": "order"
+          }
+        ],
+        "prepend": {
+          "de-DE": "<i class=\"fas fa-question fa-fw\"></i>",
+          "en-GB": "<i class=\"fas fa-question fa-fw\"></i>"
+        },
+        "tooltip": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "required": true,
+        "lineBreak": true,
+        "numberMax": "100",
+        "numberMin": "0",
+        "conditions": [],
+        "gridSizeLg": "6",
+        "numberStep": "0.1",
+        "htmlWrapper": "<div class=\"mb-2\">{{ element }}</div>",
+        "placeholder": {
+          "de-DE": "Bitte auswählen",
+          "en-GB": "Please select"
+        },
+        "autocomplete": {
+          "property": null,
+          "relatedEntity": null
+        },
+        "defaultValue": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "entitySelect": {
+          "labelProperty": "name",
+          "relatedEntity": "country",
+          "valueProperty": "id"
+        },
+        "isEntitySelect": null,
+        "hasEmailReceiver": true,
+        "useImageSelection": null
+      },
+      {
+        "id": "c1caa2fd18144d7398e333bf463c7bbe",
+        "html": null,
+        "name": "categoryId",
+        "type": "select",
+        "label": {
+          "de-DE": "Kategorie",
+          "en-GB": "Category"
+        },
+        "value": "",
+        "append": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "pseudo": null,
+        "mapping": null,
+        "options": [
+          {
+            "id": "60d072c163dc4c2fad8c4f2536ceef42",
+            "label": {
+              "de-DE": "Marketing",
+              "en-GB": "Marketing"
+            },
+            "value": "marketing",
+            "mediaId": null,
+            "useTrans": null,
+            "customField1": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField2": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField3": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "emailReceiver": null
+          },
+          {
+            "id": "496371429532498d9812ec25b480d0a8",
+            "label": {
+              "de-DE": "Sponsoring",
+              "en-GB": "Sponsoring"
+            },
+            "value": "sponsoring",
+            "mediaId": null,
+            "useTrans": true,
+            "customField1": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField2": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField3": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "emailReceiver": null
+          }
+        ],
+        "prepend": {
+          "de-DE": "<i class=\"fas fa-tags fa-fe\"></i>",
+          "en-GB": "<i class=\"fas fa-tags fa-fe\"></i>"
+        },
+        "tooltip": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "required": null,
+        "lineBreak": false,
+        "numberMax": "100",
+        "numberMin": "0",
+        "conditions": [
+          {
+            "id": "9776877387d54fcd8ca9056ab0199d69",
+            "name": "reason",
+            "type": "is",
+            "value": "producttest",
+            "active": null
+          }
+        ],
+        "gridSizeLg": "6",
+        "numberStep": "0.1",
+        "htmlWrapper": "<div class=\"mb-2\">{{ element }}</div>",
+        "placeholder": {
+          "de-DE": "Bitte auswählen",
+          "en-GB": "Please select"
+        },
+        "autocomplete": {
+          "property": null,
+          "relatedEntity": null
+        },
+        "defaultValue": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "entitySelect": {},
+        "isEntitySelect": false,
+        "hasEmailReceiver": null,
+        "useImageSelection": true
+      },
+      {
+        "id": "33b543b135114890b48f6075f6ae906a",
+        "html": "{% set content %}\n<p class=\"mt-3\">HINWEIS FÜR SPONSORINGANFRAGEN</p>\n<p>Um uns einen ersten Eindruck von Dir bzw. Deiner Organisation machen zu können, bitten wir Dich, das nebenstehende Formular vollständig auszufüllen und uns Dein Projekt so\nkonkret und ausführlich wie möglich zu erläutern sowie relevante Links und Reichweiten anzugeben.</p>\n<p>Wir erwarten zudem eine Beschreibung der angestrebten Zusammenarbeit\nmit uns. Überzeuge uns mit einer professionellen Bewerbung</p>\n{% endset %}\n\n{% sw_include \"@Storefront/storefront/utilities/alert.html.twig\" with {type: \"info\", content: content} %}",
+        "name": "",
+        "type": "html",
+        "label": {
+          "de-DE": "Hinweis Sponsoring",
+          "en-GB": "Hinweis Sponsoring"
+        },
+        "value": "",
+        "append": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "pseudo": null,
+        "mapping": null,
+        "options": [
+          {
+            "id": "c992e53a7162404492c16d51ab84846c",
+            "label": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "value": "option1",
+            "mediaId": null,
+            "useTrans": null,
+            "customField1": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField2": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField3": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "emailReceiver": null
+          },
+          {
+            "id": "1ba95e61211b4e868b8357d604b0eb6c",
+            "label": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "value": "option2",
+            "mediaId": null,
+            "useTrans": true,
+            "customField1": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField2": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField3": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "emailReceiver": null
+          }
+        ],
+        "prepend": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "tooltip": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "required": null,
+        "lineBreak": true,
+        "numberMax": "100",
+        "numberMin": "0",
+        "conditions": [
+          {
+            "id": "4c813c36da5e422cad187471c99173c5",
+            "name": "reason",
+            "type": "is",
+            "value": "sponsoring",
+            "active": null
+          }
+        ],
+        "gridSizeLg": "12",
+        "numberStep": "0.1",
+        "htmlWrapper": "<div class=\"mb-2\">{{ element }}</div>",
+        "placeholder": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "autocomplete": {
+          "property": null,
+          "relatedEntity": null
+        },
+        "defaultValue": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "entitySelect": {
+          "labelProperty": "name",
+          "relatedEntity": "country",
+          "valueProperty": "id"
+        },
+        "isEntitySelect": null,
+        "hasEmailReceiver": null,
+        "useImageSelection": null
+      },
+      {
+        "id": "36fd0c787dc14c28b755dea50ebb6bbd",
+        "html": "<hr>",
+        "name": "firstName",
+        "type": "text",
+        "label": {
+          "de-DE": "Vorname",
+          "en-GB": "Firstname"
+        },
+        "value": "",
+        "append": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "pseudo": null,
+        "mapping": "customFields.my_value",
+        "options": [
+          {
+            "id": "3b72225a0d644f679e27fbba362c5d8b",
+            "label": {
+              "de-DE": "Option 1",
+              "en-GB": "Option 1"
+            },
+            "value": "option1",
+            "useTrans": null,
+            "customField1": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField2": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField3": {
+              "de-DE": "",
+              "en-GB": ""
+            }
+          },
+          {
+            "id": "8d1d83f78e414a90af588af6eecb5c3e",
+            "label": {
+              "de-DE": "path.to.translation.snippet.option2",
+              "en-GB": "path.to.translation.snippet.option2"
+            },
+            "value": "option2",
+            "useTrans": true,
+            "customField1": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField2": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField3": {
+              "de-DE": "",
+              "en-GB": ""
+            }
+          }
+        ],
+        "prepend": {
+          "de-DE": "<i class=\"fas fa-user-circle fa-fw\"></i>",
+          "en-GB": "<i class=\"fas fa-user-circle fa-fw\"></i>"
+        },
+        "tooltip": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "required": false,
+        "condition": {
+          "hidden": "",
+          "disabled": ""
+        },
+        "lineBreak": false,
+        "numberMax": "100",
+        "numberMin": "0",
+        "conditions": [],
+        "gridSizeLg": "6",
+        "numberStep": "0.1",
+        "htmlWrapper": "<div class=\"mb-2\">{{ element }}</div>",
+        "placeholder": {
+          "de-DE": "Vornamen eingeben",
+          "en-GB": "Enter firstname"
+        },
+        "autocomplete": {
+          "property": null,
+          "relatedEntity": null
+        },
+        "defaultValue": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "entitySelect": {
+          "labelProperty": "name",
+          "relatedEntity": "country",
+          "valueProperty": "id"
+        },
+        "isEntitySelect": null,
+        "hasEmailReceiver": null,
+        "useImageSelection": null
+      },
+      {
+        "id": "08f8fde2acc94f05b9d835b41c9730b1",
+        "html": "<hr>",
+        "name": "lastName",
+        "type": "text",
+        "label": {
+          "de-DE": "Nachname",
+          "en-GB": "Lastname"
+        },
+        "value": "",
+        "append": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "pseudo": null,
+        "mapping": "customFields.my_value",
+        "options": [
+          {
+            "id": "010e07427eeb40598c9972e3ee56d3a1",
+            "label": {
+              "de-DE": "Option 1",
+              "en-GB": "Option 1"
+            },
+            "value": "option1",
+            "useTrans": null,
+            "customField1": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField2": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField3": {
+              "de-DE": "",
+              "en-GB": ""
+            }
+          },
+          {
+            "id": "465980fab8c747faa54870ae80c3b736",
+            "label": {
+              "de-DE": "path.to.translation.snippet.option2",
+              "en-GB": "path.to.translation.snippet.option2"
+            },
+            "value": "option2",
+            "useTrans": true,
+            "customField1": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField2": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField3": {
+              "de-DE": "",
+              "en-GB": ""
+            }
+          }
+        ],
+        "prepend": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "tooltip": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "required": false,
+        "condition": {
+          "hidden": "",
+          "disabled": ""
+        },
+        "lineBreak": true,
+        "numberMax": "100",
+        "numberMin": "0",
+        "conditions": [],
+        "gridSizeLg": "6",
+        "numberStep": "0.1",
+        "htmlWrapper": "<div class=\"mb-2\">{{ element }}</div>",
+        "placeholder": {
+          "de-DE": "Nachnamen eingeben",
+          "en-GB": "Enter lastname"
+        },
+        "autocomplete": {
+          "property": null,
+          "relatedEntity": null
+        },
+        "defaultValue": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "entitySelect": {
+          "labelProperty": "name",
+          "relatedEntity": "country",
+          "valueProperty": "id"
+        },
+        "isEntitySelect": null,
+        "hasEmailReceiver": null,
+        "useImageSelection": null
+      },
+      {
+        "id": "807bd1af687048aea85cbf1b865feba5",
+        "html": "<hr>",
+        "name": "email",
+        "type": "email",
+        "label": {
+          "de-DE": "E-Mail",
+          "en-GB": "E-Mail"
+        },
+        "value": "",
+        "append": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "pseudo": null,
+        "mapping": "customFields.my_value",
+        "options": [
+          {
+            "id": "67e00d6d6ac2425c9240c4cc70d9920d",
+            "label": {
+              "de-DE": "Option 1",
+              "en-GB": "Option 1"
+            },
+            "value": "option1",
+            "useTrans": null,
+            "customField1": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField2": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField3": {
+              "de-DE": "",
+              "en-GB": ""
+            }
+          },
+          {
+            "id": "13aaea99e913418ca28b28f336cdc873",
+            "label": {
+              "de-DE": "path.to.translation.snippet.option2",
+              "en-GB": "path.to.translation.snippet.option2"
+            },
+            "value": "option2",
+            "useTrans": true,
+            "customField1": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField2": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField3": {
+              "de-DE": "",
+              "en-GB": ""
+            }
+          }
+        ],
+        "prepend": {
+          "de-DE": "<i class=\"far fa-envelope fa-fw\"></i>",
+          "en-GB": "<i class=\"far fa-envelope fa-fw\"></i>"
+        },
+        "tooltip": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "required": true,
+        "condition": {
+          "hidden": "",
+          "disabled": ""
+        },
+        "lineBreak": false,
+        "numberMax": "100",
+        "numberMin": "0",
+        "conditions": [],
+        "gridSizeLg": "6",
+        "numberStep": "0.1",
+        "htmlWrapper": "<div class=\"mb-2\">{{ element }}</div>",
+        "placeholder": {
+          "de-DE": "E-Mail eingeben",
+          "en-GB": "Enter E-Mail"
+        },
+        "autocomplete": {
+          "property": null,
+          "relatedEntity": null
+        },
+        "defaultValue": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "entitySelect": {
+          "labelProperty": "name",
+          "relatedEntity": "country",
+          "valueProperty": "id"
+        },
+        "isEntitySelect": null,
+        "hasEmailReceiver": null,
+        "useImageSelection": null
+      },
+      {
+        "id": "89c6fc0e07df467c9eed27fd239c809e",
+        "html": null,
+        "name": "phone",
+        "type": "text",
+        "label": {
+          "de-DE": "Telefon",
+          "en-GB": "Phone"
+        },
+        "value": "",
+        "append": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "pseudo": null,
+        "mapping": null,
+        "options": [
+          {
+            "id": "340f8bde61544805b91fcca1cec07411",
+            "label": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "value": "option1",
+            "mediaId": null,
+            "useTrans": null,
+            "customField1": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField2": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField3": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "emailReceiver": null
+          },
+          {
+            "id": "0b0f7b59216b4d588d9403f8b8020312",
+            "label": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "value": "option2",
+            "mediaId": null,
+            "useTrans": true,
+            "customField1": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField2": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField3": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "emailReceiver": null
+          }
+        ],
+        "prepend": {
+          "de-DE": "<i class=\"fas fa-phone fa-fw\"></i>",
+          "en-GB": "<i class=\"fas fa-phone fa-fw\"></i>"
+        },
+        "tooltip": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "required": null,
+        "lineBreak": true,
+        "numberMax": "100",
+        "numberMin": "0",
+        "conditions": [],
+        "gridSizeLg": "6",
+        "numberStep": "0.1",
+        "htmlWrapper": "<div class=\"mb-2\">{{ element }}</div>",
+        "placeholder": {
+          "de-DE": "Telefonnummer eingeben",
+          "en-GB": "Enter phonenumber"
+        },
+        "autocomplete": {
+          "property": null,
+          "relatedEntity": null
+        },
+        "defaultValue": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "entitySelect": {
+          "labelProperty": "name",
+          "relatedEntity": "country",
+          "valueProperty": "id"
+        },
+        "isEntitySelect": null,
+        "hasEmailReceiver": null,
+        "useImageSelection": null
+      },
+      {
+        "id": "cb484de2ec9a48529211ff550ef5bab2",
+        "html": null,
+        "name": "countryId",
+        "type": "select",
+        "label": {
+          "de-DE": "Land",
+          "en-GB": "Land"
+        },
+        "value": "",
+        "append": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "pseudo": null,
+        "mapping": null,
+        "options": [
+          {
+            "id": "bce9d20e02ac44f99785c246009669fa",
+            "label": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "value": "option1",
+            "mediaId": null,
+            "useTrans": null,
+            "customField1": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField2": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField3": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "emailReceiver": null
+          },
+          {
+            "id": "44d9ebcdbc064122b713e682ef799ccd",
+            "label": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "value": "option2",
+            "mediaId": null,
+            "useTrans": true,
+            "customField1": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField2": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField3": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "emailReceiver": null
+          }
+        ],
+        "prepend": {
+          "de-DE": "<i class=\"fas fa-globe-americas fa-fw\"></i>",
+          "en-GB": "<i class=\"fas fa-globe-americas fa-fw\"></i>"
+        },
+        "tooltip": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "disabled": false,
+        "required": null,
+        "lineBreak": true,
+        "numberMax": "100",
+        "numberMin": "0",
+        "conditions": [],
+        "gridSizeLg": "6",
+        "numberStep": "0.1",
+        "htmlWrapper": "<div class=\"mb-2\">{{ element }}</div>",
+        "placeholder": {
+          "de-DE": "Bitte auswählen",
+          "en-GB": "Please select"
+        },
+        "autocomplete": {
+          "property": null,
+          "relatedEntity": null
+        },
+        "defaultValue": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "entitySelect": {
+          "labelProperty": "name",
+          "mediaProperty": null,
+          "relatedEntity": "country",
+          "valueProperty": "id"
+        },
+        "isEntitySelect": true,
+        "hasEmailReceiver": null,
+        "useImageSelection": false
+      },
+      {
+        "id": "3d4bc0c37bbc4574b048d49e7f64872f",
+        "html": null,
+        "name": "company",
+        "type": "text",
+        "label": {
+          "de-DE": "Firma",
+          "en-GB": "Company"
+        },
+        "value": "",
+        "append": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "pseudo": null,
+        "mapping": null,
+        "options": [
+          {
+            "id": "672ac41acf06446bb764191fa1bd4121",
+            "label": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "value": "option1",
+            "mediaId": null,
+            "useTrans": null,
+            "customField1": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField2": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField3": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "emailReceiver": null
+          },
+          {
+            "id": "9b5566cb2bd243db990b8e0ce25b2f2a",
+            "label": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "value": "option2",
+            "mediaId": null,
+            "useTrans": true,
+            "customField1": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField2": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField3": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "emailReceiver": null
+          }
+        ],
+        "prepend": {
+          "de-DE": "<i class=\"fas fa-industry fa-fw\"></i>",
+          "en-GB": "<i class=\"fas fa-industry fa-fw\"></i>"
+        },
+        "tooltip": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "required": null,
+        "lineBreak": false,
+        "numberMax": "100",
+        "numberMin": "0",
+        "conditions": [],
+        "gridSizeLg": "6",
+        "numberStep": "0.1",
+        "htmlWrapper": "<div class=\"mb-2\">{{ element }}</div>",
+        "placeholder": {
+          "de-DE": "Medium/Firma/Organisation",
+          "en-GB": "Company/Organisation"
+        },
+        "autocomplete": {
+          "property": null,
+          "relatedEntity": null
+        },
+        "defaultValue": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "entitySelect": {
+          "labelProperty": "name",
+          "relatedEntity": "country",
+          "valueProperty": "id"
+        },
+        "isEntitySelect": null,
+        "hasEmailReceiver": null,
+        "useImageSelection": null
+      },
+      {
+        "id": "7b3ec4eb92fc46df8b83c7c06e93d897",
+        "html": null,
+        "name": "www",
+        "type": "text",
+        "label": {
+          "de-DE": "Website",
+          "en-GB": "Website"
+        },
+        "value": "",
+        "append": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "pseudo": null,
+        "mapping": null,
+        "options": [
+          {
+            "id": "672ac41acf06446bb764191fa1bd4121",
+            "label": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "value": "option1",
+            "mediaId": null,
+            "useTrans": null,
+            "customField1": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField2": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField3": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "emailReceiver": null
+          },
+          {
+            "id": "9b5566cb2bd243db990b8e0ce25b2f2a",
+            "label": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "value": "option2",
+            "mediaId": null,
+            "useTrans": true,
+            "customField1": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField2": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField3": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "emailReceiver": null
+          }
+        ],
+        "prepend": {
+          "de-DE": "<i class=\"fas fa-link fa-fw\"></i>",
+          "en-GB": "<i class=\"fas fa-link fa-fw\"></i>"
+        },
+        "tooltip": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "required": null,
+        "lineBreak": true,
+        "numberMax": "100",
+        "numberMin": "0",
+        "conditions": [],
+        "gridSizeLg": "6",
+        "numberStep": "0.1",
+        "htmlWrapper": "<div class=\"mb-2\">{{ element }}</div>",
+        "placeholder": {
+          "de-DE": "Website",
+          "en-GB": "Website"
+        },
+        "autocomplete": {
+          "property": null,
+          "relatedEntity": null
+        },
+        "defaultValue": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "entitySelect": {
+          "labelProperty": "name",
+          "relatedEntity": "country",
+          "valueProperty": "id"
+        },
+        "isEntitySelect": null,
+        "hasEmailReceiver": null,
+        "useImageSelection": null
+      },
+      {
+        "id": "98a92fdf5b5e41519962c1341ca32658",
+        "html": "<div class=\"col-12\">\n<div class=\"row form-row\" data-form-conditions='{{ formConditions }}'>\n\n{% set content %}\n<p class=\"mt-3\">In order to be able to process your request quickly, we ask you to tell us which product you would like to test and to provide the links to your channels.</p>\n{% endset %}\n\n<div class=\"col-12\">{% sw_include \"@Storefront/storefront/utilities/alert.html.twig\" with {type: \"info\", content: content} %}</div>",
+        "name": "",
+        "type": "html",
+        "label": {
+          "de-DE": "Hinweis: Produkttest",
+          "en-GB": "Hinweis: Produkttest"
+        },
+        "value": "",
+        "append": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "noWrap": true,
+        "pseudo": null,
+        "mapping": null,
+        "options": [
+          {
+            "id": "4cf59dcdff34471c9725369c648aa5c9",
+            "label": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "value": "option1",
+            "mediaId": null,
+            "useTrans": null,
+            "customField1": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField2": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField3": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "emailReceiver": null
+          },
+          {
+            "id": "8d9050431fa04f44bafd841a1f11a446",
+            "label": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "value": "option2",
+            "mediaId": null,
+            "useTrans": true,
+            "customField1": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField2": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField3": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "emailReceiver": null
+          }
+        ],
+        "prepend": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "tooltip": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "required": null,
+        "lineBreak": true,
+        "numberMax": "100",
+        "numberMin": "0",
+        "conditions": [
+          {
+            "id": "adbb3753e755413991ffc7d9e9a45fbb",
+            "name": "reason",
+            "type": "is",
+            "value": "producttest",
+            "active": null
+          }
+        ],
+        "gridSizeLg": "12",
+        "numberStep": "0.1",
+        "htmlWrapper": "<div class=\"mb-2\">{{ element }}</div>",
+        "placeholder": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "autocomplete": {
+          "property": null,
+          "relatedEntity": null
+        },
+        "defaultValue": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "entitySelect": {
+          "labelProperty": "name",
+          "relatedEntity": "country",
+          "valueProperty": "id"
+        },
+        "isEntitySelect": null,
+        "hasEmailReceiver": null,
+        "useImageSelection": null
+      },
+      {
+        "id": "0f9f1eb44b8a4ac8a6012c2dc88ddef6",
+        "html": null,
+        "name": "productName",
+        "type": "text",
+        "label": {
+          "de-DE": "Welches Produkt möchtest Du gerne testen?",
+          "en-GB": "What Product you want to test?"
+        },
+        "value": "",
+        "append": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "pseudo": null,
+        "mapping": null,
+        "options": [
+          {
+            "id": "672ac41acf06446bb764191fa1bd4121",
+            "label": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "value": "option1",
+            "mediaId": null,
+            "useTrans": null,
+            "customField1": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField2": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField3": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "emailReceiver": null
+          },
+          {
+            "id": "9b5566cb2bd243db990b8e0ce25b2f2a",
+            "label": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "value": "option2",
+            "mediaId": null,
+            "useTrans": true,
+            "customField1": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField2": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField3": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "emailReceiver": null
+          }
+        ],
+        "prepend": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "tooltip": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "required": false,
+        "lineBreak": false,
+        "numberMax": "100",
+        "numberMin": "0",
+        "conditions": [],
+        "gridSizeLg": "12",
+        "numberStep": "0.1",
+        "htmlWrapper": "<div class=\"mb-2\">{{ element }}</div>",
+        "placeholder": {
+          "de-DE": "Bitte gebe ein Produkt ein",
+          "en-GB": "Please enter a product"
+        },
+        "autocomplete": {
+          "property": "name",
+          "relatedEntity": "product"
+        },
+        "defaultValue": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "entitySelect": {
+          "labelProperty": "name",
+          "relatedEntity": "country",
+          "valueProperty": "id"
+        },
+        "isEntitySelect": null,
+        "hasEmailReceiver": null,
+        "useImageSelection": null
+      },
+      {
+        "id": "cc42ae381c724c6b9b0d9260072ab2f6",
+        "html": "<div class=\"col-12\">\n    <div class=\"form-group\">\n        <label class=\"form-label\">Link zu Deinem Kanal:</label>   \n    </div>\n</div>",
+        "name": "",
+        "type": "html",
+        "label": {
+          "de-DE": "Hinweis: Produkttest",
+          "en-GB": "Hinweis: Produkttest"
+        },
+        "value": "",
+        "append": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "noWrap": true,
+        "pseudo": null,
+        "mapping": null,
+        "options": [
+          {
+            "id": "4cf59dcdff34471c9725369c648aa5c9",
+            "label": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "value": "option1",
+            "mediaId": null,
+            "useTrans": null,
+            "customField1": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField2": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField3": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "emailReceiver": null
+          },
+          {
+            "id": "8d9050431fa04f44bafd841a1f11a446",
+            "label": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "value": "option2",
+            "mediaId": null,
+            "useTrans": true,
+            "customField1": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField2": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField3": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "emailReceiver": null
+          }
+        ],
+        "prepend": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "tooltip": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "required": null,
+        "lineBreak": true,
+        "numberMax": "100",
+        "numberMin": "0",
+        "conditions": [
+          {
+            "id": "adbb3753e755413991ffc7d9e9a45fbb",
+            "name": "reason",
+            "type": "is",
+            "value": "producttest",
+            "active": null
+          }
+        ],
+        "gridSizeLg": "12",
+        "numberStep": "0.1",
+        "htmlWrapper": "<div class=\"mb-2\">{{ element }}</div>",
+        "placeholder": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "autocomplete": {
+          "property": null,
+          "relatedEntity": null
+        },
+        "defaultValue": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "entitySelect": {
+          "labelProperty": "name",
+          "relatedEntity": "country",
+          "valueProperty": "id"
+        },
+        "isEntitySelect": null,
+        "hasEmailReceiver": null,
+        "useImageSelection": null
+      },
+      {
+        "id": "49a8f70b6bcd4b56966c274bc0d0b7bb",
+        "html": null,
+        "name": "youtube",
+        "type": "text",
+        "label": {
+          "de-DE": "Youtube",
+          "en-GB": "Youtube"
+        },
+        "value": "",
+        "append": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "pseudo": null,
+        "mapping": null,
+        "options": [
+          {
+            "id": "672ac41acf06446bb764191fa1bd4121",
+            "label": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "value": "option1",
+            "mediaId": null,
+            "useTrans": null,
+            "customField1": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField2": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField3": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "emailReceiver": null
+          },
+          {
+            "id": "9b5566cb2bd243db990b8e0ce25b2f2a",
+            "label": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "value": "option2",
+            "mediaId": null,
+            "useTrans": true,
+            "customField1": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField2": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField3": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "emailReceiver": null
+          }
+        ],
+        "prepend": {
+          "de-DE": "<i class=\"fab fa-youtube fa-fw\"></i>",
+          "en-GB": "<i class=\"fab fa-youtube fa-fw\"></i>"
+        },
+        "tooltip": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "required": null,
+        "lineBreak": false,
+        "numberMax": "100",
+        "numberMin": "0",
+        "conditions": [],
+        "gridSizeLg": "6",
+        "numberStep": "0.1",
+        "htmlWrapper": "<div class=\"mb-2\">{{ element }}</div>",
+        "placeholder": {
+          "de-DE": "Youtube",
+          "en-GB": "Youtube"
+        },
+        "autocomplete": {
+          "property": null,
+          "relatedEntity": null
+        },
+        "defaultValue": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "entitySelect": {
+          "labelProperty": "name",
+          "relatedEntity": "country",
+          "valueProperty": "id"
+        },
+        "isEntitySelect": null,
+        "hasEmailReceiver": null,
+        "useImageSelection": null
+      },
+      {
+        "id": "37e52e74d9ea4d36a1aca04c9e0e7d00",
+        "html": null,
+        "name": "instagram",
+        "type": "text",
+        "label": {
+          "de-DE": "Instagram",
+          "en-GB": "Instagram"
+        },
+        "value": "",
+        "append": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "pseudo": null,
+        "mapping": null,
+        "options": [
+          {
+            "id": "672ac41acf06446bb764191fa1bd4121",
+            "label": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "value": "option1",
+            "mediaId": null,
+            "useTrans": null,
+            "customField1": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField2": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField3": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "emailReceiver": null
+          },
+          {
+            "id": "9b5566cb2bd243db990b8e0ce25b2f2a",
+            "label": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "value": "option2",
+            "mediaId": null,
+            "useTrans": true,
+            "customField1": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField2": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField3": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "emailReceiver": null
+          }
+        ],
+        "prepend": {
+          "de-DE": "<i class=\"fab fa-instagram fa-fw\"></i>",
+          "en-GB": "<i class=\"fab fa-instagram fa-fw\"></i>"
+        },
+        "tooltip": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "required": null,
+        "lineBreak": false,
+        "numberMax": "100",
+        "numberMin": "0",
+        "conditions": [],
+        "gridSizeLg": "6",
+        "numberStep": "0.1",
+        "htmlWrapper": "<div class=\"mb-2\">{{ element }}</div>",
+        "placeholder": {
+          "de-DE": "Instagram",
+          "en-GB": "Instagram"
+        },
+        "autocomplete": {
+          "property": null,
+          "relatedEntity": null
+        },
+        "defaultValue": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "entitySelect": {
+          "labelProperty": "name",
+          "relatedEntity": "country",
+          "valueProperty": "id"
+        },
+        "isEntitySelect": null,
+        "hasEmailReceiver": null,
+        "useImageSelection": null
+      },
+      {
+        "id": "317ea8512c884c1a842200b125584d8a",
+        "html": null,
+        "name": "facebook",
+        "type": "text",
+        "label": {
+          "de-DE": "Facebook",
+          "en-GB": "Facebook"
+        },
+        "value": "",
+        "append": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "pseudo": null,
+        "mapping": null,
+        "options": [
+          {
+            "id": "672ac41acf06446bb764191fa1bd4121",
+            "label": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "value": "option1",
+            "mediaId": null,
+            "useTrans": null,
+            "customField1": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField2": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField3": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "emailReceiver": null
+          },
+          {
+            "id": "9b5566cb2bd243db990b8e0ce25b2f2a",
+            "label": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "value": "option2",
+            "mediaId": null,
+            "useTrans": true,
+            "customField1": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField2": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField3": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "emailReceiver": null
+          }
+        ],
+        "prepend": {
+          "de-DE": "<i class=\"fab fa-facebook-square fa-fw\"></i>",
+          "en-GB": "<i class=\"fab fa-facebook-square fa-fw\"></i>"
+        },
+        "tooltip": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "required": null,
+        "lineBreak": false,
+        "numberMax": "100",
+        "numberMin": "0",
+        "conditions": [],
+        "gridSizeLg": "6",
+        "numberStep": "0.1",
+        "htmlWrapper": "<div class=\"mb-2\">{{ element }}</div>",
+        "placeholder": {
+          "de-DE": "Facebook",
+          "en-GB": "Facebook"
+        },
+        "autocomplete": {
+          "property": null,
+          "relatedEntity": null
+        },
+        "defaultValue": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "entitySelect": {
+          "labelProperty": "name",
+          "relatedEntity": "country",
+          "valueProperty": "id"
+        },
+        "isEntitySelect": null,
+        "hasEmailReceiver": null,
+        "useImageSelection": null
+      },
+      {
+        "id": "8a971998cd14446cb0e977f49ec870bf",
+        "html": null,
+        "name": "twitter",
+        "type": "text",
+        "label": {
+          "de-DE": "Twitter",
+          "en-GB": "Twitter"
+        },
+        "value": "",
+        "append": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "pseudo": null,
+        "mapping": null,
+        "options": [
+          {
+            "id": "672ac41acf06446bb764191fa1bd4121",
+            "label": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "value": "option1",
+            "mediaId": null,
+            "useTrans": null,
+            "customField1": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField2": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField3": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "emailReceiver": null
+          },
+          {
+            "id": "9b5566cb2bd243db990b8e0ce25b2f2a",
+            "label": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "value": "option2",
+            "mediaId": null,
+            "useTrans": true,
+            "customField1": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField2": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField3": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "emailReceiver": null
+          }
+        ],
+        "prepend": {
+          "de-DE": "<i class=\"fab fa-twitter-square fa-fw\"></i>",
+          "en-GB": "<i class=\"fab fa-twitter-square fa-fw\"></i>"
+        },
+        "tooltip": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "required": null,
+        "lineBreak": false,
+        "numberMax": "100",
+        "numberMin": "0",
+        "conditions": [],
+        "gridSizeLg": "6",
+        "numberStep": "0.1",
+        "htmlWrapper": "<div class=\"mb-2\">{{ element }}</div>",
+        "placeholder": {
+          "de-DE": "Twitter",
+          "en-GB": "Twitter"
+        },
+        "autocomplete": {
+          "property": null,
+          "relatedEntity": null
+        },
+        "defaultValue": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "entitySelect": {
+          "labelProperty": "name",
+          "relatedEntity": "country",
+          "valueProperty": "id"
+        },
+        "isEntitySelect": null,
+        "hasEmailReceiver": null,
+        "useImageSelection": null
+      },
+      {
+        "id": "8486a40ea41d408ba0855c5c4b7cfaea",
+        "html": "</div></div>",
+        "name": "",
+        "type": "html",
+        "label": {
+          "de-DE": "Close DIV",
+          "en-GB": "Close DIV"
+        },
+        "value": "",
+        "append": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "noWrap": true,
+        "pseudo": null,
+        "mapping": null,
+        "options": [
+          {
+            "id": "4cf59dcdff34471c9725369c648aa5c9",
+            "label": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "value": "option1",
+            "mediaId": null,
+            "useTrans": null,
+            "customField1": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField2": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField3": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "emailReceiver": null
+          },
+          {
+            "id": "8d9050431fa04f44bafd841a1f11a446",
+            "label": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "value": "option2",
+            "mediaId": null,
+            "useTrans": true,
+            "customField1": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField2": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField3": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "emailReceiver": null
+          }
+        ],
+        "prepend": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "tooltip": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "required": null,
+        "lineBreak": true,
+        "numberMax": "100",
+        "numberMin": "0",
+        "conditions": [],
+        "gridSizeLg": "12",
+        "numberStep": "0.1",
+        "htmlWrapper": "<div class=\"mb-2\">{{ element }}</div>",
+        "placeholder": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "autocomplete": {
+          "property": null,
+          "relatedEntity": null
+        },
+        "defaultValue": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "entitySelect": {
+          "labelProperty": "name",
+          "relatedEntity": "country",
+          "valueProperty": "id"
+        },
+        "isEntitySelect": null,
+        "hasEmailReceiver": null,
+        "useImageSelection": null
+      },
+      {
+        "id": "22abbb03dbee46b2b432b9055f0e86f6",
+        "html": "<hr>",
+        "name": "message",
+        "type": "textarea",
+        "label": {
+          "de-DE": "Nachricht",
+          "en-GB": "Message"
+        },
+        "value": "",
+        "append": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "pseudo": null,
+        "mapping": "customFields.my_value",
+        "options": [
+          {
+            "id": "1dcbb4b013ac413c9e1dca67c696d1f6",
+            "label": {
+              "de-DE": "Option 1",
+              "en-GB": "Option 1"
+            },
+            "value": "option1",
+            "useTrans": null,
+            "customField1": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField2": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField3": {
+              "de-DE": "",
+              "en-GB": ""
+            }
+          },
+          {
+            "id": "c55fd750053547ee92a9d9339eb3a2c6",
+            "label": {
+              "de-DE": "path.to.translation.snippet.option2",
+              "en-GB": "path.to.translation.snippet.option2"
+            },
+            "value": "option2",
+            "useTrans": true,
+            "customField1": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField2": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField3": {
+              "de-DE": "",
+              "en-GB": ""
+            }
+          }
+        ],
+        "prepend": {
+          "de-DE": "<i class=\"fas fa-align-left fa-fw\"></i>",
+          "en-GB": "<i class=\"fas fa-align-left fa-fw\"></i>"
+        },
+        "tooltip": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "required": true,
+        "condition": {
+          "hidden": "",
+          "disabled": ""
+        },
+        "lineBreak": true,
+        "numberMax": "100",
+        "numberMin": "0",
+        "conditions": [],
+        "gridSizeLg": "12",
+        "numberStep": "0.1",
+        "htmlWrapper": "<div class=\"mb-2\">{{ element }}</div>",
+        "placeholder": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "autocomplete": {
+          "property": null,
+          "relatedEntity": null
+        },
+        "defaultValue": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "entitySelect": {
+          "labelProperty": "name",
+          "relatedEntity": "country",
+          "valueProperty": "id"
+        },
+        "isEntitySelect": null,
+        "hasEmailReceiver": null,
+        "useImageSelection": null
+      },
+      {
+        "id": "c8c7f101c622464e857656b8e4600cd8",
+        "html": "<hr>",
+        "name": "file",
+        "type": "upload",
+        "label": {
+          "de-DE": "Wähle eine Datei",
+          "en-GB": "Select a file"
+        },
+        "value": "",
+        "append": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "pseudo": null,
+        "mapping": "customFields.my_value",
+        "options": [
+          {
+            "id": "200a3aa2d39a468897a51502df50f47d",
+            "label": {
+              "de-DE": "Option 1",
+              "en-GB": "Option 1"
+            },
+            "value": "option1",
+            "useTrans": null,
+            "customField1": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField2": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField3": {
+              "de-DE": "",
+              "en-GB": ""
+            }
+          },
+          {
+            "id": "9d6babe78b2345d4a201994612d30fe5",
+            "label": {
+              "de-DE": "path.to.translation.snippet.option2",
+              "en-GB": "path.to.translation.snippet.option2"
+            },
+            "value": "option2",
+            "useTrans": true,
+            "customField1": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField2": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField3": {
+              "de-DE": "",
+              "en-GB": ""
+            }
+          }
+        ],
+        "prepend": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "tooltip": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "required": null,
+        "condition": {
+          "hidden": "",
+          "disabled": ""
+        },
+        "lineBreak": true,
+        "mediaType": "all",
+        "numberMax": "100",
+        "numberMin": "0",
+        "conditions": [],
+        "gridSizeLg": "12",
+        "numberStep": "0.1",
+        "htmlWrapper": "<div class=\"mb-2\">{{ element }}</div>",
+        "placeholder": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "autocomplete": {
+          "property": null,
+          "relatedEntity": null
+        },
+        "defaultValue": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "entitySelect": {
+          "labelProperty": "name",
+          "relatedEntity": "country",
+          "valueProperty": "id"
+        },
+        "mediaDropzone": true,
+        "isEntitySelect": null,
+        "hasEmailReceiver": null,
+        "noMediaValidation": true,
+        "useImageSelection": null
+      }
+    ],
+    "products": []
+  },
+  {
+    "id": "{ID:FORM_4}",
+    "mailTemplateId": null,
+    "salesChannelId": null,
+    "mediaFolderId": null,
+    "active": true,
+    "privacy": true,
+    "useCaptcha": false,
+    "useTrans": null,
+    "sendCopy": true,
+    "insertDatabase": null,
+    "locked": true,
+    "bootstrapGrid": true,
+    "sendMail": true,
+    "insertNewsletter": null,
+    "insertHistory": true,
+    "maxFileSize": 10,
+    "name": "Example: Simple repeater form",
+    "mediaFolder": "user",
+    "action": null,
+    "submitText": {},
+    "type": "cms",
+    "emailReceiver": null,
+    "successMessage": {},
+    "redirectTo": null,
+    "redirectParams": null,
+    "relatedEntity": null,
+    "stylesheet": null,
+    "label": {
+      "de-DE": "Repeater",
+      "en-GB": "Repeater"
+    },
+    "data": [
+      {
+        "id": "807bd1af687048aea85cbf1b865feba5",
+        "html": "<hr>",
+        "name": "email",
+        "type": "email",
+        "label": {
+          "de-DE": "E-Mail",
+          "en-GB": "E-Mail"
+        },
+        "value": "",
+        "append": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "pseudo": null,
+        "dateMax": "+6 months",
+        "dateMin": "+3 days",
+        "mapping": "customFields.my_value",
+        "options": [
+          {
+            "id": "67e00d6d6ac2425c9240c4cc70d9920d",
+            "label": {
+              "de-DE": "Option 1",
+              "en-GB": "Option 1"
+            },
+            "value": "option1",
+            "useTrans": null,
+            "createdAt": "2003-03-03 03:02:01.000",
+            "customField1": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField2": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField3": {
+              "de-DE": "",
+              "en-GB": ""
+            }
+          },
+          {
+            "id": "13aaea99e913418ca28b28f336cdc873",
+            "label": {
+              "de-DE": "path.to.translation.snippet.option2",
+              "en-GB": "path.to.translation.snippet.option2"
+            },
+            "value": "option2",
+            "useTrans": true,
+            "createdAt": "2003-03-03 03:02:01.000",
+            "customField1": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField2": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField3": {
+              "de-DE": "",
+              "en-GB": ""
+            }
+          }
+        ],
+        "prepend": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "tooltip": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "dateStep": "1",
+        "required": true,
+        "condition": {
+          "hidden": "",
+          "disabled": ""
+        },
+        "createdAt": "2003-03-03 03:02:01.000",
+        "lineBreak": true,
+        "numberMax": "100",
+        "numberMin": "0",
+        "conditions": [],
+        "gridSizeLg": "12",
+        "numberStep": "0.1",
+        "htmlWrapper": "<div class=\"mb-2\">{{ element }}</div>",
+        "placeholder": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "autocomplete": {
+          "property": null,
+          "relatedEntity": null
+        },
+        "defaultValue": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "entitySelect": {
+          "labelProperty": "name",
+          "relatedEntity": "country",
+          "valueProperty": "id"
+        },
+        "isEntitySelect": null,
+        "hasEmailReceiver": null,
+        "useImageSelection": null
+      },
+      {
+        "id": "f354a353958545158e6e165f6a685f6f",
+        "html": null,
+        "name": "participants",
+        "type": "repeater-open",
+        "label": {
+          "de-DE": "Teilnehmer",
+          "en-GB": "Participants"
+        },
+        "value": "",
+        "append": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "pseudo": null,
+        "dateMax": "+6 months",
+        "dateMin": "+3 days",
+        "mapping": null,
+        "options": [
+          {
+            "id": "f9403e703e8c4a08a9cb9984e8906620",
+            "label": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "value": "option1",
+            "mediaId": null,
+            "useTrans": null,
+            "customField1": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField2": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField3": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "emailReceiver": null
+          },
+          {
+            "id": "caea15ded50e4b7596ed54af18b703e4",
+            "label": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "value": "option2",
+            "mediaId": null,
+            "useTrans": true,
+            "customField1": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField2": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField3": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "emailReceiver": null
+          }
+        ],
+        "prepend": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "tooltip": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "dateStep": "1",
+        "required": null,
+        "lineBreak": true,
+        "numberMax": "100",
+        "numberMin": "0",
+        "conditions": [],
+        "gridSizeLg": "12",
+        "numberStep": "0.1",
+        "htmlWrapper": "<div class=\"mb-2\">{{ element }}</div>",
+        "placeholder": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "autocomplete": {
+          "property": null,
+          "relatedEntity": null
+        },
+        "defaultValue": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "entitySelect": {
+          "labelProperty": "name",
+          "relatedEntity": "country",
+          "valueProperty": "id"
+        },
+        "isEntitySelect": null,
+        "hasEmailReceiver": null,
+        "useImageSelection": null
+      },
+      {
+        "id": "36fd0c787dc14c28b755dea50ebb6bbd",
+        "html": "<hr>",
+        "name": "firstname",
+        "type": "text",
+        "label": {
+          "de-DE": "Vorname",
+          "en-GB": "Firstname"
+        },
+        "value": "",
+        "append": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "pseudo": null,
+        "dateMax": "+6 months",
+        "dateMin": "+3 days",
+        "mapping": "customFields.my_value",
+        "options": [
+          {
+            "id": "3b72225a0d644f679e27fbba362c5d8b",
+            "label": {
+              "de-DE": "Option 1",
+              "en-GB": "Option 1"
+            },
+            "value": "option1",
+            "useTrans": null,
+            "createdAt": "2003-03-03 03:02:01.000",
+            "customField1": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField2": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField3": {
+              "de-DE": "",
+              "en-GB": ""
+            }
+          },
+          {
+            "id": "8d1d83f78e414a90af588af6eecb5c3e",
+            "label": {
+              "de-DE": "path.to.translation.snippet.option2",
+              "en-GB": "path.to.translation.snippet.option2"
+            },
+            "value": "option2",
+            "useTrans": true,
+            "createdAt": "2003-03-03 03:02:01.000",
+            "customField1": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField2": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField3": {
+              "de-DE": "",
+              "en-GB": ""
+            }
+          }
+        ],
+        "prepend": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "tooltip": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "dateStep": "1",
+        "required": true,
+        "condition": {
+          "hidden": "",
+          "disabled": ""
+        },
+        "createdAt": "2003-03-03 03:02:01.000",
+        "lineBreak": false,
+        "numberMax": "100",
+        "numberMin": "0",
+        "conditions": [],
+        "gridSizeLg": "4",
+        "numberStep": "0.1",
+        "htmlWrapper": "<div class=\"mb-2\">{{ element }}</div>",
+        "placeholder": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "autocomplete": {
+          "property": null,
+          "relatedEntity": null
+        },
+        "defaultValue": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "entitySelect": {
+          "labelProperty": "name",
+          "relatedEntity": "country",
+          "valueProperty": "id"
+        },
+        "isEntitySelect": null,
+        "hasEmailReceiver": null,
+        "useImageSelection": null
+      },
+      {
+        "id": "eaedc01f3f1641bdbebff495a09f3c28",
+        "html": "<hr>",
+        "name": "lastname",
+        "type": "text",
+        "label": {
+          "de-DE": "Nachname",
+          "en-GB": "Lastname"
+        },
+        "value": "",
+        "append": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "pseudo": null,
+        "dateMax": "+6 months",
+        "dateMin": "+3 days",
+        "mapping": "customFields.my_value",
+        "options": [
+          {
+            "id": "010e07427eeb40598c9972e3ee56d3a1",
+            "label": {
+              "de-DE": "Option 1",
+              "en-GB": "Option 1"
+            },
+            "value": "option1",
+            "useTrans": null,
+            "createdAt": "2003-03-03 03:02:01.000",
+            "customField1": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField2": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField3": {
+              "de-DE": "",
+              "en-GB": ""
+            }
+          },
+          {
+            "id": "465980fab8c747faa54870ae80c3b736",
+            "label": {
+              "de-DE": "path.to.translation.snippet.option2",
+              "en-GB": "path.to.translation.snippet.option2"
+            },
+            "value": "option2",
+            "useTrans": true,
+            "createdAt": "2003-03-03 03:02:01.000",
+            "customField1": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField2": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField3": {
+              "de-DE": "",
+              "en-GB": ""
+            }
+          }
+        ],
+        "prepend": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "tooltip": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "dateStep": "1",
+        "required": true,
+        "condition": {
+          "hidden": "",
+          "disabled": ""
+        },
+        "createdAt": "2003-03-03 03:02:01.000",
+        "lineBreak": false,
+        "numberMax": "100",
+        "numberMin": "0",
+        "conditions": [],
+        "gridSizeLg": "4",
+        "numberStep": "0.1",
+        "htmlWrapper": "<div class=\"mb-2\">{{ element }}</div>",
+        "placeholder": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "autocomplete": {
+          "property": null,
+          "relatedEntity": null
+        },
+        "defaultValue": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "entitySelect": {
+          "labelProperty": "name",
+          "relatedEntity": "country",
+          "valueProperty": "id"
+        },
+        "isEntitySelect": null,
+        "hasEmailReceiver": null,
+        "useImageSelection": null
+      },
+      {
+        "id": "22abbb03dbee46b2b432b9055f0e86f6",
+        "html": "<hr>",
+        "name": "age",
+        "type": "number",
+        "label": {
+          "de-DE": "Alter",
+          "en-GB": "Age"
+        },
+        "value": "",
+        "append": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "pseudo": null,
+        "dateMax": "+6 months",
+        "dateMin": "+3 days",
+        "mapping": "customFields.my_value",
+        "options": [
+          {
+            "id": "1dcbb4b013ac413c9e1dca67c696d1f6",
+            "label": {
+              "de-DE": "Option 1",
+              "en-GB": "Option 1"
+            },
+            "value": "option1",
+            "useTrans": null,
+            "createdAt": "2003-03-03 03:02:01.000",
+            "customField1": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField2": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField3": {
+              "de-DE": "",
+              "en-GB": ""
+            }
+          },
+          {
+            "id": "c55fd750053547ee92a9d9339eb3a2c6",
+            "label": {
+              "de-DE": "path.to.translation.snippet.option2",
+              "en-GB": "path.to.translation.snippet.option2"
+            },
+            "value": "option2",
+            "useTrans": true,
+            "createdAt": "2003-03-03 03:02:01.000",
+            "customField1": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField2": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField3": {
+              "de-DE": "",
+              "en-GB": ""
+            }
+          }
+        ],
+        "prepend": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "tooltip": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "dateStep": "1",
+        "required": null,
+        "condition": {
+          "hidden": "",
+          "disabled": ""
+        },
+        "createdAt": "2003-03-03 03:02:01.000",
+        "lineBreak": false,
+        "numberMax": "100",
+        "numberMin": "0",
+        "conditions": [],
+        "gridSizeLg": "4",
+        "numberStep": "0.1",
+        "htmlWrapper": "<div class=\"mb-2\">{{ element }}</div>",
+        "placeholder": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "autocomplete": {
+          "property": null,
+          "relatedEntity": null
+        },
+        "defaultValue": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "entitySelect": {
+          "labelProperty": "name",
+          "relatedEntity": "country",
+          "valueProperty": "id"
+        },
+        "isEntitySelect": null,
+        "hasEmailReceiver": null,
+        "useImageSelection": null
+      },
+      {
+        "id": "6068e8b71a0b44c0b8b79d756ab8e172",
+        "html": null,
+        "name": "",
+        "type": "repeater-close",
+        "label": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "value": "",
+        "append": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "pseudo": null,
+        "dateMax": "+6 months",
+        "dateMin": "+3 days",
+        "mapping": null,
+        "options": [
+          {
+            "id": "59d64bee4c4346428c7e9da695ae07d4",
+            "label": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "value": "option1",
+            "mediaId": null,
+            "useTrans": null,
+            "customField1": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField2": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField3": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "emailReceiver": null
+          },
+          {
+            "id": "bfb32b4ba7254d2dad42c024407cebf6",
+            "label": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "value": "option2",
+            "mediaId": null,
+            "useTrans": true,
+            "customField1": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField2": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField3": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "emailReceiver": null
+          }
+        ],
+        "prepend": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "tooltip": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "dateStep": "1",
+        "required": null,
+        "lineBreak": true,
+        "numberMax": "100",
+        "numberMin": "0",
+        "conditions": [],
+        "gridSizeLg": "12",
+        "numberStep": "0.1",
+        "htmlWrapper": "<div class=\"mb-2\">{{ element }}</div>",
+        "placeholder": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "autocomplete": {
+          "property": null,
+          "relatedEntity": null
+        },
+        "defaultValue": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "entitySelect": {
+          "labelProperty": "name",
+          "relatedEntity": "country",
+          "valueProperty": "id"
+        },
+        "isEntitySelect": null,
+        "hasEmailReceiver": null,
+        "useImageSelection": null
+      },
+      {
+        "id": "843c81e4216841ff8ddaa97d45181894",
+        "html": null,
+        "name": "notice",
+        "type": "textarea",
+        "label": {
+          "de-DE": "Notiz",
+          "en-GB": "Notice"
+        },
+        "value": "",
+        "append": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "pseudo": null,
+        "dateMax": "+6 months",
+        "dateMin": "+3 days",
+        "mapping": null,
+        "options": [
+          {
+            "id": "086f531fcd3e45dabc7d5be6b5ec35f4",
+            "label": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "value": "option1",
+            "mediaId": null,
+            "useTrans": null,
+            "customField1": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField2": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField3": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "emailReceiver": null
+          },
+          {
+            "id": "33d2addbae784f38b0867123ac654cba",
+            "label": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "value": "option2",
+            "mediaId": null,
+            "useTrans": true,
+            "customField1": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField2": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField3": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "emailReceiver": null
+          }
+        ],
+        "prepend": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "tooltip": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "dateStep": "1",
+        "required": null,
+        "lineBreak": true,
+        "numberMax": "100",
+        "numberMin": "0",
+        "conditions": [],
+        "gridSizeLg": "12",
+        "numberStep": "0.1",
+        "htmlWrapper": "<div class=\"mb-2\">{{ element }}</div>",
+        "placeholder": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "autocomplete": {
+          "property": null,
+          "relatedEntity": null
+        },
+        "defaultValue": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "entitySelect": {
+          "labelProperty": "name",
+          "relatedEntity": "country",
+          "valueProperty": "id"
+        },
+        "isEntitySelect": null,
+        "hasEmailReceiver": null,
+        "useImageSelection": null
+      }
+    ],
+    "customFields": null,
+    "createdAt": "2003-03-03T03:02:01.000+00:00",
+    "updatedAt": "2021-08-15T03:21:51.017+00:00",
+    "apiAlias": null,
+    "products": []
+  },
+  {
+    "id": "{ID:FORM_5}",
+    "mailTemplateId": null,
+    "salesChannelId": null,
+    "mediaFolderId": null,
+    "active": false,
+    "privacy": null,
+    "useCaptcha": true,
+    "useTrans": null,
+    "sendCopy": null,
+    "insertDatabase": true,
+    "locked": true,
+    "bootstrapGrid": true,
+    "sendMail": null,
+    "insertNewsletter": null,
+    "insertHistory": null,
+    "maxFileSize": null,
+    "name": "Example: Extend customer profile",
+    "mediaFolder": "user",
+    "action": null,
+    "submitText": {
+      "de-DE": null,
+      "en-GB": null
+    },
+    "type": "customerAccountOverview",
+    "emailReceiver": null,
+    "successMessage": {
+      "de-DE": null,
+      "en-GB": null
+    },
+    "redirectTo": null,
+    "redirectParams": null,
+    "relatedEntity": "customer",
+    "stylesheet": null,
+    "label": {
+      "de-DE": "Erweiterte Kundenangaben",
+      "en-GB": "Additional customer information"
+    },
+    "data": [
+      {
+        "id": "369492a03d4e485890c70d12f1c1c6d9",
+        "html": "<hr>",
+        "name": "business_registration",
+        "type": "upload",
+        "label": {
+          "de-DE": "Gewerbeanmeldung",
+          "en-GB": "Business registration"
+        },
+        "value": "",
+        "append": [],
+        "pseudo": null,
+        "dateMax": "+6 months",
+        "dateMin": "+3 days",
+        "mapping": "customFields.moorl_fb_media",
+        "options": [
+          {
+            "id": "b2b5d00f018a4030bf08781ec8203924",
+            "label": {
+              "de-DE": "Option 1",
+              "en-GB": "Option 1"
+            },
+            "value": "option1",
+            "useTrans": null,
+            "customField1": [],
+            "customField2": [],
+            "customField3": []
+          },
+          {
+            "id": "d98bbc6c2cb0460fa28e8dd0dc6dd800",
+            "label": {
+              "de-DE": "path.to.translation.snippet.option2",
+              "en-GB": "path.to.translation.snippet.option2"
+            },
+            "value": "option2",
+            "useTrans": true,
+            "customField1": [],
+            "customField2": [],
+            "customField3": []
+          }
+        ],
+        "prepend": [],
+        "tooltip": [],
+        "dateStep": "1",
+        "required": null,
+        "condition": [],
+        "lineBreak": true,
+        "mediaType": "all",
+        "numberMax": "100",
+        "numberMin": "0",
+        "conditions": [],
+        "gridSizeLg": "12",
+        "numberStep": "0.1",
+        "htmlWrapper": "<div class=\"mb-2\">{{ element }}</div>",
+        "placeholder": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "autocomplete": {
+          "property": null,
+          "relatedEntity": null
+        },
+        "defaultValue": [],
+        "entitySelect": {
+          "labelProperty": "name",
+          "relatedEntity": "country",
+          "valueProperty": "id"
+        },
+        "isEntitySelect": null,
+        "hasEmailReceiver": null,
+        "useImageSelection": null
+      },
+      {
+        "id": "394ffabb8b95473790308510322ea81b",
+        "html": "<hr>",
+        "name": "ref",
+        "type": "text",
+        "label": {
+          "de-DE": "Woher kennen Sie uns",
+          "en-GB": "Where do you know us from"
+        },
+        "value": "",
+        "append": [],
+        "pseudo": null,
+        "dateMax": "+6 months",
+        "dateMin": "+3 days",
+        "mapping": "campaignCode",
+        "options": [
+          {
+            "id": "0c0e4c56d2414770928f4f0b6e70ca69",
+            "label": {
+              "de-DE": "Option 1",
+              "en-GB": "Option 1"
+            },
+            "value": "option1",
+            "useTrans": null,
+            "customField1": [],
+            "customField2": [],
+            "customField3": []
+          },
+          {
+            "id": "95e096661ea34888b474100fe3cdf766",
+            "label": {
+              "de-DE": "path.to.translation.snippet.option2",
+              "en-GB": "path.to.translation.snippet.option2"
+            },
+            "value": "option2",
+            "useTrans": true,
+            "customField1": [],
+            "customField2": [],
+            "customField3": []
+          }
+        ],
+        "prepend": [],
+        "tooltip": [],
+        "dateStep": "1",
+        "required": false,
+        "condition": [],
+        "lineBreak": true,
+        "numberMax": "100",
+        "numberMin": "0",
+        "conditions": [],
+        "gridSizeLg": "12",
+        "numberStep": "0.1",
+        "htmlWrapper": "<div class=\"mb-2\">{{ element }}</div>",
+        "placeholder": {
+          "de-DE": "Optional",
+          "en-GB": "Optional"
+        },
+        "autocomplete": {
+          "property": "campaignCode",
+          "relatedEntity": "customer"
+        },
+        "defaultValue": [],
+        "entitySelect": {
+          "labelProperty": "name",
+          "relatedEntity": "country",
+          "valueProperty": "id"
+        },
+        "isEntitySelect": null,
+        "hasEmailReceiver": null,
+        "useImageSelection": null
+      }
+    ],
+    "products": []
+  },
+  {
+    "id": "{ID:FORM_100}",
+    "mailTemplateId": null,
+    "salesChannelId": null,
+    "mediaFolderId": null,
+    "active": false,
+    "privacy": null,
+    "useCaptcha": true,
+    "useTrans": null,
+    "sendCopy": null,
+    "insertDatabase": null,
+    "locked": true,
+    "bootstrapGrid": true,
+    "sendMail": null,
+    "insertNewsletter": null,
+    "insertHistory": null,
+    "maxFileSize": null,
+    "name": "Example: Extend customer registration",
+    "mediaFolder": "user",
+    "action": null,
+    "submitText": {
+      "de-DE": null,
+      "en-GB": null
+    },
+    "type": "customerRegister",
+    "emailReceiver": null,
+    "successMessage": {
+      "de-DE": null,
+      "en-GB": null
+    },
+    "redirectTo": null,
+    "redirectParams": null,
+    "relatedEntity": "customer",
+    "stylesheet": null,
+    "label": {
+      "de-DE": "Erweiterte Kundenangaben",
+      "en-GB": "Additional customer information"
+    },
+    "data": [
+      {
+        "id": "369492a03d4e485890c70d12f1c1c6d9",
+        "html": "<hr>",
+        "name": "business_registration",
+        "type": "upload",
+        "label": {
+          "de-DE": "Gewerbeanmeldung",
+          "en-GB": "Business registration"
+        },
+        "value": "",
+        "append": [],
+        "pseudo": null,
+        "dateMax": "+6 months",
+        "dateMin": "+3 days",
+        "mapping": "customFields.moorl_fb_media",
+        "options": [
+          {
+            "id": "b2b5d00f018a4030bf08781ec8203924",
+            "label": {
+              "de-DE": "Option 1",
+              "en-GB": "Option 1"
+            },
+            "value": "option1",
+            "useTrans": null,
+            "customField1": [],
+            "customField2": [],
+            "customField3": []
+          },
+          {
+            "id": "d98bbc6c2cb0460fa28e8dd0dc6dd800",
+            "label": {
+              "de-DE": "path.to.translation.snippet.option2",
+              "en-GB": "path.to.translation.snippet.option2"
+            },
+            "value": "option2",
+            "useTrans": true,
+            "customField1": [],
+            "customField2": [],
+            "customField3": []
+          }
+        ],
+        "prepend": [],
+        "tooltip": [],
+        "dateStep": "1",
+        "required": null,
+        "condition": [],
+        "lineBreak": true,
+        "mediaType": "all",
+        "numberMax": "100",
+        "numberMin": "0",
+        "conditions": [],
+        "gridSizeLg": "12",
+        "numberStep": "0.1",
+        "htmlWrapper": "<div class=\"mb-2\">{{ element }}</div>",
+        "placeholder": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "autocomplete": {
+          "property": null,
+          "relatedEntity": null
+        },
+        "defaultValue": [],
+        "entitySelect": {
+          "labelProperty": "name",
+          "relatedEntity": "country",
+          "valueProperty": "id"
+        },
+        "isEntitySelect": null,
+        "hasEmailReceiver": null,
+        "useImageSelection": null
+      },
+      {
+        "id": "394ffabb8b95473790308510322ea81b",
+        "html": "<hr>",
+        "name": "ref",
+        "type": "text",
+        "label": {
+          "de-DE": "Woher kennen Sie uns",
+          "en-GB": "Where do you know us from"
+        },
+        "value": "",
+        "append": [],
+        "pseudo": null,
+        "dateMax": "+6 months",
+        "dateMin": "+3 days",
+        "mapping": "campaignCode",
+        "options": [
+          {
+            "id": "0c0e4c56d2414770928f4f0b6e70ca69",
+            "label": {
+              "de-DE": "Option 1",
+              "en-GB": "Option 1"
+            },
+            "value": "option1",
+            "useTrans": null,
+            "customField1": [],
+            "customField2": [],
+            "customField3": []
+          },
+          {
+            "id": "95e096661ea34888b474100fe3cdf766",
+            "label": {
+              "de-DE": "path.to.translation.snippet.option2",
+              "en-GB": "path.to.translation.snippet.option2"
+            },
+            "value": "option2",
+            "useTrans": true,
+            "customField1": [],
+            "customField2": [],
+            "customField3": []
+          }
+        ],
+        "prepend": [],
+        "tooltip": [],
+        "dateStep": "1",
+        "required": false,
+        "condition": [],
+        "lineBreak": true,
+        "numberMax": "100",
+        "numberMin": "0",
+        "conditions": [],
+        "gridSizeLg": "12",
+        "numberStep": "0.1",
+        "htmlWrapper": "<div class=\"mb-2\">{{ element }}</div>",
+        "placeholder": {
+          "de-DE": "Optional",
+          "en-GB": "Optional"
+        },
+        "autocomplete": {
+          "property": "campaignCode",
+          "relatedEntity": "customer"
+        },
+        "defaultValue": [],
+        "entitySelect": {
+          "labelProperty": "name",
+          "relatedEntity": "country",
+          "valueProperty": "id"
+        },
+        "isEntitySelect": null,
+        "hasEmailReceiver": null,
+        "useImageSelection": null
+      }
+    ],
+    "products": []
+  },
+  {
+    "id": "{ID:FORM_101}",
+    "mailTemplateId": null,
+    "salesChannelId": null,
+    "mediaFolderId": null,
+    "active": false,
+    "privacy": true,
+    "useCaptcha": true,
+    "useTrans": null,
+    "sendCopy": false,
+    "insertDatabase": null,
+    "locked": true,
+    "bootstrapGrid": true,
+    "sendMail": true,
+    "insertNewsletter": null,
+    "insertHistory": null,
+    "maxFileSize": 10,
+    "name": "Example: Product request",
+    "mediaFolder": null,
+    "action": null,
+    "submitText": null,
+    "type": "productRequest",
+    "emailReceiver": null,
+    "successMessage": null,
+    "redirectTo": null,
+    "redirectParams": null,
+    "relatedEntity": "product",
+    "stylesheet": null,
+    "label": {
+      "de-DE": "Produkt Anfrage",
+      "en-GB": "Product request"
+    },
+    "data": [
+      {
+        "id": "59458fe453d54f4ead0b7a4dd565d09d",
+        "html": "<hr>",
+        "name": "product_number",
+        "type": "hidden",
+        "label": {
+          "de-DE": "Artikelnummer",
+          "en-GB": "Product number"
+        },
+        "value": "",
+        "mapping": "productNumber",
+        "options": [
+          {
+            "id": "54ecff88316746eea2d1e55ac82c09fa",
+            "label": {
+              "de-DE": "Option 1",
+              "en-GB": "Option 1"
+            },
+            "value": "option1",
+            "useTrans": null
+          },
+          {
+            "id": "ba03f580571a40869b2cf49d46e7bdc8",
+            "label": {
+              "de-DE": "path.to.translation.snippet.option2",
+              "en-GB": "path.to.translation.snippet.option2"
+            },
+            "value": "option2",
+            "useTrans": true
+          }
+        ],
+        "required": true,
+        "condition": [],
+        "lineBreak": false,
+        "numberMax": "100",
+        "numberMin": "0",
+        "gridSizeLg": "12",
+        "numberStep": "0.1",
+        "htmlWrapper": "<div class=\"mb-2\">{{ element }}</div>",
+        "placeholder": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "autocomplete": {
+          "property": "name",
+          "relatedEntity": "product"
+        }
+      },
+      {
+        "id": "1088dab4db3d4b72b4127bba267d3411",
+        "html": "<hr>",
+        "name": "id",
+        "type": "hidden",
+        "label": {
+          "de-DE": "Artikel ID",
+          "en-GB": "Product id"
+        },
+        "value": "",
+        "mapping": "id",
+        "options": [
+          {
+            "id": "54ecff88316746eea2d1e55ac82c09fa",
+            "label": {
+              "de-DE": "Option 1",
+              "en-GB": "Option 1"
+            },
+            "value": "option1",
+            "useTrans": null
+          },
+          {
+            "id": "ba03f580571a40869b2cf49d46e7bdc8",
+            "label": {
+              "de-DE": "path.to.translation.snippet.option2",
+              "en-GB": "path.to.translation.snippet.option2"
+            },
+            "value": "option2",
+            "useTrans": true
+          }
+        ],
+        "required": true,
+        "condition": [],
+        "lineBreak": false,
+        "numberMax": "100",
+        "numberMin": "0",
+        "gridSizeLg": "12",
+        "numberStep": "0.1",
+        "htmlWrapper": "<div class=\"mb-2\">{{ element }}</div>",
+        "placeholder": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "autocomplete": {
+          "property": "name",
+          "relatedEntity": "product"
+        }
+      },
+      {
+        "id": "e9c2f5864de94f339357cc25005c9f78",
+        "html": "<hr>",
+        "name": "firstname",
+        "type": "text",
+        "label": {
+          "de-DE": "Vorname",
+          "en-GB": "Firstname"
+        },
+        "value": "",
+        "mapping": "customFields.my_value",
+        "options": [
+          {
+            "id": "54ecff88316746eea2d1e55ac82c09fa",
+            "label": {
+              "de-DE": "Option 1",
+              "en-GB": "Option 1"
+            },
+            "value": "option1",
+            "useTrans": null
+          },
+          {
+            "id": "ba03f580571a40869b2cf49d46e7bdc8",
+            "label": {
+              "de-DE": "path.to.translation.snippet.option2",
+              "en-GB": "path.to.translation.snippet.option2"
+            },
+            "value": "option2",
+            "useTrans": true
+          }
+        ],
+        "required": true,
+        "condition": [],
+        "lineBreak": false,
+        "numberMax": "100",
+        "numberMin": "0",
+        "gridSizeLg": "6",
+        "numberStep": "0.1",
+        "htmlWrapper": "<div class=\"mb-2\">{{ element }}</div>",
+        "placeholder": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "autocomplete": {
+          "property": null,
+          "relatedEntity": null
+        }
+      },
+      {
+        "id": "40e85eb8998d448189214766d0c01f98",
+        "html": "<hr>",
+        "name": "lastname",
+        "type": "text",
+        "label": {
+          "de-DE": "Nachname",
+          "en-GB": "Lastname"
+        },
+        "value": "",
+        "mapping": "customFields.my_value",
+        "options": [
+          {
+            "id": "54ecff88316746eea2d1e55ac82c09fa",
+            "label": {
+              "de-DE": "Option 1",
+              "en-GB": "Option 1"
+            },
+            "value": "option1",
+            "useTrans": null
+          },
+          {
+            "id": "ba03f580571a40869b2cf49d46e7bdc8",
+            "label": {
+              "de-DE": "path.to.translation.snippet.option2",
+              "en-GB": "path.to.translation.snippet.option2"
+            },
+            "value": "option2",
+            "useTrans": true
+          }
+        ],
+        "required": true,
+        "condition": [],
+        "lineBreak": true,
+        "numberMax": "100",
+        "numberMin": "0",
+        "gridSizeLg": "6",
+        "numberStep": "0.1",
+        "htmlWrapper": "<div class=\"mb-2\">{{ element }}</div>",
+        "placeholder": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "autocomplete": {
+          "property": "name",
+          "relatedEntity": "product"
+        }
+      },
+      {
+        "id": "3d5cba0de6904d189396ffacb121a1ad",
+        "html": "<hr>",
+        "name": "email",
+        "type": "email",
+        "label": {
+          "de-DE": "E-Mail",
+          "en-GB": "E-Mail"
+        },
+        "value": "",
+        "mapping": "customFields.my_value",
+        "options": [
+          {
+            "id": "54ecff88316746eea2d1e55ac82c09fa",
+            "label": {
+              "de-DE": "Option 1",
+              "en-GB": "Option 1"
+            },
+            "value": "option1",
+            "useTrans": null
+          },
+          {
+            "id": "ba03f580571a40869b2cf49d46e7bdc8",
+            "label": {
+              "de-DE": "path.to.translation.snippet.option2",
+              "en-GB": "path.to.translation.snippet.option2"
+            },
+            "value": "option2",
+            "useTrans": true
+          }
+        ],
+        "required": true,
+        "condition": [],
+        "lineBreak": false,
+        "numberMax": "100",
+        "numberMin": "0",
+        "gridSizeLg": "6",
+        "numberStep": "0.1",
+        "htmlWrapper": "<div class=\"mb-2\">{{ element }}</div>",
+        "placeholder": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "autocomplete": {
+          "property": "name",
+          "relatedEntity": "product"
+        }
+      },
+      {
+        "id": "bdbd923dd34d4e9dbae6e72d058d49a3",
+        "html": "<hr>",
+        "name": "date",
+        "type": "datepicker",
+        "label": {
+          "de-DE": "Wunsch Lieferdatum",
+          "en-GB": "Desired delivery date"
+        },
+        "value": "",
+        "mapping": "customFields.my_value",
+        "options": [
+          {
+            "id": "54ecff88316746eea2d1e55ac82c09fa",
+            "label": {
+              "de-DE": "Option 1",
+              "en-GB": "Option 1"
+            },
+            "value": "option1",
+            "useTrans": null
+          },
+          {
+            "id": "ba03f580571a40869b2cf49d46e7bdc8",
+            "label": {
+              "de-DE": "path.to.translation.snippet.option2",
+              "en-GB": "path.to.translation.snippet.option2"
+            },
+            "value": "option2",
+            "useTrans": true
+          }
+        ],
+        "required": false,
+        "condition": [],
+        "lineBreak": true,
+        "numberMax": "100",
+        "numberMin": "0",
+        "gridSizeLg": "6",
+        "numberStep": "0.1",
+        "htmlWrapper": "<div class=\"mb-2\">{{ element }}</div>",
+        "placeholder": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "autocomplete": {
+          "property": "name",
+          "relatedEntity": "product"
+        }
+      },
+      {
+        "id": "93a7ff7ac7d143e9bee67d1132b9af76",
+        "html": "<hr>",
+        "name": "product",
+        "type": "text",
+        "label": {
+          "de-DE": "Artikel",
+          "en-GB": "Product"
+        },
+        "value": "",
+        "mapping": "name",
+        "options": [
+          {
+            "id": "54ecff88316746eea2d1e55ac82c09fa",
+            "label": {
+              "de-DE": "Option 1",
+              "en-GB": "Option 1"
+            },
+            "value": "option1",
+            "useTrans": null
+          },
+          {
+            "id": "ba03f580571a40869b2cf49d46e7bdc8",
+            "label": {
+              "de-DE": "path.to.translation.snippet.option2",
+              "en-GB": "path.to.translation.snippet.option2"
+            },
+            "value": "option2",
+            "useTrans": true
+          }
+        ],
+        "disabled": false,
+        "required": true,
+        "condition": [],
+        "lineBreak": true,
+        "numberMax": "100",
+        "numberMin": "0",
+        "gridSizeLg": "12",
+        "numberStep": "0.1",
+        "htmlWrapper": "<div class=\"mb-2\">{{ element }}</div>",
+        "placeholder": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "autocomplete": {
+          "property": "name",
+          "relatedEntity": "product"
+        }
+      },
+      {
+        "id": "ae2974d56fef4836b7bf9c1ab0718ab2",
+        "html": "<hr>",
+        "name": "message",
+        "type": "textarea",
+        "label": {
+          "de-DE": "Nachricht",
+          "en-GB": "Message"
+        },
+        "value": "",
+        "mapping": "customFields.my_value",
+        "options": [
+          {
+            "id": "54ecff88316746eea2d1e55ac82c09fa",
+            "label": {
+              "de-DE": "Option 1",
+              "en-GB": "Option 1"
+            },
+            "value": "option1",
+            "useTrans": null
+          },
+          {
+            "id": "ba03f580571a40869b2cf49d46e7bdc8",
+            "label": {
+              "de-DE": "path.to.translation.snippet.option2",
+              "en-GB": "path.to.translation.snippet.option2"
+            },
+            "value": "option2",
+            "useTrans": true
+          }
+        ],
+        "required": true,
+        "condition": [],
+        "lineBreak": false,
+        "numberMax": "100",
+        "numberMin": "0",
+        "gridSizeLg": "12",
+        "numberStep": "0.1",
+        "htmlWrapper": "<div class=\"mb-2\">{{ element }}</div>",
+        "placeholder": {
+          "de-DE": "Senden Sie uns eine Nachricht",
+          "en-GB": "Send us a message"
+        },
+        "autocomplete": {
+          "property": "name",
+          "relatedEntity": "product"
+        }
+      }
+    ],
+    "products": []
+  },
+  {
+    "id": "{ID:FORM_102}",
+    "mailTemplateId": null,
+    "salesChannelId": null,
+    "mediaFolderId": null,
+    "active": false,
+    "privacy": null,
+    "useCaptcha": false,
+    "useTrans": null,
+    "sendCopy": null,
+    "insertDatabase": null,
+    "locked": true,
+    "bootstrapGrid": true,
+    "sendMail": null,
+    "insertNewsletter": null,
+    "insertHistory": null,
+    "maxFileSize": null,
+    "name": "Example: Custom product",
+    "mediaFolder": null,
+    "action": null,
+    "submitText": null,
+    "type": "cartLineItem",
+    "emailReceiver": null,
+    "successMessage": null,
+    "redirectTo": null,
+    "redirectParams": null,
+    "relatedEntity": "order_line_item",
+    "stylesheet": null,
+    "label": {
+      "de-DE": "Produkt Konfiguration",
+      "en-GB": "Product configuration"
+    },
+    "data": [
+      {
+        "id": "812044f35a4d422e90da3e7246909d75",
+        "html": "<hr>",
+        "name": "address",
+        "type": "textarea",
+        "label": {
+          "de-DE": "Lieferadresse",
+          "en-GB": "Delivery address"
+        },
+        "value": "",
+        "mapping": "customFields.moorl_fb_code",
+        "options": [
+          {
+            "id": "7767ba5602f64301ac04eb1f2b2c5272",
+            "label": {
+              "de-DE": "Option 1",
+              "en-GB": "Option 1"
+            },
+            "value": "option1",
+            "useTrans": null
+          },
+          {
+            "id": "0232343bd4014f5eb694b7cdff3f49d8",
+            "label": {
+              "de-DE": "path.to.translation.snippet.option2",
+              "en-GB": "path.to.translation.snippet.option2"
+            },
+            "value": "option2",
+            "useTrans": true
+          }
+        ],
+        "disabled": false,
+        "required": false,
+        "condition": [],
+        "lineBreak": true,
+        "mediaType": "images",
+        "numberMax": "100",
+        "numberMin": "0",
+        "gridSizeLg": "12",
+        "numberStep": "0.1",
+        "htmlWrapper": "<div class=\"mb-2\">{{ element }}</div>",
+        "placeholder": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "autocomplete": {
+          "property": null,
+          "relatedEntity": null
+        }
+      },
+      {
+        "id": "b692add21c974b1e998e530a07adcb60",
+        "html": "<hr>",
+        "name": "date",
+        "type": "datepicker",
+        "label": {
+          "de-DE": "Lieferdatum",
+          "en-GB": "Delivery date"
+        },
+        "value": "",
+        "mapping": "customFields.moorl_fb_date",
+        "options": [
+          {
+            "id": "7767ba5602f64301ac04eb1f2b2c5272",
+            "label": {
+              "de-DE": "Option 1",
+              "en-GB": "Option 1"
+            },
+            "value": "option1",
+            "useTrans": null
+          },
+          {
+            "id": "0232343bd4014f5eb694b7cdff3f49d8",
+            "label": {
+              "de-DE": "path.to.translation.snippet.option2",
+              "en-GB": "path.to.translation.snippet.option2"
+            },
+            "value": "option2",
+            "useTrans": true
+          }
+        ],
+        "disabled": false,
+        "required": null,
+        "condition": [],
+        "lineBreak": true,
+        "mediaType": "images",
+        "numberMax": "100",
+        "numberMin": "0",
+        "gridSizeLg": "12",
+        "numberStep": "0.1",
+        "htmlWrapper": "<div class=\"mb-2\">{{ element }}</div>",
+        "placeholder": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "autocomplete": {
+          "property": null,
+          "relatedEntity": null
+        }
+      },
+      {
+        "id": "1d8414a13a8f4561951f1b8fcf510409",
+        "html": "<hr>",
+        "name": "logo",
+        "type": "upload",
+        "label": {
+          "de-DE": "Grußkarten Logo",
+          "en-GB": "Company logo"
+        },
+        "value": "",
+        "mapping": "customFields.moorl_fb_media",
+        "options": [
+          {
+            "id": "7767ba5602f64301ac04eb1f2b2c5272",
+            "label": {
+              "de-DE": "Option 1",
+              "en-GB": "Option 1"
+            },
+            "value": "option1",
+            "useTrans": null
+          },
+          {
+            "id": "0232343bd4014f5eb694b7cdff3f49d8",
+            "label": {
+              "de-DE": "path.to.translation.snippet.option2",
+              "en-GB": "path.to.translation.snippet.option2"
+            },
+            "value": "option2",
+            "useTrans": true
+          }
+        ],
+        "disabled": false,
+        "required": null,
+        "condition": [],
+        "lineBreak": true,
+        "mediaType": "images",
+        "numberMax": "100",
+        "numberMin": "0",
+        "gridSizeLg": "12",
+        "numberStep": "0.1",
+        "htmlWrapper": "<div class=\"mb-2\">{{ element }}</div>",
+        "placeholder": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "autocomplete": {
+          "property": null,
+          "relatedEntity": null
+        }
+      }
+    ],
+    "products": []
+  },
+  {
+    "id": "{ID:FORM_103}",
+    "mailTemplateId": null,
+    "salesChannelId": null,
+    "mediaFolderId": null,
+    "active": false,
+    "privacy": null,
+    "useCaptcha": false,
+    "useTrans": null,
+    "sendCopy": null,
+    "insertDatabase": null,
+    "locked": true,
+    "bootstrapGrid": true,
+    "sendMail": null,
+    "insertNewsletter": null,
+    "insertHistory": null,
+    "maxFileSize": null,
+    "name": "Example: Cart extend",
+    "mediaFolder": null,
+    "action": null,
+    "submitText": null,
+    "type": "cartExtend",
+    "emailReceiver": null,
+    "successMessage": null,
+    "redirectTo": null,
+    "redirectParams": null,
+    "relatedEntity": "order",
+    "stylesheet": null,
+    "label": {
+      "de-DE": "Zusätzliche Angaben zur Bestellung",
+      "en-GB": "Additional order information"
+    },
+    "data": [
+      {
+        "id": "31844ed0ad7640ca8c91ffe4880d921a",
+        "html": "<hr>",
+        "name": "date",
+        "type": "datepicker",
+        "label": {
+          "de-DE": "Wunsch Lieferdatum",
+          "en-GB": "Delivery date"
+        },
+        "value": "",
+        "mapping": "customFields.moorl_fb_date",
+        "options": [
+          {
+            "id": "7767ba5602f64301ac04eb1f2b2c5272",
+            "label": {
+              "de-DE": "Option 1",
+              "en-GB": "Option 1"
+            },
+            "value": "option1",
+            "useTrans": null
+          },
+          {
+            "id": "0232343bd4014f5eb694b7cdff3f49d8",
+            "label": {
+              "de-DE": "path.to.translation.snippet.option2",
+              "en-GB": "path.to.translation.snippet.option2"
+            },
+            "value": "option2",
+            "useTrans": true
+          }
+        ],
+        "disabled": false,
+        "required": null,
+        "condition": [],
+        "lineBreak": true,
+        "mediaType": "images",
+        "numberMax": "100",
+        "numberMin": "0",
+        "gridSizeLg": "12",
+        "numberStep": "0.1",
+        "htmlWrapper": "<div class=\"mb-2\">{{ element }}</div>",
+        "placeholder": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "autocomplete": {
+          "property": null,
+          "relatedEntity": null
+        }
+      },
+      {
+        "id": "b1396e3f03814e18930410a0bfba11bd",
+        "html": "<hr>",
+        "name": "address",
+        "type": "textarea",
+        "label": {
+          "de-DE": "Wunsch Lieferadresse",
+          "en-GB": "Delivery address"
+        },
+        "value": "",
+        "mapping": "customFields.moorl_fb_code",
+        "options": [
+          {
+            "id": "7767ba5602f64301ac04eb1f2b2c5272",
+            "label": {
+              "de-DE": "Option 1",
+              "en-GB": "Option 1"
+            },
+            "value": "option1",
+            "useTrans": null
+          },
+          {
+            "id": "0232343bd4014f5eb694b7cdff3f49d8",
+            "label": {
+              "de-DE": "path.to.translation.snippet.option2",
+              "en-GB": "path.to.translation.snippet.option2"
+            },
+            "value": "option2",
+            "useTrans": true
+          }
+        ],
+        "disabled": false,
+        "required": false,
+        "condition": [],
+        "lineBreak": true,
+        "mediaType": "images",
+        "numberMax": "100",
+        "numberMin": "0",
+        "gridSizeLg": "12",
+        "numberStep": "0.1",
+        "htmlWrapper": "<div class=\"mb-2\">{{ element }}</div>",
+        "placeholder": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "autocomplete": {
+          "property": null,
+          "relatedEntity": null
+        }
+      },
+      {
+        "id": "1d8414a13a8f4561951f1b8fcf510409",
+        "html": "<hr>",
+        "name": "logo",
+        "type": "upload",
+        "label": {
+          "de-DE": "Grußkarten Logo",
+          "en-GB": "Company logo"
+        },
+        "value": "",
+        "mapping": "customFields.moorl_fb_media",
+        "options": [
+          {
+            "id": "7767ba5602f64301ac04eb1f2b2c5272",
+            "label": {
+              "de-DE": "Option 1",
+              "en-GB": "Option 1"
+            },
+            "value": "option1",
+            "useTrans": null
+          },
+          {
+            "id": "0232343bd4014f5eb694b7cdff3f49d8",
+            "label": {
+              "de-DE": "path.to.translation.snippet.option2",
+              "en-GB": "path.to.translation.snippet.option2"
+            },
+            "value": "option2",
+            "useTrans": true
+          }
+        ],
+        "disabled": false,
+        "required": null,
+        "condition": [],
+        "lineBreak": true,
+        "mediaType": "images",
+        "numberMax": "100",
+        "numberMin": "0",
+        "gridSizeLg": "12",
+        "numberStep": "0.1",
+        "htmlWrapper": "<div class=\"mb-2\">{{ element }}</div>",
+        "placeholder": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "autocomplete": {
+          "property": null,
+          "relatedEntity": null
+        }
+      }
+    ],
+    "products": []
+  },
+  {
+    "id": "{ID:FORM_6}",
+    "active": true,
+    "privacy": false,
+    "useCaptcha": false,
+    "useTrans": false,
+    "sendCopy": false,
+    "insertDatabase": false,
+    "locked": false,
+    "bootstrapGrid": true,
+    "bootstrapWideSpacing": false,
+    "useSassCompiler": false,
+    "sendMail": true,
+    "insertNewsletter": false,
+    "insertHistory": false,
+    "maxFileSize": 0,
+    "name": "Example: Checkout feedback",
+    "sendCopyType": "disabled",
+    "mediaFolder": null,
+    "action": null,
+    "fileUploadMethod": null,
+    "submitText": {},
+    "redirectConditions": {},
+    "type": "checkoutFinish",
+    "emailReceiver": null,
+    "successMessage": {
+      "de-DE": "Thank you for your feedback! See you soon!",
+      "en-GB": "Thank you for your feedback! See you soon!"
+    },
+    "redirectTo": null,
+    "redirectParams": null,
+    "relatedEntity": null,
+    "stylesheet": null,
+    "label": {
+      "de-DE": "Give us feedback",
+      "en-GB": "Give us feedback"
+    },
+    "data": [
+      {
+        "id": "05f38f64b409405699870be64892ed11",
+        "html": "",
+        "name": "rating",
+        "nest": 0,
+        "type": "rating",
+        "cssId": null,
+        "label": {
+          "de-DE": "Wie würdest Du Dein Einkaufserlebnis bewerten?",
+          "en-GB": "How would you rate your shopping experience?"
+        },
+        "value": "",
+        "append": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "pseudo": null,
+        "dateMax": "+6 months",
+        "dateMin": "+3 days",
+        "mapping": null,
+        "options": [
+          {
+            "id": "62c2c4a6780d4611bac24f424e286114",
+            "label": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "value": "option1",
+            "mediaId": null,
+            "useTrans": null,
+            "customField1": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField2": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField3": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "emailReceiver": null
+          },
+          {
+            "id": "a4d93b74203b459188f37fb3c508e0e9",
+            "label": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "value": "option2",
+            "mediaId": null,
+            "useTrans": true,
+            "customField1": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField2": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField3": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "emailReceiver": null
+          }
+        ],
+        "prepend": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "tooltip": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "cssClass": null,
+        "dateStep": "1",
+        "required": null,
+        "behaviour": {
+          "lg": {
+            "order": 0,
+            "width": -1,
+            "visible": true
+          },
+          "md": {
+            "order": 0,
+            "width": -1,
+            "visible": true
+          },
+          "sm": {
+            "order": 0,
+            "width": -1,
+            "visible": true
+          },
+          "xl": {
+            "order": 0,
+            "width": -1,
+            "visible": true
+          },
+          "base": {
+            "order": 0,
+            "width": 12,
+            "visible": true
+          }
+        },
+        "lineBreak": true,
+        "numberMax": 5,
+        "numberMin": "0",
+        "conditions": [],
+        "gridSizeLg": "12",
+        "numberStep": 1,
+        "htmlWrapper": "<div class=\"mb-2\">{{ element }}</div>",
+        "placeholder": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "autocomplete": {
+          "property": null,
+          "relatedEntity": null
+        },
+        "defaultValue": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "entitySelect": {
+          "labelProperty": "name",
+          "relatedEntity": "country",
+          "valueProperty": "id"
+        },
+        "isEntitySelect": null,
+        "hasEmailReceiver": null,
+        "useImageSelection": null,
+        "mediaFileExtensions": "zip,rar,psd,docx"
+      },
+      {
+        "id": "e5094fe0f86449e8a55b6276fad69059",
+        "html": "",
+        "name": "comment",
+        "nest": 0,
+        "type": "textarea",
+        "cssId": null,
+        "label": {
+          "de-DE": "Hinterlass uns ein Kommentar",
+          "en-GB": "Leave a comment"
+        },
+        "value": "",
+        "append": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "pseudo": null,
+        "dateMax": "+6 months",
+        "dateMin": "+3 days",
+        "mapping": null,
+        "options": [
+          {
+            "id": "fad4d367e58c4ad8ace3c807b7b7fc18",
+            "label": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "value": "option1",
+            "mediaId": null,
+            "useTrans": null,
+            "customField1": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField2": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField3": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "emailReceiver": null
+          },
+          {
+            "id": "8361db3b922348689aabf3edad412e04",
+            "label": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "value": "option2",
+            "mediaId": null,
+            "useTrans": true,
+            "customField1": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField2": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "customField3": {
+              "de-DE": "",
+              "en-GB": ""
+            },
+            "emailReceiver": null
+          }
+        ],
+        "prepend": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "tooltip": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "cssClass": null,
+        "dateStep": "1",
+        "required": null,
+        "behaviour": {
+          "lg": {
+            "order": 0,
+            "width": -1,
+            "visible": true
+          },
+          "md": {
+            "order": 0,
+            "width": -1,
+            "visible": true
+          },
+          "sm": {
+            "order": 0,
+            "width": -1,
+            "visible": true
+          },
+          "xl": {
+            "order": 0,
+            "width": -1,
+            "visible": true
+          },
+          "base": {
+            "order": 0,
+            "width": 12,
+            "visible": true
+          }
+        },
+        "lineBreak": true,
+        "numberMax": "100",
+        "numberMin": "0",
+        "conditions": [],
+        "gridSizeLg": "12",
+        "numberStep": "0.1",
+        "htmlWrapper": "<div class=\"mb-2\">{{ element }}</div>",
+        "placeholder": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "autocomplete": {
+          "property": null,
+          "relatedEntity": null
+        },
+        "defaultValue": {
+          "de-DE": "",
+          "en-GB": ""
+        },
+        "entitySelect": {
+          "labelProperty": "name",
+          "relatedEntity": "country",
+          "valueProperty": "id"
+        },
+        "isEntitySelect": null,
+        "hasEmailReceiver": null,
+        "useImageSelection": null,
+        "mediaFileExtensions": "zip,rar,psd,docx"
+      }
+    ],
+    "customFields": null,
+    "products": []
+  }
+]

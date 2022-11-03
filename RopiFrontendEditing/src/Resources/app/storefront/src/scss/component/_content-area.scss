@@ -1,0 +1,14 @@
+[data-ropi-content-area] {
+  clear: both;
+  position: relative;
+
+  width: 100%;
+
+  > *:last-child {
+    margin-bottom: 0;
+  }
+}
+
+[data-ropi-content-area] > * {
+  width: 100%;
+}

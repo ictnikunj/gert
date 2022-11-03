@@ -1,0 +1,51 @@
+.ropi-frontend-editing-carousel {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.ropi-frontend-editing-carousel-elements,
+.ropi-frontend-editing-carousel-element {
+  padding: 0 !important;
+  margin: 0 !important;
+  list-style: none !important;
+  vertical-align: middle;
+}
+
+.ropi-frontend-editing-carousel-elements {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: none;
+  flex-wrap: nowrap;
+  transform: translate(0, 0);
+  transition: transform 0.3s ease;
+}
+
+.ropi-frontend-editing-carousel-element {
+  width: 100%;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.ropi-frontend-editing-carousel--has-nav-outside {
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
+.ropi-frontend-editing-carousel--has-dots-outside {
+  padding-bottom: 35px;
+}
+
+.ropi-frontend-editing-carousel-elements-container {
+  overflow: hidden;
+  position: relative;
+}

@@ -1,0 +1,20 @@
+{% sw_extends '@Storefront/storefront/layout/breadcrumb.html.twig' %}
+
+{% block layout_breadcrumb_list_item %}
+
+    {% if loop.index == 1 and theme_config('rhweb-header-layout-navigation-home') %}
+        <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <a href="{{ path('frontend.home.page') }}" class="breadcrumb-link" title="{{ "general.homeLink"|trans|striptags }}" itemprop="item">
+                <link itemprop="url"
+                      href="{{ path('frontend.home.page') }}"/>
+                <span class="breadcrumb-title" itemprop="name">{{ "general.homeLink"|trans|striptags }}</span>
+            </a>
+            <meta itemprop="position" content="{{ loop.index - 1 }}"/>
+        </li>
+        <div class="breadcrumb-placeholder">
+            {% sw_icon 'arrow-medium-right' style { 'size': 'fluid', 'pack': 'solid'} %}
+        </div>
+    {% endif %}
+
+    {{ parent() }}
+{% endblock %}

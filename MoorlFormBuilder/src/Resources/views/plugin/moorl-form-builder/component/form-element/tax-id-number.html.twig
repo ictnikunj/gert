@@ -1,0 +1,21 @@
+<div class="form-group form-{{ formElement.type }}-{{ formElement.name }}">
+    {% sw_include "@MoorlFormBuilder/plugin/moorl-form-builder/component/label.html.twig" ignore missing %}
+
+    {% set formElementInput %}
+        <input
+            type="text"
+            name="{{ formElementName }}"
+            id="{{ formElementId }}"
+            value="{{ formElementValue }}"
+            placeholder="{{ formElementPlaceholder }}"
+            {% if formElement.pattern %}pattern="{{ formElement.pattern }}"{% endif %}
+            {% if formElement.autocomplete.property %}data-autocomplete="{{ seoUrl('moorl-form-builder.autocomplete', {
+                formId: form.id,
+                formElementId: formElement.id
+            }) }}"{% endif %}
+            {% if formElement.required %}required{% endif %}
+            {% if formElement.disabled %}readonly{% endif %}
+            class="form-control">
+    {% endset %}
+    {% sw_include "@MoorlFormBuilder/plugin/moorl-form-builder/component/input-group.html.twig" ignore missing %}
+</div>

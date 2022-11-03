@@ -1,0 +1,73 @@
+.footer-main{
+    background-color:$rhweb-footer-background-color;
+    color:$rhweb-footer-text-color;
+
+    .footer-columns{
+
+        .footer-column{
+            @if $rhweb-footer-column-alignment == 'center'{
+                @include media-breakpoint-up(md){
+                    text-align: center;
+
+                    .logo-container, .footer-certificates, .footer-socials{
+                        justify-content: center;
+                    }
+                }
+            }
+
+            @if $rhweb-footer-column-alignment == 'right'{
+                @include media-breakpoint-up(md){
+                    text-align: right;
+
+                    .logo-container, .footer-certificates, .footer-socials{
+                        justify-content: flex-end;
+                    }
+                }
+            }
+
+
+            @include media-breakpoint-up(md){
+                text-align: $rhweb-footer-column-alignment;
+            }
+
+            .footer-column-headline{
+                @include media-breakpoint-up(md) {
+                    display:block;
+                    text-align: $rhweb-footer-column-alignment;
+                }
+
+                .footer-column-toggle{
+                    .icon{
+                        color:color-yiq($rhweb-footer-background-color, $rhweb-footer-text-color);
+                    }
+                }
+            }
+
+            @include media-breakpoint-up(md) {
+                @if $rhweb-footer-column-alignment == 'center'{
+
+                    .logo-container{
+                        justify-content: center;
+                    }
+                }
+
+                @if $rhweb-footer-column-alignment == 'right'{
+
+                    .logo-container{
+                        justify-content: flex-end;
+                    }
+                }
+            }
+        }
+    }
+
+    .footer-bottom{
+        a{
+            color: $rhweb-footer-link-color;
+
+            &:hover{
+                color:darken($rhweb-footer-link-color, 10%);
+            }
+        }
+    }
+}

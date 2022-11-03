@@ -1,0 +1,9 @@
+{% sw_extends '@Storefront/storefront/section/cms-section-default.html.twig' %}
+
+{% block page_content_section_default %}
+    <div class="SwagCmsExtensions">
+    {% sw_include '@SwagCmsExtensions/storefront/section/quickview/component.html.twig' %}
+
+    {{ parent() }}
+    </div>
+{% endblock %}

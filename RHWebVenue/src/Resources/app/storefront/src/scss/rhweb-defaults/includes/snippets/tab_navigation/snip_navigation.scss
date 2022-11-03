@@ -1,0 +1,18 @@
+.main-navigation{
+    background:$rhweb-navigation-background;
+
+    .main-navigation-menu{
+
+        .main-navigation-link{
+            color:$rhweb-navigation-linkcolor;
+
+            &.active{
+                color:$rhweb-navigation-active-linkcolor;
+            }
+
+            &:hover{
+                color:lighten($rhweb-navigation-active-linkcolor, 10%);
+            }
+        }
+    }
+}

@@ -1,0 +1,90 @@
+{% block element %}
+
+{% if data.configuration.displayMode  %}
+    {% set displayMode = data.configuration.displayMode %}
+{% else %}
+    {% set displayMode = 'cover' %}
+{% endif %}
+
+{% if(data.configuration.image and data.configuration.image.id) %}
+    {% set imageMediaCollection = searchMedia([data.configuration.image.id], context.context) %}
+    {% set imageMedia = imageMediaCollection.get(data.configuration.image.id) %}
+{% else %}
+    {% set imageMedia = null %}
+{% endif %}
+
+{% if imageMedia %}
+    {% if imageMedia.metaData['width'] is defined and imageMedia.metaData['height'] is defined and imageMedia.metaData['width'] > 0 and imageMedia.metaData['height'] > 0 %}
+        {% set aspectRatioX = imageMedia.metaData['width'] / imageMedia.metaData['height'] %}
+        {% set aspectRatioY = 1 %}
+    {% else %}
+        {% set aspectRatioX = 1 %}
+        {% set aspectRatioY = 1 %}
+    {% endif %}
+{% else %}
+    {% set aspectRatioX = 2.2222 %}
+    {% set aspectRatioY = 1 %}
+{% endif %}
+
+{% if data.configuration.aspectRatio.x > 0 and data.configuration.aspectRatio.y > 0 %}
+    {% set aspectRatioX = min(data.configuration.aspectRatio.x, 100) %}
+    {% set aspectRatioY = min(data.configuration.aspectRatio.y, 100) %}
+    {% set fixedAspectRatio = true %}
+{% endif %}
+
+{% set paddingTop = (100 / aspectRatioX * aspectRatioY) %}
+
+<div
+    {% sw_include '@RopiFrontendEditing/content-editor/elements/common/editor-attributes.html.twig' %}
+    class="{% block element_class %}
+                    ropi-frontend-editing-content-element-image-container
+                    {% if fixedAspectRatio %}
+                        {% sw_include '@RopiFrontendEditing/content-editor/elements/common/general-classes.html.twig' %}
+                    {% else %}
+                        ropi-frontend-editing-flex
+                        {% sw_include '@RopiFrontendEditing/content-editor/elements/common/general-classes.html.twig' with { defaultDisplay: 'flex' } %}
+                    {% endif %}
+                   {% endblock %}"
+    style="{% block element_style %}{% endblock %}">
+
+    {% block element_inner %}
+
+        <div class="ropi-frontend-editing-content-element-image-container__wrap
+                    ropi-frontend-editing-aspect-ratio
+                    d-flex
+                    {% if fixedAspectRatio %}flex-grow-0{% else %}flex-grow-1{% endif %}"
+             style="{% block wrap_style %}
+                           padding-top: {{ paddingTop }}%;
+                           {% if data.configuration.minHeight > 0 %}min-height: {{ data.configuration.minHeight }}px;{% endif %}
+                        {% endblock %}">
+
+            <div class="ropi-frontend-editing-image-objectfit ropi-frontend-editing-aspect-ratio__element">
+                {% sw_include '@RopiFrontendEditing/content-editor/elements/common/image.html.twig' with {
+                    additionalClass: 'ropi-frontend-editing-content-element-image-container__image ropi-frontend-editing-aspect-ratio__element ropi-frontend-editing-image--' ~ data.configuration.imageScalingBehavior,
+                    imageMedia: imageMedia,
+                    alt: data.configuration.alt
+                } %}
+            </div>
+
+            <div
+                class="ropi-frontend-editing-content-element-image-container__content-area
+                       ropi-frontend-editing-flex
+                       ropi-frontend-editing-flex--align-{{ data.configuration.verticalAlign ? data.configuration.verticalAlign : 'center' }}"
+                data-ropi-content-area="content"
+                style="{% if paddingTop %}margin-top: {{ 0 - paddingTop }}%;{% endif %}">
+                {{ ropi_frontend_editing_render_content_area('content', data.children) }}
+            </div>
+
+            {% if(data.configuration.href|trim) %}
+                <a class="ropi-frontend-editing-link--layer"
+                   {% if data.configuration.href %}href="{{ data.configuration.href }}"{% endif %}
+                   {% if data.configuration.target %}target="{{ data.configuration.target }}" rel="noopener"{% endif %}>
+                </a>
+            {% endif %}
+
+        </div>
+
+    {% endblock %}
+</div>
+{% endblock %}
+

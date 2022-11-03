@@ -1,0 +1,19 @@
+{% block element %}
+
+<div
+    {% sw_include '@RopiFrontendEditing/content-editor/elements/common/editor-attributes.html.twig' %}
+    class="{% block element_class %}
+                ropi-frontend-editing-content-element-text
+                {% sw_include '@RopiFrontendEditing/content-editor/elements/common/general-classes.html.twig' %}
+                {% sw_include '@RopiFrontendEditing/content-editor/elements/common/text-color-class.html.twig' with {
+                    'textColor': data.configuration.textColor
+                } %}
+           {% endblock %}"
+    style="{% block element_style %}{% endblock %}">
+
+    {% block element_inner %}
+        <div data-ropi-content-editable="text">{{ data.contents.text|raw }}</div>
+    {% endblock %}
+
+</div>
+{% endblock %}

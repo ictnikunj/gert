@@ -1,0 +1,222 @@
+<style>
+    {% block login_style_inner %}
+
+    .ropi-errors,
+    .ropi-errors li {
+        display: block;
+        margin-top: 0;
+        margin-left: 0;
+        margin-right: 0;
+        padding: 0;
+        color: var(--ropi-color-error, red);
+        text-align: left;
+    }
+
+    @keyframes ropi-animation-blink {
+        25% { opacity: 0.5; }
+        50% { opacity: 1; }
+        75% { opacity: 0.5; }
+        100% { opacity: 1; }
+    }
+
+    .ropi-errors li {
+        animation: ropi-animation-blink 1s ease;
+        opacity: 1;
+        transform: translateZ(0);
+    }
+
+    #ropi-login-form {
+        max-width: 320px;
+        width: 100%;
+        padding: var(--ropi-grid-outer-gutter-height, 0.75rem)
+                 var(--ropi-grid-outer-gutter-width, 1rem);
+        box-sizing: border-box;
+    }
+
+    {% endblock %}
+</style>
+<form id="ropi-login-form" onsubmit="return false;">
+    <img src="{{ asset("bundles/administration/static/img/dashboard-logo.svg") }}" style="max-width: 100px; display: block; margin: 0 auto;">
+    <h2 style="font-size: var(--ropi-font-size-l, 1.25rem); margin: var(--ropi-grid-outer-gutter-width, 1rem) 0;">Frontend Editing</h2>
+    <div class="input-container">
+        <input id="ropi-frontend-editing-username" type="text" name="username" placeholder="Username" />
+    </div>
+    <div id="input-container">
+        <input id="ropi-frontend-editing-password" type="password" name="password" placeholder="Password" />
+    </div>
+    <div>
+        <ul class="ropi-errors ropi-margin-b">
+            <ropi-for id="ropi-login-errors" as="error">
+                <li data-error="title"></li>
+            </ropi-for>
+        </ul>
+        <ropi-button disabled focusable id="ropi-login-button">Login</ropi-button>
+    </div>
+    <ropi-hint class="ropi-margin-t">
+        Log in with your <a href="{{ administrationUrl }}" target="_blank" rel="noopener">Shopware Administration</a> data.
+    </ropi-hint>
+</form>
+<script type="module">
+    import Environment from '{{ asset("bundles/ropifrontendediting/content-editor/js/components/ropi/frontend-editing/environment.js?v=1637255330") }}';
+    import TypeUtil from '{{ asset("bundles/ropifrontendediting/content-editor/js/components/ropi/type-util/type-util.js?v=1637255330") }}';
+    import HttpRequest from '{{ asset("bundles/ropifrontendediting/content-editor/js/components/ropi/http-message/http-request.js?v=1637255330") }}';
+    import HttpError from '{{ asset("bundles/ropifrontendediting/content-editor/js/components/ropi/http-message/http-error.js?v=1637255330") }}';
+    import HttpClient from '{{ asset("bundles/ropifrontendediting/content-editor/js/components/ropi/http-client/http-client.js?v=1637255330") }}';
+
+    let httpClient = new HttpClient();
+
+    let editorView = document.getElementById('ropi-view-editor');
+    let loginButton = document.getElementById('ropi-login-button');
+    let loginErrors = document.getElementById('ropi-login-errors');
+    let usernameInput = document.getElementById('ropi-frontend-editing-username');
+    let passwordInput = document.getElementById('ropi-frontend-editing-password');
+    let tokenRefreshInterval = null;
+    let contentEditor = null;
+
+    let authenticationRequest = (grantType, data) => {
+        data.grant_type = grantType;
+        data.client_id = 'administration';
+        data.scopes = 'write';
+
+        let request = (new HttpRequest('{{ loginUrl }}'))
+            .setMethod(HttpRequest.METHOD_POST)
+            .setHeaders({
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }).setBody(JSON.stringify(data));
+
+        return new Promise((resolve, reject) => {
+            httpClient.send(request)
+                .then(JSON.parse)
+                .then((bearerAuth) => {
+                    Environment.bearerAuth.expiry = Math.floor(Date.now() / 1000) + bearerAuth.expires_in;
+                    Environment.bearerAuth.refresh = bearerAuth.refresh_token;
+                    Environment.bearerAuth.access = bearerAuth.access_token;
+
+                    Environment.persistBearerAuth();
+
+                    if (contentEditor) {
+                        return;
+                    }
+
+                    contentEditor = editorView.querySelector('ropi-content-editor');
+                    if (!contentEditor) {
+                        let request = Environment.createAuthenticatedRequest('{{ editorUrl }}');
+
+                        httpClient.send(request).then((httpResponse) => {
+                            editorView.innerHTML = httpResponse.getBody();
+                            editorView.dispatchEvent(new CustomEvent('loaded'));
+                        });
+                    }
+                }).then(() => {
+                    document.body.classList.remove('ropi-unauthenticated');
+                    document.body.classList.add('ropi-authenticated');
+                    resolve();
+                }).catch((error) => {
+                    document.body.classList.remove('ropi-authenticated');
+                    document.body.classList.add('ropi-unauthenticated');
+                    reject(error);
+                });
+        });
+    };
+
+    let refreshAuthenticationRequest = () => {
+        return new Promise((resolve, reject) => {
+            authenticationRequest('refresh_token', {refresh_token: Environment.bearerAuth.refresh})
+                .then(resolve)
+                .catch(() => {
+                    reject();
+                });
+        });
+    };
+
+    let startTokenRefreshInterval = () => {
+        if (tokenRefreshInterval) {
+            clearInterval(tokenRefreshInterval);
+        }
+
+        tokenRefreshInterval = setInterval(() => {
+            refreshAuthenticationRequest().then(() => {}).catch(() => {});
+        }, 60 * 1000);
+    };
+
+    let canSubmit = function() {
+        let username = usernameInput.value.trim();
+        let password = passwordInput.value.trim();
+
+        return username && password;
+    }
+
+    let updateSubmitButton = function() {
+        if (canSubmit()) {
+            loginButton.removeAttribute('disabled');
+        } else {
+            loginButton.setAttribute('disabled', 'disabled');
+        }
+    };
+
+    let submit = function() {
+        if (!canSubmit()) {
+            return;
+        }
+
+        loginButton.setAttribute('loading', '');
+
+        authenticationRequest('password', {
+            username: usernameInput.value.trim(),
+            password: passwordInput.value.trim()
+        }).then(() => {
+            usernameInput.value = '';
+            passwordInput.value = '';
+
+            loginButton.removeAttribute('loading');
+
+            startTokenRefreshInterval();
+        }).catch((error) => {
+            loginButton.removeAttribute('loading');
+
+            let errors = [];
+
+            if (error instanceof HttpError && error.getHttpResponse()) {
+                try {
+                    let response = JSON.parse(error.getHttpResponse().getBody());
+                    if (TypeUtil.isArray(response.errors)) {
+                        errors = response.errors;
+                    }
+                } catch (e) {
+                    // Fail silently
+                }
+            }
+
+            if (errors.length === 0) {
+                errors.push({
+                    'title': String(error)
+                });
+            }
+
+            loginErrors.each = errors;
+        });
+    };
+
+    document.getElementById('ropi-login-form').addEventListener('keypress', (event) => {
+        if (event.keyCode === 13) {
+            event.preventDefault();
+            submit();
+        }
+    });
+
+    usernameInput.addEventListener('keyup', updateSubmitButton);
+    passwordInput.addEventListener('keyup', updateSubmitButton);
+
+    loginButton.addEventListener('click', () => {
+        submit();
+    });
+
+    refreshAuthenticationRequest()
+        .then(() => {
+            startTokenRefreshInterval();
+        })
+        .catch(() => {
+            // Silent fail
+        });
+</script>

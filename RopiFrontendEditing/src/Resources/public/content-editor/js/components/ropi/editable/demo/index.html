@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+      <script type="module">
+        import '../../demo-element/demo-element.js?v=1637255330';
+      </script>
+
+      <title>editable demo</title>
+  </head>
+  <body>
+    <ropi-demo>
+      <div id="textarea">
+        <ul>
+          <li>You can edit me on double click/double tap<br /></li>
+          <li>You can <b>edit</b> <a href="#">me</a></li>
+        </ul>
+      </div>
+      <script type="module">
+        import Editable from '../editable.js?v=1637255330';
+        (new Editable(
+          document.getElementById('textarea')
+        )).enable();
+      </script>
+    </ropi-demo>
+  </body>
+</html>

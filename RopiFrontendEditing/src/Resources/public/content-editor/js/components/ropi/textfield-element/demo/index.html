@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+      <script type="module">
+        import '../../demo-element/demo-element.js?v=1637255330';
+        import '../../styles/styles.js?v=1637255330';
+        import '../../material-icon-element/material-icon-sprite.js?v=1637255330';
+        import '../textfield-element.js?v=1637255330';
+      </script>
+
+      <title>textfield-element demo</title>
+  </head>
+  <body>
+    <ropi-demo>
+      <ropi-textfield>
+        <div slot="placeholder">Lorem Ipsum</div>
+      </ropi-textfield>
+      <ropi-textfield value="A prefilled value">
+        <div slot="placeholder">Prefilled</div>
+      </ropi-textfield>
+      <ropi-textfield disabled>
+        <div slot="placeholder">Disabled</div>
+      </ropi-textfield>
+      <ropi-textfield disabled value="A prefilled value">
+        <div slot="placeholder">Disabled</div>
+      </ropi-textfield>
+      <ropi-textfield id="select" type="select" items="list.json" dataproperty="data" valueproperty="id" labelformat="Label: {{label}}" onupdatesuggest="console.log(event.detail.request)">
+        <div slot="placeholder">Select</div>
+      </ropi-textfield>
+      <script>
+        document.getElementById('select').addEventListener('change', (event) => {
+          console.log(event.currentTarget.value);
+        });
+      </script>
+    </ropi-demo>
+<!--
+    <ropi-demo name="Color support">
+      <ropi-textfield style="--ropi-textfield-color: var(--ropi-color-purple);">
+        <div slot="placeholder">purple</div>
+      </ropi-textfield>
+    </ropi-demo>-->
+  </body>
+</html>

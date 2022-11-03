@@ -1,0 +1,185 @@
+.shac {
+  position: relative;
+}
+
+.shac-menu {
+  margin-top: -1px;
+  overflow-y: auto;
+  width: 100%;
+}
+
+.shac-menu > .key-active > a {
+  background-color: #f5f5f5;
+}
+
+.shac-menu > .key-active {
+  background-color: #f7f8f9;
+}
+
+.shac-item {
+  cursor: pointer;
+  white-space: normal;
+}
+
+.mfb-rating {
+  display: inline-flex;
+  position: relative;
+  flex-direction: row-reverse;
+
+  input {
+    display: none;
+
+    &:checked {
+      ~ label {
+        color: $warning;
+
+        &::before {
+          position: absolute;
+          left: 0;
+          color: $warning;
+        }
+      }
+    }
+  }
+
+  label {
+    padding: 0;
+    margin: 0;
+    font-size: 2em;
+    cursor: pointer;
+    color: transparent;
+    text-shadow: 0 0 0 $border-color;
+    transition: all .3s;
+
+    &:hover {
+      color: transparent !important;
+      text-shadow: 0 0 0 $primary !important;
+
+      ~ label {
+        color: transparent !important;
+        text-shadow: 0 0 0 $primary;
+      }
+    }
+  }
+}
+
+.moorl-form-builder-media {
+  display: flex;
+  position: relative;
+  text-align: center;
+  justify-content: center;
+
+  img {
+    max-width: 100%;
+    max-height: 100px;
+  }
+
+  button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  &:hover button {
+    opacity: 1;
+  }
+}
+
+.moorl-captcha {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: auto;
+}
+
+[data-form-repeater] {
+  .list-group-item {
+    background: transparent;
+
+    .form-row {
+      &:last-child {
+        .form-group {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+}
+
+[data-moorl-form-builder] {
+  .form-tooltip {
+    font-size: 10px;
+    color: $body-bg;
+    background-color: $primary;
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    text-align: center;
+    display: inline-block;
+    float: right;
+    margin-left: 10px;
+  }
+
+  button[type=submit] {
+    i {
+      display: none;
+    }
+
+    &.loading i {
+      display: inline-block;
+    }
+  }
+}
+
+.custom-file {
+  .custom-file-label {
+    &::after {
+      content: attr(title);
+    }
+  }
+}
+
+.moorl-form-builder-image-selection {
+  .custom-control {
+    padding-left: 0;
+    padding-right: 10px;
+    padding-bottom: 10px;
+
+    .custom-control-input {
+      display: none;
+    }
+
+    .custom-control-label {
+      &:before,
+      &:after {
+        content: none;
+      }
+
+      padding: 5px;
+      border-radius: $border-radius;
+      border: 3px solid $border-color;
+      transition: all .3s;
+      display: flex;
+      flex-wrap: wrap;
+      position: relative;
+      text-align: center;
+      justify-content: center;
+
+      img {
+        max-width: 100%;
+        max-height: 100px;
+      }
+    }
+
+    .custom-control-input:checked + .custom-control-label {
+      border: 3px solid $primary;
+    }
+  }
+}
+
+@include media-breakpoint-up(sm) {
+  .moorl-captcha {
+    grid-template-columns: auto auto 1fr;
+  }
+}

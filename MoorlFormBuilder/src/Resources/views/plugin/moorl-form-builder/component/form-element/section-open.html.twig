@@ -1,0 +1,13 @@
+{% if form.bootstrapGrid %}
+    <div class="{{ formElement.behaviourClass }}">
+{% endif %}
+
+<div aria-roledescription="{{ formElement.type }}"
+     data-form-conditions='{{ formConditions }}'
+     class="{{ formElement.cssClass }}"
+     id="{{ formElement.cssId }}">
+    {% include(template_from_string(formElement.html)) %}
+
+    {% if form.bootstrapGrid %}
+        <div class="{{ form.bootstrapRow }}">
+    {% endif %}

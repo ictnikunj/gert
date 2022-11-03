@@ -1,0 +1,8 @@
+{% block sw_product_detail_content_tabs_additional %}
+    {% parent %}
+
+    <sw-tabs-item v-if="product"
+                  :route="{ name: 'sw.product.detail.fb' }">
+        {{ $tc('moorl-form-builder.general.mainMenuItemGeneral') }}
+    </sw-tabs-item>
+{% endblock %}

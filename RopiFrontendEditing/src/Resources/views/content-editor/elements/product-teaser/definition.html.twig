@@ -1,0 +1,107 @@
+{% block definition %}
+<ropi-content-element
+        type="RopiFrontendEditing/product-teaser"
+        icon="subtitles"
+        color="#9362ef"
+        group="{% trans %}ropi-frontend-editing.contentElement.definition.group.commerce{% endtrans %}"
+        name="{% trans %}ropi-frontend-editing.contentElement.definition.element.productTeaser{% endtrans %}"
+        languagespecificsettings="{% block languagespecificsettings %}alt,href{% endblock %}"
+        src="{{ path('ropi.frontend-editing.element.render') }}">
+    <template>
+        {% block settings_template %}
+        <ropi-tabs scrollable tablistposition="bottom">
+            {% block tab_general %}
+                <ropi-touchable slot="tab">{% trans %}ropi-frontend-editing.contentElement.definition.tab.general{% endtrans %}</ropi-touchable>
+            {% endblock %}
+            {% block tabpanel_general %}
+                <div slot="tabpanel">
+                    {% block tabpanel_general_inner %}
+
+                        {% block product %}
+                            {% sw_include '@RopiFrontendEditing/content-editor/elements/common/settings/product.html.twig' with {
+                                'name': 'product'
+                            } %}
+                        {% endblock %}
+
+                        {% block appearance %}
+                            <ropi-collapsible>
+                                <ropi-subheader slot="header">{% trans %}ropi-frontend-editing.contentElement.definition.subheader.appearance{% endtrans %}</ropi-subheader>
+                                <div slot="content">
+                                    {% block appearance_content %}
+
+                                        {% block appearance_checkbox_group %}
+                                            <ropi-checkbox-group>
+
+                                                {% block appearance_checkbox_group_inner %}
+
+                                                    {% block appearance_checkbox_hide_badges %}
+                                                        <ropi-checkbox name="hideBadges" value="1">{% trans %}ropi-frontend-editing.contentElement.definition.label.hideBadges{% endtrans %}</ropi-checkbox>
+                                                    {% endblock %}
+
+                                                    {% block appearance_checkbox_hide_image %}
+                                                        <ropi-checkbox name="hideImage" value="1">{% trans %}ropi-frontend-editing.contentElement.definition.label.hideImage{% endtrans %}</ropi-checkbox>
+                                                    {% endblock %}
+
+                                                    {% block appearance_checkbox_hide_rating %}
+                                                        <ropi-checkbox name="hideRating" value="1">{% trans %}ropi-frontend-editing.contentElement.definition.label.hideRating{% endtrans %}</ropi-checkbox>
+                                                    {% endblock %}
+
+                                                    {% block appearance_checkbox_hide_name %}
+                                                        <ropi-checkbox name="hideName" value="1">{% trans %}ropi-frontend-editing.contentElement.definition.label.hideName{% endtrans %}</ropi-checkbox>
+                                                    {% endblock %}
+
+                                                    {% block appearance_checkbox_hide_description %}
+                                                        <ropi-checkbox name="hideDescription" value="1">{% trans %}ropi-frontend-editing.contentElement.definition.label.hideDescription{% endtrans %}</ropi-checkbox>
+                                                    {% endblock %}
+
+                                                    {% block appearance_checkbox_hide_price %}
+                                                        <ropi-checkbox name="hidePrice" value="1">{% trans %}ropi-frontend-editing.contentElement.definition.label.hidePrice{% endtrans %}</ropi-checkbox>
+                                                    {% endblock %}
+
+                                                    {% block appearance_checkbox_hide_actions %}
+                                                        <ropi-checkbox name="hideActions" value="1">{% trans %}ropi-frontend-editing.contentElement.definition.label.hideActions{% endtrans %}</ropi-checkbox>
+                                                    {% endblock %}
+
+                                                {% endblock %}
+
+                                            </ropi-checkbox-group>
+                                        {% endblock %}
+
+                                    {% endblock %}
+                                </div>
+                                </ropi-collapsible>
+
+                            {% block image_scaling_behavior %}
+                                {% sw_include '@RopiFrontendEditing/content-editor/elements/common/settings/image-scaling-behavior.html.twig' with {
+                                    'name': 'imageScalingBehavior'
+                                } %}
+                            {% endblock %}
+
+                        {% endblock %}
+
+                    {% endblock %}
+                </div>
+            {% endblock %}
+            {% block breakpoints_tabs %}
+                {% for breakpoint in breakpoints %}
+                    {% block tab_breakpoint %}
+                        <ropi-touchable slot="tab">{{ breakpoint.name }}</ropi-touchable>
+                    {% endblock %}
+                    {% block tabpanel_breakpoint %}
+                        <div slot="tabpanel">
+                            {% block tabpanel_breakpoint_inner %}
+
+                                    {% block general %}
+                                        {% sw_include '@RopiFrontendEditing/content-editor/elements/common/settings/general.html.twig' %}
+                                    {% endblock %}
+
+                            {% endblock %}
+                        </div>
+                    {% endblock %}
+                {% endfor %}
+            {% endblock %}
+        </ropi-tabs>
+        {% endblock %}
+    </template>
+</ropi-content-element>
+{% endblock %}

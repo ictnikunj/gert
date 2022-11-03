@@ -1,0 +1,67 @@
+{% block element_acris_product_downloads %}
+    {% set config = element.translated.config %}
+    {% set fieldConfig = element.fieldConfig.elements %}
+    {% set downloads = element.data.product.extensions.acrisDownloads.elements %}
+
+    {% block element_acris_product_downloads_content %}
+        {% if downloads %}
+
+            <style>
+                #pd_{{ element.id }}.cms-element-acris-product-downloads-container {
+                {% if config.backgroundColor.value %}
+                    background-color: {{ config.backgroundColor.value }};
+                {% endif %}
+
+                {% if config.borderActive.value %}
+                    border: {{ config.borderSize.value }}px solid{{ config.borderColor.value }};
+                    border-radius: {{ config.borderRadius.value != '' ? config.borderRadius.value : '0' }}px;
+                {% endif %}
+                }
+
+                {% if config.paddingTop.value is same as ("pixel") %}
+                #pd_{{ element.id }}.cms-element-acris-product-downloads-container {
+                    padding-top: {{ config.paddingTopIndividual.value }}px;
+                }
+
+                {% endif %}
+
+                {% if config.paddingBottom.value is same as ("pixel") %}
+                #pd_{{ element.id }}.cms-element-acris-product-downloads-container {
+                    padding-bottom: {{ config.paddingBotIndividual.value }}px;
+                }
+
+                {% endif %}
+
+                {% if config.paddingLeft.value is same as ("pixel") %}
+                #pd_{{ element.id }}.cms-element-acris-product-downloads-container {
+                    padding-left: {{ config.paddingLeftIndividual.value }}px;
+                }
+
+                {% endif %}
+
+                {% if config.paddingRight.value is same as ("pixel") %}
+                #pd_{{ element.id }}.cms-element-acris-product-downloads-container {
+                    padding-right: {{ config.paddingRightIndividual.value }}px;
+                }
+
+                {% endif %}
+            </style>
+
+            <div id="pd_{{ element.id }}" class="cms-element-acris-product-downloads-container
+ {% if config.paddingTop.value != "no" and config.paddingTop.value != "pixel" %} {{ config.paddingTop.value }}{% endif %}
+             {% if config.paddingBot.value != "no" and config.paddingBot.value != "pixel" %} {{ config.paddingBot.value }}{% endif %}
+             {% if config.paddingLeft.value != "no" and config.paddingLeft.value != "pixel" %} {{ config.paddingLeft.value }}{% endif %}
+             {% if config.paddingRight.value != "no" and config.paddingRight.value != "pixel" %} {{ config.paddingRight.value }}{% endif %}">
+                {% if config.showHeadline.value %}
+                    <div class="h4 product-detail-downloads-title">
+                        {{ "detail.acrisProductDownloadTitle"|trans }}
+                    </div>
+                {% endif %}
+                {% sw_include '@Storefront/storefront/page/product-detail/acris-downloads/all-downloads.html.twig' with {
+                    downloads: downloads,
+                    cmsElement: true
+                } %}
+            </div>
+        {% endif %}
+    {% endblock %}
+{% endblock %}

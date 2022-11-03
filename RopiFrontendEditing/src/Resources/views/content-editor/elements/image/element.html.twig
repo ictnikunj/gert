@@ -1,0 +1,30 @@
+{% block element %}
+
+{% if(data.configuration.image and data.configuration.image.id) %}
+    {% set imageMediaCollection = searchMedia([data.configuration.image.id], context.context) %}
+    {% set imageMedia = imageMediaCollection.get(data.configuration.image.id) %}
+{% else %}
+    {% set imageMedia = null %}
+{% endif %}
+
+<div
+    {% sw_include '@RopiFrontendEditing/content-editor/elements/common/editor-attributes.html.twig' %}
+    class="{% block element_class %}
+                ropi-frontend-editing-content-element-image
+                {% sw_include '@RopiFrontendEditing/content-editor/elements/common/general-classes.html.twig' %}
+           {% endblock %}"
+    style="{% block element_style %}{% endblock %}">
+    {% block element_inner %}
+        <a class="ropi-frontend-editing-link--block"
+           {% if data.configuration.href %}href="{{ data.configuration.href }}"{% endif %}
+           {% if data.configuration.target %}target="{{ data.configuration.target }}" rel="noopener"{% endif %}>
+
+            {% sw_include '@RopiFrontendEditing/content-editor/elements/common/image.html.twig' with {
+                additionalClass: 'ropi-frontend-editing-ie--auto-height',
+                imageMedia: imageMedia,
+                alt: data.configuration.alt
+            } %}
+        </a>
+    {% endblock %}
+</div>
+{% endblock %}

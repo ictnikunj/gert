@@ -1,0 +1,111 @@
+{
+    "swag-social-shopping": {
+        "networks": {
+            "base": {
+                "titleGeneralSettings": "Generelle innstillinger",
+                "titleOptions": "Alternativer",
+                "storefront": "Storefront",
+                "storefrontDomain": "Storefront domene",
+                "storefrontDomainCurrency": "Storefront valuta",
+                "productStream": "Dynamisk produktgruppe",
+                "createDynamicProductGroup": "Opprett dynamisk produktgruppe",
+                "tabErrors": "Upubliserte produkter",
+                "tabIntegration": "integrasjon",
+                "intervalHelpText": "Intervallet er begrenset av kjøreintervallet for den planlagte oppgaven «ProductExportGenerateTask». Dette er satt som standard til en gang per dag.",
+                "template": {
+                    "tabTemplate": "Mal",
+                    "inputHeaderLabel": "Topptekst rad",
+                    "inputBodyLabel": "Produktrad",
+                    "inputFooterLabel": "Bunntekst rad",
+                    "buttonTestLabel": "Test mal",
+                    "buttonPreviewLabel": "Generer forhåndsvisning"
+                }
+            },
+            "facebook": {
+                "titleFacebookSettings": "Flere innstillinger",
+                "name": "Facebook",
+                "description": "Selg produkter på en Facebook-side",
+                "includeVariants": "Importer varianter som dedikerte produkter",
+                "interval": "intervall",
+                "generateByCronjob": "Generere via planleggeren",
+                "googleProductCategoryLinkLabel": "Support side til google produktkategorier",
+                "manufacturer": "butikkvise AG",
+                "descriptionLong": "Opprett en salgskanal for å selge produktene dine på Facebook."
+            },
+            "instagram": {
+                "titleInstagramSettings": "Flere innstillinger",
+                "name": "Instagram",
+                "description": "Selg produkter på en Instagram-kanal",
+                "includeVariants": "Importer varianter som dedikerte produkter",
+                "interval": "intervall",
+                "generateByCronjob": "Generere via planleggeren",
+                "googleProductCategoryLinkLabel": "Support side til google produktkategorier",
+                "manufacturer": "butikkvise AG",
+                "descriptionLong": "Opprett en salgskanal for å selge produktene dine på Instagram."
+            },
+            "google-shopping": {
+                "name": "Google Shopping",
+                "description": "Selg produkter via Google Shopping",
+                "titleGoogleShoppingSettings": "Flere innstillinger",
+                "titleGoogleShoppingGuide": "Veiledning",
+                "googleProductCategoryLinkLabel": "Support side til google produktkategorier",
+                "includeVariants": "Importer varianter som dedikerte produkter",
+                "interval": "intervall",
+                "generateByCronjob": "Generere via planleggeren",
+                "manufacturer": "butikkvise AG",
+                "descriptionLong": "Opprett en salgskanal for å selge produktene dine på Google Shopping."
+            },
+            "pinterest": {
+                "titlePinterestSettings": "Flere innstillinger",
+                "titlePinterestGuide": "Veiledning",
+                "validationButtonTitle": "Valider på Pinterest",
+                "name": "Pinterest",
+                "description": "Selg produkter via Pinterest",
+                "manufacturer": "butikkvise AG",
+                "descriptionLong": "Opprett en salgskanal for å selge produktene dine på Pinterest."
+            }
+        },
+        "validation": {
+            "titleValidation": "Upubliserte produkter",
+            "buttonStartValidation": "Valider produkter",
+            "columns": {
+                "product": "Produkt",
+                "errors": "Feil"
+            },
+            "noErrorsFound": "Alle produkter er validert uten feil på {validationDate}",
+            "notValidatedYet": "Produktene er ikke validert ennå. Start valideringen for å se om alle produktene er gyldige.",
+            "validationShowedErrors": "Den siste valideringen resulterte i feil. Kontroller og rett feilene nedenfor, og start valideringen på nytt. Siste validering: {validationDate}",
+            "validationRunning": "Valideringen kjører for øyeblikket. Loggen oppdateres automatisk. Vent til valideringen er ferdig.",
+            "product-image": {
+                "no-image": "Dette produktet trenger et bilde"
+            },
+            "google-product-category-missing": "Dette produktet er knyttet til en kategori uten google-produktkategori"
+        },
+        "integration": {
+            "facebook": {
+                "introduction": {
+                    "title": "Slik: Oppsett og tilkobling",
+                    "description": "For å vise produkter på en Instagram-bedriftsside må du først opprette en Instagram-forretningskonto. Alt annet er forklart i trinnvis guide nedenfor."
+                }
+            },
+            "google-shopping": {
+                "introduction": {
+                    "title": "Slik: Oppsett og tilkobling"
+                }
+            },
+            "instagram": {
+                "introduction": {
+                    "title": "Slik: Oppsett og tilkobling",
+                    "description": "For å vise produkter på en facebook-bedriftsside må du først opprette en facebook-bedriftskonto. Alt annet er forklart i trinnvis guide nedenfor."
+                }
+            },
+            "pinterest": {
+                "introduction": {
+                    "title": "Slik: Oppsett og tilkobling",
+                    "description": "Denne salgskanalen genererer metadata, som lar deg vise produktene dine som en pin på Pinterest. Du finner mer informasjon om dette emnet i den trinnvise veiledningen nedenfor."
+                },
+                "stepByStep": "<li>Klikk på «Valider på Pinterest»</li><li>Logg inn eller opprett en konto på <a href=\"https://pinterest.com\">Pinterest</a></li><li>Skriv inn en produkt-URL fra butikken og klikk på «Valider»</li>"
+            }
+        }
+    }
+}

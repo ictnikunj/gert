@@ -1,0 +1,112 @@
+{# Set unique DOM Id #}
+{% if not uniqueFormId %}
+    {% set uniqueFormId = form.id %}
+{% endif %}
+
+{# Gathering media #}
+{% set formElementsMediaIds = [] %}
+{% for formElement in form.data %}
+    {% if formElement.value %}
+        {% if formElement.type == 'upload' %}
+            {% set formElementsMediaIds = formElementsMediaIds|merge([formElement.value]) %}
+        {% endif %}
+    {% endif %}
+    {% if formElement.useImageSelection %}
+        {% for formElementOption in formElement.options %}
+            {% if formElementOption.mediaId %}
+                {% set formElementsMediaIds = formElementsMediaIds|merge([formElementOption.mediaId]) %}
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+{% endfor %}
+{% set mediaCollection = searchMedia(formElementsMediaIds, context.context) %}
+
+{% set lineBreak = "</div><div class='#{form.bootstrapRow}'>" %}
+
+{% for formElement in form.formElements %}
+    {% if not formElement.pseudo %}
+        {% set formElementName = formElement.name %}
+        {% set formElementId = "mfb-#{formElement.name}-#{uniqueFormId}" %}
+
+        {# Rename if Element in Repeater #}
+        {% if formRepeaterName %}
+            {% set formElementName = "#{formRepeaterName}[repeaterCount][#{formElement.name}]" %}
+            {% set formElementId = "mfb-#{formRepeaterName}-repeaterCount-#{formElement.name}-#{uniqueFormId}" %}
+        {% endif %}
+
+        {% set formElementLabel = formElement.label[app.request.locale] %}
+        {% set formElementPrepend = formElement.prepend[app.request.locale] %}
+        {% set formElementAppend = formElement.append[app.request.locale] %}
+        {% set formElementPlaceholder = formElement.placeholder[app.request.locale] %}
+        {% set formElementDefaultValue = formElement.defaultValue[app.request.locale] %}
+        {% set formElementTooltip = formElement.tooltip[app.request.locale] %}
+        {% set formConditions = formElement.conditions|json_encode|raw %}
+
+        {% if formElement.value %}
+            {% set formElementValue = formElement.value %}
+        {% elseif formValues[formElement.name] %}
+            {% set formElementValue = formValues[formElement.name] %}
+        {% elseif formElementDefaultValue %}
+            {% if formElementDefaultValue|split(';')|length > 1 %}
+                {% set formElementValue = formElementDefaultValue|split(';') %}
+            {% else %}
+                {% if formElementDefaultValue|first == "{" %}
+                    {# example: formElementDefaultValue = #{context.customer.email} #}
+                    {% set formElementValue %}{% include(template_from_string(formElementDefaultValue)) %}{% endset %}
+                {% else %}
+                    {% set formElementValue = formElementDefaultValue %}
+                {% endif %}
+            {% endif %}
+        {% else %}
+            {% set formElementValue = null %}
+        {% endif %}
+
+        {% if formElement.type == 'html' and formElement.noWrap %}
+            {% sw_include "@MoorlFormBuilder/plugin/moorl-form-builder/component/form-element/#{formElement.type}.html.twig" ignore missing %}
+        {% elseif formElement.type == 'repeater-open' %}
+            {% set formRepeaterName = formElement.name %}
+            {% sw_include "@MoorlFormBuilder/plugin/moorl-form-builder/component/form-element/#{formElement.type}.html.twig" ignore missing %}
+        {% elseif formElement.type == 'repeater-close' %}
+            {% set formRepeaterName = null %}
+            {% sw_include "@MoorlFormBuilder/plugin/moorl-form-builder/component/form-element/#{formElement.type}.html.twig" ignore missing %}
+        {% elseif formElement.type == 'section-open' %}
+            {% sw_include "@MoorlFormBuilder/plugin/moorl-form-builder/component/form-element/#{formElement.type}.html.twig" ignore missing %}
+        {% elseif formElement.type == 'section-close' %}
+            {% sw_include "@MoorlFormBuilder/plugin/moorl-form-builder/component/form-element/#{formElement.type}.html.twig" ignore missing %}
+        {% else %}
+            {% if form.bootstrapGrid %}
+                <div class="{{ formElement.behaviourClass }} {{ formElement.imageClass }}"
+                     aria-roledescription="{{ formElement.type }}"
+                     data-form-conditions='{{ formConditions }}'>
+                    {% if formElement.useCustomTemplate %}
+                        {% if formElement.customTemplatePath %}
+                            {% sw_include formElement.customTemplatePath ignore missing %}
+                        {% elseif formElement.customTemplate %}
+                            {% include(template_from_string(formElement.customTemplate)) %}
+                        {% endif %}
+                    {% else %}
+                        {% sw_include "@MoorlFormBuilder/plugin/moorl-form-builder/component/form-element/#{formElement.type}.html.twig" ignore missing %}
+                    {% endif %}
+                </div>
+                {% if formElement.lineBreak %}{{ lineBreak|raw }}{% endif %}
+            {% else %}
+                {% set element %}
+                    <div class="{{ formElement.imageClass }}"
+                         aria-roledescription="{{ formElement.type }}"
+                         data-form-conditions='{{ formElement.conditions|json_encode|raw }}'>
+                        {% if formElement.useCustomTemplate %}
+                            {% if formElement.customTemplatePath %}
+                                {% sw_include formElement.customTemplatePath ignore missing %}
+                            {% elseif formElement.customTemplate %}
+                                {% include(template_from_string(formElement.customTemplate)) %}
+                            {% endif %}
+                        {% else %}
+                            {% sw_include "@MoorlFormBuilder/plugin/moorl-form-builder/component/form-element/#{formElement.type}.html.twig" ignore missing %}
+                        {% endif %}
+                    </div>
+                {% endset %}
+                {% include(template_from_string(formElement.htmlWrapper)) %}
+            {% endif %}
+        {% endif %}
+    {% endif %}
+{% endfor %}

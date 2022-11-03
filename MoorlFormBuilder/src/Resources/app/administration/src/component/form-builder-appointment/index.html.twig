@@ -1,0 +1,57 @@
+<sw-entity-listing
+        sort-by="start"
+        sort-direction="ASC"
+        :repository="repository"
+        :items="items"
+        :columns="columns"
+        :show-selection="false"
+        :allow-column-edit="false"
+        :full-page="false"
+>
+    <template slot="column-start" slot-scope="{ item }">
+        {{ item.start | date({
+            hour: '2-digit',
+            minute: '2-digit'
+        }) }}
+    </template>
+
+    <template slot="column-customer.lastName" slot-scope="{ item }">
+        <router-link
+                v-if="item.customer"
+                :to="{ name: 'sw.customer.detail', params: { id: item.customerId } }"
+                class="sw-data-grid__cell-value"
+        >
+            {{ item.customer.lastName }}
+        </router-link>
+    </template>
+
+    <template slot="column-order.orderNumber" slot-scope="{ item }">
+        <router-link
+                v-if="item.order"
+                :to="{ name: 'sw.order.detail', params: { id: item.orderId } }"
+                class="sw-data-grid__cell-value"
+        >
+            {{ item.order.orderNumber }}
+        </router-link>
+    </template>
+
+    <template slot="column-product.name" slot-scope="{ item }">
+        <router-link
+                v-if="item.product"
+                :to="{ name: 'sw.product.detail', params: { id: item.productId } }"
+                class="sw-data-grid__cell-value"
+        >
+            {{ item.product.name }}
+        </router-link>
+    </template>
+
+    <template slot="column-form.name" slot-scope="{ item }">
+        <router-link
+                v-if="item.form"
+                :to="{ name: 'moorl.form.builder.detail', params: { id: item.formId } }"
+                class="sw-data-grid__cell-value"
+        >
+            {{ item.form.name }}
+        </router-link>
+    </template>
+</sw-entity-listing>

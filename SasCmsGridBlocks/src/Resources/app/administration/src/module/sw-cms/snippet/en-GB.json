@@ -1,0 +1,53 @@
+{
+    "sas-cms-grid": {
+        "blocks": {
+            "grid": {
+                "category": {
+                    "label": "Grid"
+                },
+                "oneColumn": {
+                    "label": "Full width"
+                },
+                "twoColumn": {
+                    "label": "Two columns"
+                },
+                "threeColumn": {
+                    "label": "Three columns"
+                },
+                "fourColumn": {
+                    "label": "Four columns"
+                },
+                "sixColumn": {
+                    "label": "Six columns"
+                },
+                "3-6-3": {
+                    "label": "3-6-3 columns"
+                },
+                "3-3-6": {
+                    "label": "3-3-6 columns"
+                },
+                "6-3-3": {
+                    "label": "6-3-3 columns"
+                },
+                "2-8-2": {
+                    "label": "2-8-2 column"
+                },
+                "3-9": {
+                    "label": "3-9 column"
+                },
+                "9-3": {
+                    "label": "9-3 column"
+                },
+                "4-8": {
+                    "label": "4-8 column"
+                },
+                "8-4": {
+                    "label": "8-4 column"
+                },
+                "fiveColumn": {
+                    "label": "Five columns"
+                }
+            }
+        }
+    }
+}

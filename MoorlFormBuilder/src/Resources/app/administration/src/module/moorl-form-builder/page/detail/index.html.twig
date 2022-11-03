@@ -1,0 +1,726 @@
+<sw-page class="moorl-form-builder-detail">
+    <template slot="language-switch">
+        <sw-language-switch @on-change="onChangeLanguage"></sw-language-switch>
+    </template>
+
+    <template slot="smart-bar-actions">
+        <sw-button :routerLink="{ name: 'moorl.form.builder.list' }">
+            {{ $tc('moorl-form-builder.buttons.cancelButtonText') }}
+        </sw-button>
+
+        <sw-button-process
+            :isLoading="isLoading"
+            :processSuccess="processSuccess"
+            variant="primary"
+            @process-finish="saveFinish"
+            @click="onClickSave">
+            {{ $tc('moorl-form-builder.buttons.saveButtonText') }}
+        </sw-button-process>
+    </template>
+
+    <template slot="content" v-if="!isLoading && locale">
+        <div class="moorl-form-builder-detail-general">
+            {% block form %}
+                <moorl-collapse :label="$tc('moorl-form-builder.general.generalSettings')"
+                                :expandOnLoading="true"
+                                key="generalSettings">
+                    <template #content>
+                        <sw-field :label="$tc('moorl-form-builder.properties.action')"
+                                  :placeholder="$tc('moorl-form-builder.placeholder.action')"
+                                  :helpText="$tc('moorl-form-builder.tooltips.action')"
+                                  v-model="form.action"></sw-field>
+
+                        <sw-field :label="$tc('moorl-form-builder.properties.name')"
+                                  :required="true"
+                                  v-model="form.name"></sw-field>
+
+                        <sw-field :label="$tc('moorl-form-builder.properties.label')"
+                                  v-model="form.label[locale.code]"></sw-field>
+
+                        <sw-select-field :label="$tc('moorl-form-builder.properties.type')"
+                                         :helpText="$tc('moorl-form-builder.tooltips.type')"
+                                         @change="configureDefaults"
+                                         v-model="form.type">
+                            <option value="cms">{{ $tc('moorl-form-builder.options.type.cms') }}</option>
+                            <option value="snippet">{{ $tc('moorl-form-builder.options.type.snippet') }}</option>
+                            <option value="customerAccountOverview">{{ $tc('moorl-form-builder.options.type.customerAccountOverview') }}</option>
+                            <option value="customerAccountProfile">{{ $tc('moorl-form-builder.options.type.customerAccountProfile') }}</option>
+                            <option value="customerAccountOrder">{{ $tc('moorl-form-builder.options.type.customerAccountOrder') }}</option>
+                            <option value="customerAccountPaymentMethod">{{ $tc('moorl-form-builder.options.type.customerAccountPaymentMethod') }}</option>
+                            <option value="checkoutFinish">{{ $tc('moorl-form-builder.options.type.checkoutFinish') }}</option>
+                            <option value="customerRegister">{{ $tc('moorl-form-builder.options.type.customerRegister') }}</option>
+                            <option value="cartLineItem">{{ $tc('moorl-form-builder.options.type.cartLineItem') }}</option>
+                            <option value="productRequest">{{ $tc('moorl-form-builder.options.type.productRequest') }}</option>
+                            <option value="orderRequest">{{ $tc('moorl-form-builder.options.type.orderRequest') }}</option>
+                            <option value="cartExtend">{{ $tc('moorl-form-builder.options.type.cartExtend') }}</option>
+                        </sw-select-field>
+
+                        <sw-field type="switch"
+                                  bordered
+                                  :label="$tc('moorl-form-builder.properties.active')"
+                                  v-model="form.active"></sw-field>
+
+                        <sw-entity-single-select
+                                :label="$tc('moorl-form-builder.properties.salesChannel')"
+                                entity="sales_channel"
+                                show-clearable-button
+                                v-model="form.salesChannelId">
+                        </sw-entity-single-select>
+
+                        <sw-field :label="$tc('moorl-form-builder.properties.successMessage')"
+                                  :placeholder="$tc('moorl-form-builder.placeholder.successMessage')"
+                                  :helpText="$tc('moorl-form-builder.tooltips.successMessage')"
+                                  v-model="form.successMessage[locale.code]"></sw-field>
+
+                        <sw-field :label="$tc('moorl-form-builder.properties.submitText')"
+                                  :placeholder="$tc('moorl-form-builder.placeholder.submitText')"
+                                  :helpText="$tc('moorl-form-builder.tooltips.submitText')"
+                                  v-model="form.submitText[locale.code]"></sw-field>
+
+                        <sw-field type="switch"
+                                  bordered
+                                  :label="$tc('moorl-form-builder.properties.useCaptcha')"
+                                  v-model="form.useCaptcha"></sw-field>
+
+                        <sw-field type="switch"
+                                  bordered
+                                  :label="$tc('moorl-form-builder.properties.privacy')"
+                                  v-model="form.privacy"></sw-field>
+                    </template>
+                </moorl-collapse>
+
+                <template v-if="['productRequest','cartLineItem', 'cartExtend'].includes(form.type)">
+                    <moorl-collapse :label="$tc('moorl-form-builder.general.productRelations')"
+                                    key="productRelations">
+                        <template #content>
+                            <sw-entity-multi-select
+                                    :label="$tc('moorl-form-builder.properties.productRelations')"
+                                    :helpText="$tc('moorl-form-builder.tooltips.productRelations')"
+                                    labelProperty="productNumber"
+                                    v-model="form.products"
+                                    :context="searchContext"
+                                    :criteria="searchCriteria">
+                                <template #result-item="{ item, index }">
+                                    <slot name="result-item" v-bind="{ item, index }">
+                                        <li is="sw-select-result" v-bind="{ item, index }">
+                                            <span class="sw-select-result__result-item-text">
+                                                <sw-product-variant-info :variations="item.variation">
+                                                    {{ item.productNumber }} - {{ item.translated.name || item.name }}
+                                                </sw-product-variant-info>
+                                            </span>
+                                        </li>
+                                    </slot>
+                                </template>
+                            </sw-entity-multi-select>
+                        </template>
+                    </moorl-collapse>
+                </template>
+
+                <moorl-collapse :label="$tc('moorl-form-builder.general.dataSettings')"
+                                key="dataSettings">
+                    <template #content>
+                        <sw-field type="switch"
+                                  bordered
+                                  :label="$tc('moorl-form-builder.properties.insertHistory')"
+                                  v-model="form.insertHistory"></sw-field>
+
+                        <sw-field type="switch"
+                                  bordered
+                                  @change="configureDefaults"
+                                  :helpText="$tc('moorl-form-builder.tooltips.insertDatabase')"
+                                  :label="$tc('moorl-form-builder.properties.insertDatabase')"
+                                  v-model="form.insertDatabase"></sw-field>
+
+                        <sw-single-select v-model="form.relatedEntity"
+                                          @change="configureDefaults"
+                                          show-clearable-button
+                                          valueProperty="name"
+                                          labelProperty="name"
+                                          :helpText="$tc('moorl-form-builder.tooltips.relatedEntity')"
+                                          :options="getEntityOptions()"
+                                          :placeholder="$tc('sw-seo-url-template-card.general.placeholderSelectVariables')"
+                                          :label="$tc('moorl-form-builder.properties.relatedEntity')">
+                        </sw-single-select>
+
+                        <sw-select-field :label="$tc('moorl-form-builder.properties.maxFileSize')"
+                                         :helpText="$tc('moorl-form-builder.tooltips.maxFileSize')"
+                                         v-model="form.maxFileSize">
+                            <option value="10">10 MB</option>
+                            <option value="20">20 MB</option>
+                            <option value="30">20 MB</option>
+                            <option value="40">40 MB</option>
+                            <option value="50">50 MB</option>
+                            <option value="0">{{ $tc('moorl-form-builder.options.noLimit') }}</option>
+                        </sw-select-field>
+
+                        <sw-entity-single-select
+                                :helpText="$tc('moorl-form-builder.tooltips.mediaFolder')"
+                                :label="$tc('moorl-form-builder.properties.mediaFolder')"
+                                entity="media_folder"
+                                v-model="form.mediaFolderId">
+                        </sw-entity-single-select>
+                    </template>
+                </moorl-collapse>
+
+                <moorl-collapse class="content--single"
+                                :label="$tc('moorl-form-builder.general.emailSettings')"
+                                key="emailSettings">
+                    <template #content>
+                        <sw-field type="switch"
+                                  bordered
+                                  :label="$tc('moorl-form-builder.properties.sendMail')"
+                                  v-model="form.sendMail"></sw-field>
+
+                        <template v-if="form.sendMail">
+                            <sw-field :helpText="$tc('moorl-form-builder.tooltips.emailReceiver')"
+                                      :label="$tc('moorl-form-builder.properties.emailReceiver')"
+                                      :placeholder="$tc('moorl-form-builder.placeholder.emailReceiver')"
+                                      v-model="form.emailReceiver"></sw-field>
+
+                            <div class="link-field">
+                                <sw-entity-single-select
+                                        :label="$tc('moorl-form-builder.properties.mailTemplateId')"
+                                        entity="mail_template"
+                                        :criteria="mailTemplateCriteria"
+                                        labelProperty="description"
+                                        v-model="form.mailTemplateId">
+                                </sw-entity-single-select>
+
+                                <router-link v-if="form.mailTemplateId" target="_blank" rel="noopener" :to="{ name: 'sw.mail.template.detail', params: { id: form.mailTemplateId } }">
+                                    {{ $tc('sw-flow.modals.mail.fieldMailTemplateDetailLink') }}
+                                </router-link>
+                            </div>
+
+                            <sw-select-field :label="$tc('moorl-form-builder.properties.sendCopyType')"
+                                             v-model="form.sendCopyType">
+                                <option value="disabled">{{ $tc('moorl-form-builder.options.sendCopyType.disabled') }}</option>
+                                <option value="always">{{ $tc('moorl-form-builder.options.sendCopyType.always') }}</option>
+                                <option value="optionalChecked">{{ $tc('moorl-form-builder.options.sendCopyType.optionalChecked') }}</option>
+                                <option value="optionalUnchecked">{{ $tc('moorl-form-builder.options.sendCopyType.optionalUnchecked') }}</option>
+                            </sw-select-field>
+
+                            <template v-if="form.sendCopyType !== 'disabled'">
+                                <div class="link-field">
+                                    <sw-entity-single-select
+                                            :label="$tc('moorl-form-builder.properties.customerMailTemplateId')"
+                                            entity="mail_template"
+                                            :criteria="mailTemplateCriteria"
+                                            labelProperty="description"
+                                            v-model="form.customerMailTemplateId">
+                                    </sw-entity-single-select>
+
+                                    <router-link v-if="form.customerMailTemplateId" target="_blank" rel="noopener" :to="{ name: 'sw.mail.template.detail', params: { id: form.customerMailTemplateId } }">
+                                        {{ $tc('sw-flow.modals.mail.fieldMailTemplateDetailLink') }}
+                                    </router-link>
+                                </div>
+                            </template>
+                        </template>
+
+                        <sw-field type="switch"
+                                  bordered
+                                  :label="$tc('moorl-form-builder.properties.insertNewsletter')"
+                                  v-model="form.insertNewsletter"></sw-field>
+                    </template>
+                </moorl-collapse>
+
+                <moorl-collapse class="content--single"
+                                :label="$tc('moorl-form-builder.general.redirectSettings')"
+                                key="redirectSettings">
+                    <template #header-content>
+                        <sw-icon @click="newFormRedirectCondition()"
+                                 name="default-basic-plus-block" size="16px"></sw-icon>
+                    </template>
+
+                    <template #content>
+                        <sw-field :label="$tc('moorl-form-builder.properties.redirectTo')"
+                                  :placeholder="'frontend.detail.page'"
+                                  :helpText="$tc('moorl-form-builder.tooltips.redirectTo')"
+                                  v-model="form.redirectTo"></sw-field>
+
+                        <sw-field :label="$tc('moorl-form-builder.properties.redirectParams')"
+                                  :placeholder="'productId:1234;otherId:technicalName etc...'"
+                                  :helpText="$tc('moorl-form-builder.tooltips.redirectParams')"
+                                  v-model="form.redirectParams"></sw-field>
+
+                        <ul class="form-element-options">
+                            <li v-for="optionItem in form.redirectConditions">
+                                <div class="items-grid-conditions">
+                                    <sw-select-field v-model="optionItem.name">
+                                        <option v-for="name in getTechnicalNames()" :value="name">{{ name }}</option>
+                                    </sw-select-field>
+
+                                    <div class="items-options">
+                                        <span v-if="optionItem.name" @click="editFormElement(optionItem.name)">
+                                            <sw-icon name="default-action-settings" size="16px"></sw-icon>
+                                        </span>
+                                    </div>
+
+                                    <sw-select-field v-model="optionItem.type">
+                                        <option value="is">==</option>
+                                        <option value="not">!=</option>
+                                        <option value="lt">&lt;</option>
+                                        <option value="gt">&gt;</option>
+                                        <option value="contains">contains</option>
+                                        <option value="isset">is set</option>
+                                    </sw-select-field>
+
+                                    <sw-field :placeholder="$tc('moorl-form-builder.properties.value')"
+                                              v-model="optionItem.value"></sw-field>
+
+                                    <div class="items-options">
+                                        <span @click="removeFormRedirectCondition(optionItem)">
+                                            <sw-icon name="default-action-trash" size="16px"></sw-icon>
+                                        </span>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </template>
+                </moorl-collapse>
+
+                <moorl-collapse class="content--single"
+                                :label="$tc('moorl-form-builder.general.styleSettings')"
+                                key="styleSettings">
+                    <template #content>
+                        <sw-field type="switch"
+                                  bordered
+                                  :helpText="$tc('moorl-form-builder.tooltips.bootstrapGrid')"
+                                  :label="$tc('moorl-form-builder.properties.bootstrapGrid')"
+                                  v-model="form.bootstrapGrid"></sw-field>
+
+                        <sw-field type="switch"
+                                  bordered
+                                  :helpText="$tc('moorl-form-builder.tooltips.bootstrapWideSpacing')"
+                                  :label="$tc('moorl-form-builder.properties.bootstrapWideSpacing')"
+                                  v-model="form.bootstrapWideSpacing"></sw-field>
+
+                        <sw-field type="switch"
+                                  bordered
+                                  :helpText="$tc('moorl-form-builder.tooltips.useSassCompiler')"
+                                  :label="$tc('moorl-form-builder.properties.useSassCompiler')"
+                                  v-model="form.useSassCompiler"></sw-field>
+
+                        <sw-code-editor :label="$tc('moorl-form-builder.properties.stylesheet')"
+                                        :softWraps="false"
+                                        v-model="form.stylesheet">
+                        </sw-code-editor>
+                    </template>
+                </moorl-collapse>
+            {% endblock %}
+        </div>
+
+        <div class="moorl-form-builder-detail-items">
+            <ul class="form-elements">
+                <li class="items-options">
+                    <span v-if="getNestedFormData().length == 0">
+                        {{ $tc('moorl-form-builder.general.newElement') }} &#8594;
+                    </span>
+                    <span @click="addFormElement">
+                        <sw-icon name="default-basic-plus-block" size="16px"></sw-icon>
+                    </span>
+                </li>
+                {% block form_elements %}
+                    <li class="items-grid"
+                        v-for="formElementItem in getNestedFormData()"
+                        :class="getFormElementItemClass(formElementItem.id)"
+                        :key="formElementItem.id"
+                        v-draggable="{ data: formElementItem }"
+                        v-droppable="{ data: formElementItem, onDrop: onFormElementDragSort }">
+                        <span @click="editFormElement(formElementItem)" :style="getFormElementCss(formElementItem)">
+                            <span v-if="formElementItem.nest < 0">&#9888;</span>
+                            <span v-else v-for="nest in formElementItem.nest">&#8677;</span>
+                            {{ $tc('moorl-form-builder.elementOptions.type.' + formElementItem.type) }}: {{ formElementItem.name }}
+                            <span v-if="formElementItem.required">*</span>
+                        </span>
+                        <div>
+                            <span @click="duplicateFormElement(formElementItem)">
+                                 <sw-icon name="default-action-duplicate" size="16px"></sw-icon>
+                            </span>
+                            <span @click="removeFormElement(formElementItem)">
+                                <sw-icon name="default-action-trash" size="16px"></sw-icon>
+                            </span>
+                            <span @click="addFormElement">
+                                <sw-icon name="default-basic-plus-block" size="16px"></sw-icon>
+                            </span>
+                        </div>
+                    </li>
+                {% endblock %}
+            </ul>
+        </div>
+
+        <div class="moorl-form-builder-detail-item-settings">
+            <template v-if="formElement">
+                {% block form_element %}
+                    <moorl-form-element-settings v-bind="{ formElement }"/>
+
+                    <!--component :is="'moorl-form-element-'+formElement.type" v-bind="{ formElement }" /-->
+
+                    <template v-if="formElement.type == 'html'">
+                        <moorl-form-element-input-html v-bind="{ formElement, locale }"/>
+                    </template>
+
+                    <template v-else-if="formElement.type == 'repeater-open'">
+                        <moorl-form-element-input-repeater-open v-bind="{ formElement, locale }"/>
+                    </template>
+
+                    <template v-else-if="formElement.type == 'section-open'">
+                        <moorl-form-element-input-section-open v-bind="{ formElement, locale }"/>
+                    </template>
+
+                    <template v-else-if="['repeater-close','section-close'].includes(formElement.type)">
+                        <div class="sw-card">
+                            <sw-alert variant="warning">
+                                {{ $tc('moorl-form-builder.tooltips.repeaterClose') }}
+                            </sw-alert>
+                        </div>
+                    </template>
+
+                    <template v-else>
+
+                        <moorl-form-element-input-default v-bind="{ formElement, locale }"/>
+
+                        <template v-if="formElement.type == 'upload'">
+                            <moorl-form-element-upload-options v-bind="{ formElement, locale }"/>
+                        </template>
+
+                        <template v-if="form.insertDatabase || ['customerRegister','cartLineItem','cartExtend','productRequest'].includes(form.type)">
+                            <moorl-form-element-entity-mapping
+                                    v-bind="{ formElement, options:getVariableOptions(form.relatedEntity), disabled:!form.relatedEntity }"
+                            />
+                        </template>
+
+                        <template v-if="['number','range','rating'].includes(formElement.type)">
+                            <moorl-form-element-options-number v-bind="{ formElement, locale }"/>
+                        </template>
+
+                        <template v-if="['datepicker','appointment'].includes(formElement.type)">
+                            <moorl-form-element-options-date v-bind="{ formElement, locale }"/>
+                        </template>
+
+                        <template v-if="['text'].includes(formElement.type)">
+                            <moorl-collapse :label="$tc('moorl-form-builder.general.autocompleteOptions')"
+                                            key="autocompleteOptions">
+                                <template #content>
+                                    <sw-single-select v-model="formElement.autocomplete.relatedEntity"
+                                                      valueProperty="name"
+                                                      labelProperty="name"
+                                                      :options="getEntityOptions()"
+                                                      :placeholder="$tc('sw-seo-url-template-card.general.placeholderSelectVariables')"
+                                                      :label="$tc('moorl-form-builder.properties.relatedEntity')">
+                                    </sw-single-select>
+                                    <sw-single-select v-model="formElement.autocomplete.property"
+                                                      valueProperty="name"
+                                                      labelProperty="name"
+                                                      :options="getVariableOptions(formElement.autocomplete.relatedEntity)"
+                                                      :placeholder="$tc('sw-seo-url-template-card.general.placeholderSelectVariables')"
+                                                      :disabled="formElement.autocomplete.relatedEntity === null"
+                                                      :label="$tc('sw-seo-url-template-card.general.labelPossibleValues')">
+                                    </sw-single-select>
+                                </template>
+                            </moorl-collapse>
+                        </template>
+
+                        <template v-if="['select','multiselect','checkbox-group','radio-group','checkbox-button-group','radio-button-group'].includes(formElement.type)">
+                            <moorl-collapse class="content--single"
+                                            :label="$tc('moorl-form-builder.general.elementOptions')"
+                                            key="elementOptions">
+                                <template #header-content>
+                                    <sw-icon v-if="!formElement.isEntitySelect"
+                                             small
+                                             @click="newFormElementOption()"
+                                             name="default-basic-plus-block"></sw-icon>
+                                </template>
+
+                                <template #content>
+                                    <sw-container columns="1fr 1fr" gap="0 10px">
+                                        <sw-field type="switch"
+                                                  :helpText="$tc('moorl-form-builder.tooltips.isEntitySelect')"
+                                                  bordered
+                                                  :label="$tc('moorl-form-builder.properties.isEntitySelect')"
+                                                  v-model="formElement.isEntitySelect"></sw-field>
+                                        <sw-field type="switch"
+                                                  :helpText="$tc('moorl-form-builder.tooltips.useImageSelection')"
+                                                  bordered
+                                                  :label="$tc('moorl-form-builder.properties.useImageSelection')"
+                                                  v-model="formElement.useImageSelection"></sw-field>
+                                    </sw-container>
+
+                                    <template v-if="formElement.isEntitySelect">
+                                        <sw-container columns="1fr 1fr" gap="0 10px">
+                                            <sw-single-select v-model="formElement.entitySelect.relatedEntity"
+                                                              valueProperty="name"
+                                                              labelProperty="name"
+                                                              :options="getEntityOptions()"
+                                                              :placeholder="$tc('sw-seo-url-template-card.general.placeholderSelectVariables')"
+                                                              :label="$tc('moorl-form-builder.properties.relatedEntity')">
+                                            </sw-single-select>
+                                            <sw-single-select v-model="formElement.entitySelect.valueProperty"
+                                                              valueProperty="name"
+                                                              labelProperty="name"
+                                                              :options="getVariableOptions(formElement.entitySelect.relatedEntity)"
+                                                              :placeholder="$tc('sw-seo-url-template-card.general.placeholderSelectVariables')"
+                                                              :disabled="formElement.entitySelect.relatedEntity === null"
+                                                              :label="$tc('moorl-form-builder.properties.value')">
+                                            </sw-single-select>
+                                            <sw-single-select v-model="formElement.entitySelect.labelProperty"
+                                                              valueProperty="name"
+                                                              labelProperty="name"
+                                                              :options="getVariableOptions(formElement.entitySelect.relatedEntity)"
+                                                              :placeholder="$tc('sw-seo-url-template-card.general.placeholderSelectVariables')"
+                                                              :disabled="formElement.entitySelect.relatedEntity === null"
+                                                              :label="$tc('moorl-form-builder.properties.label')">
+                                            </sw-single-select>
+                                            <sw-single-select v-if="formElement.useImageSelection"
+                                                              v-model="formElement.entitySelect.mediaProperty"
+                                                              valueProperty="name"
+                                                              labelProperty="name"
+                                                              :options="getVariableOptions(formElement.entitySelect.relatedEntity)"
+                                                              :placeholder="$tc('sw-seo-url-template-card.general.placeholderSelectVariables')"
+                                                              :disabled="formElement.entitySelect.relatedEntity === null"
+                                                              :label="$tc('moorl-form-builder.properties.mediaId')">
+                                            </sw-single-select>
+                                        </sw-container>
+                                    </template>
+
+                                    <template v-else>
+                                        <sw-container columns="1fr 1fr" gap="0 10px">
+                                            <sw-field type="switch"
+                                                      :helpText="$tc('moorl-form-builder.tooltips.hasEmailReceiver')"
+                                                      bordered
+                                                      :label="$tc('moorl-form-builder.properties.hasEmailReceiver')"
+                                                      v-model="formElement.hasEmailReceiver"></sw-field>
+                                            <sw-field type="switch"
+                                                      :helpText="$tc('moorl-form-builder.tooltips.useCustomFields')"
+                                                      bordered
+                                                      :label="$tc('moorl-form-builder.properties.useCustomFields')"
+                                                      v-model="formElement.useCustomFields"></sw-field>
+                                            <sw-field type="switch"
+                                                      :helpText="$tc('moorl-form-builder.tooltips.usePriceCalculation')"
+                                                      bordered
+                                                      :label="$tc('moorl-form-builder.properties.usePriceCalculation')"
+                                                      v-model="formElement.usePriceCalculation"></sw-field>
+                                        </sw-container>
+
+                                        <ul class="form-element-options">
+                                            <li v-for="optionItem in formElement.options">
+                                                <div class="items-grid-3">
+                                                    <sw-field :placeholder="$tc('moorl-form-builder.properties.value')"
+                                                              v-model="optionItem.value"></sw-field>
+                                                    <sw-field :placeholder="$tc('moorl-form-builder.properties.label')"
+                                                              v-model="optionItem.label[locale.code]"></sw-field>
+                                                    <sw-field type="switch"
+                                                              :helpText="$tc('moorl-form-builder.tooltips.isValid')"
+                                                              bordered
+                                                              :label="$tc('moorl-form-builder.properties.isValid')"
+                                                              v-model="optionItem.isValid"></sw-field>
+                                                    <div class="items-options">
+                                                        <sw-icon @click="removeFormElementOption(optionItem)"
+                                                                 name="default-action-trash"
+                                                                 size="16px"></sw-icon>
+                                                    </div>
+                                                </div>
+
+                                                <div v-if="formElement.useCustomFields" class="items-grid">
+                                                    <sw-field :label="$tc('moorl-form-builder.properties.customField') + ' 1'"
+                                                              v-model="optionItem.customField1[locale.code]"></sw-field>
+                                                    <sw-field :label="$tc('moorl-form-builder.properties.customField') + ' 2'"
+                                                              v-model="optionItem.customField2[locale.code]"></sw-field>
+                                                </div>
+
+                                                <div v-if="formElement.hasEmailReceiver" class="items-grid-1">
+                                                    <sw-field v-if="formElement.hasEmailReceiver"
+                                                              :helpText="$tc('moorl-form-builder.tooltips.emailReceiver')"
+                                                              :label="$tc('moorl-form-builder.properties.emailReceiver')"
+                                                              :placeholder="$tc('moorl-form-builder.placeholder.emailReceiver')"
+                                                              v-model="optionItem.emailReceiver"></sw-field>
+                                                </div>
+
+                                                <div v-if="formElement.usePriceCalculation" class="items-grid">
+                                                    <sw-field type="number"
+                                                              numberType="float"
+                                                              :label="$tc('moorl-form-builder.properties.priceCalculation')"
+                                                              v-model="optionItem.priceCalculation"></sw-field>
+                                                    <sw-select-field :label="$tc('moorl-form-builder.properties.type')"
+                                                                     v-model="optionItem.priceCalculationType">
+                                                        <option value="absolute">{{ $tc('sw-promotion.detail.main.discounts.valueTypeAbsolute') }}</option>
+                                                        <option value="percentage">{{ $tc('sw-promotion.detail.main.discounts.valueTypePercentage') }}</option>
+                                                        <option value="fixed_unit" disabled>{{ $tc('sw-promotion.detail.main.discounts.valueTypeFixedUnit') }}</option>
+                                                    </sw-select-field>
+                                                </div>
+
+                                                <div v-if="formElement.useImageSelection" class="items-grid-1">
+                                                    <sw-media-upload-v2 v-if="!isLoading"
+                                                                        :uploadTag="optionItem.id"
+                                                                        :source="optionItem.media"
+                                                                        :allowMultiSelect="false"
+                                                                        @media-drop="onDropMedia($event, optionItem)"
+                                                                        @media-upload-sidebar-open="openMediaSidebar"
+                                                                        @media-upload-remove-image="onUnlinkMedia(optionItem)">
+                                                    </sw-media-upload-v2>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </template>
+                                </template>
+                            </moorl-collapse>
+                        </template>
+                    </template>
+
+                    <template v-if="form.bootstrapGrid">
+                        <moorl-collapse class="content--single"
+                                        :label="$tc('moorl-form-builder.general.elementWrapper')"
+                                        key="elementWrapper">
+                            <template #content>
+                                <template v-if="!['repeater-close','section-close'].includes(formElement.type)">
+                                    <ul class="form-element-options">
+                                        <li v-for="behaviour in defaultBehaviour">
+                                            <div class="items-grid-2">
+                                                <div class="items-badge">
+                                                    {{ behaviour.breakpoint }}
+                                                </div>
+
+                                                <sw-field type="switch"
+                                                          bordered
+                                                          :label="$tc('moorl-form-builder.properties.visible')"
+                                                          v-model="formElement.behaviour[behaviour.breakpoint].visible"></sw-field>
+
+                                                <sw-select-field v-model="formElement.behaviour[behaviour.breakpoint].width">
+                                                    <option value disabled>{{ $tc('moorl-form-builder.properties.width') }}</option>
+                                                    <option :value="-1">inherited</option>
+                                                    <option :value="0">auto</option>
+                                                    <option v-for="i in 12" :value="i">{{ i }}/12</option>
+                                                </sw-select-field>
+
+                                                <sw-select-field v-model="formElement.behaviour[behaviour.breakpoint].order">
+                                                    <option value disabled>{{ $tc('moorl-form-builder.properties.order') }}</option>
+                                                    <option :value="0">auto</option>
+                                                    <option v-for="i in 24" :value="i">{{ i }}</option>
+                                                </sw-select-field>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </template>
+
+                                <template v-if="!['repeater-open','section-open'].includes(formElement.type)">
+                                    <sw-field type="switch"
+                                              bordered
+                                              :label="$tc('moorl-form-builder.properties.lineBreak')"
+                                              v-model="formElement.lineBreak">
+                                    </sw-field>
+                                </template>
+                            </template>
+                        </moorl-collapse>
+                    </template>
+
+                    <template v-else-if="!['html','repeater-open','repeater-close','section-open','section-close'].includes(formElement.type)">
+                        <moorl-collapse class="content--single"
+                                        :label="$tc('moorl-form-builder.general.elementWrapper')"
+                                        key="elementWrapper">
+                            <template #content>
+                                <sw-code-editor :label="$tc('moorl-form-builder.properties.htmlWrapper')"
+                                                v-model="formElement.htmlWrapper"
+                                                :softWraps="false">
+                                </sw-code-editor>
+                            </template>
+                        </moorl-collapse>
+                    </template>
+
+                    <template v-if="!['html','repeater-open','repeater-close','section-open','section-close'].includes(formElement.type)">
+                        <moorl-collapse class="content--single"
+                                        :label="$tc('moorl-form-builder.properties.useCustomTemplate')"
+                                        key="useCustomTemplate">
+                            <template #content>
+                                <sw-field type="switch"
+                                          :helpText="$tc('moorl-form-builder.tooltips.useCustomTemplate')"
+                                          bordered
+                                          :label="$tc('moorl-form-builder.properties.useCustomTemplate')"
+                                          v-model="formElement.useCustomTemplate"></sw-field>
+                                <sw-field v-if="formElement.useCustomTemplate"
+                                          :label="$tc('moorl-form-builder.properties.customTemplatePath')"
+                                          :placeholder="'@SamplePlugin/my-custom-template.html.twig'"
+                                          v-model="formElement.customTemplatePath"></sw-field>
+                                <sw-code-editor v-if="formElement.useCustomTemplate"
+                                                :label="$tc('moorl-form-builder.properties.customTemplate')"
+                                                v-model="formElement.customTemplate"
+                                                :softWraps="false"></sw-code-editor>
+                            </template>
+                        </moorl-collapse>
+                    </template>
+
+                    <template v-if="!['repeater-close','section-close'].includes(formElement.type)">
+                        <moorl-collapse class="content--single"
+                                        :label="$tc('moorl-form-builder.general.conditions')"
+                                        key="conditions">
+                            <template #header-content>
+                                <sw-icon @click="newFormElementCondition()"
+                                         name="default-basic-plus-block" size="16px"></sw-icon>
+                            </template>
+
+                            <template #content>
+                                <sw-field type="switch"
+                                          bordered
+                                          :label="$tc('moorl-form-builder.properties.pseudo')"
+                                          :helpText="$tc('moorl-form-builder.tooltips.pseudo')"
+                                          v-model="formElement.pseudo"></sw-field>
+
+                                <ul class="form-element-options">
+                                    <li v-for="optionItem in formElement.conditions">
+                                        <div class="items-grid-conditions">
+                                            <sw-select-field v-model="optionItem.name">
+                                                <option v-for="name in getTechnicalNames()" :value="name">{{ name }}</option>
+                                            </sw-select-field>
+
+                                            <div class="items-options">
+                                        <span v-if="optionItem.name" @click="editFormElement(optionItem.name)">
+                                            <sw-icon name="default-action-settings" size="16px"></sw-icon>
+                                        </span>
+                                            </div>
+
+                                            <sw-select-field v-model="optionItem.type">
+                                                <option value="is">==</option>
+                                                <option value="not">!=</option>
+                                                <option value="lt">&lt;</option>
+                                                <option value="gt">&gt;</option>
+                                                <option value="contains">contains</option>
+                                                <option value="isset">is set</option>
+                                            </sw-select-field>
+
+                                            <sw-field :placeholder="$tc('moorl-form-builder.properties.value')"
+                                                      v-model="optionItem.value"></sw-field>
+
+                                            <div class="items-options">
+                                        <span @click="removeFormElementCondition(optionItem)">
+                                            <sw-icon name="default-action-trash" size="16px"></sw-icon>
+                                        </span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </template>
+                        </moorl-collapse>
+                    </template>
+                {% endblock %}
+            </template>
+        </div>
+
+        <sw-confirm-modal v-if="showConfirmModal"
+                          type="delete"
+                          :text="$tc('moorl-form-builder.general.deleteElement')"
+                          @confirm="onConfirmModal"
+                          @close="onCloseModal"
+                          @cancel="onCloseModal">
+        </sw-confirm-modal>
+    </template>
+
+    <template slot="sidebar">
+        <sw-sidebar :propagateWidth="true">
+            <sw-sidebar-media-item ref="mediaSidebarItem">
+                <template slot="context-menu-items" slot-scope="media">
+                    <sw-context-menu-item @click="setMediaFromSidebar(media.mediaItem)">
+                        {{ $tc('sw-settings-shipping.sidebar.labelUseAsLogo') }}
+                    </sw-context-menu-item>
+                </template>
+            </sw-sidebar-media-item>
+        </sw-sidebar>
+    </template>
+</sw-page>

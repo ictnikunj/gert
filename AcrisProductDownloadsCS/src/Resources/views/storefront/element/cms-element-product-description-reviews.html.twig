@@ -1,0 +1,278 @@
+{% sw_extends '@Storefront/storefront/element/cms-element-product-description-reviews.html.twig' %}
+
+{% block element_product_desciption_reviews_tabs_navigation_description %}
+    {% set elementBeforeExist = false %}
+    {% if page.product.extension('acrisProductTab').elements|length > 0 %}
+        {% set activeProductTabs = [] %}
+        {% for productTab in page.product.extension('acrisProductTab').elements %}
+            {% if productTab.positionType == 'beforeDescriptionTab' and productTab.cmsPageId %}
+                {% set activeProductTabs = activeProductTabs|merge([productTab]) %}
+            {% endif %}
+        {% endfor %}
+        {% for activeTab in activeProductTabs %}
+            {% set elementBeforeExist = true %}
+        {% endfor %}
+    {% endif %}
+
+    {% if page.product.extension('acrisDownloadTabs').elements|length > 0 %}
+        {% set elementBeforeExist = true %}
+
+        {% for downloadTab in page.product.extension('acrisDownloadTabs').elements %}
+            {% if config('AcrisProductDownloadsCS.config').displayPosition == 'beforeDescription' %}
+                <li class="nav-item">
+                    <a class="nav-link{% if loop.first %} active{% endif %} product-detail-tab-navigation-link"
+                       id="downloads-tab-{{ downloadTab.id }}"
+                       data-toggle="tab"
+                       data-offcanvas-tabs="true"
+                       href="#downloads-tab-pane-{{ downloadTab.id }}"
+                       role="tab"
+                       aria-controls="downloads-tab-pane-{{ downloadTab.id }}"
+                       aria-selected="{% if loop.first %}true{% else %}false{% endif %}">
+                        <span>{{ downloadTab.translated.displayName }}</span>
+                        <span class="product-detail-tab-navigation-icon">
+                        {% sw_icon 'arrow-medium-right' style {'pack':'solid'} %}
+                    </span>
+                    </a>
+                </li>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+
+    {% if config('AcrisProductDownloadsCS.config').displayPosition == 'beforeDescription' and ((page.product.extensions.acrisDownloads.elements and page.product.extensions.acrisDownloads.elements|length > 0) or (config('AcrisProductDownloadsCS.config').linkDisplayPosition == 'inDownloads' and page.product.extensions.acrisLinks.elements and page.product.extensions.acrisLinks.elements|length > 0)) %}
+        <li class="nav-item">
+            <a class="nav-link {% if elementBeforeExist != true %}active{% endif %} product-detail-tab-navigation-link"
+               id="downloads-tab"
+               data-toggle="tab"
+               data-offcanvas-tabs="true"
+               href="#downloads-tab-pane"
+               role="tab"
+               aria-controls="downloads-tab-pane"
+               aria-selected="true">
+                <span>{{ "detail.acrisProductDownloadTabLabel"|trans }}</span>
+                <span class="product-detail-tab-navigation-icon">
+                        {% sw_icon 'arrow-medium-right' style {'pack':'solid'} %}
+                    </span>
+            </a>
+        </li>
+    {% endif %}
+
+    {% if config('AcrisProductDownloadsCS.config').linkDisplayPosition == 'beforeDescription' and page.product.extensions.acrisLinks.elements and page.product.extensions.acrisLinks.elements|length > 0 %}
+        <li class="nav-item">
+            <a class="nav-link {% if elementBeforeExist != true %}active{% endif %} product-detail-tab-navigation-link"
+               id="links-tab"
+               data-toggle="tab"
+               data-offcanvas-tabs="true"
+               href="#links-tab-pane"
+               role="tab"
+               aria-controls="links-tab-pane"
+               aria-selected="true">
+                <span>{{ "detail.acrisProductLinkTabLabel"|trans }}</span>
+                <span class="product-detail-tab-navigation-icon">
+                        {% sw_icon 'arrow-medium-right' style {'pack':'solid'} %}
+                    </span>
+            </a>
+        </li>
+    {% endif %}
+
+    {% set oldRatingSuccess = ratingSuccess %}
+    {% if config('AcrisProductDownloadsCS.config').displayPosition == 'beforeDescription' and ((page.product.extensions.acrisDownloads.elements and page.product.extensions.acrisDownloads.elements|length > 0) or (config('AcrisProductDownloadsCS.config').linkDisplayPosition == 'inDownloads' and page.product.extensions.acrisLinks.elements and page.product.extensions.acrisLinks.elements|length > 0)) %}
+        {% set ratingSuccess = 1 %}
+    {% endif %}
+    {% if config('AcrisProductDownloadsCS.config').linkDisplayPosition == 'beforeDescription' and page.product.extensions.acrisLinks.elements and page.product.extensions.acrisLinks.elements|length > 0 %}
+        {% set ratingSuccess = 1 %}
+    {% endif %}
+    {{ parent() }}
+    {% set ratingSuccess = oldRatingSuccess %}
+
+    {% if page.product.extension('acrisDownloadTabs').elements|length > 0 %}
+        {% for downloadTab in page.product.extension('acrisDownloadTabs').elements %}
+            {% if config('AcrisProductDownloadsCS.config').displayPosition == 'afterDescription' %}
+                <li class="nav-item">
+                    <a class="nav-link product-detail-tab-navigation-link"
+                       id="downloads-tab-{{ downloadTab.id }}"
+                       data-toggle="tab"
+                       data-offcanvas-tabs="true"
+                       href="#downloads-tab-pane-{{ downloadTab.id }}"
+                       role="tab"
+                       aria-controls="downloads-tab-pane-{{ downloadTab.id }}"
+                       aria-selected="{% if loop.first %}true{% else %}false{% endif %}">
+                        <span>{{ downloadTab.translated.displayName }}</span>
+                        <span class="product-detail-tab-navigation-icon">
+                        {% sw_icon 'arrow-medium-right' style {'pack':'solid'} %}
+                    </span>
+                    </a>
+                </li>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+
+    {% if config('AcrisProductDownloadsCS.config').displayPosition == 'afterDescription' and ((page.product.extensions.acrisDownloads.elements and page.product.extensions.acrisDownloads.elements|length > 0) or (config('AcrisProductDownloadsCS.config').linkDisplayPosition == 'inDownloads' and page.product.extensions.acrisLinks.elements and page.product.extensions.acrisLinks.elements|length > 0)) %}
+        <li class="nav-item">
+            <a class="nav-link product-detail-tab-navigation-link"
+               id="downloads-tab"
+               data-toggle="tab"
+               data-offcanvas-tabs="true"
+               href="#downloads-tab-pane"
+               role="tab"
+               aria-controls="downloads-tab-pane"
+               aria-selected="true">
+                <span>{{ "detail.acrisProductDownloadTabLabel"|trans }}</span>
+                <span class="product-detail-tab-navigation-icon">
+                        {% sw_icon 'arrow-medium-right' style {'pack':'solid'} %}
+                    </span>
+            </a>
+        </li>
+    {% endif %}
+
+    {% if config('AcrisProductDownloadsCS.config').linkDisplayPosition == 'afterDescription' and page.product.extensions.acrisLinks.elements and page.product.extensions.acrisLinks.elements|length > 0 %}
+        <li class="nav-item">
+            <a class="nav-link product-detail-tab-navigation-link"
+               id="links-tab"
+               data-toggle="tab"
+               data-offcanvas-tabs="true"
+               href="#links-tab-pane"
+               role="tab"
+               aria-controls="lins-tab-pane"
+               aria-selected="true">
+                <span>{{ "detail.acrisProductLinkTabLabel"|trans }}</span>
+                <span class="product-detail-tab-navigation-icon">
+                        {% sw_icon 'arrow-medium-right' style {'pack':'solid'} %}
+                    </span>
+            </a>
+        </li>
+    {% endif %}
+{% endblock %}
+
+{% block element_product_desciption_reviews_tabs_navigation_review %}
+    {{ parent() }}
+
+    {% block page_product_detail_tabs_navigation_downloads_tabs %}
+        {% if page.product.extension('acrisDownloadTabs').elements|length > 0 %}
+            {% for downloadTab in page.product.extension('acrisDownloadTabs').elements %}
+                {% if config('AcrisProductDownloadsCS.config').displayPosition == 'afterReviews' %}
+                    <li class="nav-item">
+                        <a class="nav-link product-detail-tab-navigation-link"
+                           id="downloads-tab-{{ downloadTab.id }}"
+                           data-toggle="tab"
+                           data-offcanvas-tabs="true"
+                           href="#downloads-tab-pane-{{ downloadTab.id }}"
+                           role="tab"
+                           aria-controls="downloads-tab-pane-{{ downloadTab.id }}"
+                           aria-selected="{% if loop.first %}true{% else %}false{% endif %}">
+                            <span>{{ downloadTab.translated.displayName }}</span>
+                            <span class="product-detail-tab-navigation-icon">
+                        {% sw_icon 'arrow-medium-right' style {'pack':'solid'} %}
+                    </span>
+                        </a>
+                    </li>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    {% endblock %}
+
+    {% block page_product_detail_tabs_navigation_downloads %}
+        {% if config('AcrisProductDownloadsCS.config').displayPosition == 'afterReviews' and ((page.product.extensions.acrisDownloads.elements and page.product.extensions.acrisDownloads.elements|length > 0) or (config('AcrisProductDownloadsCS.config').linkDisplayPosition == 'inDownloads' and page.product.extensions.acrisLinks.elements and page.product.extensions.acrisLinks.elements|length > 0)) %}
+            <li class="nav-item">
+                <a class="nav-link product-detail-tab-navigation-link"
+                   id="downloads-tab"
+                   data-toggle="tab"
+                   data-offcanvas-tabs="true"
+                   href="#downloads-tab-pane"
+                   role="tab"
+                   aria-controls="downloads-tab-pane"
+                   aria-selected="true">
+                    <span>{{ "detail.acrisProductDownloadTabLabel"|trans }}</span>
+                    <span class="product-detail-tab-navigation-icon">
+                        {% sw_icon 'arrow-medium-right' style {'pack':'solid'} %}
+                    </span>
+                </a>
+            </li>
+        {% endif %}
+
+        {% if config('AcrisProductDownloadsCS.config').linkDisplayPosition == 'afterReviews' and page.product.extensions.acrisLinks.elements and page.product.extensions.acrisLinks.elements|length > 0 %}
+            <li class="nav-item">
+                <a class="nav-link product-detail-tab-navigation-link"
+                   id="links-tab"
+                   data-toggle="tab"
+                   data-offcanvas-tabs="true"
+                   href="#links-tab-pane"
+                   role="tab"
+                   aria-controls="links-tab-pane"
+                   aria-selected="true">
+                    <span>{{ "detail.acrisProductLinkTabLabel"|trans }}</span>
+                    <span class="product-detail-tab-navigation-icon">
+                        {% sw_icon 'arrow-medium-right' style {'pack':'solid'} %}
+                    </span>
+                </a>
+            </li>
+        {% endif %}
+    {% endblock %}
+{% endblock %}
+
+{% block element_product_desciption_reviews_tabs_content_description %}
+    {% set elementBeforeExist = false %}
+    {% if page.product.extension('acrisProductTab').elements|length > 0 %}
+        {% set beforeProductTabs = [] %}
+        {% for productTab in page.product.extension('acrisProductTab').elements %}
+            {% if productTab.positionType == 'beforeDescriptionTab' and productTab.cmsPageId %}
+                {% set beforeProductTabs = beforeProductTabs|merge([productTab]) %}
+            {% endif %}
+        {% endfor %}
+        {% for beforeTab in beforeProductTabs %}
+            {% set elementBeforeExist = true %}
+        {% endfor %}
+    {% endif %}
+
+    {% if page.product.extension('acrisDownloadTabs').elements|length > 0 %}
+        {% set elementBeforeExist = true %}
+    {% endif %}
+
+    {% block page_product_detail_tabs_content_downloads_tabs %}
+        {% if page.product.extension('acrisDownloadTabs').elements|length > 0 %}
+            {% for downloadTab in page.product.extension('acrisDownloadTabs').elements %}
+                {% if config('AcrisProductDownloadsCS.config').displayPosition != 'noDisplay' %}
+                    <div class="tab-pane fade {% if loop.first and config('AcrisProductDownloadsCS.config').displayPosition == 'beforeDescription' %}show active{% endif %}"
+                         id="downloads-tab-pane-{{ downloadTab.id }}"
+                         role="tabpanel"
+                         aria-labelledby="downloads-tab-{{ downloadTab.id }}">
+                        {% sw_include '@Storefront/storefront/page/product-detail/acris-downloads/download-tab.html.twig' with {
+                            downloads: downloadTab.acrisDownloads.elements
+                        } %}
+                    </div>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    {% endblock %}
+
+    {% block page_product_detail_tabs_content_downloads %}
+        {% if config('AcrisProductDownloadsCS.config').displayPosition != 'noDisplay' and ((page.product.extensions.acrisDownloads.elements and page.product.extensions.acrisDownloads.elements|length > 0) or (config('AcrisProductDownloadsCS.config').linkDisplayPosition == 'inDownloads' and page.product.extensions.acrisLinks.elements and page.product.extensions.acrisLinks.elements|length > 0)) %}
+            <div class="tab-pane fade {% if elementBeforeExist != true and config('AcrisProductDownloadsCS.config').displayPosition == 'beforeDescription' %}show active{% endif %}"
+                 id="downloads-tab-pane"
+                 role="tabpanel"
+                 aria-labelledby="downloads-tab">
+                {% sw_include '@Storefront/storefront/page/product-detail/acris-downloads/download-tab.html.twig' with {
+                    downloads: page.product.extensions.acrisDownloads.elements
+                } %}
+            </div>
+        {% endif %}
+
+        {% if config('AcrisProductDownloadsCS.config').linkDisplayPosition != 'noDisplay' and page.product.extensions.acrisLinks.elements and page.product.extensions.acrisLinks.elements|length > 0 %}
+            <div class="tab-pane fade {% if elementBeforeExist != true and config('AcrisProductDownloadsCS.config').displayPosition == 'beforeDescription' %}show active{% endif %}"
+                 id="links-tab-pane"
+                 role="tabpanel"
+                 aria-labelledby="links-tab">
+                {% sw_include '@Storefront/storefront/page/product-detail/acris-links/link-tab.html.twig' %}
+            </div>
+        {% endif %}
+    {% endblock %}
+
+    {% set oldRatingSuccess = element.data.ratingSuccess %}
+    {% if config('AcrisProductDownloadsCS.config').displayPosition == 'beforeDescription' and ((page.product.extensions.acrisDownloads.elements and page.product.extensions.acrisDownloads.elements|length > 0) or (config('AcrisProductDownloadsCS.config').linkDisplayPosition == 'inDownloads' and page.product.extensions.acrisLinks.elements and page.product.extensions.acrisLinks.elements|length > 0)) %}
+        {% do element.data.setRatingSuccess(true) %}
+    {% endif %}
+    {% if config('AcrisProductDownloadsCS.config').linkDisplayPosition == 'beforeDescription' and page.product.extensions.acrisLinks.elements and page.product.extensions.acrisLinks.elements|length > 0 %}
+        {% do element.data.setRatingSuccess(true) %}
+    {% endif %}
+    {{ parent() }}
+    {% set ratingSuccess = oldRatingSuccess %}
+{% endblock %}

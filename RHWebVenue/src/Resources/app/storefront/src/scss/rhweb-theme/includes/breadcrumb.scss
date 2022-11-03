@@ -1,0 +1,22 @@
+$tmp-rhweb-breadcrumb-background: darken($sw-background-color, 2%);
+
+.breadcrumb{
+    background-color: $tmp-rhweb-breadcrumb-background;
+
+    ol{
+        margin: 0;
+    }
+}
+
+.breadcrumb:not(.cms-breadcrumb){
+    padding:0;
+}
+
+.is-ctl-product{
+    .breadcrumb{
+        padding: 0.75rem 0;
+        box-shadow: 0 0 0 100vmax $tmp-rhweb-breadcrumb-background;
+        clip-path: inset(0 -100vmax);
+        background-color: $tmp-rhweb-breadcrumb-background;
+    }
+}

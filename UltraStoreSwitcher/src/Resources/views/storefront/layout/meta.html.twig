@@ -1,0 +1,39 @@
+{% sw_extends '@Storefront/storefront/layout/meta.html.twig' %}
+
+{% block layout_head_stylesheet %}
+    {{ parent() }}
+
+    {% block store_switcher_css %}
+	{% if shopware.config.UltraStoreSwitcher.config %} {% set UltraStoreSwitcher = shopware.config.UltraStoreSwitcher.config %} {% endif %}	
+	{% if config('UltraStoreSwitcher.config') %} {% set UltraStoreSwitcher = config('UltraStoreSwitcher.config') %} {% endif %}
+	{% if UltraStoreSwitcher.activeKanal %}
+	<style>
+		
+	.ultra-top-bar-icon {
+		float: left;
+	}
+	
+	.ultra-top-bar-icon .icon {
+		height:14px;
+	}
+	
+	.ultra-top-bar-icon svg {
+		top:2px !important;
+	}
+	
+	.ultra-topbar-own-icon img {
+	height: 11px;
+	width: 14px;
+	vertical-align: inherit;
+}
+
+.ultra-topbar-own-icon { overflow:auto; }
+	
+	
+	</style>
+	{% endif %}
+
+    {% endblock %}
+
+
+{% endblock %}

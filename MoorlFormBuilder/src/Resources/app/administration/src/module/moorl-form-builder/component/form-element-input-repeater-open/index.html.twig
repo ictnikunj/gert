@@ -1,0 +1,29 @@
+<div class="moorl-form-element-input-repeater-open">
+    <moorl-collapse class="content--single"
+                    :label="$tc('moorl-form-builder.general.elementInput')"
+                    key="elementInput">
+        <template #content>
+            <sw-field :label="$tc('moorl-form-builder.properties.label')"
+                      v-model="formElement.label[locale.code]"></sw-field>
+            <sw-number-field :label="$tc('moorl-form-builder.properties.numberMin')"
+                             v-model="formElement.numberMin"></sw-number-field>
+            <sw-number-field :label="$tc('moorl-form-builder.properties.numberMax')"
+                             v-model="formElement.numberMax"></sw-number-field>
+            <sw-field :placeholder="$tc('moorl-form-builder.properties.tooltip')"
+                      :label="$tc('moorl-form-builder.properties.tooltip')"
+                      :helpText="$tc('moorl-form-builder.tooltips.tooltip')"
+                      v-model="formElement.tooltip[locale.code]"></sw-field>
+            <sw-field :placeholder="$tc('moorl-form-builder.properties.cssClass')"
+                      :label="$tc('moorl-form-builder.properties.cssClass')"
+                      :helpText="$tc('moorl-form-builder.tooltips.cssClass')"
+                      v-model="formElement.cssClass"></sw-field>
+            <sw-field :placeholder="$tc('moorl-form-builder.properties.cssId')"
+                      :label="$tc('moorl-form-builder.properties.cssId')"
+                      :helpText="$tc('moorl-form-builder.tooltips.cssId')"
+                      v-model="formElement.cssId"></sw-field>
+            <sw-code-editor :label="$tc('moorl-form-builder.properties.html')"
+                            v-model="formElement.html"
+                            :softWraps="false"></sw-code-editor>
+        </template>
+    </moorl-collapse>
+</div>

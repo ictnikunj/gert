@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+      <script type="module">
+        import '../../demo-element/demo-element.js?v=1637255330';
+        import '../../styles/styles.js?v=1637255330';
+        import '../../hint-element/hint-element.js?v=1637255330';
+        import '../slider-element.js?v=1637255330';
+        import '../slider-option-element.js?v=1637255330';
+      </script>
+
+      <title>slider-element demo</title>
+  </head>
+  <body>
+    <ropi-demo>
+      <label id="strain-label">Strain</label>
+      (<span id="value"></span>)
+      <ropi-slider value="1" valuetexttarget="value" aria-labelledby="strain-label" aria-describedby="description">
+        <ropi-slider-option>None</ropi-slider-option>
+        <ropi-slider-option>Low</ropi-slider-option>
+        <ropi-slider-option>Medium</ropi-slider-option>
+        <ropi-slider-option>High</ropi-slider-option>
+      </ropi-slider>
+      <ropi-hint id="description">
+        Description for slider
+      </ropi-hint>
+      <script>
+        let slider = document.querySelector('ropi-slider');
+        slider.addEventListener('change', function() {
+          console.log("value: ", slider.value);
+        });
+      </script>
+    </ropi-demo>
+    <ropi-demo name="Disabled">
+      <label id="disabled-label">Disabled</label>
+      (<span id="value-disabled"></span>)
+      <ropi-slider disabled aria-labelledby="disabled-label" valuetexttarget="value-disabled">
+        <ropi-slider-option>0</ropi-slider-option>
+        <ropi-slider-option>1</ropi-slider-option>
+        <ropi-slider-option>2</ropi-slider-option>
+        <ropi-slider-option>3</ropi-slider-option>
+        <ropi-slider-option>4</ropi-slider-option>
+      </ropi-slider>
+    </ropi-demo>
+
+    <ropi-demo name="Color support">
+        <ropi-slider style="--ropi-slider-rail-color: var(--ropi-color-yellow);
+                            --ropi-slider-slide-color: var(--ropi-color-cyan);
+                            --ropi-slider-handle-color: var(--ropi-color-orange);">
+          <ropi-slider-option>0</ropi-slider-option>
+          <ropi-slider-option>1</ropi-slider-option>
+          <ropi-slider-option>2</ropi-slider-option>
+        </ropi-slider>
+    </ropi-demo>
+  </body>
+</html>

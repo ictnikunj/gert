@@ -1,0 +1,23 @@
+<p>Dies ist ein Standard E-Mail Template, bitte ändere dieses Template nicht, sondern erstell ein Duplikat.</p>
+
+<table>
+    {% for formElement in form.data %}
+        {% if formElement.value %}
+            <tr>
+                <td>{{ form.getDataLabel(formElement.name) }}:</td>
+                <td>
+                    {% if formElement.type == 'repeater-open' %}
+                        {{ form.getRepeaterDataValue(formElement.name)|nl2br }}
+                    {% else %}
+                        {{ form.getDataValue(formElement.name)|nl2br }}
+                    {% endif %}
+                </td>
+            </tr>
+        {% endif %}
+    {% endfor %}
+</table>
+
+<p>form.summaryHTML</p>
+{{ form.summaryHTML|raw }}
+
+<p>1.4.8</p>

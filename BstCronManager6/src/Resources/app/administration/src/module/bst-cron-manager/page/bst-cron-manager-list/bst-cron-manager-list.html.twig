@@ -1,0 +1,103 @@
+{% block bst_cron_manager_list %}
+    <sw-page class="bst-cron-manager-list">
+        {% block bst_cron_manager_list_search_bar %}
+            <template #search-bar>
+                <sw-search-bar initialSearchType="scheduled_task"
+                               :placeholder="$tc('bst-cron-manager.list.placeholderSearchBar')"
+                               :initialSearch="term"
+                               @search="onSearch">
+                </sw-search-bar>
+            </template>
+        {% endblock %}
+
+        {% block bst_cron_manager_list_smart_bar_header %}
+            <template #smart-bar-header>
+                {% block bst_cron_manager_list_smart_bar_header_title %}
+                    <h2>
+                        {% block bst_cron_manager_list_smart_bar_header_title_text %}
+                            {{ $tc('bst-cron-manager.list.textCronTasksOverview') }}
+                        {% endblock %}
+
+                        {% block bst_cron_manager_list_smart_bar_header_amount %}
+                            <span v-if="!isLoading" class="sw-page__smart-bar-amount">
+                                ({{ total }})
+                            </span>
+                        {% endblock %}
+                    </h2>
+                {% endblock %}
+            </template>
+        {% endblock %}
+
+        {% block bst_cron_manager_list_actions %}
+            <template #smart-bar-actions>
+            </template>
+        {% endblock %}
+
+        {% block bst_cron_manager_list_content %}
+            <template #content>
+                <div class="bst-cron-manager-list__content">
+                    {% block bst_cron_manager_list_grid %}
+                        <sw-entity-listing
+                            :isLoading="!cronjobs"
+                            :columns="cronColumns"
+                            :showSelection="false"
+                            :repository="cronRepository"
+                            :items="cronjobs"
+                            detailRoute="bst.cron.manager.detail"
+                             @update-records="updateTotal">
+
+                            {% block bst_cron_manager_list_grid_columns_interval %}
+                                <template #column-runInterval="{ item }">
+                                    {{ getInterval(item.runInterval) }}
+                                </template>
+                            {% endblock %}
+                            {% block bst_cron_manager_list_grid_columns_last_execution_date %}
+                                <template #column-lastExecutionTime="{ item }">
+                                    {{ item.lastExecutionTime | date({hour: '2-digit', minute: '2-digit'}) }}
+                                </template>
+                            {% endblock %}
+                            {% block bst_cron_manager_list_grid_columns_next_execution_date %}
+                                <template #column-nextExecutionTime="{ item }">
+                                    {{ item.nextExecutionTime | date({hour: '2-digit', minute: '2-digit'}) }}
+                                </template>
+                            {% endblock %}
+                            {% block bst_cron_manager_list_grid_columns_status %}
+                                <template #column-status="{ item }">
+                                    <sw-label :variant="getStyleForStatus(item.status)" appearance="pill">
+                                        {{ item.status }}
+                                    </sw-label>
+                                </template>
+                            {% endblock %}
+
+                            {% block bst_cron_manager_list_grid_columns_actions %}
+                                <template #actions="{ item }">
+                                    {% block bst_cron_manager_list_grid_inner_slot_columns_actions_edit %}
+                                    <sw-context-menu-item :routerLink="{ name: 'bst.cron.manager.detail', params: { id: item.id } }">
+                                        {{ $tc('bst-cron-manager.list.contextMenuEdit') }}
+                                    </sw-context-menu-item>
+                                    {% endblock %}
+                                </template>
+                            {% endblock %}
+                        </sw-entity-listing>
+                    {% endblock %}
+
+                    {% block bst_cron_manager_list_grid_loader %}
+                        <sw-loader v-if="isLoading"></sw-loader>
+                    {% endblock %}
+                </div>
+            </template>
+        {% endblock %}
+
+        {% block bst_cron_manager_list_sidebar %}
+            <sw-sidebar slot="sidebar">
+                {% block bst_cron_manager_list_sidebar_refresh %}
+                    <sw-sidebar-item
+                            icon="default-arrow-360-left"
+                            :title="$tc('bst-cron-manager.list.titleSidebarItemRefresh')"
+                            @click="onRefresh">
+                    </sw-sidebar-item>
+                {% endblock %}
+            </sw-sidebar>
+        {% endblock %}
+    </sw-page>
+{% endblock %}

@@ -1,0 +1,265 @@
+.mailchimp-container{
+    background-color:$rhweb-rhwebmailchimpsocialservice-background;
+    padding:$rhweb-rhwebmailchimpsocialservice-padding 0;
+    color:$rhweb-rhwebmailchimp-main-color;
+
+    a{
+        color:$rhweb-mailchimp-footer-link-color;
+
+        &:hover{
+            color:$rhweb-mailchimp-footer-link-hover-color;
+        }
+    }
+
+    .h4{
+        color:$rhweb-rhwebmailchimp-main-color;
+    }
+
+    .newsletter-input{
+        color:$rhweb-mailchimp-footer-email-text-color;
+
+        @include mxn_placeholder($rhweb-mailchimp-footer-email-placeholder-color);
+    }
+
+    .optin-check{
+        .b-contain input[type="checkbox"] ~ .b-input{
+            border-color:$rhweb-rhwebmailchimp-main-color !important;
+        }
+
+        .b-contain input:focus ~ .b-input {
+            box-shadow: 0 0 0 2px darken($rhweb-rhwebmailchimp-main-color, 15%);
+        }
+
+        .b-contain input:checked ~ .b-input {
+            background: $rhweb-rhwebmailchimp-main-color;
+            border-color: $rhweb-rhwebmailchimp-main-color;
+        }
+
+        .b-contain input:checked:focus ~ .b-input, .b-contain:hover input:not([disabled]):checked ~ .b-input {
+            background: $rhweb-rhwebmailchimp-main-color;
+            border-color: $rhweb-rhwebmailchimp-main-color;
+        }
+
+        .b-contain .b-input::before {
+            background: $rhweb-rhwebmailchimp-main-color;
+        }
+    }
+
+    .btn{
+        background-color: $rhweb-rhwebmailchimp-button-background-color !important;
+        color:$rhweb-rhwebmailchimp-button-color !important;
+
+        &:hover{
+            background-color:$rhweb-mailchimp-footer-button-background-color-hover !important;
+            color:$rhweb-mailchimp-footer-button-text-color-hover;
+        }
+    }
+}
+
+.mailchimp-container{
+    .newsletter-input{
+        border-bottom: 1px solid $rhweb-mailchimp-footer-email-border-color;
+
+        &:focus{
+            border-bottom-color: $rhweb-mailchimp-footer-email-border-color-focus;
+        }
+    }
+}
+
+.mailchimp-container, .rhweb-modal-box.newsletter{
+    .newsletter-input{
+        border-top: 0;
+        border-left: 0;
+        border-right: 0;
+        background: transparent;
+        text-align: center;
+        font-size: 1em;
+        width: 100%;
+        padding: 10px;
+
+        &:focus{
+            outline:none;
+        }
+    }
+
+    .optin-check {
+
+
+        .b-contain *, .b-contain *::before, .b-contain *::after {
+            box-sizing: content-box !important;
+        }
+
+        .b-contain input {
+            position: absolute;
+            z-index: -1;
+            opacity: 0;
+        }
+
+        .b-contain span {
+            line-height: 1;
+            font-size: 0.8rem;
+            font-family: inherit;
+        }
+
+        .b-contain {
+            position: relative;
+            padding-left: 1.8rem;
+            cursor: pointer;
+            margin-bottom: 0;
+        }
+
+        .b-contain input[type="checkbox"] ~ .b-input {
+            position: absolute;
+            top: 2px;
+            left: 0;
+            height: 0.91rem;
+            width: 0.91rem;
+            background: #fff;
+            transition: background 250ms;
+            border: 1px solid;
+            border-radius: 0rem;
+        }
+
+        .b-contain input[type="radio"] ~ .b-input {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 0.91rem;
+            width: 0.91rem;
+            background: rgba(241, 245, 248, 1);
+            transition: background 250ms;
+            border: none;
+            border-radius: 2.0rem;
+        }
+
+        .b-contain input[type="checkbox"] ~ .b-input::after {
+            content: '';
+            position: absolute;
+            display: none;
+            left: 0.25rem;
+            top: 0.03rem;
+            width: 0.3rem;
+            height: 0.51rem;
+            border: solid rgba(255, 255, 255, 1);
+            border-width: 0 2px 2px 0;
+            transition: background 250ms;
+            transform: rotate(45deg);
+        }
+
+        .b-contain input[type="radio"] ~ .b-input::after {
+            content: '';
+            position: absolute;
+            display: none;
+            left: .25rem;
+            top: .25rem;
+            width: .75rem;
+            height: .75rem;
+            border-radius: 2.0rem;
+            background: rgba(255, 255, 255, 1);
+            transition: background 250ms;
+        }
+
+        .b-contain input:disabled ~ .b-input::after {
+            border-color: rgba(135, 149, 161, 1);
+        }
+
+        .b-contain input:checked ~ .b-input::after {
+            display: block;
+        }
+
+        .b-contain:hover input ~ .b-input,
+        .b-contain input:focus ~ .b-input {
+            background: rgb(231, 238, 243);
+        }
+
+        .b-contain input[type="checkbox"]:disabled ~ .b-input {
+            background: rgba(241, 245, 248, 1);
+            border-color: rgba(184, 194, 204, 1);
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .b-contain input[type="radio"]:disabled ~ .b-input {
+            background: rgba(241, 245, 248, 1);
+            border-color: rgba(184, 194, 204, 1);
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .b-contain input[type="radio"]:disabled ~ .b-input::after {
+            background: rgba(135, 149, 161, 1);
+        }
+
+        .b-contain .b-input::before {
+            content: '';
+            display: block;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 3rem;
+            height: 3rem;
+            margin-left: -0.85rem;
+            margin-top: -0.85rem;
+            border-radius: 2rem;
+            opacity: .6;
+            z-index: 99999;
+            transform: scale(0);
+        }
+
+        @keyframes b-ripple {
+            0% {
+                transform: scale(0);
+            }
+
+            20% {
+                transform: scale(1);
+            }
+
+            100% {
+                opacity: 0;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes b-ripple-duplicate {
+            0% {
+                transform: scale(0);
+            }
+
+            30% {
+                transform: scale(1);
+            }
+
+            60% {
+                transform: scale(1);
+            }
+
+            100% {
+                opacity: 0;
+                transform: scale(1);
+            }
+        }
+
+        .b-contain input + .b-input::before {
+            animation: b-ripple 250ms ease-out;
+        }
+
+        .b-contain input:checked + .b-input::before {
+            animation-name: b-ripple-duplicate;
+        }
+
+        .b-contain .b-input::before {
+            visibility: hidden;
+        }
+
+        .b-contain input:focus + .b-input::before {
+            visibility: visible;
+        }
+
+        .b-contain:first-child .b-input::before {
+            visibility: hidden;
+        }
+    }
+}
+
+@import "mailchimp_popup";

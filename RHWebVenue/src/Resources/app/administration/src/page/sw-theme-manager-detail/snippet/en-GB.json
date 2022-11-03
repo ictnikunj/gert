@@ -1,0 +1,32 @@
+{
+  "rhweb-theme-config": {
+    "serviceBox": {
+      "addons": {
+        "cms": {
+          "badge": "+ Addon",
+          "headline": "CMS BUNDLE - Extension for the Shopping Experiences",
+          "content": "You haven't installed my extension for the Shopping Experiences yet? The CMS Bundle addon is perfectly matched to the theme and gives you countless new possibilities for building your content pages.",
+          "button": "Go to Shopware Store",
+          "buttonUrl": "https://store.shopware.com/en/rhweb22714054070/cms-bundle-extension-for-the-shopping-experiences.html"
+        }
+      },
+      "two": {
+        "headline": "Photoshop Presets",
+        "content": "I have prepared for you the design presets for the theme as a free download. You or your designers can freely use and extend these presets.",
+        "button": "Free Download",
+        "buttonUrl": "https://rh-webdesign.com/en/theme-downloads?theme={theme}"
+      },
+      "three": {
+        "headline": "You have problems?",
+        "content": "You've been stuck on a problem for a while and just can't get ahead? Please contact me and we will find a solution. Support is very important to me.",
+        "button": "shopware@rh-webdesign.com",
+        "buttonUrl": "mailto:shopware@rh-webdesign.com?subject=I%20need%20help%20%7C%20{theme}%20Theme&body=Hey%2C%20please%20make%20sure%20that%20you%20describe%20your%20request%20in%20detail.%20Preferably%20even%20with%20screenshots!%20%3B)%0D%0A%0D%0A-%20You%20are%20looking%20in%20vain%20for%20a%20function%20in%20the%20theme%3F%20-%0D%0A-%20You%20have%20found%20an%20error%3F%20-%0D%0A-%20You%20want%20to%20order%20a%20theme%20customization%3F%20-%0D%0A%0D%0A"
+      },
+      "label": {
+        "welcomeContent": "\"Hello! I'm glad you decided to use my theme. You have not only an extremely extensively configurable tool for your online store at hand, but at the same time also my terrific support for free! <br>I will accompany you on your journey to your perfect online store. My highest priority is that you are successful with my theme in the long run, so every support case is prioritized very high and handled conscientiously!<br><br>Below you will find the basic settings of the theme. These change the layout of your store significantly. If you want to go further into detail, look through the other tabs and settings. Alternatively, I'm would be happy to help you set up your entire shop! ✌\"<br><a target='_blank' href='https://rh-webdesign.com/en/my-offer'>Shop Setup Service</a>",
+        "welcomeSignature": "- Robin, RH-Webdesign -",
+        "welcomeHelptext": "You can disable these information fields in the theme configuration.<br><br><b>Extensions > My Extensions > Themes</b>"
+      }
+    }
+  }
+}

@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+      <script type="module">
+        import '../../demo-element/demo-element.js?v=1637255330';
+        import '../translate-element.js?v=1637255330';
+      </script>
+
+      <title>translate-element demo</title>
+  </head>
+  <body>
+    <ropi-demo name="Register snippets">
+        <script type="module">
+          import TranslateElement from '../translate-element.js?v=1637255330';
+          TranslateElement.registerSnippets({
+            and: 'und',
+            hello: 'hello',
+            alternative: {
+              hello: 'servus'
+            },
+            introduction: 'Ich heiße {{name}}',
+            apples: 'Äpfel',
+            bananas: 'Bananen'
+          });
+
+          // Invoking again will merge the new snippets with the snippets
+          // which are currently registered
+          TranslateElement.registerSnippets({
+            hello: 'hallo'
+          });
+        </script>
+    </ropi-demo>
+
+    <ropi-demo>
+        <ropi-translate>hello</ropi-translate>
+        <ropi-translate>and</ropi-translate>
+        <ropi-translate>alternative.hello</ropi-translate>
+    </ropi-demo>
+
+    <ropi-demo name="key not found">
+      <ropi-translate>notExistingKey</ropi-translate>
+    </ropi-demo>
+
+    <ropi-demo name="variables">
+      <ropi-translate vars='{"name": "Marvin"}'>introduction</ropi-translate>
+    </ropi-demo>
+
+    <ropi-demo name="multiple translations">
+      <ropi-translate>apples, bananas</ropi-translate>
+    </ropi-demo>
+  </body>
+</html>

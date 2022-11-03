@@ -1,0 +1,23 @@
+{
+  "moorl-fb2-hint": {
+    "notifications": {
+      "p1": "I would like to thank you for the trust, the many downloads and the positive feedback for the Form Builder!",
+      "p2": "In the last change requests I noticed that the plugin has reached its technical limits. Many of the included features are not at all necessary for most shop operators and, among other things, are an unnecessary burden on the wallet. The extensibility for developers is currently only possible through events and covers only a small part of what would actually be necessary for professional development for complex processes. Many therefore prefer to rely on costly in-house developments for individual forms.",
+      "p3": "With your feedback over the last two years and my current knowledge of the Shopware system, I have fundamentally redeveloped the plugin! On the one hand, it is offered at a lower price (with basic features) and can be extended in functionality by new add-ons.",
+      "p4": "The new development is also aimed at developers and agencies who want to build their own or customised add-ons for the plugin. A sample plugin for developers is freely available on GitHub.",
+      "p5": "All customers with an active subscription can inform me by mail and receive a 50% voucher for basic version and add-ons from 01.06.2022!",
+      "p6": "This plugin will continue to receive security updates and bug fixes."
+    },
+    "modal": {
+      "title": "Form Builder 2 - Hint",
+      "more": "You can find more information here:",
+      "store": "Shopware Store",
+      "storeLink": "https://store.shopware.com/detail/index/sArticle/2300041",
+      "docs": "Documentation",
+      "docsLink": "https://docs.moori.net/en/MoorlForms/",
+      "demo": "Demo",
+      "demoLink": "https://demo.moori.net/Formular-Baukasten-2-NEU/",
+      "close": "Close"
+    }
+  }
+}

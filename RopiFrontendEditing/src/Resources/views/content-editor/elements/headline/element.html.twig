@@ -1,0 +1,22 @@
+{% block element %}
+<div
+    {% sw_include '@RopiFrontendEditing/content-editor/elements/common/editor-attributes.html.twig' %}
+    class="{% block element_class %}
+                ropi-frontend-editing-content-element-headline
+                {% sw_include '@RopiFrontendEditing/content-editor/elements/common/general-classes.html.twig' %}
+           {% endblock %}"
+    style="{% block element_style %}{% endblock %}">
+    {% block element_inner %}
+        <h{{ data.configuration.level }}
+            class="{% block heading_class %}
+                       {% sw_include '@RopiFrontendEditing/content-editor/elements/common/text-color-class.html.twig' with {
+                           'textColor': data.configuration.textColor
+                       } %}
+                       h{{ data.configuration.appearance }}
+                   {% endblock %}">
+            <div data-ropi-content-editable="text"
+                 data-ropi-content-editable-commands="italic,underline,justifyleft,justifycenter,justifyright,createlink,unlink">{{ data.contents.text|raw }}</div>
+        </h{{ data.configuration.level }}>
+    {% endblock %}
+</div>
+{% endblock %}

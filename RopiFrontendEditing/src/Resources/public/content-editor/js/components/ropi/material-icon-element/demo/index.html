@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+      <script type="module">
+        import '../../demo-element/demo-element.js?v=1637255330';
+        import '../material-icon-sprite.js?v=1637255330';
+        import '../material-icon-element.js?v=1637255330';
+      </script>
+
+      <title>material-icon-element demo</title>
+  </head>
+  <body>
+    <ropi-demo name="Transition">
+      <ropi-material-icon id="transition">menu</ropi-material-icon>
+      <script type="module">
+      import '../material-icon-element.js?v=1637255330';
+
+      let icons = ['menu', 'arrow_back', 'search', 'close'];
+      let iconPointer = 1;
+
+      setInterval(function() {
+        document.getElementById('transition').innerHTML = icons[iconPointer++];
+        if (iconPointer > icons.length - 1) {
+          iconPointer = 0;
+        }
+      }, 1500);
+      </script>
+    </ropi-demo>
+    <ropi-demo name="Menu">
+      <ropi-material-icon>menu</ropi-material-icon>
+    </ropi-demo>
+    <ropi-demo name="Add">
+      <ropi-material-icon>add</ropi-material-icon>
+    </ropi-demo>
+    <ropi-demo name="Check">
+      <ropi-material-icon>check</ropi-material-icon>
+    </ropi-demo>
+    <ropi-demo name="Close">
+      <ropi-material-icon>close</ropi-material-icon>
+    </ropi-demo>
+    <ropi-demo name="Search">
+      <ropi-material-icon>search</ropi-material-icon>
+    </ropi-demo>
+    <ropi-demo name="Back">
+      <ropi-material-icon>arrow_back</ropi-material-icon>
+    </ropi-demo>
+    <ropi-demo name="Timeline">
+      <ropi-material-icon>timeline</ropi-material-icon>
+    </ropi-demo>
+    <ropi-demo name="home">
+      <ropi-material-icon>home</ropi-material-icon>
+    </ropi-demo>
+    <ropi-demo name="edit">
+      <ropi-material-icon>edit</ropi-material-icon>
+    </ropi-demo>
+    <ropi-demo name="save">
+      <ropi-material-icon>save</ropi-material-icon>
+    </ropi-demo>
+  </body>
+</html>

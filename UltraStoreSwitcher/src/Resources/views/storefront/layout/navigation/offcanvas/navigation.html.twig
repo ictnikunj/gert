@@ -1,0 +1,24 @@
+{% sw_extends '@Storefront/storefront/layout/navigation/offcanvas/navigation.html.twig' %}
+
+
+    {% block layout_navigation_offcanvas_navigation_actions %}
+	{% if shopware.config.UltraStoreSwitcher.config %} {% set UltraStoreSwitcher = shopware.config.UltraStoreSwitcher.config %} {% endif %}
+	{% if config('UltraStoreSwitcher.config') %} {% set UltraStoreSwitcher = config('UltraStoreSwitcher.config') %} {% endif %}
+        <nav class="nav navigation-offcanvas-actions">
+			{% if not UltraStoreSwitcher.activeKanal %}
+            {% block layout_navigation_offcanvas_navigation_action_language %}
+                {% sw_include '@Storefront/storefront/layout/header/actions/language-widget.html.twig' with {position: 'offcanvas'} %}
+            {% endblock %}
+			{% endif %}
+			
+			{% if UltraStoreSwitcher.activeKanal %}
+            {% block layout_navigation_offcanvas_navigation_action_service %}
+                {% sw_include '@Storefront/storefront/layout/header/actions/service-menu-widget1.html.twig' with {position: 'offcanvas'} %}
+            {% endblock %}
+			{% endif %}
+
+            {% block layout_navigation_offcanvas_navigation_action_currency %}
+                {% sw_include '@Storefront/storefront/layout/header/actions/currency-widget.html.twig' with {position: 'offcanvas'} %}
+            {% endblock %}
+        </nav>
+    {% endblock %}

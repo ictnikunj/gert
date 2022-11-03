@@ -1,0 +1,107 @@
+{% block definition %}
+    <ropi-content-element
+            type="RopiFrontendEditing/youtube"
+            icon="ondemand_video"
+            color="#e62117"
+            group="{% trans %}ropi-frontend-editing.contentElement.definition.group.media{% endtrans %}"
+            name="{% trans %}ropi-frontend-editing.contentElement.definition.element.youtube{% endtrans %}"
+            languagespecificsettings="{% block languagespecificsettings %}{% endblock %}"
+            src="{{ path('ropi.frontend-editing.element.render') }}">
+        <template>
+            {% block settings_template %}
+                <ropi-tabs scrollable tablistposition="bottom">
+                    {% block tab_general %}
+                        <ropi-touchable slot="tab">{% trans %}ropi-frontend-editing.contentElement.definition.tab.general{% endtrans %}</ropi-touchable>
+                    {% endblock %}
+                    {% block tabpanel_general %}
+                        <div slot="tabpanel">
+                            {% block tabpanel_general_inner %}
+
+                                {% block video %}
+
+                                    {% sw_include '@RopiFrontendEditing/content-editor/elements/common/settings/video.html.twig' with {
+                                        'name': 'videoId',
+                                        'aspectRatio': {
+                                            'name': 'aspectRatio'
+                                        },
+                                        'minHeight': {
+                                            'name': 'minHeight'
+                                        }
+                                    } %}
+
+                                {% endblock %}
+
+                                {% block behavior %}
+                                    <ropi-collapsible>
+                                        <ropi-subheader slot="header">{% trans %}ropi-frontend-editing.contentElement.definition.subheader.behavior{% endtrans %}</ropi-subheader>
+                                        <div slot="content">
+                                            {% block behavior_content %}
+
+                                                {% block behavior_checkbox_group %}
+                                                    <ropi-checkbox-group>
+                                                        {% block behavior_checkbox_group_inner %}
+                                                            {% block behavior_checkbox_loop %}
+                                                                <ropi-checkbox name="loop" value="1">{% trans %}ropi-frontend-editing.contentElement.definition.label.loop{% endtrans %}</ropi-checkbox>
+                                                            {% endblock %}
+                                                            {% block behavior_checkbox_autoplay %}
+                                                                <ropi-checkbox name="autoplay" value="1">{% trans %}ropi-frontend-editing.contentElement.definition.label.autoplay{% endtrans %}</ropi-checkbox>
+                                                            {% endblock %}
+                                                        {% endblock %}
+                                                    </ropi-checkbox-group>
+                                                {% endblock %}
+
+                                            {% endblock %}
+                                        </div>
+                                    </ropi-collapsible>
+                                {% endblock %}
+
+                                {% block appearance %}
+                                    <ropi-collapsible>
+                                        <ropi-subheader slot="header">{% trans %}ropi-frontend-editing.contentElement.definition.subheader.appearance{% endtrans %}</ropi-subheader>
+                                        <div slot="content">
+                                            {% block appearance_content %}
+
+                                                {% block appearance_checkbox_group %}
+                                                    <ropi-checkbox-group>
+                                                        {% block appearance_checkbox_group_inner %}
+                                                            {% block appearance_checkbox_hide_controls %}
+                                                                <ropi-checkbox name="hideControls" value="1">{% trans %}ropi-frontend-editing.contentElement.definition.label.hideControlBar{% endtrans %}</ropi-checkbox>
+                                                            {% endblock %}
+                                                            {% block appearance_checkbox_hide_branding %}
+                                                                <ropi-checkbox name="hideBranding" value="1">{% trans %}ropi-frontend-editing.contentElement.definition.label.hideLogoInControlBar{% endtrans %}</ropi-checkbox>
+                                                            {% endblock %}
+                                                        {% endblock %}
+                                                    </ropi-checkbox-group>
+                                                {% endblock %}
+
+                                            {% endblock %}
+                                        </div>
+                                    </ropi-collapsible>
+                                {% endblock %}
+
+                            {% endblock %}
+                        </div>
+                    {% endblock %}
+                    {% block breakpoints_tabs %}
+                        {% for breakpoint in breakpoints %}
+                            {% block tab_breakpoint %}
+                                <ropi-touchable slot="tab">{{ breakpoint.name }}</ropi-touchable>
+                            {% endblock %}
+                            {% block tabpanel_breakpoint %}
+                                <div slot="tabpanel">
+                                    {% block tabpanel_breakpoint_inner %}
+
+                                            {% block general %}
+                                                {% sw_include '@RopiFrontendEditing/content-editor/elements/common/settings/general.html.twig' %}
+                                            {% endblock %}
+
+                                    {% endblock %}
+                                </div>
+                            {% endblock %}
+                        {% endfor %}
+                    {% endblock %}
+                </ropi-tabs>
+            {% endblock %}
+        </template>
+    </ropi-content-element>
+{% endblock %}

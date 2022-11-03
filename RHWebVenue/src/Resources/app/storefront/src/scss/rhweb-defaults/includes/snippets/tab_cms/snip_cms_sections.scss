@@ -1,0 +1,99 @@
+$tmp-background-color:$rhweb-cms-general-background-color-block;
+$tmp-border-color:$rhweb-cms-general-border-color-block;
+$tmp-margin-bottom:$rhweb-cms-general-margin-block;
+
+.cms-page{
+  &.wishlist-page, &.search-page{
+    background-color: $tmp-background-color;
+    border:1px solid $tmp-border-color;
+    border-radius: $border-radius;
+  }
+
+  &.search-page{
+    padding:20px;
+  }
+}
+
+.cms-sections{
+  .cms-section{
+    .cms-section-default{
+      .cms-block{
+        background-color: $tmp-background-color;
+        border:1px solid $tmp-border-color;
+        border-radius: $border-radius;
+        margin-bottom:$tmp-margin-bottom;
+      }
+      &.full-width{
+        .cms-block{
+          border:none;
+        }
+      }
+    }
+
+    .cms-section-sidebar{
+      margin-bottom:$tmp-margin-bottom;
+
+      .cms-section-sidebar-sidebar-content, .cms-section-sidebar-main-content{
+        background-color: $tmp-background-color;
+        border:1px solid $tmp-border-color;
+        border-radius: $border-radius;
+      }
+
+      @include media-breakpoint-up(lg){
+        .cms-section-sidebar-sidebar-content{
+          border-right:0;
+        }
+
+        .cms-section-sidebar-main-content{
+          border-left:0;
+        }
+      }
+    }
+
+    &:last-child{
+      .cms-section-sidebar, .cms-section-default .cms-block{
+        margin-bottom:0;
+      }
+    }
+  }
+}
+
+
+.product-detail{
+  background-color: $tmp-background-color;
+  padding:15px;
+  border:1px solid $tmp-border-color;
+  border-radius: $border-radius;
+
+  .card-tabs{
+    .nav-link{
+      border-color:transparent;
+
+      &.active{
+        background-color: $tmp-background-color;
+        border-color:$sw-color-brand-primary;
+      }
+
+      &:hover{
+        background-color: transparent;
+      }
+    }
+  }
+}
+
+.account-content, .checkout-container, .account-register{
+  .card, .checkout-aside-summary{
+    background-color: $tmp-background-color;
+    padding:15px;
+    border:1px solid $tmp-border-color;
+    border-radius: $border-radius;
+
+  }
+
+  .card-actions{
+    .btn-light{
+      @extend .btn-primary;
+    }
+  }
+}
+

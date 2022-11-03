@@ -1,0 +1,44 @@
+{
+  "name": "ropi/frontend-editing",
+  "description": "CMS, Drag and Drop, WYSIWYG",
+  "version": "v1.3.2",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Robert Piplica"
+    }
+  ],
+  "type": "shopware-platform-plugin",
+  "autoload": {
+    "psr-4": {
+      "Ropi\\FrontendEditing\\": "src/",
+      "Ropi\\ContentEditor\\": "vendor/php-content-editor/src/"
+    }
+  },
+  "extra": {
+    "shopware-plugin-class": "Ropi\\FrontendEditing\\RopiFrontendEditing",
+    "copyright": "Robert Piplica",
+    "label": {
+      "de-DE": "Frontend Editing",
+      "en-GB": "Frontend Editing"
+    },
+    "description": {
+      "de-DE": "Mit Frontend Editing bearbeiten Sie Ihre Inhalte direkt im Frontend - somit haben Sie stets im Blick, wie die Seite tatsächlich aussehen wird. Lästige Wartezeiten, um spezielle Vorschaumodi zu laden, gehören somit der Vergangenheit an. Klicken Sie einfach auf einen Inhalt, um ihn zu bearbeiten. Neue Inhalte erstellen Sie bequem per Drag and Drop.",
+      "en-GB": "With Frontend Editing you can edit your content directly in the frontend - so you always have an eye on how the page will actually look. Annoying waiting times to load special preview modes are therefore eliminated. Just click on a content element for editing. New content can be easily created via drag and drop."
+    },
+    "manufacturerLink": {
+      "de-DE": "https://store.shopware.com/robertpiplica.html",
+      "en-GB": "https://store.shopware.com/en/robertpiplica.html"
+    },
+    "supportLink": {
+      "de-DE": "https://www.robertpiplica.de/shopware6/frontend-editing/",
+      "en-GB": "https://www.robertpiplica.de/en/shopware6/frontend-editing/"
+    }
+  },
+  "require": {
+    "ext-json": "*",
+    "shopware/core": "^6.4.0",
+    "shopware/storefront": "^6.4.0",
+    "shopware/administration": "^6.4.0"
+  }
+}

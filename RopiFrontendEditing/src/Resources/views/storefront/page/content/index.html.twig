@@ -1,0 +1,17 @@
+{% sw_extends '@Storefront/storefront/page/content/index.html.twig' %}
+
+{% block page_content_blocks %}
+    {% block ropi_frontend_editing_content_area_top %}
+    <div data-ropi-content-area="top">
+        {{ ropi_frontend_editing_render_content_area('top', ropiFrontendEditingContentDocument.structure.children) }}
+    </div>
+    {% endblock %}
+
+    {{ parent() }}
+
+    {% block ropi_frontend_editing_content_area_bottom %}
+        <div data-ropi-content-area="bottom">
+            {{ ropi_frontend_editing_render_content_area('bottom', ropiFrontendEditingContentDocument.structure.children) }}
+        </div>
+    {% endblock %}
+{% endblock %}

@@ -1,0 +1,47 @@
+{% block element %}
+<div
+    {% sw_include '@RopiFrontendEditing/content-editor/elements/common/editor-attributes.html.twig' %}
+    class="{% block element_class %}
+                ropi-frontend-editing-content-element-container
+                {% if data.configuration.stretchHeight %}
+                    ropi-frontend-editing-flex
+                    {% sw_include '@RopiFrontendEditing/content-editor/elements/common/general-classes.html.twig' with {
+                        'defaultDisplay': 'flex',
+                        'withoutPaddingClasses': true
+                    } %}
+                {% else %}
+                    {% sw_include '@RopiFrontendEditing/content-editor/elements/common/general-classes.html.twig' with {
+                        'withoutPaddingClasses': true
+                    } %}
+                {% endif %}
+           {% endblock %}"
+    style="{% block element_style %}{% endblock %}">
+    {% block element_inner %}
+        <div class="{% block container_class %}
+                       {% if data.configuration.layout == 'fluid' %}container-fluid{% else %}container{% endif %}
+                       ropi-frontend-editing-flex
+                       {% sw_include '@RopiFrontendEditing/content-editor/elements/common/background-color-class.html.twig' with {
+                           'backgroundColor': data.configuration.backgroundColor
+                       } %}
+                       {% sw_include '@RopiFrontendEditing/content-editor/elements/common/text-color-class.html.twig' with {
+                           'textColor': data.configuration.textColor
+                       } %}
+                       border
+                       {% sw_include '@RopiFrontendEditing/content-editor/elements/common/border-color-class.html.twig' with {
+                           'borderColor': data.configuration.borderColor
+                       } %}
+                       {% sw_include '@RopiFrontendEditing/content-editor/elements/common/rounding-class.html.twig' with {
+                           'rounding': data.configuration.rounding
+                       } %}
+                       {{ paddingClasses|join(' ') }}
+                    {% endblock %}">
+            <div class="ropi-frontend-editing-content-element-container__content-area
+                        ropi-frontend-editing-flex
+                        ropi-frontend-editing-flex--align-{{ data.configuration.verticalAlign ? data.configuration.verticalAlign : 'center' }}"
+                 data-ropi-content-area="content">
+                {{ ropi_frontend_editing_render_content_area('content', data.children) }}
+            </div>
+        </div>
+    {% endblock %}
+</div>
+{% endblock %}

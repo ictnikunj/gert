@@ -1,0 +1,35 @@
+.product-box {
+
+  .product-image-wrapper {
+    position: relative;
+
+    .product-image {
+
+      &.alternate-image {
+        position: absolute;
+        opacity: 0;
+        -webkit-transition: opacity 0.3s ease-in-out;
+        -moz-transition: opacity 0.3s ease-in-out;
+        -o-transition: opacity 0.3s ease-in-out;
+        transition: opacity 0.3s ease-in-out;
+        background-color: #fff;
+      }
+    }
+  }
+
+  &:hover {
+
+    .product-image-wrapper {
+
+      .product-image-link {
+
+        .product-image {
+
+          &.alternate-image {
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+}

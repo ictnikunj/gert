@@ -1,0 +1,44 @@
+{
+    "name": "neno/category-h1",
+    "description": "Category H1",
+    "version": "v1.0.2",
+    "type": "shopware-platform-plugin",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Neno",
+            "role": "Manufacturer",
+            "homepage": "https://neno-digital.io"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Neno\\CategoryH1\\": "src/"
+        }
+    },
+    "require": {
+        "shopware/core": ">=6.4.0",
+        "shopware/administration": ">=6.4.0",
+        "shopware/storefront": ">=6.4.0"
+    },
+    "extra": {
+        "shopware-plugin-class": "Neno\\CategoryH1\\NenoCategoryH1",
+        "copyright": "(c) by neno GbR",
+        "label": {
+            "de-DE": "H1-Überschriften in Kategorie",
+            "en-GB": "H1-Headlines in category"
+        },
+        "description": {
+            "de-DE": "Zeige in deinen Kategorien H1-Überschriften an",
+            "en-GB": "Show H1-Headlines in your categories"
+        },
+        "manufacturerLink": {
+            "de-DE": "https://neno-digital.io",
+            "en-GB": "https://neno-digital.io"
+        },
+        "supportLink": {
+            "de-DE": "https://neno-digital.io/contact",
+            "en-GB": "https://neno-digital.io/contact"
+        }
+    }
+}

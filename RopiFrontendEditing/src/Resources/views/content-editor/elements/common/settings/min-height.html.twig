@@ -1,0 +1,8 @@
+{% block min_height %}
+    <div class="ropi-margin-h">
+        <ropi-textfield name="{{ name }}" type="number" min="0">
+            <div slot="placeholder">{% trans %}ropi-frontend-editing.contentElement.definition.label.minHeight{% endtrans %}</div>
+        </ropi-textfield>
+    </div>
+    <ropi-hint>{% trans %}ropi-frontend-editing.contentElement.definition.hint.minHeight{% endtrans %}</ropi-hint>
+{% endblock %}

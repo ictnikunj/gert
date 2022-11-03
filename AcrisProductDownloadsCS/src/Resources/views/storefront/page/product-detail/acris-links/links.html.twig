@@ -1,0 +1,9 @@
+{% block page_product_detail_links %}
+    <ul class="acris-links-list">
+        {% for value in links %}
+            {% block page_product_detail_links_element %}
+                <li class="acris-links-list-item"><a href="{{ value.getUrl() }}" target="{% if value.linkTarget == true %}_blank{% else %}_self{% endif %}" title="{% if value.translated.title %}{{ value.translated.title }}{% else %}{{ value.getUrl() }}{% endif %}">{% if value.translated.title %}{{ value.translated.title }}{% else %}{{ value.getUrl() }}{% endif %}</a>{% if value.translated.description %} - {{ value.translated.description }}{% endif %}</li>
+            {% endblock %}
+        {% endfor %}
+    </ul>
+{% endblock %}

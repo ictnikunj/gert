@@ -1,0 +1,58 @@
+{% block page_product_detail_previewed_downloads %}
+    
+    {% if config('AcrisProductDownloadsCS.config.displayLayout') is null or config('AcrisProductDownloadsCS.config.displayLayout') is same as 'default' %}
+        {% set displayLayout = 'default' %}
+    {% else %}
+        {% set displayLayout = config('AcrisProductDownloadsCS.config.displayLayout') %}
+    {% endif %}
+
+    {% if config('AcrisProductDownloadsCS.config.directDownload') is not empty %}
+        {% set directDonwloadConfig = config('AcrisProductDownloadsCS.config.directDownload') %}
+    {% endif %}
+
+    <div class="row mb-2 acris-downloads__list py-2">
+        {% for value in downloads %}
+            {% block page_product_detail_previewed_downloads_element %}
+                <div class="mb-3 acris-downloads__list-element col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
+                    <a href="{{ value.getMedia().getUrl() }}" class="acris-downloads__link" target="_blank"
+                       title="{{ value.getMedia().getFileName() }}.{{ value.getMedia().getFileExtension() }}"
+                       {% if directDonwloadConfig == "direct" %}download="{{ value.getMedia().getFileName() }}.{{ value.getMedia().getFileExtension() }}"{% endif %}>
+                        <div class="card bg-light pt-3 pb-3 acris-downloads__card">
+                            {% set mediaUrl = '' %}
+                            {% if value.previewMedia is empty and (value.media.fileExtension == 'png' or value.media.fileExtension == 'jpg' or value.media.fileExtension == 'jpeg') %}
+                                {% set mediaUrl = value.media.url %}
+                            {% else %}
+                                {% set mediaUrl = value.previewMedia.url %}
+                            {% endif %}
+                            {% if mediaUrl is empty %}
+                                <div class="acris-downloads__image-placeholder">
+                                    <div class="h5">{{ "detail.acrisProductDownloadNoPreview"|trans }}</div>
+                                </div>
+                            {% else %}
+                                <div class="acris-downloads__card-img__container">
+                                    <img class="acris-downloads__card-img"
+                                         src="{{ mediaUrl }}">
+                                </div>
+                            {% endif %}
+                            <div class="acris-downloads__card-body px-2">
+                                <div class="cart-title acris-downloads__card-title text-center h5{% if value.translated.description is not empty %} card-title__border {% endif %}">{% if value.translated.title %}{{ value.translated.title }}{% else %}{{ value.getMedia().getFileName() }}.{{ value.getMedia().getFileExtension() }}{% endif %}</div>
+                                <p class="card-text acris-downloads__cart-description">{{ value.translated.description }}</p>
+
+                                {% if displayLayout is same as 'button' %}
+                                    <div class="d-flex justify-content-center align-center">
+                                        <a class="btn btn-secondary mt-3"
+                                           href="{{ value.getMedia().getUrl() }}" target="_blank"
+                                           title="{{ value.getMedia().getFileName() }}.{{ value.getMedia().getFileExtension() }}"
+                                           {% if directDonwloadConfig == "direct" %}download="{{ value.getMedia().getFileName() }}.{{ value.getMedia().getFileExtension() }}"{% endif %}>
+                                            {{ "detail.acrisProductDownloadBtnText"|trans }}
+                                        </a>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            {% endblock %}
+        {% endfor %}
+    </div>
+{% endblock %}

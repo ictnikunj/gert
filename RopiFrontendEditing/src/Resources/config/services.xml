@@ -1,0 +1,127 @@
+<?xml version="1.0" ?>
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="Ropi\ContentEditor\Service\ContentDocumentNodeService">
+        </service>
+        <service id="Ropi\ContentEditor\Service\DocumentContextService">
+        </service>
+        <service id="Ropi\ContentEditor\Facade\ContentEditorRenderFacade">
+            <argument type="service" id="Ropi\FrontendEditing\ContentEditor\Renderer\ContentElementRenderer"/>
+        </service>
+        <service id="Ropi\ContentEditor\Facade\ContentEditorActionFacade">
+            <argument type="service" id="Ropi\ContentEditor\Service\DocumentContextService"/>
+            <argument type="service" id="Ropi\FrontendEditing\ContentEditor\Environment\ContentEditorEnvironment"/>
+            <argument type="service" id="Ropi\FrontendEditing\ContentEditor\Storage\ContentDocumentStorage"/>
+            <argument type="service" id="Ropi\ContentEditor\Service\ContentDocumentNodeService"/>
+        </service>
+        <service id="Ropi\ContentEditor\Facade\ContentPresetActionFacade">
+            <argument type="service" id="Ropi\FrontendEditing\ContentEditor\Environment\ContentEditorEnvironment"/>
+            <argument type="service" id="Ropi\FrontendEditing\ContentEditor\Storage\ContentPresetStorage"/>
+        </service>
+
+        <service id="Ropi\FrontendEditing\ContentEditor\DocumentContext\DocumentContextBuilder">
+            <argument type="service" id="Ropi\FrontendEditing\ContentEditor\Environment\ContentEditorEnvironment"/>
+            <argument type="service" id="event_dispatcher"/>
+        </service>
+        <service id="Ropi\FrontendEditing\ContentEditor\DocumentContext\DocumentContextUrlBuilder">
+            <argument type="service" id="event_dispatcher"/>
+            <argument type="service" id="router"/>
+        </service>
+        <service id="Ropi\FrontendEditing\ContentEditor\DocumentContext\Subscriber\NavigationIndexDocumentContextSubscriber">
+            <tag name="kernel.event_subscriber"/>
+        </service>
+        <service id="Ropi\FrontendEditing\ContentEditor\DocumentContext\Subscriber\ProductIndexDocumentContextSubscriber">
+            <tag name="kernel.event_subscriber"/>
+        </service>
+        <service id="Ropi\FrontendEditing\ContentEditor\Environment\ContentEditorEnvironment">
+            <argument type="service" id="user.repository"/>
+            <argument type="service" id="service_container"/>
+        </service>
+        <service id="Ropi\FrontendEditing\ContentEditor\Renderer\ContentElementRenderer">
+            <argument type="service" id="Ropi\FrontendEditing\ContentEditor\Environment\ContentEditorEnvironment"/>
+            <argument type="service" id="event_dispatcher"/>
+            <argument type="service" id="service_container"/>
+        </service>
+        <service id="Ropi\FrontendEditing\ContentEditor\Renderer\ClassBuilder\BootstrapClassBuilder">
+            <argument type="service" id="Ropi\FrontendEditing\ContentEditor\Environment\ContentEditorEnvironment"/>
+        </service>
+        <service id="Ropi\FrontendEditing\ContentEditor\Renderer\Subscriber\ColumnsElementRenderSubscriber">
+            <argument type="service" id="Ropi\FrontendEditing\ContentEditor\Renderer\ClassBuilder\BootstrapClassBuilder"/>
+            <tag name="kernel.event_subscriber"/>
+        </service>
+        <service id="Ropi\FrontendEditing\ContentEditor\Renderer\Subscriber\ContentElementRenderSubscriber">
+            <argument type="service" id="Ropi\FrontendEditing\ContentEditor\Environment\ContentEditorEnvironment"/>
+            <argument type="service" id="Ropi\FrontendEditing\ContentEditor\Renderer\ClassBuilder\BootstrapClassBuilder"/>
+            <tag name="kernel.event_subscriber"/>
+        </service>
+        <service id="Ropi\FrontendEditing\ContentEditor\Renderer\Subscriber\ProductTeaserElementRenderSubscriber">
+            <argument type="service" id="Shopware\Core\Content\Product\SalesChannel\Detail\ProductDetailRoute"/>
+            <tag name="kernel.event_subscriber"/>
+        </service>
+        <service id="Ropi\FrontendEditing\ContentEditor\Storage\ContentDocumentStorage">
+            <argument type="service" id="Ropi\FrontendEditing\ContentEditor\Environment\ContentEditorEnvironment"/>
+            <argument type="service" id="Ropi\ContentEditor\Service\DocumentContextService"/>
+            <argument type="service" id="ropi_frontend_editing_content_document.repository"/>
+            <argument type="service" id="Ropi\FrontendEditing\ContentEditor\DocumentContext\DocumentContextUrlBuilder"/>
+            <argument type="service" id="Shopware\Storefront\Framework\Cache\CacheStore"/>
+        </service>
+        <service id="Ropi\FrontendEditing\ContentEditor\Storage\ContentPresetStorage">
+            <argument type="service" id="Ropi\FrontendEditing\ContentEditor\Environment\ContentEditorEnvironment"/>
+            <argument type="service" id="ropi_frontend_editing_content_preset.repository"/>
+        </service>
+
+        <service id="Ropi\FrontendEditing\Twig\RenderContentAreaExtension">
+            <argument type="service" id="Ropi\ContentEditor\Facade\ContentEditorRenderFacade"/>
+            <tag name="twig.extension"/>
+        </service>
+
+        <service id="Ropi\FrontendEditing\Storefront\Cache\CacheStoreDecorator"
+                 decorates="Shopware\Storefront\Framework\Cache\CacheStore">
+            <argument type="service" id="Ropi\FrontendEditing\Storefront\Cache\CacheStoreDecorator.inner" />
+            <argument type="service" id="Ropi\FrontendEditing\ContentEditor\Environment\ContentEditorEnvironment"/>
+        </service>
+        <service id="Ropi\FrontendEditing\Storefront\Subscriber\StorefrontRenderSubscriber">
+            <argument type="service" id="Ropi\FrontendEditing\ContentEditor\Environment\ContentEditorEnvironment"/>
+            <argument type="service" id="Ropi\FrontendEditing\ContentEditor\DocumentContext\DocumentContextBuilder"/>
+            <argument type="service" id="Ropi\FrontendEditing\ContentEditor\Storage\ContentDocumentStorage"/>
+            <tag name="kernel.event_subscriber"/>
+        </service>
+        <service id="Ropi\FrontendEditing\Storefront\Controller\FrontendEditingController" public="true">
+            <argument type="service" id="Ropi\FrontendEditing\ContentEditor\Environment\ContentEditorEnvironment"/>
+            <argument type="service" id="Ropi\FrontendEditing\ContentEditor\Renderer\ContentElementRenderer"/>
+            <argument type="service" id="Ropi\FrontendEditing\ContentEditor\Storage\ContentPresetStorage"/>
+            <call method="setContainer">
+                <argument type="service" id="service_container"/>
+            </call>
+        </service>
+        <service id="Ropi\FrontendEditing\Core\Framework\Api\Controller\ApiController" public="true">
+            <argument type="service" id="Ropi\ContentEditor\Facade\ContentEditorActionFacade"/>
+            <argument type="service" id="Ropi\ContentEditor\Facade\ContentPresetActionFacade"/>
+            <argument type="service" id="user.repository"/>
+            <call method="setContainer">
+                <argument type="service" id="service_container"/>
+            </call>
+        </service>
+
+        <service id="Ropi\FrontendEditing\Core\Framework\Subscriber\ResponseSubscriber">
+            <tag name="kernel.event_subscriber"/>
+        </service>
+
+        <service id="Ropi\FrontendEditing\Core\Content\ContentDocument\ContentDocumentDefinition">
+            <tag name="shopware.entity.definition" entity="ropi_frontend_editing_content_document" />
+        </service>
+        <service id="Ropi\FrontendEditing\Core\Content\ContentPreset\ContentPresetDefinition">
+            <tag name="shopware.entity.definition" entity="ropi_frontend_editing_content_preset" />
+        </service>
+
+        <service id="Ropi\FrontendEditing\Resources\snippet\en_GB\SnippetFile_en_GB" public="true">
+            <tag name="shopware.snippet.file"/>
+        </service>
+        <service id="Ropi\FrontendEditing\Resources\snippet\de_DE\SnippetFile_de_DE" public="true">
+            <tag name="shopware.snippet.file"/>
+        </service>
+    </services>
+</container>

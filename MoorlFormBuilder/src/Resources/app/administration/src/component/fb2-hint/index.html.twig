@@ -1,0 +1,32 @@
+<sw-modal
+        class="moorl-fb2-hint"
+        v-if="open"
+        :title="$tc('moorl-fb2-hint.modal.title')"
+        :closable="false">
+    <p>{{ $tc('moorl-fb2-hint.notifications.p1') }}</p>
+    <p>{{ $tc('moorl-fb2-hint.notifications.p2') }}</p>
+    <p>{{ $tc('moorl-fb2-hint.notifications.p3') }}</p>
+    <p>{{ $tc('moorl-fb2-hint.notifications.p4') }}</p>
+    <p>{{ $tc('moorl-fb2-hint.notifications.p5') }}</p>
+    <p>{{ $tc('moorl-fb2-hint.notifications.p6') }}</p>
+
+    <p>{{ $tc('moorl-fb2-hint.modal.more') }}</p>
+
+    <div class="button-group">
+        <a class="sw-button" :href="$tc('moorl-fb2-hint.modal.docsLink')" target="_blank" rel="noopener">
+            {{ $tc('moorl-fb2-hint.modal.docs') }}
+        </a>
+        <a class="sw-button" :href="$tc('moorl-fb2-hint.modal.storeLink')" target="_blank" rel="noopener">
+            {{ $tc('moorl-fb2-hint.modal.store') }}
+        </a>
+        <a class="sw-button" :href="$tc('moorl-fb2-hint.modal.demoLink')" target="_blank" rel="noopener">
+            {{ $tc('moorl-fb2-hint.modal.demo') }}
+        </a>
+    </div>
+
+    <template slot="modal-footer">
+        <sw-button @click="open = false">
+            {{ $tc('moorl-fb2-hint.modal.close') }}
+        </sw-button>
+    </template>
+</sw-modal>

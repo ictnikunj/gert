@@ -1,0 +1,46 @@
+{% block vertical_align %}
+    <ropi-collapsible>
+
+        <ropi-subheader slot="header">
+            {% trans %}ropi-frontend-editing.contentElement.definition.subheader.verticalAlignment{% endtrans %}
+        </ropi-subheader>
+        <div slot="content">
+            {% block vertical_align_content %}
+
+                {% block vertical_align_radio_group %}
+                    <ropi-radio-group>
+                        {% block vertical_align_radio_group_inner %}
+
+                            {% block vertical_align_radio_top %}
+                                {% if not hideTop %}
+                                    <ropi-radio name="{{ name }}" value="top" {% if checkedDefaultOption == 'top' or not checkedDefaultOption %}checked{% endif %}>
+                                        {% trans %}ropi-frontend-editing.contentElement.definition.label.top{% endtrans %}
+                                    </ropi-radio>
+                                {% endif %}
+                            {% endblock %}
+
+                            {% block vertical_align_radio_center %}
+                                {% if not hideCenter %}
+                                    <ropi-radio name="{{ name }}" value="center" {% if checkedDefaultOption == 'center' %}checked{% endif %}>
+                                        {% trans %}ropi-frontend-editing.contentElement.definition.label.center{% endtrans %}
+                                    </ropi-radio>
+                                {% endif %}
+                            {% endblock %}
+
+                            {% block vertical_align_radio_bottom %}
+                                {% if not hideBottom %}
+                                    <ropi-radio name="{{ name }}" value="bottom" {% if checkedDefaultOption == 'bottom' %}checked{% endif %}>
+                                        {% trans %}ropi-frontend-editing.contentElement.definition.label.bottom{% endtrans %}
+                                    </ropi-radio>
+                                {% endif %}
+                            {% endblock %}
+
+                        {% endblock %}
+                    </ropi-radio-group>
+                {% endblock %}
+
+            {% endblock %}
+        </div>
+
+    </ropi-collapsible>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% sw_extends '@Storefront/storefront/layout/navigation/navigation.html.twig' %}
+
+{% block layout_main_navigation_menu_item %}
+    {% if category.type == 'folder' %}
+        <div class="nav-link main-navigation-link"
+            {% if treeItem.children|length > 0 %}
+                data-flyout-menu-trigger="{{ category.id }}"
+            {% endif %}
+              title="{{ name }}">
+            <div class="main-navigation-link-text">
+                <span itemprop="name">{{ name }}</span>
+            </div>
+        </div>
+    {% else %}
+        <a class="nav-link main-navigation-link{% if category.id == page.header.navigation.active.id or category.id in activePath %} active{% endif %}"
+           href="{{ category_url(category) }}"
+           itemprop="url"
+           {% if treeItem.children|length > 0 %}data-flyout-menu-trigger="{{ category.id }}"{% endif %}
+           {% if category_linknewtab(category) %}target="_blank"{% endif %}
+           title="{{ name }}"
+           data-image="{{ treeItem.category.extensions.bccategoryimage }}">
+            <div class="main-navigation-link-text">
+                <span itemprop="name">{{ name }}</span>
+            </div>
+        </a>
+    {% endif %}
+{% endblock %}

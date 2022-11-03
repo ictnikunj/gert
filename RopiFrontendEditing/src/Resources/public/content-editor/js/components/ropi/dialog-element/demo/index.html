@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+      <script type="module">
+        import '../../demo-element/demo-element.js?v=1637255330';
+        import '../../styles/styles.js?v=1637255330';
+        import '../dialog-element.js?v=1637255330';
+      </script>
+
+      <title>dialog-element demo</title>
+  </head>
+  <body>
+    <ropi-demo>
+        <a id="open">Click to open dialog</a>
+        <ropi-dialog id="dialog">
+          <div slot="title">
+            Title
+          </div>
+          <div slot="content">
+            Are you sure?
+          </div>
+          <div slot="primary">
+            Yes
+          </div>
+          <div slot="secondary">
+            No
+          </div>
+          <div slot="cancel">
+            Cancel
+          </div>
+        </ropi-dialog>
+        <script>
+        let dialog = document.getElementById('dialog');
+        document.getElementById('open').addEventListener('click', function() {
+          dialog.setAttribute('open', '');
+        });
+
+        dialog.addEventListener('dialogclose', (event) => {
+          console.log(event.detail.action);
+        });
+        </script>
+    </ropi-demo>
+
+    <ropi-demo>
+        <a id="open2">Click to open dialog 2</a>
+        <ropi-dialog id="dialog2" fullwidth fullheight>
+            <div slot="title">
+                Title
+            </div>
+            <div slot="content">
+                Are you sure?
+            </div>
+            <div slot="primary">
+                Yes
+            </div>
+            <div slot="secondary">
+                No
+            </div>
+            <div slot="cancel">
+                Cancel
+            </div>
+        </ropi-dialog>
+        <script>
+            let dialog2 = document.getElementById('dialog2');
+            document.getElementById('open2').addEventListener('click', function() {
+                dialog2.setAttribute('open', '');
+            });
+
+            dialog2.addEventListener('dialogclose', (event) => {
+                console.log(event.detail.action);
+            });
+        </script>
+    </ropi-demo>
+  </body>
+</html>

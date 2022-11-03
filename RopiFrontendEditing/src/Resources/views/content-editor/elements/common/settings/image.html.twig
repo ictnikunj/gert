@@ -1,0 +1,12 @@
+{% block image %}
+    <ropi-subheader>
+        {% trans %}ropi-frontend-editing.contentElement.definition.subheader.image{% endtrans %}
+    </ropi-subheader>
+    <ropi-sw-media-image
+        name="{{ name }}"
+        accept="{% block accept %}image/jpeg,
+                image/png,
+                image/gif{% endblock %}"
+        apibaseuri="{{ asset("api/") }}">
+    </ropi-sw-media-image>
+{% endblock %}

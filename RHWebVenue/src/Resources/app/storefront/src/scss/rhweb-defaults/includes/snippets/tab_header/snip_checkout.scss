@@ -1,0 +1,40 @@
+.header-minimal{
+    height:$rhweb-header-checkout-header-height;
+    background-color:$rhweb-header-checkout-background-color;
+    color:$rhweb-header-checkout-text-color;
+    display: flex;
+    align-items: center;
+
+    .header-minimal-row{
+        padding:0;
+
+        .header-minimal-logo{
+            img{
+                max-height:$rhweb-header-checkout-header-height - 10px;
+                height:$rhweb-header-checkout-logo-maxheight;
+            }
+        }
+
+        .header-minimal-contact{
+            a{
+                color:$rhweb-header-checkout-link-color;
+
+                &:hover{
+                    color:$rhweb-header-checkout-link-color-hover;
+                }
+            }
+        }
+
+        .header-minimal-back-to-shop{
+            a{
+                background-color:$rhweb-header-checkout-button-background-color;
+                color:$rhweb-header-checkout-button-text-color;
+
+                &:hover{
+                    background-color: $rhweb-header-checkout-button-background-color-hover;
+                    color:$rhweb-header-checkout-button-text-color-hover;
+                }
+            }
+        }
+    }
+}

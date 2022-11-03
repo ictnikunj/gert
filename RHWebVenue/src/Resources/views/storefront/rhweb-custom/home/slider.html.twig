@@ -1,0 +1,117 @@
+{% block rhweb_venue_slider_frontpage %}
+    {% if theme_config('rhweb-slider-activate-slide-1') %}
+        <div class="container mt-5">
+            <div id="sliderVenue" class="carousel slide" data-ride="carousel">
+                {% block rhweb_venue_slider_frontpage_indicators %}
+                    {% if theme_config('rhweb-slider-activate-slide-2') %}
+                        <ol class="carousel-indicators">
+                            <li data-target="#sliderVenue" data-slide-to="0" class="active"></li>
+                            <li data-target="#sliderVenue" data-slide-to="1"></li>
+                            {% if theme_config('rhweb-slider-activate-slide-3') %}
+                                <li data-target="#sliderVenue" data-slide-to="2"></li>
+                            {% endif %}
+                        </ol>
+                    {% endif %}
+                {% endblock %}
+                <div class="carousel-inner">
+
+                    {% block rhweb_venue_slider_frontpage_slide_one %}
+                        <div class="carousel-item active">
+                            {% block rhweb_venue_slider_frontpage_slide_one_image %}
+                                <img class="d-none d-md-block w-100" src="{{ theme_config('rhweb-slider-image-one') |sw_encode_url }}" alt="First slide">
+                                <img class="d-md-none w-100" src="{{ theme_config('rhweb-slider-image-one-mobile') |sw_encode_url }}" alt="First slide">
+                            {% endblock %}
+
+                            {% block rhweb_venue_slider_frontpage_slide_one_caption %}
+                                {% if theme_config('rhweb-slider-activate-caption-1') %}
+                                    <div class="carousel-caption caption-{{ theme_config('rhweb-slider-caption-1-alignment') }}">
+                                        <div class="container text-left">
+                                            <div class="caption-content">
+                                                <h3 class="h5">{{ "venueTheme.slider.subHeadlineOne"|trans|sw_sanitize }}</h3>
+                                                <h2 class="h1">{{ "venueTheme.slider.headlineOne"|trans|sw_sanitize }}</h2>
+                                                <p>
+                                                    {{ "venueTheme.slider.textOne"|trans|sw_sanitize }}
+                                                </p>
+                                                <a href="{{ "venueTheme.slider.urlOne"|trans|sw_sanitize }}" class="btn btn-lg">{{ "venueTheme.slider.buttonOne"|trans|sw_sanitize }}</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            {% endblock %}
+                        </div>
+                    {% endblock %}
+
+                    {% block rhweb_venue_slider_frontpage_slide_two %}
+                        {% if theme_config('rhweb-slider-activate-slide-2') %}
+                            <div class="carousel-item">
+                                {% block rhweb_venue_slider_frontpage_slide_two_image %}
+                                    <img class="d-none d-md-block w-100" src="{{ theme_config('rhweb-slider-image-two') |sw_encode_url }}" alt="Second slide">
+                                    <img class="d-md-none w-100" src="{{ theme_config('rhweb-slider-image-two-mobile') |sw_encode_url }}" alt="Second slide">
+                                {% endblock %}
+
+                                {% block rhweb_venue_slider_frontpage_slide_two_caption %}
+                                    {% if theme_config('rhweb-slider-activate-caption-2') %}
+                                        <div class="carousel-caption caption-{{ theme_config('rhweb-slider-caption-2-alignment') }}">
+                                            <div class="container text-left">
+                                                <div class="caption-content">
+                                                    <h3 class="h5">{{ "venueTheme.slider.subHeadlineTwo"|trans|sw_sanitize }}</h3>
+                                                    <h2 class="h1">{{ "venueTheme.slider.headlineTwo"|trans|sw_sanitize }}</h2>
+                                                    <p>
+                                                        {{ "venueTheme.slider.textTwo"|trans|sw_sanitize }}
+                                                    </p>
+                                                    <a href="{{ "venueTheme.slider.urlTwo"|trans|sw_sanitize }}" class="btn btn-lg">{{ "venueTheme.slider.buttonTwo"|trans|sw_sanitize }}</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                {% endblock %}
+                            </div>
+                        {% endif %}
+                    {% endblock %}
+
+                    {% block rhweb_venue_slider_frontpage_slide_three %}
+                        {% if theme_config('rhweb-slider-activate-slide-3') %}
+                            <div class="carousel-item">
+                                {% block rhweb_venue_slider_frontpage_slide_three_image %}
+                                    <img class="d-none d-md-block w-100" src="{{ theme_config('rhweb-slider-image-three') |sw_encode_url }}" alt="Second slide">
+                                    <img class="d-md-none w-100" src="{{ theme_config('rhweb-slider-image-three-mobile') |sw_encode_url }}" alt="Second slide">
+                                {% endblock %}
+
+                                {% block rhweb_venue_slider_frontpage_slide_three_caption %}
+                                    {% if theme_config('rhweb-slider-activate-caption-3') %}
+                                        <div class="carousel-caption caption-{{ theme_config('rhweb-slider-caption-3-alignment') }}">
+                                            <div class="container text-left">
+                                                <div class="caption-content">
+                                                    <h3 class="h5">{{ "venueTheme.slider.subHeadlineThree"|trans|sw_sanitize }}</h3>
+                                                    <h2 class="h1">{{ "venueTheme.slider.headlineThree"|trans|sw_sanitize }}</h2>
+                                                    <p>
+                                                        {{ "venueTheme.slider.textThree"|trans|sw_sanitize }}
+                                                    </p>
+                                                    <a href="{{ "venueTheme.slider.urlThree"|trans|sw_sanitize }}" class="btn btn-lg">{{ "venueTheme.slider.buttonThree"|trans|sw_sanitize }}</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                {% endblock %}
+                            </div>
+                        {% endif %}
+                    {% endblock %}
+                </div>
+
+                {% block rhweb_venue_slider_frontpage_controls %}
+                    {% if theme_config('rhweb-slider-activate-slide-2') or theme_config('rhweb-slider-activate-slide-3') %}
+                        <a class="carousel-control-prev" href="#sliderVenue" role="button" data-slide="prev">
+                            <i class="fa fa-angle-left" aria-hidden="true"></i>
+
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#sliderVenue" role="button" data-slide="next">
+                            <i class="fa fa-angle-right" aria-hidden="true"></i>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    {% endif %}
+                {% endblock %}
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

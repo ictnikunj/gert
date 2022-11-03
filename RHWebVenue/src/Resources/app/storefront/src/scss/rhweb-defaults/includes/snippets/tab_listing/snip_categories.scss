@@ -1,0 +1,22 @@
+.cms-element-category-navigation{
+
+    .category-navigation-box{
+        background-color: $rhweb-listing-navigation-background-color;
+        border:1px solid $rhweb-listing-navigation-border-color;
+
+        .category-navigation-link{
+            color:$rhweb-listing-navigation-link-color;
+            background-color: $rhweb-listing-navigation-link-background-color;
+
+            &.is-active{
+                color:$rhweb-listing-navigation-link-color-active;
+                background-color: $rhweb-listing-navigation-link-background-color-active;
+            }
+
+            &:hover{
+                color:$rhweb-listing-navigation-link-color-hover;
+                background-color: $rhweb-listing-navigation-link-background-color-hover;
+            }
+        }
+    }
+}

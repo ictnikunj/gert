@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/shopware/platform/master/src/Core/System/SystemConfig/Schema/config.xsd">
+
+    <card>
+        <title>Settings</title>
+        <title lang="de-DE">Einstellungen</title>
+
+        <input-field type="text">
+    		<name>pimUrl</name>
+    		<label>URL</label>
+    		<label lang="de-DE">URL</label>
+		</input-field>
+
+
+        <input-field type="text">
+            <name>pimCrossUrl</name>
+            <label>Cross Selling URL</label>
+            <label lang="de-DE">Cross Selling URL</label>
+        </input-field>
+
+        <input-field type="text">
+            <name>pimCategoryUrl</name>
+            <label>Category URL</label>
+            <label lang="de-DE">Category URL</label>
+        </input-field>
+
+        <input-field type="text">
+            <name>pimPropertyUrl</name>
+            <label>Property URL</label>
+            <label lang="de-DE">Property URL</label>
+        </input-field>
+
+        <input-field type="text">
+            <name>pimProductPropertyUrl</name>
+            <label>Product Property URL</label>
+            <label lang="de-DE">Product Property URL</label>
+        </input-field>
+
+        <input-field type="text">
+            <name>pimParameters</name>
+            <label>Parameters</label>
+            <label lang="de-DE">Parameters</label>
+        </input-field>
+
+		<input-field type="text">
+    		<name>pimApiKey</name>
+    		<label>Api Key</label>
+    		<label lang="de-DE">API-Schlüssel</label>
+		</input-field>
+
+        <input-field type="int">
+            <name>mainProductCounter</name>
+            <defaultValue>1</defaultValue>
+            <label>Main Product Counter</label>
+            <label lang="de-DE">Main Product Counter</label>
+        </input-field>
+
+        <input-field type="int">
+            <name>relatedProductCounter</name>
+            <defaultValue>1</defaultValue>
+            <label>Related Product Counter</label>
+            <label lang="de-DE">Related Product Counter</label>
+        </input-field>
+
+        <input-field type="int">
+            <name>productPartCounter</name>
+            <defaultValue>1</defaultValue>
+            <label>Product Part Counter</label>
+            <label lang="de-DE">Product Part Counter</label>
+        </input-field>
+
+        <input-field type="int">
+            <name>addonProductCounter</name>
+            <defaultValue>1</defaultValue>
+            <label>Addon Product Counter</label>
+            <label lang="de-DE">Addon Product Counter</label>
+        </input-field>
+
+        <input-field type="int">
+            <name>CategoryCounter</name>
+            <defaultValue>1</defaultValue>
+            <label>Category Counter</label>
+            <label lang="de-DE">Category Counter</label>
+        </input-field>
+
+        <input-field type="int">
+            <name>PropertyCounter</name>
+            <defaultValue>1</defaultValue>
+            <label>Property Counter</label>
+            <label lang="de-DE">Property Counter</label>
+        </input-field>
+
+        <input-field type="int">
+            <name>ProductPropertyCounter</name>
+            <defaultValue>1</defaultValue>
+            <label>Product Property Counter</label>
+            <label lang="de-DE">Product Property Counter</label>
+        </input-field>
+
+        <input-field type="text">
+            <name>CategoryPublicationCode</name>
+            <label>Category PublicationCode</label>
+            <label lang="de-DE">Category PublicationCode</label>
+        </input-field>
+
+        <input-field type="text">
+            <name>SequenceManage</name>
+            <label>Sequence Manage</label>
+            <label lang="de-DE">Sequence Manage</label>
+        </input-field>
+
+        <input-field type="text">
+            <name>ManageManualCronSalesChannel</name>
+            <label>Manage Manual Cron SalesChannel</label>
+            <label lang="de-DE">Manage Manual Cron SalesChannel</label>
+        </input-field>
+
+        <input-field type="single-select">
+            <name>getCronDataDateBase</name>
+            <label>Get Cron Data Date Base</label>
+            <defaultValue>3Day</defaultValue>
+            <options>
+                <option>
+                    <id>3Day</id>
+                    <name>3Day</name>
+                </option>
+                <option>
+                    <id>All</id>
+                    <name>All</name>
+                </option>
+            </options>
+        </input-field>
+    </card>
+</config>

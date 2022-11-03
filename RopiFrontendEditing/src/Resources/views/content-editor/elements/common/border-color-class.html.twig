@@ -1,0 +1,9 @@
+{% block border_color_class %}
+    {% if borderColor %}
+        {% if borderColor == 'none' %}
+            border-0
+        {% else %}
+            border-{{ borderColor }}
+        {% endif %}
+    {% endif %}
+{% endblock %}

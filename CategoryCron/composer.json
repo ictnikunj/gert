@@ -1,0 +1,19 @@
+{
+  "name": "gert/category-cron",
+  "description": "Category cron extension for Shopware 6",
+  "type": "shopware-platform-plugin",
+  "license": "proprietary",
+  "version": "1.0.0",
+  "autoload": {
+    "psr-4": {
+      "CategoryCron\\": "src/"
+    }
+  },
+  "extra": {
+    "shopware-plugin-class": "CategoryCron\\CategoryCron",
+    "label": {
+      "de-DE": "Category Cron",
+      "en-GB": "Category Cron"
+    }
+  }
+}

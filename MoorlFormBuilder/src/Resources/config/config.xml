@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/shopware/platform/master/src/Core/System/SystemConfig/Schema/config.xsd">
+    <card>
+        <title>Settings</title>
+        <title lang="de-DE">Einstellungen</title>
+
+        <input-field type="text">
+            <name>fileExtensions</name>
+            <label>Additional file types</label>
+            <label lang="de-DE">Zusätzliche Dateitypen</label>
+            <placeholder>zip,rar,psd,docx etc...</placeholder>
+            <defaultValue>zip,rar,psd,docx</defaultValue>
+        </input-field>
+
+        <input-field type="bool">
+            <name>disableCache</name>
+            <label>Disable cache</label>
+            <label lang="de-DE">Cache deaktivieren</label>
+            <defaultValue>false</defaultValue>
+            <helpText>If the ENV variable SHOPWARE_HTTP_CACHE_ENABLED is not set to 1 and users form data is cached in on any CMS pages.</helpText>
+            <helpText lang="de-DE">Wenn die ENV-Variable SHOPWARE_HTTP_CACHE_ENABLED nicht auf 1 gesetzt ist und die Formulardaten des Benutzers auf allen CMS-Seiten zwischengespeichert werden.</helpText>
+        </input-field>
+    </card>
+
+    <card>
+        <title>Safety</title>
+        <title lang="de-DE">Sicherheit</title>
+
+        <input-field type="textarea">
+            <name>blacklist</name>
+            <label>Keyword blacklist</label>
+            <label lang="de-DE">Keyword Blacklist</label>
+            <defaultValue>porn,bitcoin,invest,love,escort,url=,href=,http</defaultValue>
+            <placeholder>porn,bitcoin,invest,love,escort,url=,href=,http</placeholder>
+        </input-field>
+    </card>
+
+    <card>
+        <title>Captcha Settings</title>
+        <title lang="de-DE">Captcha Einstellungen</title>
+
+        <input-field type="single-select">
+            <name>captchaFont</name>
+            <label>Font</label>
+            <label lang="de-DE">Schriftart</label>
+            <options>
+                <option>
+                    <id>RobotoMono-Regular</id>
+                    <name>RobotoMono-Regular</name>
+                </option>
+                <option>
+                    <id>RobotoMono-Thin</id>
+                    <name>RobotoMono-Thin</name>
+                </option>
+                <option>
+                    <id>Pacifico-Regular</id>
+                    <name>Pacifico-Regular</name>
+                </option>
+                <option>
+                    <id>GrenzeGotisch-Regular</id>
+                    <name>GrenzeGotisch-Regular</name>
+                </option>
+                <option>
+                    <id>Lemonada-Regular</id>
+                    <name>Lemonada-Regular</name>
+                </option>
+                <option>
+                    <id>Orbitron-Regular</id>
+                    <name>Orbitron-Regular</name>
+                </option>
+            </options>
+        </input-field>
+
+        <input-field type="int">
+            <name>captchaHeight</name>
+            <label>Height</label>
+            <label lang="de-DE">Höhe</label>
+            <placeholder>48</placeholder>
+            <defaultValue>48</defaultValue>
+        </input-field>
+
+        <input-field type="int">
+            <name>captchaWidth</name>
+            <label>Width</label>
+            <label lang="de-DE">Breite</label>
+            <placeholder>160</placeholder>
+            <defaultValue>160</defaultValue>
+        </input-field>
+
+        <input-field type="int">
+            <name>totalCharacters</name>
+            <label>Total characters</label>
+            <label lang="de-DE">Zeichenanzahl</label>
+            <placeholder>5</placeholder>
+            <defaultValue>5</defaultValue>
+        </input-field>
+
+        <input-field type="text">
+            <name>possibleLetters</name>
+            <label>Possible letters</label>
+            <label lang="de-DE">Buchstabenpool</label>
+            <placeholder>123456789mnbvcxzasdfghjklpoiuytrewwq</placeholder>
+            <defaultValue>123456789mnbvcxzasdfghjklpoiuytrewwq</defaultValue>
+        </input-field>
+
+        <input-field type="int">
+            <name>randomDots</name>
+            <label>Random dots</label>
+            <label lang="de-DE">Zufällige Punkte</label>
+            <placeholder>50</placeholder>
+            <defaultValue>50</defaultValue>
+        </input-field>
+
+        <input-field type="int">
+            <name>randomLines</name>
+            <label>Random line</label>
+            <label lang="de-DE">Zufällige Linien</label>
+            <placeholder>25</placeholder>
+            <defaultValue>25</defaultValue>
+        </input-field>
+
+        <input-field type="colorpicker">
+            <name>textColor</name>
+            <label>Text color</label>
+            <label lang="de-DE">Schriftfarbe</label>
+            <placeholder>#78979a</placeholder>
+            <defaultValue>#78979a</defaultValue>
+        </input-field>
+
+        <input-field type="colorpicker">
+            <name>noiseColor</name>
+            <label>Noise color</label>
+            <label lang="de-DE">Rauschfarbe</label>
+            <placeholder>#78979a</placeholder>
+            <defaultValue>#78979a</defaultValue>
+        </input-field>
+
+        <input-field type="colorpicker">
+            <name>backgroundColor</name>
+            <label>Background color</label>
+            <label lang="de-DE">Hintergrundfarbe</label>
+            <placeholder>#ffffff</placeholder>
+            <defaultValue>#ffffff</defaultValue>
+        </input-field>
+    </card>
+</config>

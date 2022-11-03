@@ -1,0 +1,36 @@
+{% block element %}
+
+<div
+    {% sw_include '@RopiFrontendEditing/content-editor/elements/common/editor-attributes.html.twig' %}
+    class="{% block element_class %}
+                ropi-frontend-editing-content-element-product-teaser
+                {% sw_include '@RopiFrontendEditing/content-editor/elements/common/general-classes.html.twig' %}
+           {% endblock %}"
+    style="{% block element_style %}{% endblock %}">
+
+    {% block element_inner %}
+
+        {% if product %}
+            {% sw_include '@RopiFrontendEditing/content-editor/elements/common/product-box.html.twig' with {
+                'product': product,
+                'layout': 'standard',
+                'displayMode': data.configuration.imageScalingBehavior ? data.configuration.imageScalingBehavior : 'contain'
+            } %}
+        {% else %}
+            {% if ropiFrontendEditingEditorOpened %}
+                <div class="ropi-content-editor-empty-state">
+                    <div>
+                        <h1>{% trans %}ropi-frontend-editing.contentElement.definition.element.productTeaser{% endtrans %}</h1>
+                        {% if data.configuration.product and data.configuration.product.value %}
+                            {% trans %}ropi-frontend-editing.contentElement.element.productNotFound{% endtrans %}
+                        {% else %}
+                            {% trans %}ropi-frontend-editing.contentElement.element.noProductDefined{% endtrans %}
+                        {% endif %}
+                    </div>
+                </div>
+            {% endif %}
+        {% endif %}
+
+    {% endblock %}
+</div>
+{% endblock %}

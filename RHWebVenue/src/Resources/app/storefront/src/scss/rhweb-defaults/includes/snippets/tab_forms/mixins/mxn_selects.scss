@@ -1,0 +1,17 @@
+@mixin mxn_select{
+    select{
+        background-color:$rhweb-forms-dropdowns-background-color;
+        border-color:$rhweb-forms-dropdowns-border-color;
+        color:$rhweb-forms-dropdowns-placeholder-color;
+        border-radius: $rhweb-form-border-radius;
+
+        option{
+            color:$rhweb-forms-dropdowns-font-color;
+        }
+
+        &:focus{
+            background-color: $rhweb-forms-dropdowns-background-color-focus;
+            border-color:$rhweb-forms-dropdowns-border-color-focus;
+        }
+    }
+}

@@ -1,0 +1,95 @@
+{% block element_moorl_shop_the_look %}
+    {% set enablePrices = element.config.enablePrices.value %}
+    {% set enableAddToCartSingle = element.config.enableAddToCartSingle.value %}
+    {% set enableAddToCartAll = element.config.enableAddToCartAll.value %}
+
+    {% if context.currentCustomerGroup.id == config('MoorlCmsShopTheLook.config.customerGroup') %}
+        {% set enablePrices = false %}
+        {% set enableAddToCartSingle = false %}
+        {% set enableAddToCartAll = false %}
+    {% endif %}
+
+    <div class="cms-element-{{ element.type }} {{ element.config.style.value }}"
+         style="--products-width: {{ element.config.productsWidth.value ?: "380px" }}">
+        {% if element.config.style.value != "products" %}
+            {% block element_moorl_shop_the_look_hotspot_area %}
+                <div class="hotspot-area">
+                    <div class="hotspot-area-image">
+                        {% if element.config.videoActive.value %}
+                            <video class="video" playsinline preload="none" muted autoplay loop>
+                                <source src="{{ element.data.media.media.url }}"
+                                        type="{{ element.data.media.media.mimeType }}">
+                            </video>
+                        {% else %}
+                            <img src="{{ element.data.media.media.url }}" alt="{{ element.data.media.media.alt }}">
+                        {% endif %}
+
+                        <div class="hotspot-area-image-overlay">
+                            {% for product in element.data.products.products %}
+                                {% set price = product.calculatedPrice %}
+                                {% if product.calculatedPrices|length > 0 %}
+                                    {% set price = product.calculatedPrices.first() %}
+                                {% endif %}
+
+                                {% set positionTop = element.config.productMediaHotspots.value[product.id].top|trim('%')|number_format %}
+
+                                {% block element_moorl_shop_the_look_hotspot_area_dot %}
+                                    {% if element.config.enableDirectUrl.value %}
+                                        <a href="{{ seoUrl('frontend.detail.page', {'productId': product.id}) }}"
+                                           class="hotspot-area-image-overlay-dot"
+                                           data-toggle="tooltip"
+                                           data-placement="top"
+                                           style="top: {{ element.config.productMediaHotspots.value[product.id].top }}%; left: {{ element.config.productMediaHotspots.value[product.id].left }}%"
+                                           title="{{ product.translated.name }}">
+                                            {% if element.config.enableAnimatedHotspots.value %}
+                                                <div class="pulse"></div>{% endif %}
+                                        </a>
+                                    {% else %}
+                                        <div class="hotspot-area-image-overlay-dot"
+                                             tabindex="-1"
+                                             style="top: {{ element.config.productMediaHotspots.value[product.id].top }}%; left: {{ element.config.productMediaHotspots.value[product.id].left }}%">
+                                            {% if element.config.enableAnimatedHotspots.value %}
+                                                <div class="pulse"></div>{% endif %}
+                                            <div class="hover-card {% if positionTop > 50 %}hover-card-top{% endif %}">
+                                                {% if product.cover.media.url %}
+                                                    {% set attributes = {
+                                                        'alt': product.translated.name
+                                                    } %}
+                                                    {% sw_thumbnails 'product-image-thumbnails' with { media: product.cover.media } %}
+                                                {% else %}
+                                                    {% sw_icon 'placeholder' style {'size': 'fluid'} %}
+                                                {% endif %}
+
+                                                <h4>{{ product.translated.name }}</h4>
+
+                                                {% if enablePrices %}
+                                                    <p>{{ price.unitPrice|currency }}{{ "general.star"|trans|sw_sanitize }}</p>
+                                                {% endif %}
+
+                                                <a href="{{ seoUrl('frontend.detail.page', {'productId': product.id}) }}"
+                                                   class="btn btn-block btn-primary btn-buy"
+                                                   data-modal-class="quickview-modal"
+                                                   data-url="{{ path('widgets.quickview.minimal', { 'productId': product.id }) }}"
+                                                >{{ "listing.boxProductDetails"|trans|striptags }}</a>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                {% endblock %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            {% endblock %}
+        {% endif %}
+
+        {% if element.config.style.value != "image" %}
+            {% block element_moorl_shop_the_look_product_list %}
+                <div class="product-list">
+                    {% sw_include '@Storefront/plugin/moorl-foundation/component/product-buy-list/index.html.twig' with {
+                        products: element.data.products.products
+                    } %}
+                </div>
+            {% endblock %}
+        {% endif %}
+    </div>
+{% endblock %}

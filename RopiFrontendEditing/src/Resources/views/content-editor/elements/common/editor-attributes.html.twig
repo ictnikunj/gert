@@ -1,0 +1,9 @@
+{% block editor_attributes %}
+    id="ropi-frontend-editing-{{ data.meta.uuid }}"
+    {% if ropiFrontendEditingEditorOpened %}
+    data-ropi-content-element="{{ data.meta.type }}"
+    data-ropi-content-element-configuration='{{ data.configuration|json_encode }}'
+    data-ropi-content-element-uuid="{{ data.meta.uuid }}"
+    data-ropi-content-element-creation-timestamp="{{ data.meta.creationTimestamp }}"
+    {% endif %}
+{% endblock %}

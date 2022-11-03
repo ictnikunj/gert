@@ -1,0 +1,17 @@
+This is a standard e-mail template, please do not change this template, but create a duplicate.
+
+{% for formElement in form.data %}
+{% if formElement.value %}
+{{ form.getDataLabel(formElement.name) }}:
+{% if formElement.type == 'repeater-open' %}
+{{ form.getRepeaterDataValue(formElement.name) }}
+{% else %}
+{{ form.getDataValue(formElement.name) }}
+{% endif %}
+{% endif %}
+{% endfor %}
+
+form.summaryPlain
+{{ form.summaryPlain }}
+
+1.4.8

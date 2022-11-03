@@ -1,0 +1,13 @@
+{% sw_extends '@Storefront/storefront/layout/navigation/flyout.html.twig' %}
+
+{% block layout_navigation_flyout_bar %}{% endblock %}
+
+{% block layout_navigation_flyout_categories %}
+    <div class="col">
+        <div class="navigation-flyout-categories">
+            {% block layout_navigation_flyout_categories_recoursion %}
+                {{ parent() }}
+            {% endblock %}
+        </div>
+    </div>
+{% endblock %}

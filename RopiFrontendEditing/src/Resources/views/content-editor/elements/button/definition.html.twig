@@ -1,0 +1,83 @@
+{% block definition %}
+<ropi-content-element
+        type="RopiFrontendEditing/button"
+        icon="call_to_action"
+        color="#6091ef"
+        group="{% trans %}ropi-frontend-editing.contentElement.definition.group.basic{% endtrans %}"
+        name="{% trans %}ropi-frontend-editing.contentElement.definition.element.button{% endtrans %}"
+        languagespecificsettings="{% block languagespecificsettings %}href{% endblock %}"
+        src="{{ path('ropi.frontend-editing.element.render') }}">
+    <template>
+        {% block settings_template %}
+        <ropi-tabs scrollable tablistposition="bottom">
+            {% block tab_general %}
+                <ropi-touchable slot="tab">{% trans %}ropi-frontend-editing.contentElement.definition.tab.general{% endtrans %}</ropi-touchable>
+            {% endblock %}
+            {% block tabpanel_general %}
+                <div slot="tabpanel">
+                    {% block tabpanel_general_inner %}
+
+                        {% block link %}
+                            {% sw_include '@RopiFrontendEditing/content-editor/elements/common/settings/link.html.twig' with {
+                                'name': {
+                                    'href': 'href',
+                                    'target': 'target'
+                                }
+                            } %}
+                        {% endblock %}
+
+                        {% block type %}
+                            <ropi-collapsible>
+                                <ropi-subheader slot="header">{% trans %}ropi-frontend-editing.contentElement.definition.subheader.type{% endtrans %}</ropi-subheader>
+                                <div slot="content">
+                                    {% block type_content %}
+
+                                        {% block type_fields %}
+
+                                            {% sw_include '@RopiFrontendEditing/content-editor/elements/common/settings/color.html.twig' with {
+                                                'name': 'type',
+                                                'checkedDefaultOption': 'primary',
+                                                'hideDefaultOption': true,
+                                                'hideMutedOption': true,
+                                                'hideWhiteOption': true
+                                            } %}
+
+                                        {% endblock %}
+
+                                    {% endblock %}
+                                </div>
+                            </ropi-collapsible>
+                        {% endblock %}
+
+                        {% block alignment %}
+                            {% sw_include '@RopiFrontendEditing/content-editor/elements/common/settings/alignment.html.twig' with {
+                                'name': 'align'
+                            } %}
+                        {% endblock %}
+
+                    {% endblock %}
+                </div>
+            {% endblock %}
+            {% block breakpoints_tabs %}
+                {% for breakpoint in breakpoints %}
+                    {% block tab_breakpoint %}
+                        <ropi-touchable slot="tab">{{ breakpoint.name }}</ropi-touchable>
+                    {% endblock %}
+                    {% block tabpanel_breakpoint %}
+                        <div slot="tabpanel">
+                            {% block tabpanel_breakpoint_inner %}
+
+                                    {% block general %}
+                                        {% sw_include '@RopiFrontendEditing/content-editor/elements/common/settings/general.html.twig' %}
+                                    {% endblock %}
+
+                            {% endblock %}
+                        </div>
+                    {% endblock %}
+                {% endfor %}
+            {% endblock %}
+        </ropi-tabs>
+        {% endblock %}
+    </template>
+</ropi-content-element>
+{% endblock %}

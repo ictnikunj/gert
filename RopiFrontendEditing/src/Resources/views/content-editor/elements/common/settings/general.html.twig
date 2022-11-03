@@ -1,0 +1,16 @@
+{% block general %}
+
+    {% block padding_fields %}
+
+        {% sw_include '@RopiFrontendEditing/content-editor/elements/common/settings/padding.html.twig' with {
+            'name': 'padding'
+        } %}
+
+        <ropi-hline></ropi-hline>
+
+    {% endblock %}
+
+    {% block visibility_fields %}
+        {% sw_include '@RopiFrontendEditing/content-editor/elements/common/settings/visibility.html.twig' %}
+    {% endblock %}
+{% endblock %}

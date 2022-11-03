@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+      <script type="module">
+        import '../../demo-element/demo-element.js?v=1637255330';
+        import '../../javascript-test-element/javascript-test-element.js?v=1637255330';
+      </script>
+
+      <title>string-util demo</title>
+  </head>
+  <body>
+    <ropi-demo sourcehidden name="get last character of a string">
+      <ropi-javascript-test dependencies="import StringUtil from '../string-util.js?v=1637255330'" expect="'t'">
+        StringUtil.lastChar('test')
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import StringUtil from '../string-util.js?v=1637255330'" expect="''">
+        StringUtil.lastChar('')
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import StringUtil from '../string-util.js?v=1637255330'" expect="'2'">
+        StringUtil.lastChar(1.52)
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import StringUtil from '../string-util.js?v=1637255330'" expect="'e'">
+        StringUtil.lastChar(true)
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import StringUtil from '../string-util.js?v=1637255330'" expect="'d'">
+        StringUtil.lastChar(undefined)
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import StringUtil from '../string-util.js?v=1637255330'" expect="'l'">
+        StringUtil.lastChar(null)
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import StringUtil from '../string-util.js?v=1637255330'" expect="']'">
+        //
+        // Objects with no custom toString() implementation
+        // will be casted to string '[object Object]'
+        //
+        StringUtil.lastChar({})
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import StringUtil from '../string-util.js?v=1637255330'" expect="'g'">
+        StringUtil.lastChar(new class {
+          toString() { return 'objectAsString'; }
+        })
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import StringUtil from '../string-util.js?v=1637255330'" expect="''">
+        //
+        // Arrays will be casted to comma separated list of values
+        //
+        StringUtil.lastChar([])
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import StringUtil from '../string-util.js?v=1637255330'" expect="'0'">
+        StringUtil.lastChar([0])
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import StringUtil from '../string-util.js?v=1637255330'" expect="'1'">
+        StringUtil.lastChar([0,1])
+      </ropi-javascript-test>
+    </ropi-demo>
+
+    <ropi-demo sourcehidden name="Capitalize string (make first character uppercase)">
+      <ropi-javascript-test dependencies="import StringUtil from '../string-util.js?v=1637255330'" expect="'Test'">
+        StringUtil.capitalize('test')
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import StringUtil from '../string-util.js?v=1637255330'" expect="''">
+        StringUtil.capitalize('')
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import StringUtil from '../string-util.js?v=1637255330'" expect="'3.14'">
+        StringUtil.capitalize(3.14)
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import StringUtil from '../string-util.js?v=1637255330'" expect="'True'">
+        StringUtil.capitalize(true)
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import StringUtil from '../string-util.js?v=1637255330'" expect="'Undefined'">
+        StringUtil.capitalize(undefined)
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import StringUtil from '../string-util.js?v=1637255330'" expect="'Null'">
+        StringUtil.capitalize(null)
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import StringUtil from '../string-util.js?v=1637255330'" expect="'[object Object]'">
+        StringUtil.capitalize({})
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import StringUtil from '../string-util.js?v=1637255330'" expect="'ObjectAsString'">
+        StringUtil.capitalize(new class {
+          toString() { return 'objectAsString'; }
+        })
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import StringUtil from '../string-util.js?v=1637255330'" expect="''">
+        StringUtil.capitalize([])
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import StringUtil from '../string-util.js?v=1637255330'" expect="'0,1'">
+        StringUtil.capitalize([0,1])
+      </ropi-javascript-test>
+    </ropi-demo>
+
+    <ropi-demo sourcehidden name="Parse list (make first character uppercase)">
+      <ropi-javascript-test dependencies="import StringUtil from '../string-util.js?v=1637255330'" expect='"[\"1\",\"2\",\"3\"]"'>
+        JSON.stringify(StringUtil.parseList('1,2,3'));
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import StringUtil from '../string-util.js?v=1637255330'" expect='"[\"1\",\"2\"]"'>
+        JSON.stringify(StringUtil.parseList('1|2', '|'));
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import StringUtil from '../string-util.js?v=1637255330'" expect='"[\"1\"]"'>
+        JSON.stringify(StringUtil.parseList('1'));
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import StringUtil from '../string-util.js?v=1637255330'" expect='"[]"'>
+        JSON.stringify(StringUtil.parseList(''));
+      </ropi-javascript-test>
+    </ropi-demo>
+  </body>
+</html>

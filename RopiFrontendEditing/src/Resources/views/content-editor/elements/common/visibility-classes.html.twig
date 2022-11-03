@@ -1,0 +1,18 @@
+{% block visibility_classes %}
+
+    {% for breakpoint in breakpoints %}
+        {% set visibility = (data.configuration.visibility[breakpoint.key] is defined) ? data.configuration.visibility[breakpoint.key] : '' %}
+        {% set visibilityValue = (defaultDisplay is defined) ? defaultDisplay : 'block' %}
+
+        {% if visibility == 'hidden' %}
+            {% set visibilityValue = 'none' %}
+        {% endif %}
+
+        {% if breakpoint.key == 'xs' %}
+            d-{{ visibilityValue }}
+        {% else %}
+            d-{{ breakpoint.key }}-{{ visibilityValue }}
+        {% endif %}
+    {% endfor %}
+
+{% endblock %}

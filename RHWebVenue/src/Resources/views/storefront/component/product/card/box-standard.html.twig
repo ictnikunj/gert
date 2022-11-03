@@ -1,0 +1,63 @@
+{% sw_extends '@Storefront/storefront/component/product/card/box-standard.html.twig' %}
+
+{% block component_product_box_image %}
+    {% if theme_config('rhweb-listing-activate-images') %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}
+
+{% block component_product_box_badges %}
+    {% if theme_config('rhweb-listing-activate-badges') %}
+        {% sw_include '@Storefront/storefront/component/product/card/badges.html.twig' %}
+    {% endif %}
+{% endblock %}
+
+{% block component_product_box_rich_snippets %}
+    {% if theme_config('rhweb-listing-activate-richsnippets') %}
+        {% sw_include '@Storefront/storefront/component/product/card/meta.html.twig' %}
+    {% endif %}
+{% endblock %}
+
+{% block component_product_box_description %}
+    {% if theme_config('rhweb-listing-activate-descriptions') %}
+        <div class="product-description">
+            {{ product.translated.description|striptags|raw }}
+        </div>
+    {% endif %}
+{% endblock %}
+
+{% block component_product_box_name %}
+    {% if theme_config('rhweb-listing-activate-titles') %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}
+
+{% block component_product_box_rating %}
+    {% if theme_config('rhweb-listing-activate-ratings') %}
+        <div class="product-rating">
+            {% if product.ratingAverage %}
+                {% sw_include '@Storefront/storefront/component/review/rating.html.twig' with {
+                    points: product.ratingAverage,
+                    style: 'text-primary'
+                } %}
+            {% else %}
+                {% sw_include '@Storefront/storefront/component/review/rating.html.twig' with {
+                    points: 0,
+                    style: 'text-primary'
+                } %}
+            {% endif %}
+        </div>
+    {% endif %}
+{% endblock %}
+
+{% block component_product_box_price %}
+    {% if theme_config('rhweb-listing-activate-prices') %}
+        {% sw_include '@Storefront/storefront/component/product/card/price-unit.html.twig' %}
+    {% endif %}
+{% endblock %}
+
+{% block component_product_box_action %}
+    {% if theme_config('rhweb-listing-activate-buttons') %}
+        {% sw_include '@Storefront/storefront/component/product/card/action.html.twig' %}
+    {% endif %}
+{% endblock %}

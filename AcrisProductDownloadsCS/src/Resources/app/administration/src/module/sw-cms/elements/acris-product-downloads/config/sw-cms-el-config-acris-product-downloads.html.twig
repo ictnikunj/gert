@@ -1,0 +1,250 @@
+{% block sw_cms_element_acris_product_downloads_config %}
+    <div class="sw-cms-el-config-acris-product-downloads">
+        {% block sw_cms_element_acris_product_downloads_config_product %}
+            <div class="sw-cms-el-config-acris-product-downloads-full">
+                {% block sw_cms_element_acris_product_downloads_config_product_waring %}
+                    <sw-alert
+                        v-if="isProductPage"
+                        class="sw-cms-el-config-buy-box__warning" variant="info">
+                        {{ $tc('sw-cms.elements.buyBox.infoText.tooltipSettingDisabled') }}
+                    </sw-alert>
+                {% endblock %}
+
+                {% block sw_cms_element_acris_product_downloads_config_product_select %}
+                    <sw-entity-single-select
+                        v-if="!isProductPage"
+                        v-model="element.config.product.value"
+                        ref="cmsProductSelection"
+                        entity="product"
+                        :label="$tc('sw-cms.elements.buyBox.config.label.selection')"
+                        :placeholder="$tc('sw-cms.elements.buyBox.config.placeholder.selection')"
+                        :criteria="productCriteria"
+                        :context="productSelectContext"
+                        @change="onProductChange">
+
+                        {% block sw_cms_element_acris_product_downloads_config_product_variant_label %}
+                            <template #selection-label-property="{ item }">
+                                <sw-product-variant-info :variations="item.variation">
+                                    {{ item.translated.name || item.name }}
+                                </sw-product-variant-info>
+                            </template>
+                        {% endblock %}
+
+                        {% block sw_cms_element_acris_product_downloads_config_product_select_result_item %}
+                            <template #result-item="{ item, index }">
+                                <li is="sw-select-result" v-bind="{ item, index }">
+
+                                    {% block sw_cms_element_acris_product_downloads_config_single_select_base_results_list_result_label %}
+                                        <span class="sw-select-result__result-item-text">
+                                          <sw-product-variant-info :variations="item.variation">
+                                                {{ item.translated.name || item.name }}
+                                          </sw-product-variant-info>
+                                        </span>
+                                    {% endblock %}
+
+                                </li>
+                            </template>
+                        {% endblock %}
+                    </sw-entity-single-select>
+                {% endblock %}
+            </div>
+        {% endblock %}
+
+        {% block sw_cms_element_acris_product_downloads_config_product_price %}
+            <sw-field v-model="element.config.showHeadline.value"
+                      type="switch"
+                      bordered
+                      :label="$tc('acris-product-downloads.elements.productDownloads.config.showHeadline')">
+            </sw-field>
+        {% endblock %}
+
+        <sw-container columns="1fr 1fr" gap="15px">
+            {% block sw_cms_element_acris_product_downloads_config_settings_background_color %}
+                <sw-colorpicker v-model="element.config.backgroundColor.value"
+                                @change="emitUpdateEl"
+                                :label="$tc('acris-product-downloads.elements.general.config.label.backgroundColor')"
+                                colorOutput="hex" :zIndex="1100" :alpha="false">
+                </sw-colorpicker>
+            {% endblock %}
+        </sw-container>
+
+        <sw-container columns="1fr 1fr" gap="15px">
+            {% block sw_cms_element_acris_product_downloads_config_settings_padding_top %}
+                <sw-select-field :label="$tc('acris-product-downloads.elements.general.config.label.spacingTop')"
+                                 v-model="element.config.paddingTop.value">
+                    <option
+                        value="no">{{ $tc('acris-product-downloads.elements.general.config.label.optionSpacingNo') }}</option>
+                    <option
+                        value="pt-1">{{ $tc('acris-product-downloads.elements.general.config.label.optionSpacingSmall') }}</option>
+                    <option
+                        value="pt-2">{{ $tc('acris-product-downloads.elements.general.config.label.optionSpacingMediumSmall') }}</option>
+                    <option
+                        value="pt-3">{{ $tc('acris-product-downloads.elements.general.config.label.optionSpacingNormal') }}</option>
+                    <option
+                        value="pt-4">{{ $tc('acris-product-downloads.elements.general.config.label.optionSpacingMediumLarge') }}</option>
+                    <option
+                        value="pt-5">{{ $tc('acris-product-downloads.elements.general.config.label.optionSpacingLarge') }}</option>
+                    <option
+                        value="pixel">{{ $tc('acris-product-downloads.elements.general.config.label.optionSpacingPixel') }}</option>
+                </sw-select-field>
+            {% endblock %}
+
+            {% block sw_cms_element_acris_product_downloads_config_settings_padding_top_pixel %}
+                <sw-field type="number"
+                          :disabled="element.config.paddingTop.value && element.config.paddingTop.value !== 'pixel'"
+                          :label="$tc('acris-product-downloads.elements.general.config.label.individualSpacingTop')"
+                          :min="0"
+                          v-model="element.config.paddingTopIndividual.value">
+                    <template #suffix>
+                        <span>px</span>
+                    </template>
+                </sw-field>
+            {% endblock %}
+        </sw-container>
+
+        <sw-container columns="1fr 1fr" gap="15px">
+            {% block sw_cms_element_acris_product_downloads_config_settings_padding_bot %}
+                <sw-select-field :label="$tc('acris-product-downloads.elements.general.config.label.spacingBottom')"
+                                 v-model="element.config.paddingBot.value">
+                    <option
+                        value="no">{{ $tc('acris-product-downloads.elements.general.config.label.optionSpacingNo') }}</option>
+                    <option
+                        value="pb-1">{{ $tc('acris-product-downloads.elements.general.config.label.optionSpacingSmall') }}</option>
+                    <option
+                        value="pb-2">{{ $tc('acris-product-downloads.elements.general.config.label.optionSpacingMediumSmall') }}</option>
+                    <option
+                        value="pb-3">{{ $tc('acris-product-downloads.elements.general.config.label.optionSpacingNormal') }}</option>
+                    <option
+                        value="pb-4">{{ $tc('acris-product-downloads.elements.general.config.label.optionSpacingMediumLarge') }}</option>
+                    <option
+                        value="pb-5">{{ $tc('acris-product-downloads.elements.general.config.label.optionSpacingLarge') }}</option>
+                    <option
+                        value="pixel">{{ $tc('acris-product-downloads.elements.general.config.label.optionSpacingPixel') }}</option>
+                </sw-select-field>
+            {% endblock %}
+
+            {% block sw_cms_element_acris_product_downloads_config_settings_padding_bot_pixel %}
+                <sw-field type="number"
+                          :disabled="element.config.paddingBot.value && element.config.paddingBot.value !== 'pixel'"
+                          :label="$tc('acris-product-downloads.elements.general.config.label.individualSpacingBottom')"
+                          :min="0"
+                          v-model="element.config.paddingBotIndividual.value">
+                    <template #suffix>
+                        <span>px</span>
+                    </template>
+                </sw-field>
+            {% endblock %}
+        </sw-container>
+
+        <sw-container columns="1fr 1fr" gap="15px">
+            {% block sw_cms_element_acris_product_downloads_config_settings_padding_left %}
+                <sw-select-field :label="$tc('acris-product-downloads.elements.general.config.label.spacingLeft')"
+                                 v-model="element.config.paddingLeft.value">
+                    <option
+                        value="no">{{ $tc('acris-product-downloads.elements.general.config.label.optionSpacingNo') }}</option>
+                    <option
+                        value="pl-1">{{ $tc('acris-product-downloads.elements.general.config.label.optionSpacingSmall') }}</option>
+                    <option
+                        value="pl-2">{{ $tc('acris-product-downloads.elements.general.config.label.optionSpacingMediumSmall') }}</option>
+                    <option
+                        value="pl-3">{{ $tc('acris-product-downloads.elements.general.config.label.optionSpacingNormal') }}</option>
+                    <option
+                        value="pl-4">{{ $tc('acris-product-downloads.elements.general.config.label.optionSpacingMediumLarge') }}</option>
+                    <option
+                        value="pl-5">{{ $tc('acris-product-downloads.elements.general.config.label.optionSpacingLarge') }}</option>
+                    <option
+                        value="pixel">{{ $tc('acris-product-downloads.elements.general.config.label.optionSpacingPixel') }}</option>
+                </sw-select-field>
+            {% endblock %}
+
+            {% block sw_cms_element_acris_product_downloads_config_settings_padding_left_pixel %}
+                <sw-field type="number"
+                          :disabled="element.config.paddingLeft.value && element.config.paddingLeft.value !== 'pixel'"
+                          :label="$tc('acris-product-downloads.elements.general.config.label.individualSpacingLeft')"
+                          :min="0"
+                          v-model="element.config.paddingLeftIndividual.value">
+                    <template #suffix>
+                        <span>px</span>
+                    </template>
+                </sw-field>
+            {% endblock %}
+        </sw-container>
+
+        <sw-container columns="1fr 1fr" gap="15px">
+            {% block sw_cms_element_acris_product_downloads_config_settings_padding_right %}
+                <sw-select-field :label="$tc('acris-product-downloads.elements.general.config.label.spacingRight')"
+                                 v-model="element.config.paddingRight.value">
+                    <option
+                        value="no">{{ $tc('acris-product-downloads.elements.general.config.label.optionSpacingNo') }}</option>
+                    <option
+                        value="pr-1">{{ $tc('acris-product-downloads.elements.general.config.label.optionSpacingSmall') }}</option>
+                    <option
+                        value="pr-2">{{ $tc('acris-product-downloads.elements.general.config.label.optionSpacingMediumSmall') }}</option>
+                    <option
+                        value="pr-3">{{ $tc('acris-product-downloads.elements.general.config.label.optionSpacingNormal') }}</option>
+                    <option
+                        value="pr-4">{{ $tc('acris-product-downloads.elements.general.config.label.optionSpacingMediumLarge') }}</option>
+                    <option
+                        value="pr-5">{{ $tc('acris-product-downloads.elements.general.config.label.optionSpacingLarge') }}</option>
+                    <option
+                        value="pixel">{{ $tc('acris-product-downloads.elements.general.config.label.optionSpacingPixel') }}</option>
+                </sw-select-field>
+            {% endblock %}
+
+            {% block sw_cms_element_acris_product_downloads_config_settings_padding_right_pixel %}
+                <sw-field type="number"
+                          :disabled="element.config.paddingRight.value && element.config.paddingRight.value !== 'pixel'"
+                          :label="$tc('acris-product-downloads.elements.general.config.label.individualSpacingRight')"
+                          :min="0"
+                          v-model="element.config.paddingRightIndividual.value">
+                    <template #suffix>
+                        <span>px</span>
+                    </template>
+                </sw-field>
+            {% endblock %}
+        </sw-container>
+
+        <sw-container columns="1fr 1fr" gap="15px">
+            {% block sw_cms_element_acris_product_downloads_config_border_active %}
+                <sw-switch-field
+                    v-model="element.config.borderActive.value"
+                    bordered
+                    :label="$tc('acris-product-downloads.elements.general.config.label.borderActive')"
+                />
+            {% endblock %}
+
+            {% block sw_cms_element_acris_product_downloads_config_border_color %}
+                <sw-colorpicker v-model="element.config.borderColor.value"
+                                :disabled="!element.config.borderActive.value"
+                                :label="$tc('acris-product-downloads.elements.general.config.label.borderColor')"
+                                colorOutput="hex" :zIndex="1100" :alpha="false">
+                </sw-colorpicker>
+            {% endblock %}
+
+            {% block sw_cms_element_acris_product_downloads_config_border_size %}
+                <sw-field type="number"
+                          :disabled="!element.config.borderActive.value"
+                          :label="$tc('acris-product-downloads.elements.general.config.label.borderSize')"
+                          :min="0"
+                          v-model="element.config.borderSize.value">
+                    <template #suffix>
+                        <span>px</span>
+                    </template>
+                </sw-field>
+            {% endblock %}
+
+            {% block sw_cms_element_acris_product_downloads_config_border_radius %}
+                <sw-field type="number"
+                          :disabled="!element.config.borderActive.value"
+                          :label="$tc('acris-product-downloads.elements.general.config.label.borderRadius')"
+                          :min="0"
+                          v-model="element.config.borderRadius.value">
+                    <template #suffix>
+                        <span>px</span>
+                    </template>
+                </sw-field>
+            {% endblock %}
+
+        </sw-container>
+    </div>
+{% endblock %}

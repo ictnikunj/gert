@@ -1,0 +1,23 @@
+{% if formElement.usePriceCalculation %}
+    {% if option.priceCalculationType == 'percentage' %}
+        <span class="badge badge-light">
+            {% if not option.priceCalculation %}
+                <span class="text-muted">0.00%</span>
+            {% elseif option.priceCalculation > 0 %}
+                <span class="text-danger">+ {{ option.priceCalculation }}%</span>
+            {% elseif option.priceCalculation < 0 %}
+                <span class="text-success">- {{ (option.priceCalculation * -1) }}%</span>
+            {% endif %}
+        </span>
+    {% else %}
+        <span class="badge badge-light">
+            {% if not option.priceCalculation %}
+                <span class="text-muted">{{ 0.00|currency }}</span>
+            {% elseif option.priceCalculation > 0 %}
+                <span class="text-danger">+ {{ option.priceCalculation|currency }}</span>
+            {% elseif option.priceCalculation < 0 %}
+                <span class="text-success">- {{ (option.priceCalculation * -1)|currency }}</span>
+            {% endif %}
+        </span>
+    {% endif %}
+{% endif %}

@@ -1,0 +1,12 @@
+{% sw_extends '@Storefront/storefront/layout/navigation/navigation.html.twig' %}
+
+{% block layout_main_navigation %}
+    {{ parent() }}
+    <div class="sisi-high-light d-none">
+    {% for content in page.sisi_contentResult.hits.hits %}
+        {% for contentValue in content.highlight.CMS_Content %}
+            <div>{{ contentValue|striptags }}</div>
+        {% endfor %}
+    {% endfor %}
+    </div>
+{% endblock %}

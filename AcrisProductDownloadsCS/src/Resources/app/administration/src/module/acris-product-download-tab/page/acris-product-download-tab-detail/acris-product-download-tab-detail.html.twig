@@ -1,0 +1,97 @@
+{% block acris_product_download_tab_detail %}
+<sw-page class="acris-product-download-tab-detail" v-if="item">
+
+    {% block acris_product_download_tab_detail_smart_bar_header %}
+    <template slot="smart-bar-header">
+        {% block acris_product_download_tab_detail_smart_bar_header_title %}
+        <h2>{{ $tc('acris-product-download-tab.detail.textHeadline') }}</h2>
+        {% endblock %}
+    </template>
+    {% endblock %}
+
+
+    {% block acris_product_download_tab_detail_smart_bar_language %}
+    <template #language-switch>
+        <sw-language-switch @on-change="onChangeLanguage"
+                            :disabled="$route.params.newItem"></sw-language-switch>
+    </template>
+    {% endblock %}
+
+
+    {% block acris_product_download_tab_detail_smart_bar_actions %}
+    <template slot="smart-bar-actions">
+        {% block acris_product_download_tab_detail_smart_bar_actions_cancel %}
+        <sw-button :disabled="item.isLoading" :routerLink="{ name: 'acris.product.download.tab.index' }">
+            {{ $tc('acris-product-download-tab.detail.buttonCancel') }}
+        </sw-button>
+        {% endblock %}
+
+        {% block acris_product_download_tab_detail_smart_bar_actions_save %}
+        <sw-button-process
+            class="acris-product-download-tab-detail__save-action"
+            :isLoading="isLoading"
+            :processSuccess="processSuccess"
+            variant="primary"
+            :disabled="isLoading || !item.internalId || !item.displayName"
+            @process-finish="saveFinish"
+            @click="onClickSave">
+            {{ $tc('acris-product-download-tab.detail.buttonSave') }}
+        </sw-button-process>
+        {% endblock %}
+    </template>
+    {% endblock %}
+
+
+    {% block acris_product_download_tab_detail_content %}
+    <sw-card-view slot="content">
+
+        {% block acris_product_download_tab_detail_content_general_card %}
+        <sw-card :isLoading="isLoading" v-if="item"
+                 :title="$tc('acris-product-download-tab.detail.cardGeneral')">
+
+            {% block acris_product_download_tab_detail_content_internal_id %}
+            <sw-text-field v-model="item.internalId"
+                           disabled="true"
+                           class="acris-product-download-tab-detail__item_internal_id"
+                           :label="$tc('acris-product-download-tab.detail.fieldTitleLabelInternalId')"
+                           :placeholder="$tc('acris-product-download-tab.detail.fieldTitlePlaceholderInternalId')">
+            </sw-text-field>
+            {% endblock %}
+
+            {% block acris_product_download_tab_detail_content_display_name %}
+            <sw-text-field v-model="item.displayName"
+                           class="acris-product-download-tab-detail__item_display_name"
+                           :label="$tc('acris-product-download-tab.detail.fieldTitleLabelDisplayName')"
+                           :placeholder="placeholder(item, 'displayName', $tc('acris-product-download-tab.detail.fieldTitlePlaceholderDisplayName'))">
+            </sw-text-field>
+            {% endblock %}
+
+            {% block acris_product_download_tab_detail_content_priority %}
+                <sw-number-field v-model="item.priority"
+                                 class="acris-product-download-tab-detail__item_priority"
+                                 numberType="float"
+                                 :helpText="$tc('acris-product-download-tab.detail.fieldTitleHelpTextPriority')"
+                                 :label="$tc('acris-product-download-tab.detail.fieldTitleLabelPriority')"
+                                 :placeholder="$tc('acris-product-download-tab.detail.fieldTitlePlaceholderPriority')">
+                </sw-number-field>
+            {% endblock %}
+
+            {% block acris_cms_layout_header_detail_content_rules %}
+                <sw-entity-many-to-many-select
+                    v-if="item && item.rules"
+                    :localMode="true"
+                    class="acris-product-download-tab-detail__item_rules"
+                    :label="$tc('acris-product-download-tab.detail.rulesSelectFieldLabel')"
+                    :helpText="$tc('acris-product-download-tab.detail.rulesSelectFieldHelpText')"
+                    v-model="item.rules">
+                </sw-entity-many-to-many-select>
+            {% endblock %}
+
+        </sw-card>
+        {% endblock %}
+
+    </sw-card-view>
+    {% endblock %}
+
+</sw-page>
+{% endblock %}

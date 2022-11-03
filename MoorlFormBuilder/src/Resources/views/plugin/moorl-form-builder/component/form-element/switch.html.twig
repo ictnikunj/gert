@@ -1,0 +1,18 @@
+<div class="form-group form-{{ formElement.type }}-{{ formElement.name }}">
+    <div class="custom-control custom-switch">
+        <input type="checkbox"
+               class="custom-control-input"
+               id="{{ formElementId }}"
+               name="{{ formElementName }}"
+               value="1"
+               {% if formElementValue %}checked{% endif %}
+            {% if formElement.required %}required{% endif %}>
+        <label class="custom-control-label" for="{{ formElementId }}">
+            {{ formElementLabel }}
+            {% if formElement.required %}*{% endif %}
+            {% if formElementTooltip %}
+                <span class="form-tooltip" data-toggle="tooltip" data-placement="top" title="{{ formElementTooltip }}">?</span>
+            {% endif %}
+        </label>
+    </div>
+</div>

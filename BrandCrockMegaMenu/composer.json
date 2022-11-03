@@ -1,0 +1,45 @@
+{
+    "name": "brandcrock/brand-crock-mega-menu",
+    "description": "Advanced Mega Menu will help you to simplify the navigation and usability of your website. This plugin allows you to add tabs to the menu bar with content selected by the store owner",
+    "version": "3.0.3",
+    "type": "shopware-platform-plugin",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "BrandCrock GmbH"
+        }
+    ],
+    "require": {
+		"shopware/core": "^6.3",
+		"shopware/storefront": "^6.3"
+	},
+    "extra": {
+        "shopware-plugin-class": "Brandcrock\\BrandCrockMegaMenu\\BrandCrockMegaMenu",
+        "plugin-icon": "src/Resources/config/plugin.png",
+        "label": {
+            "en-GB": "Advanced Mega Menu",
+            "de-DE": "Erweitertes Mega-Menu"
+        },
+        "description": {
+            "de-DE": "Advanced Mega Menu wird Ihnen helfen, die Navigation und Benutzerfreundlichkeit Ihrer Website zu vereinfachen. Mit diesem Plugin können Sie der Menüleiste Registerkarten mit Inhalten hinzufügen, die vom Ladenbesitzer ausgewählt wurden.",
+            "en-GB": "Advanced Mega Menu will help you to simplify the navigation and usability of your website. This plugin allows you to add tabs to the menu bar with content selected by the store owner"
+        },
+        "manufacturerLink": {
+            "de-DE": "https://store.shopware.com/brandcrock-gmbh.html",
+            "en-GB": "https://store.shopware.com/en/brandcrock-gmbh.html"
+        },
+        "supportLink": {
+            "de-DE": "https://store.shopware.com/brandcrock-gmbh.html",
+            "en-GB": "https://store.shopware.com/en/brandcrock-gmbh.html"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Brandcrock\\BrandCrockMegaMenu\\": "src/"
+        }
+    },
+    "conflict": {
+        "shopware/storefront": "<6,>=7",
+        "shopware/administration": "<6,>=7"
+    }
+}

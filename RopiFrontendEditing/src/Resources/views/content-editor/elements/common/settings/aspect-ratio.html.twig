@@ -1,0 +1,33 @@
+{% block aspect_ratio %}
+    <ropi-collapsible>
+        <ropi-subheader slot="header">{% trans %}ropi-frontend-editing.contentElement.definition.subheader.aspectRatio{% endtrans %}</ropi-subheader>
+        <div slot="content">
+
+            {% block aspect_ratio_content %}
+
+                {% block aspect_ratio_textfield %}
+                    <div class="ropi-margin-h" style="display:flex">
+                        <ropi-textfield style="flex:1" name="{{ name }}.x" type="number" min="1" max="100">
+                            <div slot="placeholder">X</div>
+                        </ropi-textfield>
+                        <div style="line-height: 3.25rem; padding: 0 0.5rem">:</div>
+                        <ropi-textfield style="flex:1" name="{{ name }}.y" type="number" min="1" max="100">
+                            <div slot="placeholder">Y</div>
+                        </ropi-textfield>
+                    </div>
+                    <ropi-hint>{% trans %}ropi-frontend-editing.contentElement.definition.hint.aspectRatio{% endtrans %}</ropi-hint>
+                {% endblock %}
+
+                {% block min_height_fields %}
+                    {% if minHeight %}
+                        {% sw_include '@RopiFrontendEditing/content-editor/elements/common/settings/min-height.html.twig' with {
+                            'name': minHeight.name
+                        } %}
+                    {% endif %}
+                {% endblock %}
+
+            {% endblock %}
+
+        </div>
+    </ropi-collapsible>
+{% endblock %}

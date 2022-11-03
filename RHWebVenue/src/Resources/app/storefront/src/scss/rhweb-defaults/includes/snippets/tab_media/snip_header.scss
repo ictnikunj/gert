@@ -1,0 +1,8 @@
+header{
+    @if $rhweb-header-background-image != "" and $rhweb-header-background-image != "none" {
+        background-attachment: $rhweb-header-background-image-attachement;
+        background-repeat: $rhweb-header-background-image-repeat;
+        background-size: $rhweb-header-background-image-size;
+        background-position: $rhweb-header-background-image-position;
+    }
+}

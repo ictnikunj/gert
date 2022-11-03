@@ -1,0 +1,60 @@
+.product-box{
+
+    .product-image-wrapper {
+        height: $rhweb-commerce-image-height !important;
+
+        .product-image{
+            height: $rhweb-commerce-image-height !important;
+            max-height: unset;
+            object-fit: $rhweb-commerce-image-fit;
+        }
+    }
+
+    .product-info{
+        text-align: $rhweb-listing-box-alignment;
+
+        .product-rating{
+
+            .product-review-rating{
+
+                .product-review-point{
+
+                    .point-container{
+
+                        .point-rating{
+
+                            &.point-blank{
+
+                                i{
+                                    color:$rhweb-listing-box-rating-color-blank;
+                                }
+                            }
+
+                            &.point-full{
+
+                                i{
+                                    color:$rhweb-listing-box-rating-color-full;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .product-description{
+            color:$rhweb-listing-box-description-color;
+        }
+
+        .product-price-info{
+
+            .product-price{
+                color:$rhweb-listing-box-price-color;
+            }
+        }
+    }
+
+    &:hover{
+        background-color: $rhweb-listing-box-background-color-hover;
+    }
+}

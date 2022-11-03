@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+      <script type="module">
+        import '../../demo-element/demo-element.js?v=1637255330';
+        import '../vertical-scroll-element.js?v=1637255330';
+      </script>
+
+      <title>vertical-scroll-element demo</title>
+  </head>
+  <body>
+    <ropi-demo>
+        <style>
+          ropi-vertical-scroll > div {
+            display: inline-block;
+            padding: 0 1rem;
+          }
+        </style>
+        <ropi-vertical-scroll>
+          <div>
+            1. Element
+          </div>
+          <div>
+            2. Element
+          </div>
+          <div>
+            3. Element
+          </div>
+          <div>
+            4. Element
+          </div>
+          <div>
+            5. Element
+          </div>
+        </ropi-vertical-scroll>
+    </ropi-demo>
+    <ropi-demo name="Smooth scroll">
+        <style>
+          ropi-vertical-scroll > div {
+            display: inline-block;
+            padding: 0 1rem;
+          }
+        </style>
+        <ropi-vertical-scroll id="vertical-scroll">
+          <div>
+            1. Element
+          </div>
+          <div>
+            2. Element
+          </div>
+          <div>
+            3. Element
+          </div>
+          <div>
+            4. Element
+          </div>
+          <div>
+            5. Element
+          </div>
+        </ropi-vertical-scroll>
+        <script>
+          let verticalScroll = document.getElementById('vertical-scroll');
+          setInterval(() => {
+            if (verticalScroll.scrollPosition) {
+              verticalScroll.scrollSmooth(verticalScroll.scrollPosition, 0);
+            } else {
+              verticalScroll.scrollSmooth(0, verticalScroll.maxScrollPosition);
+            }
+          }, 999);
+        </script>
+    </ropi-demo>
+  </body>
+</html>

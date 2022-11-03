@@ -1,0 +1,135 @@
+.cms-element-product-listing{
+
+    .pagination-nav{
+
+        .pagination{
+
+            .page-item{
+                .page-link{
+                    border-radius:$rhweb-listing-pagination-item-border-radius;
+                    width: $rhweb-listing-pagination-item-size;
+                    height: $rhweb-listing-pagination-item-size;
+                    background-color: $rhweb-listing-pagination-item-background-color;
+                    color:$rhweb-listing-pagination-item-font-color;
+                    border-color:$rhweb-listing-pagination-item-border-color;
+
+                    &:hover{
+                        background-color: $rhweb-listing-pagination-item-background-color-hover;
+                        color:$rhweb-listing-pagination-item-font-color-hover;
+                        border-color:$rhweb-listing-pagination-item-border-color-hover;
+                    }
+                }
+
+                &.page-first{
+
+                    .page-link{
+                        background-color: $rhweb-listing-pagination-item-background-color-first;
+                        border-color:$rhweb-listing-pagination-item-border-color-first;
+
+                        &:hover{
+                            background-color: $rhweb-listing-pagination-item-background-color-hover-first;
+                            border-color:$rhweb-listing-pagination-item-border-color-hover-first;
+
+                            .icon{
+                                color:$rhweb-listing-pagination-item-font-color-hover-first;
+                            }
+                        }
+                        .icon{
+                            color:$rhweb-listing-pagination-item-font-color-first;
+                        }
+                    }
+                }
+
+                &.page-prev{
+                    .page-link{
+                        background-color: $rhweb-listing-pagination-item-background-color-prev;
+                        border-color:$rhweb-listing-pagination-item-border-color-prev;
+
+                        &:hover{
+                            background-color: $rhweb-listing-pagination-item-background-color-hover-prev;
+                            border-color:$rhweb-listing-pagination-item-border-color-hover-prev;
+
+                            .icon{
+                                color:$rhweb-listing-pagination-item-font-color-hover-prev;
+                            }
+                        }
+                        .icon{
+                            color:$rhweb-listing-pagination-item-font-color-prev;
+                        }
+                    }
+                }
+
+                &.active{
+                    .page-link{
+                        background-color: $rhweb-listing-pagination-item-background-color-active;
+                        color:$rhweb-listing-pagination-item-font-color-active;
+                        border-color:$rhweb-listing-pagination-item-border-color-active;
+
+                        &:hover{
+                            background-color: $rhweb-listing-pagination-item-background-color-hover-active;
+                            color:$rhweb-listing-pagination-item-font-color-hover-active;
+                            border-color:$rhweb-listing-pagination-item-border-color-hover-active;
+                        }
+                    }
+                }
+
+                &.page-next{
+                    .page-link{
+                        background-color: $rhweb-listing-pagination-item-background-color-next;
+                        border-color:$rhweb-listing-pagination-item-border-color-next;
+
+                        &:hover{
+                            background-color: $rhweb-listing-pagination-item-background-color-hover-next;
+                            border-color:$rhweb-listing-pagination-item-border-color-hover-next;
+
+                            .icon{
+                                color:$rhweb-listing-pagination-item-font-color-hover-next;
+                            }
+                        }
+                        .icon{
+                            color:$rhweb-listing-pagination-item-font-color-next;
+                        }
+                    }
+                }
+
+                &.page-last{
+                    .page-link{
+                        background-color: $rhweb-listing-pagination-item-background-color-last;
+                        border-color:$rhweb-listing-pagination-item-border-color-last;
+
+                        &:hover{
+                            background-color: $rhweb-listing-pagination-item-background-color-hover-last;
+                            border-color:$rhweb-listing-pagination-item-border-color-hover-last;
+
+                            .icon{
+                                color:$rhweb-listing-pagination-item-font-color-hover-last;
+                            }
+                        }
+                        .icon{
+                            color:$rhweb-listing-pagination-item-font-color-last;
+                        }
+                    }
+                }
+
+                &.disabled{
+                    .page-link{
+                        background-color: $rhweb-listing-pagination-item-background-color-disabled;
+                        border-color:$rhweb-listing-pagination-item-border-color-disabled;
+
+                        &:hover{
+                            background-color: $rhweb-listing-pagination-item-background-color-hover-disabled;
+                            border-color:$rhweb-listing-pagination-item-border-color-hover-disabled;
+
+                            .icon{
+                                color:$rhweb-listing-pagination-item-font-color-hover-disabled;
+                            }
+                        }
+                        .icon{
+                            color:$rhweb-listing-pagination-item-font-color-disabled;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

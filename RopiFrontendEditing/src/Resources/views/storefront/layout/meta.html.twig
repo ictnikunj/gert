@@ -1,0 +1,112 @@
+{% sw_extends '@Storefront/storefront/layout/meta.html.twig' %}
+
+{% block layout_head_stylesheet %}
+
+    {{ parent() }}
+
+    {% if ropiFrontendEditingEditorOpened %}
+        {% block ropi_frontend_editing_style_content_editor %}
+            <style>
+                /* Drop marker */
+                /* Positioning of drop marker, which indicates where content element will be dropped */
+
+                .ropi-content-editor-drop-marker:last-child {
+                    top: -5px;
+                }
+
+                .ropi-content-editor-drop-marker:first-child {
+                    top: 1px;
+                }
+
+                /* Click layer */
+                /* used as overlay for content elements in edit mode, to prevent native actions on content element itself */
+
+                .ropi-content-editor-click-layer {
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    left: 0;
+                    top: 0;
+                    background-color: #fff;
+                    opacity: 0.33;
+                    display: none;
+                }
+
+                .ropi-content-editor-editmode .ropi-content-editor-click-layer {
+                    display: block;
+                }
+
+                /* Empty state */
+                /* used as dummy content in edit mode, if empty content element would be rendered, due to missing configurations */
+
+                .ropi-content-editor-empty-state {
+                    text-align: center;
+                    padding: 10px;
+                    font-size: 12px;
+                    color: #888;
+                    background-color: #ddd;
+                    font-weight: bold;
+                    width: 100%;
+                    height: 100%;
+                    align-items: center;
+                    justify-content: center;
+                    display: none;
+                    flex-grow: 1;
+                    overflow: hidden;
+                 }
+
+                .ropi-content-editor-editmode .ropi-content-editor-empty-state {
+                    display: flex;
+                }
+
+                /* Preview mode */
+                /* Styling for preview mode bar showing up on version preview or document preview */
+
+                @keyframes ropi-content-editor-preview-mode {
+                    from { opacity: 0; transform: translateY(100%) }
+                    to { opacity: 1; transform: translateY(0) }
+                }
+
+                #ropi-content-editor-preview-mode {
+                    display: flex;
+                    position: fixed;
+                    left: 0;
+                    bottom: 0;
+                    right: 0;
+                    background-color: #1f1f1f;
+                    color: #f1f1f1;
+                    font-weight: normal;
+                    opacity: 0;
+                    transform: translateY(100%);
+                    z-index: 2147483647;
+                    animation: ropi-content-editor-preview-mode 300ms ease;
+                    animation-delay: 1s;
+                    animation-fill-mode: forwards;
+                }
+
+                #ropi-content-editor-preview-mode-text {
+                    padding: 1rem;
+                    flex-grow: 1;
+                }
+
+                #ropi-content-editor-preview-mode-actions {
+                    display: flex;
+                    align-items: center;
+                }
+
+                #ropi-content-editor-preview-mode a {
+                    text-transform: uppercase;
+                    padding: 1rem;
+                    cursor: pointer;
+                    color: #6091ef;
+                    font-weight: bold;
+                    text-decoration: none;
+                }
+
+                .ropi-content-editor #ropi-content-editor-preview-mode {
+                    display: none;
+                }
+            </style>
+        {% endblock %}
+    {% endif %}
+{% endblock %}

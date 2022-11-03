@@ -1,0 +1,37 @@
+$border-radius: $rhweb-additional-border-radius;
+$border-radius-lg: $rhweb-additional-border-radius;
+$border-radius-sm: $rhweb-additional-border-radius;
+
+$font-size-base:              $rhweb-typography-general-font-size;
+$font-size-lg:                $font-size-base * $rhweb-typography-font-size-big-factor;
+$font-size-sm:                $font-size-base * $rhweb-typography-font-size-small-factor;
+$font-weight-base:            $rhweb-typography-body-font-weight;
+$line-height-base:            $rhweb-typography-line-height-base;
+
+$h1-font-size:                $font-size-base * $rhweb-typography-h1-factor;
+$h2-font-size:                $font-size-base * $rhweb-typography-h2-factor;
+$h3-font-size:                $font-size-base * $rhweb-typography-h3-factor;
+$h4-font-size:                $font-size-base * $rhweb-typography-h4-factor;
+$h5-font-size:                $font-size-base * $rhweb-typography-h5-factor;
+$h6-font-size:                $font-size-base * $rhweb-typography-h6-factor;
+$headings-font-weight:        $rhweb-typography-headings-font-weight;
+$headings-line-height:        $rhweb-typography-headings-line-height !important;
+
+$link-color:                  $rhweb-general-link-color;
+
+$grid-breakpoints: (
+    xs: 0,
+    sm: $rhweb-general-breakpoint-sm,
+    md: $rhweb-general-breakpoint-md,
+    lg: $rhweb-general-breakpoint-lg,
+    xl: $rhweb-general-breakpoint-xl
+) !default;
+
+
+
+
+
+
+
+
+

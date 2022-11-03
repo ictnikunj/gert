@@ -1,0 +1,32 @@
+<div class="form-{{ formElement.type }}-{{ formElement.name }} form-group">
+    {% if formElementLabel %}
+        {% sw_include "@MoorlFormBuilder/plugin/moorl-form-builder/component/label.html.twig" ignore missing %}
+    {% endif %}
+
+    <div class="form-input-group">
+        <div class="btn-group" role="group">
+            {% for option in formElement.options %}
+                {% set optionLabel = option.translated.label %}
+
+                <input type="radio"
+                       class="btn-check"
+                       id="{{ option.value }}-{{ formElementId }}"
+                       name="{{ formElementName }}"
+                       value="{{ option.value }}"
+                       {% if formElementValue and option.value in formElementValue %}checked{% endif %}>
+                <label class="btn btn-outline-primary" for="{{ option.value }}-{{ formElementId }}">
+                    {% if option.mediaId %}
+                        {% set optionMedia = mediaCollection.get(option.mediaId) %}
+                        {% if optionMedia %}
+                            <img alt="{{ optionMedia.fileName }}" src="{{ optionMedia.url }}">
+                        {% endif %}
+                    {% endif %}
+                    <div class="w-100">
+                        {{ optionLabel }}
+                        {% sw_include "@MoorlFormBuilder/plugin/moorl-form-builder/component/price-label.html.twig" ignore missing %}
+                    </div>
+                </label>
+            {% endfor %}
+        </div>
+    </div>
+</div>

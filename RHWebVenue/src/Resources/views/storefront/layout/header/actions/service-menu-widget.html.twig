@@ -1,0 +1,11 @@
+{% sw_extends '@Storefront/storefront/layout/header/actions/service-menu-widget.html.twig' %}
+
+{% block layout_header_actions_service_menu_widget %}
+    <ul class="list-unstyled list-inline m-0 p-0">
+        {% for category in page.header.serviceMenu %}
+            <li class="list-inline-item">
+                <a href="{{ seoUrl('frontend.navigation.page', { navigationId: category.id }) }}"
+                   title="{{ category.translated.name }}">{{ category.translated.name }}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}

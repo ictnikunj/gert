@@ -1,0 +1,44 @@
+{
+    "name": "swag/i18n-polish",
+    "description": "Language pack for Shopware 6: Polish",
+    "version": "2.2.5",
+    "type": "shopware-platform-plugin",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Shopware"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "SwagI18nPolish\\": "src/"
+        }
+    },
+    "require": {
+        "shopware/core": "6.2.0-RC1 || ~6.2.0 || ~6.3.0"
+    },
+    "conflict": {
+        "swag/language-pack": "*"
+    },
+    "prefer-stable": true,
+    "extra": {
+        "shopware-plugin-class": "SwagI18nPolish\\SwagI18nPolish",
+        "copyright": "(c) by shopware AG",
+        "label": {
+            "de-DE": "Sprachpaket für Shopware 6: Polnisch",
+            "en-GB": "Language pack for Shopware 6: Polish"
+        },
+        "description":{
+            "de-DE": "Sprachpaket für Shopware 6: Polnisch",
+            "en-GB": "Language pack for Shopware 6: Polish"
+        },
+        "manufacturerLink": {
+            "de-DE": "https://store.shopware.com/shopware-ag.html",
+            "en-GB": "https://store.shopware.com/en/shopware-ag.html"
+        },
+        "supportLink": {
+            "de-DE": "https://issues.shopware.com/",
+            "en-GB": "https://issues.shopware.com/"
+        }
+    }
+}

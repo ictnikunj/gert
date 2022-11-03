@@ -1,0 +1,20 @@
+<container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+
+        <service id="MediaRedirect\Controller\GjrMediaController" public="true">
+            <argument type="service" id="media.repository"/>
+            <argument type="service" id="ict_media_redirect.repository"/>
+            <call method="setContainer">
+                <argument type="service" id="service_container"/>
+            </call>
+        </service>
+
+        <service id="MediaRedirect\Core\Content\Extension\MediaExtension">
+            <tag name="shopware.entity.extension"/>
+        </service>
+
+        <service id="MediaRedirect\Core\Content\MediaRedirect\MediaRedirectDefinition">
+            <tag name="shopware.entity.definition" entity="ict_media_redirect"/>
+        </service>
+    </services>
+</container>

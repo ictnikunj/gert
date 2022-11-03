@@ -1,0 +1,16 @@
+{% block page_product_detail_all_links %}
+    {% set linkList = [] %}
+    {% if links is not empty %}
+        {% for element in links %}
+            {% set linkList = linkList|merge([element]) %}
+        {% endfor %}
+    {% endif %}
+
+    {% if linkList is not empty %}
+        {% block page_product_detail_links_content %}
+            {% sw_include '@Storefront/storefront/page/product-detail/acris-links/links.html.twig' with {
+                links: linkList
+            } %}
+        {% endblock %}
+    {% endif %}
+{% endblock %}

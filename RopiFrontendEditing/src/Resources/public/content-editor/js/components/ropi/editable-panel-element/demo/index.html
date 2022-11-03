@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+      <script type="module">
+        import '../../demo-element/demo-element.js?v=1637255330';
+        import '../../material-icon-element/material-icon-sprite.js?v=1637255330';
+        import '../editable-panel-element.js?v=1637255330';
+      </script>
+
+      <title>editable-panel-element demo</title>
+  </head>
+  <body>
+    <ropi-demo>
+      <ropi-editable-panel for="editable"></ropi-editable-panel>
+      <div id="editable" contenteditable="true" style="user-select:text;-moz-user-select:text">
+        <h1>Editable</h1>
+        <p>I am a paragraph with a <a href="https://www.google.de">link</a></p>
+      </div>
+    </ropi-demo>
+
+    <ropi-demo name="Restricted">
+      <ropi-editable-panel
+        for="restricted-editable"
+        hideoutdent
+        hidejustifyright
+        hidejustifycenter
+        hidejustifyfull
+        hideinsertunorderedlist
+        hidecreatelink
+        hidestrikethrough
+        hideitalic
+        hidebold>
+      </ropi-editable-panel>
+      <div id="restricted-editable" contenteditable="true" style="user-select:text;-moz-user-select:text">
+        <h1>Restricted Editable</h1>
+        <p>I am a paragraph with a <a href="https://www.google.de">link</a></p>
+      </div>
+    </ropi-demo>
+
+    <ropi-demo name="Hide all">
+      <ropi-editable-panel
+        for="hideall-editable"
+        hideoutdent
+        hideindent
+        hidejustifyfull
+        hidejustifyright
+        hidejustifycenter
+        hidejustifyleft
+        hideinsertunorderedlist
+        hideinsertorderedlist
+        hidecreatelink
+        hidestrikethrough
+        hideunderline
+        hideitalic
+        hidebold>
+      </ropi-editable-panel>
+      <div id="hideall-editable" contenteditable="true" style="user-select:text;-moz-user-select:text">
+        <h1>Restricted Editable</h1>
+        <p>I am a paragraph with a <a href="https://www.google.de">link</a></p>
+      </div>
+    </ropi-demo>
+  </body>
+</html>

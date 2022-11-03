@@ -1,0 +1,40 @@
+{
+    "acris-product-download-tab": {
+        "general": {
+            "mainMenuItemGeneral": "Download Tabs",
+            "descriptionTextModule": "Konfiguration der Download Tabs",
+            "placeholderSearchBar": "Konfiguration der Download Tabs suchen",
+            "initialSearchType": "Download Tabs"
+        },
+        "list": {
+            "textHeadline": "Download Tabs",
+            "buttonAdd": "Download Tab hinzufügen",
+            "columnInternalId": "Interne Kennung",
+            "columnDisplayName": "Anzeigename",
+            "columnPriority": "Priorität",
+            "contentEmpty": "Es gibt keine Konfigurationen für die Download Tabs.",
+            "contextMenuDuplicate": "Duplizieren",
+            "titleSidebarItemRefresh": "Aktualisieren"
+        },
+        "detail": {
+            "textHeadline": "Download Tab",
+            "buttonSave": "Speichern",
+            "buttonCancel": "Abbrechen",
+            "cardGeneral": "Allgemein",
+            "fieldTitleLabelInternalId": "Interne ID",
+            "fieldTitlePlaceholderInternalId": "Interne ID eingeben...",
+            "fieldTitleLabelDisplayName": "Anzeigename",
+            "fieldTitlePlaceholderDisplayName": "Anzeigename eingeben...",
+            "fieldTitleLabelPriority": "Priorität",
+            "fieldTitlePlaceholderPriority": "Priorität eingeben...",
+            "fieldTitleHelpTextPriorität": "Die Download Tabs werden in der Storefront nach Priorität sortiert, von der Höchsten zur Niedrigsten.",
+            "rulesSelectFieldLabel": "Zusätzliche Regeln",
+            "rulesSelectFieldHelpText": "Aktiv, wenn mindestens eine der zugewiesenen Regeln zutrifft (ODER-Verknüpfung). Wird keine Regel zugewiesen, gilt dies als immer aktiv.",
+
+            "titleSaveError": "Fehler",
+            "titleSaveSuccess": "Erfolg",
+            "messageSaveError": "Die Download Tabs konnte nicht gespeichert werden.",
+            "messageSaveSuccess": "Die Download Tabs wurde gespeichert."
+        }
+    }
+}

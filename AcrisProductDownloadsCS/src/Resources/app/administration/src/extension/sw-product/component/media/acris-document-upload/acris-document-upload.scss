@@ -1,0 +1,188 @@
+@import "~scss/variables";
+
+$acris-document-upload-border-color:                 $color-gray-300;
+$acris-document-upload-color-highlighted:            $color-shopware-brand-500;
+$acris-document-upload-color-switch-mode:            $color-shopware-brand-500;
+$acris-document-upload-border-radius:                $border-radius-default;
+$acris-document-upload-upload-background-color:      $color-gray-100;
+$acris-document-upload-background-color-highlighted: $color-shopware-brand-50;
+$acris-document-upload-caption-font-size:            $font-size-large;
+$acris-document-upload-caption-icon-color:           $color-gray-300;
+
+.acris-document-upload {
+    .acris-document-upload__file-input {
+        display: none;
+    }
+
+    .acris-document-upload__header {
+        display: flex;
+        flex-direction: row;
+        line-height: 16px;
+        min-height: 16px;
+        font-size: 14px;
+        margin-bottom: 8px;
+        color: $color-darkgray-200;
+        font-weight: normal;
+        user-select: none;
+    }
+
+    .acris-document-upload__switch-mode {
+        color: $acris-document-upload-color-switch-mode;
+        margin-left: auto;
+        cursor: pointer;
+    }
+
+    .acris-document-upload__help-text {
+        align-self: center;
+        margin-left: 8px;
+    }
+
+    .acris-document-upload__dropzone {
+        padding: 24px;
+        min-height: 148px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        border: 2px dashed $acris-document-upload-border-color;
+        border-radius: $acris-document-upload-border-radius;
+        background-color: $acris-document-upload-upload-background-color;
+        position: relative;
+        margin-bottom: 10px;
+
+        &.is--multi {
+            flex-direction: column;
+            justify-items: center;
+            padding: 36px 24px;
+
+            .acris-document-upload__actions {
+                margin-top: 12px;
+                margin-left: unset;
+                flex-direction: row;
+                padding-left: unset;
+
+                .acris-document-upload__button {
+                    margin: 0 8px;
+                }
+            }
+        }
+
+        &.is--active {
+            border-color: $acris-document-upload-color-highlighted;
+            background-color: $acris-document-upload-background-color-highlighted;
+            color: $acris-document-upload-color-highlighted;
+
+            .acris-document-upload__upload-caption {
+                .sw-icon {
+                    color: $acris-document-upload-color-highlighted;
+                }
+            }
+        }
+
+        .acris-document-upload__upload-caption {
+            font-size: $acris-document-upload-caption-font-size;
+            text-align: center;
+
+            .sw-icon {
+                margin-right: 8px;
+                color: $acris-document-upload-caption-icon-color;
+            }
+        }
+    }
+
+    .acris-document-upload__actions {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        justify-content: center;
+        overflow: hidden;
+        width: 100%;
+
+        &.has--source {
+            .acris-document-upload__file-info {
+                width: 100%;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                font-size: 14px;
+            }
+        }
+
+        .acris-document-upload__file-info {
+            width: 100%;
+        }
+
+        .acris-document-upload__file-headline {
+            word-break: break-word;
+            padding-right: 16px;
+        }
+
+        .acris-document-upload__remove-icon {
+            flex-shrink: 0;
+            margin-left: auto;
+            cursor: pointer;
+        }
+    }
+
+    .acris-document-upload__url-form {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        width: 100%;
+
+        .sw-media-url-form__url-input {
+            margin-bottom: 12px;
+        }
+    }
+
+    .acris-document-upload__button-compact-upload {
+        margin-right: 0 !important;
+    }
+
+    .acris-document-upload__file-form {
+        display: grid;
+        grid-template-columns: auto auto;
+        grid-column-gap: 8px;
+        align-items: center;
+        justify-content: center;
+        justify-items: start;
+
+        &.has--preview {
+            grid-column-gap: 55px;
+        }
+    }
+
+    .acris-document-upload__preview {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        flex-shrink: 0;
+        margin-right: 16px;
+        width: 96px;
+        height: 96px;
+        border: 2px solid $acris-document-upload-border-color;
+        border-radius: $acris-document-upload-border-radius;
+
+        &.is--fallback {
+            border: 2px dashed $acris-document-upload-border-color;
+        }
+    }
+
+    .acris-document-upload__fallback-icon {
+        color: $color-gray-300;
+    }
+
+    .acris-document-upload__button {
+        min-width: 144px;
+        margin: 8px 0;
+    }
+
+    .sw-media-preview {
+        border: none;
+
+        .sw-media-preview__item {
+            max-height: 100%;
+            max-width: 100%;
+        }
+    }
+}

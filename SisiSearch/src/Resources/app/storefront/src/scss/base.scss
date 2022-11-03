@@ -1,0 +1,171 @@
+@import '~vendor/bootstrap/scss/variables';
+
+.sisi-suggest-underform {
+    top: 100px;
+    z-index: 10001;
+    list-style: none;
+    padding-top: 10px;
+    padding-left: 10px;
+    width: 100%;
+    left: 0;
+    margin-top: -30px;
+    margin-bottom: 10px;
+
+    div {
+        display: inline-block;
+        background-color: #f2f2f2;
+        padding: 5px 10px;
+
+        a {
+            color: #707070;
+        }
+    }
+
+}
+
+.header-search-form.header-search-form {
+    position: static
+}
+
+.search-suggest-container.search-suggest-container {
+    width: 100%;
+    padding-bottom: 0;
+}
+
+.header-search-col {
+    position: static;
+
+    .row > .col {
+        position: static;
+    }
+}
+
+.search-suggest-container {
+    top: 100px;
+
+    em {
+        color: blue;
+    }
+}
+
+.sisi-hidden {
+
+    display: none;
+
+}
+
+.sisi-search-suggest-container {
+
+    h2, h3 {
+        font-size: 1rem;
+        border-bottom: solid thin #ccc;
+        padding-top: 1rem;
+    }
+
+    ul {
+        padding: 0;
+
+    }
+
+    li {
+        list-style: none;
+    }
+
+    .sisi-bottom-total {
+        margin-top: 1rem;
+    }
+
+    img {
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+}
+
+.sisi-suggest-text {
+    cursor: pointer;
+}
+
+@media (min-width: 576px) {
+    .sisi-search-suggest-container {
+        .sisi-big-image {
+            .search-suggest-product-image-container {
+                width: 100%;
+                height: 180px;
+            }
+
+            .search-suggest-product-image {
+                width: auto;
+                height: 160px;
+
+            }
+
+            .search-suggest-product-number, .search-suggest-product-name {
+                width: 100%;
+                text-align: center;
+            }
+
+            .search-suggest-product-number {
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+
+        }
+    }
+
+}
+
+.sisi-search-suggest-container-close {
+    position: relative;
+    height: 20px;
+
+    div {
+        position: absolute;
+        text-align: right;
+        width: 20px;
+        height: 20px;
+        right: 0;
+        top: -15px;
+        cursor: pointer;
+        font-size: 1.5rem;
+    }
+}
+
+@include media-breakpoint-down(md) {
+
+    .search-suggest-container {
+        top: 135px;
+    }
+
+}
+
+@include media-breakpoint-down(sm) {
+
+    .search-suggest-container {
+        top: 135px;
+    }
+
+    .sisi-search-suggest-container-left li {
+        a {
+            padding: 5px;
+
+        }
+    }
+
+    .sisi-search-suggest-container-left.sisi-search-suggest-container-left {
+        height: auto;
+        max-height: 10rem;
+
+    }
+
+
+}
+
+@include media-breakpoint-down(xs) {
+
+    .search-suggest-container {
+        top: 170px;
+    }
+
+}

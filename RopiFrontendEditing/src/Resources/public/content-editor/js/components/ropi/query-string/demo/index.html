@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+      <script type="module">
+        import '../../demo-element/demo-element.js?v=1637255330';
+        import '../../javascript-test-element/javascript-test-element.js?v=1637255330';
+      </script>
+
+      <title>query-string demo</title>
+  </head>
+  <body>
+
+    <ropi-demo sourcehidden name="parse">
+      <ropi-javascript-test dependencies="import QueryString from '../query-string.js?v=1637255330'" expect="'{&quot;hello&quot;:&quot;world&quot;,&quot;nested&quot;:{&quot;one&quot;:&quot;1&quot;,&quot;two&quot;:[&quot;2&quot;,&quot;2.2&quot;]},&quot;keyOnly&quot;:&quot;&quot;,&quot;square[bracket]&quot;:&quot;flat&quot;}'">
+        JSON.stringify(QueryString.parse(
+          'hello=world&nested.one=1&nested.two=2&nested.two=2.2&keyOnly&square[bracket]=flat'
+        ));
+      </ropi-javascript-test>
+    </ropi-demo>
+
+    <ropi-demo sourcehidden name="parse flat">
+      <ropi-javascript-test dependencies="import QueryString from '../query-string.js?v=1637255330'" expect="'{&quot;hello&quot;:&quot;world&quot;,&quot;a.dot&quot;:&quot;is flat&quot;,&quot;keyOnly&quot;:&quot;&quot;,&quot;a[square][bracket]&quot;:&quot;is flat too&quot;}'">
+        JSON.stringify(QueryString.parse(
+          'hello=world&a.dot=is%20flat&keyOnly&a[square][bracket]=is%20flat%20too',
+          QueryString.NESTING_MODE_FLAT
+        ));
+      </ropi-javascript-test>
+    </ropi-demo>
+
+    <ropi-demo sourcehidden name="parse with square brackets">
+      <ropi-javascript-test dependencies="import QueryString from '../query-string.js?v=1637255330'" expect="'{&quot;nested&quot;:{&quot;duplicate&quot;:[[&quot;1&quot;,&quot;2&quot;]]},&quot;a.dot&quot;:&quot;flat&quot;,&quot;keyOnly&quot;:&quot;&quot;,&quot;deep&quot;:[{&quot;param1&quot;:&quot;1&quot;,&quot;param2&quot;:&quot;2&quot;}],&quot;bracketFirst&quot;:&quot;2&quot;}'">
+        JSON.stringify(QueryString.parse(
+          'http://www.example.com/3.html?nested[duplicate][]=1&nested[duplicate][]=2&a.dot=flat&keyOnly&deep[][param1]=1&deep[][param2]=2&[bracketFirst]=2',
+          QueryString.NESTING_MODE_SQUARE_BRACKETS
+        ));
+      </ropi-javascript-test>
+    </ropi-demo>
+
+    <ropi-demo sourcehidden name="stringify">
+      <ropi-javascript-test dependencies="import QueryString from '../query-string.js?v=1637255330'" expect="'param=1&nested.param=example'">
+        QueryString.stringify(
+          {
+            param: '1',
+            nested: {
+              param: 'example'
+            }
+          }
+        );
+      </ropi-javascript-test>
+    </ropi-demo>
+
+    <ropi-demo sourcehidden name="stringify with square brackets">
+      <ropi-javascript-test dependencies="import QueryString from '../query-string.js?v=1637255330'" expect="'param=1&nested%5Bparam%5D=example'">
+        QueryString.stringify(
+          {
+            param: '1',
+            nested: {
+              param: 'example'
+            }
+          },
+          QueryString.NESTING_MODE_SQUARE_BRACKETS
+        );
+      </ropi-javascript-test>
+    </ropi-demo>
+
+    <ropi-demo sourcehidden name="stringify array">
+      <ropi-javascript-test dependencies="import QueryString from '../query-string.js?v=1637255330'" expect="'0=one&1=two&2.property=value'">
+        QueryString.stringify(
+          [
+            "one",
+            "two",
+            {
+              "property": "value"
+            }
+          ]
+        );
+      </ropi-javascript-test>
+    </ropi-demo>
+
+    <ropi-demo sourcehidden name="stringify with square brackets as default">
+      <ropi-javascript-test dependencies="import QueryString from '../query-string.js?v=1637255330'" expect="'param1=1&nested%5Bparam%5D=example'">
+        let nestingMode = QueryString.defaultNestingMode;
+
+        QueryString.defaultNestingMode = QueryString.NESTING_MODE_SQUARE_BRACKETS;
+
+        let queryString = QueryString.stringify(
+          {
+            param1: '1',
+            nested: {
+              param: 'example'
+            }
+          }
+        );
+
+        QueryString.defaultNestingMode = nestingMode; // Restore default nesting mode
+
+        queryString;
+      </ropi-javascript-test>
+    </ropi-demo>
+
+  </body>
+</html>

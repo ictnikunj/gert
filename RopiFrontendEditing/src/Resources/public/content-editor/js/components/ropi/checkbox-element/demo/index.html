@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+      <script type="module">
+        import '../../demo-element/demo-element.js?v=1637255330';
+        import '../../styles/styles.js?v=1637255330';
+        import '../../subheader-element/subheader-element.js?v=1637255330';
+        import '../../hint-element/hint-element.js?v=1637255330';
+        import '../checkbox-element.js?v=1637255330';
+        import '../checkbox-group-element.js?v=1637255330';
+      </script>
+
+      <title>checkbox-element demo</title>
+  </head>
+  <body>
+    <ropi-demo>
+      <ropi-subheader id="label">Group label</ropi-subheader>
+      <ropi-checkbox-group class="ropi-grid" id="group" aria-labelledby="label" aria-describedby="description">
+        <ropi-checkbox value="1">Checkbox 1</ropi-checkbox>
+        <ropi-checkbox value="2">Checkbox 2</ropi-checkbox>
+        <ropi-checkbox disabled value="disabled">Disabled</ropi-checkbox>
+        <ropi-checkbox disabled checked value="disabled">Disabled and checked</ropi-checkbox>
+      </ropi-checkbox-group>
+      <ropi-hint id="description" style="padding: 0 var(--ropi-grid-outer-gutter-width)">
+        Description for group
+      </ropi-hint>
+      <script>
+        let group = document.getElementById('group');
+        // The change event is triggered by the ropi-checkbox elements
+        group.addEventListener('change', function() {
+          console.log("checked values: ", group.checkedValues);
+        });
+      </script>
+    </ropi-demo>
+
+    <ropi-demo name="Color support">
+      <ropi-checkbox-group class="ropi-grid">
+        <ropi-checkbox value="cyan" style="--ropi-checkbox-color: var(--ropi-color-cyan)">
+          cyan
+        </ropi-checkbox>
+        <ropi-checkbox value="cyan" style="--ropi-checkbox-color: var(--ropi-color-cyan);
+                                           --ropi-checkbox-color-unchecked: var(--ropi-color-cyan)">
+          always cyan
+        </ropi-checkbox>
+      </ropi-checkbox-group>
+    </ropi-demo>
+  </body>
+</html>

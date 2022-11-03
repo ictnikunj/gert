@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+        <meta name="robots" content="noindex, nofollow">
+
+        {% sw_include '@RopiFrontendEditing/content-editor/browser-detection.html.twig' %}
+
+        <script type="module">
+            {% block script_module_imports_inner %}
+
+            window.frontendEditing = {};
+
+            import '{{ asset("bundles/ropifrontendediting/content-editor/js/components/ropi/styles/styles.js?v=1637255330") }}';
+            import '{{ asset("bundles/ropifrontendediting/content-editor/js/components/ropi/styles/themes/dark.js?v=1637255330") }}';
+            import '{{ asset("bundles/ropifrontendediting/content-editor/js/components/ropi/material-icon-element/material-icon-sprite.js?v=1637255330") }}';
+
+            import Environment from '{{ asset("bundles/ropifrontendediting/content-editor/js/components/ropi/frontend-editing/environment.js?v=1637255330") }}';
+            window.frontendEditing.Environment = Environment;
+
+            import Logger from '{{ asset("bundles/ropifrontendediting/content-editor/js/components/ropi/logger/logger.js?v=1637255330") }}';
+            Logger.level = Logger.LEVEL_ALL;
+
+            import '{{ asset("bundles/ropifrontendediting/content-editor/js/components/ropi/for-element/for-element.js?v=1637255330") }}';
+            import '{{ asset("bundles/ropifrontendediting/content-editor/js/components/ropi/button-element/button-element.js?v=1637255330") }}';
+            import '{{ asset("bundles/ropifrontendediting/content-editor/js/components/ropi/hint-element/hint-element.js?v=1637255330") }}';
+            import '{{ asset("bundles/ropifrontendediting/content-editor/js/components/ropi/subheader-element/subheader-element.js?v=1637255330") }}';
+            import '{{ asset("bundles/ropifrontendediting/content-editor/js/components/ropi/collapsible-element/collapsible-element.js?v=1637255330") }}';
+            import '{{ asset("bundles/ropifrontendediting/content-editor/js/components/ropi/collapsible-element/collapsible-group-element.js?v=1637255330") }}';
+
+            import '{{ asset("bundles/ropifrontendediting/content-editor/js/components/ropi/content-editor-element/content-editor-element.js?v=1637255330") }}';
+            import '{{ asset("bundles/ropifrontendediting/content-editor/js/components/ropi/touchable-element/touchable-element.js?v=1637255330") }}';
+            import '{{ asset("bundles/ropifrontendediting/content-editor/js/components/ropi/tabs-element/tabs-element.js?v=1637255330") }}';
+            import '{{ asset("bundles/ropifrontendediting/content-editor/js/components/ropi/hline-element/hline-element.js?v=1637255330") }}';
+            import '{{ asset("bundles/ropifrontendediting/content-editor/js/components/ropi/checkbox-element/checkbox-group-element.js?v=1637255330") }}';
+            import '{{ asset("bundles/ropifrontendediting/content-editor/js/components/ropi/checkbox-element/checkbox-element.js?v=1637255330") }}';
+            import '{{ asset("bundles/ropifrontendediting/content-editor/js/components/ropi/radio-element/radio-group-element.js?v=1637255330") }}';
+            import '{{ asset("bundles/ropifrontendediting/content-editor/js/components/ropi/radio-element/radio-element.js?v=1637255330") }}';
+            import '{{ asset("bundles/ropifrontendediting/content-editor/js/components/ropi/slider-element/slider-element.js?v=1637255330") }}';
+            import '{{ asset("bundles/ropifrontendediting/content-editor/js/components/ropi/sw-media-image-element/sw-media-image-element.js?v=1637255330") }}';
+            import '{{ asset("bundles/ropifrontendediting/content-editor/js/components/ropi/textfield-element/textfield-element.js?v=1637255330") }}';
+            import '{{ asset("bundles/ropifrontendediting/content-editor/js/components/ropi/textarea-element/textarea-element.js?v=1637255330") }}';
+
+            {% endblock %}
+        </script>
+
+        <style>
+            {% block style_inner %}
+
+            a {
+                color: var(--ropi-color-interactive, #87cefa);
+                text-decoration: none;
+            }
+
+            input {
+                display: block;
+                width: 100%;
+                height: 2.5rem;
+                padding: 0 0.75rem;
+                box-sizing: border-box;
+                border: none;
+                margin-bottom: var(--ropi-grid-outer-gutter-height, 0.75rem);
+                background-color: var(--ropi-color-font-100, white);
+            }
+
+            ::placeholder {
+                color: var(--ropi-color-font-50, grey);
+                opacity: 1;
+            }
+
+            .ropi-margin-v,
+            .ropi-margin-t {
+                margin-top: var(--ropi-grid-outer-gutter-height, 0.75rem);
+            }
+
+            .ropi-margin-v,
+            .ropi-margin-b {
+                margin-bottom: var(--ropi-grid-outer-gutter-height, 0.75rem);
+            }
+
+            .ropi-margin-h,
+            .ropi-margin-r {
+                margin-right: var(--ropi-grid-outer-gutter-width, 1rem);
+            }
+
+            .ropi-margin-h,
+            .ropi-margin-l {
+                margin-left: var(--ropi-grid-outer-gutter-width, 1rem);
+            }
+
+            .ropi-margin {
+                margin: var(--ropi-grid-outer-gutter, 0.75rem 1rem);
+            }
+            
+            .ropi-view {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                overflow: hidden;
+                background-color: var(--ropi-color-base, white);
+                z-index: 2147483647;
+
+                opacity: 0;
+                transform: scale(0.5, 0.5);
+                transition: opacity 301ms ease,
+                            transform 301ms ease;
+                pointer-events: none;
+            }
+
+            #ropi-view-login {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: absolute;
+                text-align: center;
+            }
+
+            .ropi-unauthenticated #ropi-view-login {
+                opacity: 1;
+                transform: scale(1, 1);
+                pointer-events: all;
+            }
+
+            .ropi-authenticated #ropi-view-editor {
+                opacity: 1;
+                transform: scale(1, 1);
+                pointer-events: all;
+            }
+
+            ropi-toast {
+                top: 9rem;
+            }
+
+            {% endblock %}
+        </style>
+
+        <title>Shopware - Frontend Editing</title>
+    </head>
+    <body class="ropi-color-mode--dark" style="overflow:hidden;">
+        <div class="ropi-view" id="ropi-view-editor"></div>
+        <div class="ropi-view" id="ropi-view-login">
+            {% sw_include '@RopiFrontendEditing/content-editor/login.html.twig' %}
+        </div>
+        <script type="module">
+            import HttpRequest from '{{ asset("bundles/ropifrontendediting/content-editor/js/components/ropi/http-message/http-request.js?v=1637255330") }}';
+            import HttpError from '{{ asset("bundles/ropifrontendediting/content-editor/js/components/ropi/http-message/http-error.js?v=1637255330") }}';
+            import HttpClient from '{{ asset("bundles/ropifrontendediting/content-editor/js/components/ropi/http-client/http-client.js?v=1637255330") }}';
+            import Download from '{{ asset("bundles/ropifrontendediting/content-editor/js/components/ropi/download/download.js?v=1637255330") }}';
+            import Environment from '{{ asset("bundles/ropifrontendediting/content-editor/js/components/ropi/frontend-editing/environment.js?v=1637255330") }}';
+            import '{{ asset("bundles/ropifrontendediting/content-editor/js/components/ropi/toast-element/toast-element.js?v=1637255330") }}';
+
+            document.getElementById('ropi-view-editor').addEventListener('loaded', () => {
+                let httpClient = new HttpClient();
+                let editor = document.getElementById('ropi-content-editor');
+                let snippets = JSON.parse(editor.getAttribute('snippets'));
+
+                let sendRequest = (action, url, data, method) => {
+                    return new Promise((resolve, reject) => {
+                        editor.setAttribute('locked', '');
+
+                        let httpRequest = Environment.createAuthenticatedRequest(url)
+                            .setMethod(method ? method : HttpRequest.METHOD_POST)
+                            .setBody(JSON.stringify(data));
+
+                        httpClient.send(httpRequest)
+                            .then(() => {
+                                editor.removeAttribute('locked');
+                                resolve();
+                            })
+                            .catch((error) => {
+                                editor.removeAttribute('locked');
+
+                                let errorText = String(error);
+
+                                if (error instanceof HttpError) {
+                                    errorText += ' (' + error.getHttpResponse().getStatusCode() + ')';
+
+                                    try {
+                                        let detail = JSON.parse(error.getHttpResponse().getBody()).detail;
+                                        if (detail) {
+                                            errorText += '\n\n' . detail;
+                                        }
+                                    } catch (e) {
+                                        // Silent fail
+                                    }
+                                }
+
+                                alert(action + ' failed: ' + errorText);
+
+                                reject(error);
+                            });
+                    });
+                };
+
+                editor.addEventListener('beforerenderrequest', (event) => {
+                    Environment.setAuthorizationHeaderForRequest(event.detail.request);
+                });
+
+                editor.addEventListener('save', (event) => {
+                    sendRequest('Saving', "{{ path('api.ropi.frontend-editing.document.save', {version: 3}) }}", {
+                        data: event.detail.data,
+                        publish: event.detail.publish
+                    }).then(() => {
+                        let toast = document.createElement('ropi-toast');
+                        toast.setAttribute('severity', 'success');
+
+                        if (event.detail.publish) {
+                            toast.innerText = snippets.notifications.savedAndPublished;
+                        } else {
+                            toast.innerText = snippets.notifications.saved;
+                        }
+
+                        document.getElementById('ropi-view-editor').appendChild(toast);
+
+                        editor.reload();
+                    });
+                });
+
+                editor.addEventListener('unpublish', (event) => {
+                    sendRequest('Unpublish', "{{ path('api.ropi.frontend-editing.document.unpublish', {version: 3}) }}", {
+                        data: event.detail.data
+                    }).then(() => {
+                        let toast = document.createElement('ropi-toast');
+                        toast.setAttribute('severity', 'success');
+                        toast.innerText = snippets.notifications.unpublished;
+                        document.getElementById('ropi-view-editor').appendChild(toast);
+
+                        editor.reload();
+                    });
+                });
+
+                editor.addEventListener('revert', (event) => {
+                    sendRequest('Revert', "{{ path('api.ropi.frontend-editing.document.revert', {version: 3}) }}", {
+                        data: event.detail.data,
+                        versionId: event.detail.versionId
+                    }).then(() => {
+                        let toast = document.createElement('ropi-toast');
+                        toast.setAttribute('severity', 'success');
+                        toast.innerText = snippets.notifications.reverted;
+                        document.getElementById('ropi-view-editor').appendChild(toast);
+
+                        editor.reload();
+                    });
+                });
+
+                editor.addEventListener('exporttofile', (event) => {
+                    let download = new Download(JSON.stringify(event.detail.data));
+                    download.start(event.detail.filename);
+                });
+
+                editor.addEventListener('exporttosites', (event) => {
+                    sendRequest('Export to sales channels', "{{ path('api.ropi.frontend-editing.document.export-to-sales-channels', {version: 3}) }}", {
+                        data: event.detail.data,
+                        documentContextDeltas: event.detail.documentContextDeltas,
+                        keepLanguageSpecificData: event.detail.keepLanguageSpecificData,
+                        publish: event.detail.publish
+                    }).then(() => {
+                        let toast = document.createElement('ropi-toast');
+                        toast.setAttribute('severity', 'success');
+                        toast.innerText = snippets.notifications.contentsExported;
+                        document.getElementById('ropi-view-editor').appendChild(toast);
+                    });
+                });
+
+                editor.addEventListener('importfile', (event) => {
+                    sendRequest('Import from file', "{{ path('api.ropi.frontend-editing.document.import', {version: 3}) }}", {
+                        data: event.detail.data,
+                        importData: event.detail.fileData,
+                        keepLanguageSpecificData: event.detail.keepLanguageSpecificData
+                    }).then(() => {
+                        let toast = document.createElement('ropi-toast');
+                        toast.setAttribute('severity', 'success');
+                        toast.innerText = snippets.notifications.fileImported;
+                        document.getElementById('ropi-view-editor').appendChild(toast);
+
+                        editor.reload();
+                    });
+                });
+
+                editor.addEventListener('importsite', (event) => {
+                    sendRequest('Import from sales channel', "{{ path('api.ropi.frontend-editing.document.import-from-document-context', {version: 3}) }}", {
+                        data: event.detail.data,
+                        sourceDocumentContext: event.detail.sourceDocumentContext,
+                        keepLanguageSpecificData: event.detail.keepLanguageSpecificData
+                    }).then(() => {
+                        let toast = document.createElement('ropi-toast');
+                        toast.setAttribute('severity', 'success');
+                        toast.innerText = snippets.notifications.salesChannelImported;
+                        document.getElementById('ropi-view-editor').appendChild(toast);
+
+                        editor.reload();
+                    });
+                });
+
+                editor.addEventListener('presetsave', (event) => {
+                    let url = "{{ path('api.ropi.frontend-editing.preset.save', {version: 3, name: "@name"}) }}"
+                                        .replace('@name', encodeURI(event.detail.name));
+
+                    sendRequest('Save preset', url, {
+                        data: event.detail.data
+                    }).then(() => {
+                        let toast = document.createElement('ropi-toast');
+                        toast.setAttribute('severity', 'success');
+                        toast.innerText = snippets.notifications.presetSaved;
+                        document.getElementById('ropi-view-editor').appendChild(toast);
+                    });
+                });
+
+                editor.addEventListener('presetdelete', (event) => {
+                    let url = "{{ path('api.ropi.frontend-editing.preset.save', {version: 3, name: "@name"}) }}"
+                        .replace('@name', encodeURI(event.detail.name));
+
+                    sendRequest(
+                        'Delete preset',
+                        url,
+                        { data: event.detail.data },
+                        HttpRequest.METHOD_DELETE
+                    ).then(() => {
+                        let toast = document.createElement('ropi-toast');
+                        toast.setAttribute('severity', 'success');
+                        toast.innerText = snippets.notifications.presetDeleted;
+                        document.getElementById('ropi-view-editor').appendChild(toast);
+                    });
+                });
+
+                editor.addEventListener('logout', (event) => {
+                    document.cookie = 'ropi-frontend-editing-token=; Max-Age=-99999999;';
+                    Environment.clearBearerAuth();
+                    location.reload();
+                });
+
+                editor.update();
+            });
+        </script>
+    </body>
+</html>

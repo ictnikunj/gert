@@ -1,0 +1,1311 @@
+[
+    {
+        "id": "{ID:PRODUCT_001}",
+        "productNumber": "VENUE0001",
+        "ean": "EANVENUE0001",
+        "stock": 100,
+        "price": 20,
+        "listPrice": 25,
+        "markAsTopseller": true,
+        "shippingFree": true,
+        "active": true,
+        "taxId": "{TAX_ID_STANDARD}",
+        "manufacturerProductNumber": "{ID:RHWEB_MANUFACTURER_01}",
+        "translations": {
+            "{de-DE}": {
+                "name": "Beispielprodukt",
+                "description": "{READ_FILE:html/de/product_description.html}"
+            },
+            "{en-GB}": {
+                "name": "Exampleproduct",
+                "description": "{READ_FILE:html/en/product_description.html}"
+            }
+        },
+        "visibilities": [
+            {
+                "salesChannelId": "{SALES_CHANNEL_ID}",
+                "visibility": 30
+            }
+        ],
+        "categories": [
+            {
+                "id": "{ID:CATEGORY_MEGAMENU}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_01}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_02}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_03}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_01}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_02}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_03}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_04}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_05}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_06}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_07}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_08}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_9}"
+            }
+        ],
+        "cover": {
+            "mediaId": "{MEDIA_FILE:product/venue_product_001.jpg}"
+        },
+        "media": [
+            {
+                "mediaId": "{MEDIA_FILE:product/venue_product_002.jpg}"
+            },
+            {
+                "mediaId": "{MEDIA_FILE:product/venue_product_003.jpg}"
+            },
+            {
+                "mediaId": "{MEDIA_FILE:product/venue_product_004.jpg}"
+            },
+            {
+                "mediaId": "{MEDIA_FILE:product/venue_product_005.jpg}"
+            }
+        ]
+    },
+    {
+        "id": "{ID:PRODUCT_002}",
+        "productNumber": "VENUE0002",
+        "ean": "EANVENUE0002",
+        "stock": 120,
+        "price": 35,
+        "listPrice": 25,
+        "markAsTopseller": false,
+        "shippingFree": true,
+        "active": true,
+        "taxId": "{TAX_ID_STANDARD}",
+        "manufacturerProductNumber": "{ID:RHWEB_MANUFACTURER_01}",
+        "translations": {
+            "{de-DE}": {
+                "name": "Beispielprodukt",
+                "description": "{READ_FILE:html/de/product_description.html}"
+            },
+            "{en-GB}": {
+                "name": "Exampleproduct",
+                "description": "{READ_FILE:html/en/product_description.html}"
+            }
+        },
+        "visibilities": [
+            {
+                "salesChannelId": "{SALES_CHANNEL_ID}",
+                "visibility": 30
+            }
+        ],
+        "categories": [
+            {
+                "id": "{ID:CATEGORY_MEGAMENU}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_01}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_02}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_03}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_01}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_02}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_03}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_04}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_05}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_06}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_07}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_08}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_9}"
+            }
+        ],
+        "cover": {
+            "mediaId": "{MEDIA_FILE:product/venue_product_002.jpg}"
+        },
+        "media": [
+            {
+                "mediaId": "{MEDIA_FILE:product/venue_product_003.jpg}"
+            },
+            {
+                "mediaId": "{MEDIA_FILE:product/venue_product_004.jpg}"
+            },
+            {
+                "mediaId": "{MEDIA_FILE:product/venue_product_005.jpg}"
+            },
+            {
+                "mediaId": "{MEDIA_FILE:product/venue_product_006.jpg}"
+            }
+        ]
+    },
+    {
+        "id": "{ID:PRODUCT_003}",
+        "productNumber": "VENUE0003",
+        "ean": "EANVENUE0003",
+        "stock": 249,
+        "price": 130,
+        "listPrice": 200,
+        "markAsTopseller": false,
+        "shippingFree": true,
+        "active": true,
+        "taxId": "{TAX_ID_STANDARD}",
+        "manufacturerProductNumber": "{ID:RHWEB_MANUFACTURER_01}",
+        "translations": {
+            "{de-DE}": {
+                "name": "Beispielprodukt",
+                "description": "{READ_FILE:html/de/product_description.html}"
+            },
+            "{en-GB}": {
+                "name": "Exampleproduct",
+                "description": "{READ_FILE:html/en/product_description.html}"
+            }
+        },
+        "visibilities": [
+            {
+                "salesChannelId": "{SALES_CHANNEL_ID}",
+                "visibility": 30
+            }
+        ],
+        "categories": [
+            {
+                "id": "{ID:CATEGORY_MEGAMENU}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_01}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_02}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_03}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_01}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_02}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_03}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_04}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_05}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_06}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_07}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_08}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_9}"
+            }
+        ],
+        "cover": {
+            "mediaId": "{MEDIA_FILE:product/venue_product_003.jpg}"
+        },
+        "media": [
+            {
+                "mediaId": "{MEDIA_FILE:product/venue_product_004.jpg}"
+            },
+            {
+                "mediaId": "{MEDIA_FILE:product/venue_product_005.jpg}"
+            },
+            {
+                "mediaId": "{MEDIA_FILE:product/venue_product_006.jpg}"
+            },
+            {
+                "mediaId": "{MEDIA_FILE:product/venue_product_007.jpg}"
+            }
+        ]
+    },
+    {
+        "id": "{ID:PRODUCT_004}",
+        "productNumber": "VENUE0004",
+        "ean": "EANVENUE0004",
+        "stock": 3349,
+        "price": 2200,
+        "listPrice": 2799,
+        "markAsTopseller": false,
+        "shippingFree": true,
+        "active": true,
+        "taxId": "{TAX_ID_STANDARD}",
+        "manufacturerProductNumber": "{ID:RHWEB_MANUFACTURER_01}",
+        "translations": {
+            "{de-DE}": {
+                "name": "Beispielprodukt",
+                "description": "{READ_FILE:html/de/product_description.html}"
+            },
+            "{en-GB}": {
+                "name": "Exampleproduct",
+                "description": "{READ_FILE:html/en/product_description.html}"
+            }
+        },
+        "visibilities": [
+            {
+                "salesChannelId": "{SALES_CHANNEL_ID}",
+                "visibility": 30
+            }
+        ],
+        "categories": [
+            {
+                "id": "{ID:CATEGORY_MEGAMENU}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_01}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_02}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_03}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_01}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_02}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_03}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_04}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_05}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_06}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_07}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_08}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_9}"
+            }
+        ],
+        "cover": {
+            "mediaId": "{MEDIA_FILE:product/venue_product_004.jpg}"
+        },
+        "media": [
+            {
+                "mediaId": "{MEDIA_FILE:product/venue_product_005.jpg}"
+            },
+            {
+                "mediaId": "{MEDIA_FILE:product/venue_product_006.jpg}"
+            },
+            {
+                "mediaId": "{MEDIA_FILE:product/venue_product_007.jpg}"
+            },
+            {
+                "mediaId": "{MEDIA_FILE:product/venue_product_008.jpg}"
+            }
+        ]
+    },
+    {
+        "id": "{ID:PRODUCT_005}",
+        "productNumber": "VENUE0005",
+        "ean": "EANVENUE0005",
+        "stock": 20,
+        "price": 249,
+        "listPrice": 25,
+        "markAsTopseller": false,
+        "shippingFree": true,
+        "active": true,
+        "taxId": "{TAX_ID_STANDARD}",
+        "manufacturerProductNumber": "{ID:RHWEB_MANUFACTURER_01}",
+        "translations": {
+            "{de-DE}": {
+                "name": "Beispielprodukt",
+                "description": "{READ_FILE:html/de/product_description.html}"
+            },
+            "{en-GB}": {
+                "name": "Exampleproduct",
+                "description": "{READ_FILE:html/en/product_description.html}"
+            }
+        },
+        "visibilities": [
+            {
+                "salesChannelId": "{SALES_CHANNEL_ID}",
+                "visibility": 30
+            }
+        ],
+        "categories": [
+            {
+                "id": "{ID:CATEGORY_MEGAMENU}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_01}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_02}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_03}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_01}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_02}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_03}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_04}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_05}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_06}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_07}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_08}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_9}"
+            }
+        ],
+        "cover": {
+            "mediaId": "{MEDIA_FILE:product/venue_product_005.jpg}"
+        },
+        "media": [
+            {
+                "mediaId": "{MEDIA_FILE:product/venue_product_006.jpg}"
+            },
+            {
+                "mediaId": "{MEDIA_FILE:product/venue_product_007.jpg}"
+            },
+            {
+                "mediaId": "{MEDIA_FILE:product/venue_product_008.jpg}"
+            },
+            {
+                "mediaId": "{MEDIA_FILE:product/venue_product_009.jpg}"
+            }
+        ]
+    },
+    {
+        "id": "{ID:PRODUCT_006}",
+        "productNumber": "VENUE0006",
+        "ean": "EANVENUE0006",
+        "stock": 20,
+        "price": 1049,
+        "listPrice": 25,
+        "markAsTopseller": false,
+        "shippingFree": true,
+        "active": true,
+        "taxId": "{TAX_ID_STANDARD}",
+        "manufacturerProductNumber": "{ID:RHWEB_MANUFACTURER_01}",
+        "translations": {
+            "{de-DE}": {
+                "name": "Beispielprodukt",
+                "description": "{READ_FILE:html/de/product_description.html}"
+            },
+            "{en-GB}": {
+                "name": "Exampleproduct",
+                "description": "{READ_FILE:html/en/product_description.html}"
+            }
+        },
+        "visibilities": [
+            {
+                "salesChannelId": "{SALES_CHANNEL_ID}",
+                "visibility": 30
+            }
+        ],
+        "categories": [
+            {
+                "id": "{ID:CATEGORY_MEGAMENU}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_01}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_02}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_03}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_01}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_02}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_03}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_04}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_05}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_06}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_07}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_08}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_9}"
+            }
+        ],
+        "cover": {
+            "mediaId": "{MEDIA_FILE:product/venue_product_006.jpg}"
+        },
+        "media": [
+            {
+                "mediaId": "{MEDIA_FILE:product/venue_product_007.jpg}"
+            },
+            {
+                "mediaId": "{MEDIA_FILE:product/venue_product_008.jpg}"
+            },
+            {
+                "mediaId": "{MEDIA_FILE:product/venue_product_009.jpg}"
+            },
+            {
+                "mediaId": "{MEDIA_FILE:product/venue_product_010.jpg}"
+            }
+        ]
+    },
+
+    {
+        "id": "{ID:PRODUCT_007}",
+        "productNumber": "VENUE0007",
+        "ean": "EANVENUE0007",
+        "stock": 20,
+        "price": 949,
+        "listPrice": 1259,
+        "markAsTopseller": false,
+        "shippingFree": true,
+        "active": true,
+        "taxId": "{TAX_ID_STANDARD}",
+        "manufacturerProductNumber": "{ID:RHWEB_MANUFACTURER_01}",
+        "translations": {
+            "{de-DE}": {
+                "name": "Beispielprodukt",
+                "description": "{READ_FILE:html/de/product_description.html}"
+            },
+            "{en-GB}": {
+                "name": "Exampleproduct",
+                "description": "{READ_FILE:html/en/product_description.html}"
+            }
+        },
+        "visibilities": [
+            {
+                "salesChannelId": "{SALES_CHANNEL_ID}",
+                "visibility": 30
+            }
+        ],
+        "categories": [
+            {
+                "id": "{ID:CATEGORY_MEGAMENU}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_01}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_02}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_03}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_01}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_02}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_03}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_04}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_05}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_06}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_07}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_08}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_9}"
+            }
+        ],
+        "cover": {
+            "mediaId": "{MEDIA_FILE:product/venue_product_007.jpg}"
+        },
+        "media": [
+            {
+                "mediaId": "{MEDIA_FILE:product/venue_product_008.jpg}"
+            },
+            {
+                "mediaId": "{MEDIA_FILE:product/venue_product_009.jpg}"
+            },
+            {
+                "mediaId": "{MEDIA_FILE:product/venue_product_010.jpg}"
+            },
+            {
+                "mediaId": "{MEDIA_FILE:product/venue_product_011.jpg}"
+            }
+        ]
+    },
+
+
+    {
+        "id": "{ID:PRODUCT_008}",
+        "productNumber": "VENUE0008",
+        "ean": "EANVENUE0008",
+        "stock": 20,
+        "price": 99,
+        "listPrice": 20,
+        "markAsTopseller": false,
+        "shippingFree": true,
+        "active": true,
+        "taxId": "{TAX_ID_STANDARD}",
+        "manufacturerProductNumber": "{ID:RHWEB_MANUFACTURER_01}",
+        "translations": {
+            "{de-DE}": {
+                "name": "Beispielprodukt",
+                "description": "{READ_FILE:html/de/product_description.html}"
+            },
+            "{en-GB}": {
+                "name": "Exampleproduct",
+                "description": "{READ_FILE:html/en/product_description.html}"
+            }
+        },
+        "visibilities": [
+            {
+                "salesChannelId": "{SALES_CHANNEL_ID}",
+                "visibility": 30
+            }
+        ],
+        "categories": [
+            {
+                "id": "{ID:CATEGORY_MEGAMENU}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_01}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_02}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_03}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_01}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_02}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_03}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_04}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_05}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_06}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_07}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_08}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_9}"
+            }
+        ],
+        "cover": {
+            "mediaId": "{MEDIA_FILE:product/venue_product_008.jpg}"
+        },
+        "media": [
+            {
+                "mediaId": "{MEDIA_FILE:product/venue_product_009.jpg}"
+            },
+            {
+                "mediaId": "{MEDIA_FILE:product/venue_product_010.jpg}"
+            },
+            {
+                "mediaId": "{MEDIA_FILE:product/venue_product_011.jpg}"
+            },
+            {
+                "mediaId": "{MEDIA_FILE:product/venue_product_012.jpg}"
+            }
+        ]
+    },
+    {
+        "id": "{ID:PRODUCT_009}",
+        "productNumber": "VENUE0009",
+        "ean": "EANVENUE0009",
+        "stock": 3020,
+        "price": 3049,
+        "listPrice": 5049,
+        "markAsTopseller": true,
+        "shippingFree": true,
+        "active": true,
+        "taxId": "{TAX_ID_STANDARD}",
+        "manufacturerProductNumber": "{ID:RHWEB_MANUFACTURER_01}",
+        "translations": {
+            "{de-DE}": {
+                "name": "Beispielprodukt",
+                "description": "{READ_FILE:html/de/product_description.html}"
+            },
+            "{en-GB}": {
+                "name": "Exampleproduct",
+                "description": "{READ_FILE:html/en/product_description.html}"
+            }
+        },
+        "visibilities": [
+            {
+                "salesChannelId": "{SALES_CHANNEL_ID}",
+                "visibility": 30
+            }
+        ],
+        "categories": [
+            {
+                "id": "{ID:CATEGORY_MEGAMENU}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_01}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_02}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_03}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_01}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_02}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_03}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_04}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_05}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_06}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_07}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_08}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_9}"
+            }
+        ],
+        "cover": {
+            "mediaId": "{MEDIA_FILE:product/venue_product_009.jpg}"
+        },
+        "media": [
+            {
+                "mediaId": "{MEDIA_FILE:product/venue_product_010.jpg}"
+            },
+            {
+                "mediaId": "{MEDIA_FILE:product/venue_product_011.jpg}"
+            },
+            {
+                "mediaId": "{MEDIA_FILE:product/venue_product_012.jpg}"
+            },
+            {
+                "mediaId": "{MEDIA_FILE:product/venue_product_013.jpg}"
+            }
+        ]
+    },
+    {
+        "id": "{ID:PRODUCT_010}",
+        "productNumber": "VENUE0010",
+        "ean": "EANVENUE0010",
+        "stock": 20,
+        "price": 49,
+        "listPrice": 20,
+        "markAsTopseller": false,
+        "shippingFree": true,
+        "active": true,
+        "taxId": "{TAX_ID_STANDARD}",
+        "manufacturerProductNumber": "{ID:RHWEB_MANUFACTURER_01}",
+        "translations": {
+            "{de-DE}": {
+                "name": "Beispielprodukt",
+                "description": "{READ_FILE:html/de/product_description.html}"
+            },
+            "{en-GB}": {
+                "name": "Exampleproduct",
+                "description": "{READ_FILE:html/en/product_description.html}"
+            }
+        },
+        "visibilities": [
+            {
+                "salesChannelId": "{SALES_CHANNEL_ID}",
+                "visibility": 30
+            }
+        ],
+        "categories": [
+            {
+                "id": "{ID:CATEGORY_MEGAMENU}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_01}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_02}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_03}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_01}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_02}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_03}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_04}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_05}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_06}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_07}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_08}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_9}"
+            }
+        ],
+        "cover": {
+            "mediaId": "{MEDIA_FILE:product/venue_product_010.jpg}"
+        },
+        "media": [
+            {
+                "mediaId": "{MEDIA_FILE:product/venue_product_011.jpg}"
+            },
+            {
+                "mediaId": "{MEDIA_FILE:product/venue_product_012.jpg}"
+            },
+            {
+                "mediaId": "{MEDIA_FILE:product/venue_product_013.jpg}"
+            },
+            {
+                "mediaId": "{MEDIA_FILE:product/venue_product_014.jpg}"
+            }
+        ]
+    },
+    {
+        "id": "{ID:PRODUCT_011}",
+        "productNumber": "VENUE0011",
+        "ean": "EANVENUE0011",
+        "stock": 3,
+        "price": 299,
+        "listPrice": 350,
+        "markAsTopseller": false,
+        "shippingFree": true,
+        "active": true,
+        "taxId": "{TAX_ID_STANDARD}",
+        "manufacturerProductNumber": "{ID:RHWEB_MANUFACTURER_01}",
+        "translations": {
+            "{de-DE}": {
+                "name": "Beispielprodukt",
+                "description": "{READ_FILE:html/de/product_description.html}"
+            },
+            "{en-GB}": {
+                "name": "Exampleproduct",
+                "description": "{READ_FILE:html/en/product_description.html}"
+            }
+        },
+        "visibilities": [
+            {
+                "salesChannelId": "{SALES_CHANNEL_ID}",
+                "visibility": 30
+            }
+        ],
+        "categories": [
+            {
+                "id": "{ID:CATEGORY_MEGAMENU}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_01}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_02}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_03}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_01}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_02}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_03}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_04}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_05}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_06}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_07}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_08}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_9}"
+            }
+        ],
+        "cover": {
+            "mediaId": "{MEDIA_FILE:product/venue_product_011.jpg}"
+        },
+        "media": [
+            {
+                "mediaId": "{MEDIA_FILE:product/venue_product_012.jpg}"
+            },
+            {
+                "mediaId": "{MEDIA_FILE:product/venue_product_013.jpg}"
+            },
+            {
+                "mediaId": "{MEDIA_FILE:product/venue_product_014.jpg}"
+            },
+            {
+                "mediaId": "{MEDIA_FILE:product/venue_product_015.jpg}"
+            }
+        ]
+    },
+    {
+        "id": "{ID:PRODUCT_012}",
+        "productNumber": "VENUE0012",
+        "ean": "EANVENUE0012",
+        "stock": 3,
+        "price": 999,
+        "listPrice": 1049,
+        "markAsTopseller": true,
+        "shippingFree": true,
+        "active": true,
+        "taxId": "{TAX_ID_STANDARD}",
+        "manufacturerProductNumber": "{ID:RHWEB_MANUFACTURER_01}",
+        "translations": {
+            "{de-DE}": {
+                "name": "Beispielprodukt",
+                "description": "{READ_FILE:html/de/product_description.html}"
+            },
+            "{en-GB}": {
+                "name": "Exampleproduct",
+                "description": "{READ_FILE:html/en/product_description.html}"
+            }
+        },
+        "visibilities": [
+            {
+                "salesChannelId": "{SALES_CHANNEL_ID}",
+                "visibility": 30
+            }
+        ],
+        "categories": [
+            {
+                "id": "{ID:CATEGORY_MEGAMENU}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_01}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_02}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_03}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_01}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_02}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_03}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_04}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_05}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_06}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_07}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_08}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_9}"
+            }
+        ],
+        "cover": {
+            "mediaId": "{MEDIA_FILE:product/venue_product_012.jpg}"
+        },
+        "media": [
+            {
+                "mediaId": "{MEDIA_FILE:product/venue_product_013.jpg}"
+            },
+            {
+                "mediaId": "{MEDIA_FILE:product/venue_product_014.jpg}"
+            },
+            {
+                "mediaId": "{MEDIA_FILE:product/venue_product_015.jpg}"
+            },
+            {
+                "mediaId": "{MEDIA_FILE:product/venue_product_001.jpg}"
+            }
+        ]
+    },
+    {
+        "id": "{ID:PRODUCT_013}",
+        "productNumber": "VENUE0013",
+        "ean": "EANVENUE0013",
+        "stock": 3,
+        "price": 250,
+        "listPrice": 399,
+        "markAsTopseller": false,
+        "shippingFree": true,
+        "active": true,
+        "taxId": "{TAX_ID_STANDARD}",
+        "manufacturerProductNumber": "{ID:RHWEB_MANUFACTURER_01}",
+        "translations": {
+            "{de-DE}": {
+                "name": "Beispielprodukt",
+                "description": "{READ_FILE:html/de/product_description.html}"
+            },
+            "{en-GB}": {
+                "name": "Exampleproduct",
+                "description": "{READ_FILE:html/en/product_description.html}"
+            }
+        },
+        "visibilities": [
+            {
+                "salesChannelId": "{SALES_CHANNEL_ID}",
+                "visibility": 30
+            }
+        ],
+        "categories": [
+            {
+                "id": "{ID:CATEGORY_MEGAMENU}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_01}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_02}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_03}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_01}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_02}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_03}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_04}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_05}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_06}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_07}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_08}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_9}"
+            }
+        ],
+        "cover": {
+            "mediaId": "{MEDIA_FILE:product/venue_product_013.jpg}"
+        },
+        "media": [
+            {
+                "mediaId": "{MEDIA_FILE:product/venue_product_014.jpg}"
+            },
+            {
+                "mediaId": "{MEDIA_FILE:product/venue_product_015.jpg}"
+            },
+            {
+                "mediaId": "{MEDIA_FILE:product/venue_product_001.jpg}"
+            },
+            {
+                "mediaId": "{MEDIA_FILE:product/venue_product_002.jpg}"
+            }
+        ]
+    },
+    {
+        "id": "{ID:PRODUCT_014}",
+        "productNumber": "VENUE0014",
+        "ean": "EANVENUE0014",
+        "stock": 300,
+        "price": 890,
+        "listPrice": 1090,
+        "markAsTopseller": true,
+        "shippingFree": true,
+        "active": true,
+        "taxId": "{TAX_ID_STANDARD}",
+        "manufacturerProductNumber": "{ID:RHWEB_MANUFACTURER_01}",
+        "translations": {
+            "{de-DE}": {
+                "name": "Beispielprodukt",
+                "description": "{READ_FILE:html/de/product_description.html}"
+            },
+            "{en-GB}": {
+                "name": "Exampleproduct",
+                "description": "{READ_FILE:html/en/product_description.html}"
+            }
+        },
+        "visibilities": [
+            {
+                "salesChannelId": "{SALES_CHANNEL_ID}",
+                "visibility": 30
+            }
+        ],
+        "categories": [
+            {
+                "id": "{ID:CATEGORY_MEGAMENU}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_01}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_02}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_03}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_01}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_02}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_03}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_04}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_05}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_06}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_07}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_08}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_9}"
+            }
+        ],
+        "cover": {
+            "mediaId": "{MEDIA_FILE:product/venue_product_014.jpg}"
+        },
+        "media": [
+            {
+                "mediaId": "{MEDIA_FILE:product/venue_product_015.jpg}"
+            },
+            {
+                "mediaId": "{MEDIA_FILE:product/venue_product_001.jpg}"
+            },
+            {
+                "mediaId": "{MEDIA_FILE:product/venue_product_002.jpg}"
+            },
+            {
+                "mediaId": "{MEDIA_FILE:product/venue_product_003.jpg}"
+            }
+        ]
+    },
+    {
+        "id": "{ID:PRODUCT_015}",
+        "productNumber": "VENUE0015",
+        "cmsPageId": "{ID:CMS_PAGE_VENUE_PRODUCTDETAIL}",
+        "ean": "EANVENUE0015",
+        "stock": 80,
+        "price": 490,
+        "listPrice": 390,
+        "markAsTopseller": false,
+        "shippingFree": true,
+        "active": true,
+        "taxId": "{TAX_ID_STANDARD}",
+        "manufacturerProductNumber": "{ID:RHWEB_MANUFACTURER_VENUE_01}",
+        "translations": {
+            "{de-DE}": {
+                "name": "Beispielprodukt",
+                "description": "{READ_FILE:html/de/product_description.html}"
+            },
+            "{en-GB}": {
+                "name": "Exampleproduct",
+                "description": "{READ_FILE:html/en/product_description.html}"
+            }
+        },
+        "visibilities": [
+            {
+                "salesChannelId": "{SALES_CHANNEL_ID}",
+                "visibility": 30
+            }
+        ],
+        "categories": [
+            {
+                "id": "{ID:CATEGORY_MEGAMENU}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_01}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_02}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_03}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_01}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_02}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_03}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_04}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_05}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_06}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_07}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_08}"
+            },
+            {
+                "id": "{ID:CATEGORY_MEGAMENU_SUB_SUB_9}"
+            }
+        ],
+        "cover": {
+            "mediaId": "{MEDIA_FILE:product/venue_product_015.jpg}"
+        },
+        "media": [
+            {
+                "mediaId": "{MEDIA_FILE:product/venue_product_001.jpg}"
+            },
+            {
+                "mediaId": "{MEDIA_FILE:product/venue_product_002.jpg}"
+            },
+            {
+                "mediaId": "{MEDIA_FILE:product/venue_product_003.jpg}"
+            },
+            {
+                "mediaId": "{MEDIA_FILE:product/venue_product_004.jpg}"
+            }
+        ]
+    }
+]

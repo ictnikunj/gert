@@ -1,0 +1,30 @@
+{% block swag_faq_detail %}
+    <sw-page class="swag-faq-detail">
+       <template slot="smart-bar-actions">
+
+            <sw-button :routerLink="{ name: 'media.redirect.list' }">
+                {{ $t('media-redirect.detail.cancelButtonText') }}
+            </sw-button>
+
+            <sw-button-process
+                :isLoading="isLoading"
+                :processSuccess="processSuccess"
+                variant="primary"
+                @process-finish="saveFinish"
+                @click="onClickSave">
+                {{ $t('media-redirect.detail.saveButtonText') }}
+            </sw-button-process>
+        </template>
+
+        <template slot="content">
+            <sw-card-view>
+                <sw-card v-if="mediaredirect" :isLoading="isLoading">
+                    <sw-field :label="$t('media-redirect.detail.nameLabel')" v-model="mediaredirect.url"></sw-field>
+
+                    <sw-media-field :label="$t('media-redirect.detail.answersLabel')" v-model="mediaredirect.mediaId"></sw-media-field>
+
+                </sw-card>
+            </sw-card-view>
+        </template>
+    </sw-page>
+{% endblock %}

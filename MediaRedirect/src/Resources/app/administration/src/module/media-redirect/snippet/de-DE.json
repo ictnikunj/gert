@@ -1,0 +1,19 @@
+{
+    "media-redirect": {
+        "general": {
+            "mainMenuItemGeneral": "Media Redirect",
+            "descriptionTextModule": "Sie werden FAQs auflisten, hinzufügen, aktualisieren und löschen."
+        },
+        "list": {
+            "addButtonText": "Add Media Redirect",
+            "columnName": "FAQ Fragen"
+        },
+        "detail": {
+            "nameLabel": "URL",
+            "answersLabel": "Image",
+            "cancelButtonText": "Abbrechen",
+            "saveButtonText": "Speichern",
+            "errorTitle": "Fehler beim Speichern des FAQ"
+        }
+    }
+}

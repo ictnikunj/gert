@@ -1,0 +1,27 @@
+{% block element %}
+<div
+    {% sw_include '@RopiFrontendEditing/content-editor/elements/common/editor-attributes.html.twig' %}
+    class="{% block element_class %}
+                ropi-frontend-editing-content-element-html
+                {% sw_include '@RopiFrontendEditing/content-editor/elements/common/general-classes.html.twig' %}
+           {% endblock %}"
+    style="{% block element_style %}{% endblock %}">
+    {% block element_inner %}
+        {% if data.configuration.markup|trim %}
+            {{ data.configuration.markup|raw }}
+        {% else %}
+            {% if ropiFrontendEditingEditorOpened %}
+                <div class="ropi-content-editor-empty-state">
+                    <div>
+                        <h1>{% trans %}ropi-frontend-editing.contentElement.definition.element.html{% endtrans %}</h1>
+                        {% trans %}ropi-frontend-editing.contentElement.element.noMarkupDefined{% endtrans %}
+                    </div>
+                </div>
+            {% endif %}
+        {% endif %}
+        {% if ropiFrontendEditingEditorOpened %}
+            <div class="ropi-content-editor-click-layer"></div>
+        {% endif %}
+    {% endblock %}
+</div>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% block rhweb_venue_mailchimp_footer %}
+    <div class="mailchimp-container mt-5">
+        <div class="container text-center">
+            <div class="row">
+                <div class="col-lg-6 offset-lg-3">
+                    {% block rhweb_venue_mailchimp_footer_headline %}
+                        <div class="h4 m-0">{{ "venueTheme.mailchimp.headline"|trans|sw_sanitize }}</div>
+                    {% endblock %}
+
+                    {% block rhweb_venue_mailchimp_footer_form %}
+                        <form action="{{ theme_config('rhweb-mailchimp-action-url') }}" method="post">
+                            <input type="hidden" name="u" value="{{ theme_config('rhweb-mailchimp-user-id') }}">
+                            <input type="hidden" name="id" value="{{ theme_config('rhweb-mailchimp-audience-id') }}">
+                            <div class="my-4">
+                                <input class="newsletter-input" type="email" aria-label="Email" id="MERGE0" name="MERGE0" placeholder="{{ "venueTheme.mailchimp.placeholder"|trans|sw_sanitize }}" autocomplete="off"  value=""/>
+                            </div>
+
+                            <div class="optin-check mb-3">
+                                <label class="b-contain">
+                                    <span>{{ "venueTheme.mailchimp.hint"|trans|sw_sanitize }}</span>
+                                    <input type="checkbox" required>
+                                    <div class="b-input"></div>
+                                </label>
+                            </div>
+
+                            <div class="mb-2">
+                                <button class="btn" type="submit" name="subscribe" id="mc-embedded-subscribe">{{ "venueTheme.mailchimp.button"|trans|sw_sanitize }}</button>
+                            </div>
+                        </form>
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

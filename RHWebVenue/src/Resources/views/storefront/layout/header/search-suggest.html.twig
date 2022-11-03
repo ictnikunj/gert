@@ -1,0 +1,12 @@
+{% sw_extends '@Storefront/storefront/layout/header/search-suggest.html.twig' %}
+
+{% block layout_search_suggest_result_total_link %}
+    <div class="col">
+        <a href="{{ path('frontend.search.page') }}?search={{ page.searchTerm }}"
+           title="{{ "header.searchAllResults"|trans|striptags }}"
+           class="search-suggest-total-link btn btn-primary">
+            <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+            {{ "header.searchAllResults"|trans|sw_sanitize }}
+        </a>
+    </div>
+{% endblock %}

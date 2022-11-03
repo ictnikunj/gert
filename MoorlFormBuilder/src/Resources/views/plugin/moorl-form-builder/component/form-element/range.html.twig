@@ -1,0 +1,12 @@
+<div class="form-group form-{{ formElement.type }}-{{ formElement.name }}">
+    {% sw_include "@MoorlFormBuilder/plugin/moorl-form-builder/component/label.html.twig" ignore missing %}
+
+    <input type="range"
+           min="{{ formElement.numberMin }}"
+           max="{{ formElement.numberMax }}"
+           step="{{ formElement.numberStep }}"
+           name="{{ formElementName }}"
+           id="{{ formElementId }}"
+           value="{{ formElementValue }}"
+           class="custom-range">
+</div>

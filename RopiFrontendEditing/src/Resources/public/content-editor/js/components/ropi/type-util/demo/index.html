@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en">
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+      <script type="module">
+        import '../../demo-element/demo-element.js?v=1637255330';
+        import '../../javascript-test-element/javascript-test-element.js?v=1637255330';
+      </script>
+
+      <title>type-util demo</title>
+  </head>
+  <body>
+    <ropi-demo sourcehidden name="check if value is object">
+      <ropi-javascript-test dependencies="import TypeUtil from '../type-util.js?v=1637255330'" expect="true">
+        TypeUtil.isObject({});
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import TypeUtil from '../type-util.js?v=1637255330'" expect="true">
+        TypeUtil.isObject(new class {})
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import TypeUtil from '../type-util.js?v=1637255330'" expect="false">
+        TypeUtil.isObject(function() {})
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import TypeUtil from '../type-util.js?v=1637255330'" expect="false">
+        TypeUtil.isObject([])
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import TypeUtil from '../type-util.js?v=1637255330'" expect="false">
+        TypeUtil.isObject(null)
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import TypeUtil from '../type-util.js?v=1637255330'" expect="false">
+        TypeUtil.isObject(undefined)
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import TypeUtil from '../type-util.js?v=1637255330'" expect="false">
+        TypeUtil.isObject("string")
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import TypeUtil from '../type-util.js?v=1637255330'" expect="false">
+        TypeUtil.isObject(2.1)
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import TypeUtil from '../type-util.js?v=1637255330'" expect="false">
+        TypeUtil.isObject(true)
+      </ropi-javascript-test>
+    </ropi-demo>
+
+    <ropi-demo sourcehidden name="check if value is array">
+      <ropi-javascript-test dependencies="import TypeUtil from '../type-util.js?v=1637255330'" expect="true">
+        TypeUtil.isArray([])
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import TypeUtil from '../type-util.js?v=1637255330'" expect="false">
+        TypeUtil.isArray({})
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import TypeUtil from '../type-util.js?v=1637255330'" expect="false">
+        TypeUtil.isArray(new class {})
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import TypeUtil from '../type-util.js?v=1637255330'" expect="false">
+        TypeUtil.isArray(null)
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import TypeUtil from '../type-util.js?v=1637255330'" expect="false">
+        TypeUtil.isArray(undefined)
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import TypeUtil from '../type-util.js?v=1637255330'" expect="false">
+        TypeUtil.isArray("string")
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import TypeUtil from '../type-util.js?v=1637255330'" expect="false">
+        TypeUtil.isArray(2.1)
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import TypeUtil from '../type-util.js?v=1637255330'" expect="false">
+        TypeUtil.isArray(true)
+      </ropi-javascript-test>
+    </ropi-demo>
+
+    <ropi-demo sourcehidden name="check if value is string">
+      <ropi-javascript-test dependencies="import TypeUtil from '../type-util.js?v=1637255330'" expect="true">
+        TypeUtil.isString("string")
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import TypeUtil from '../type-util.js?v=1637255330'" expect="false">
+        TypeUtil.isString(2.1)
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import TypeUtil from '../type-util.js?v=1637255330'" expect="false">
+        TypeUtil.isString(NaN)
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import TypeUtil from '../type-util.js?v=1637255330'" expect="false">
+        TypeUtil.isString([])
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import TypeUtil from '../type-util.js?v=1637255330'" expect="false">
+        TypeUtil.isString({})
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import TypeUtil from '../type-util.js?v=1637255330'" expect="false">
+        TypeUtil.isString(new class {})
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import TypeUtil from '../type-util.js?v=1637255330'" expect="false">
+        TypeUtil.isString(null)
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import TypeUtil from '../type-util.js?v=1637255330'" expect="false">
+        TypeUtil.isString(undefined)
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import TypeUtil from '../type-util.js?v=1637255330'" expect="false">
+        TypeUtil.isString(true)
+      </ropi-javascript-test>
+    </ropi-demo>
+
+    <ropi-demo sourcehidden name="check if value is number">
+      <ropi-javascript-test dependencies="import TypeUtil from '../type-util.js?v=1637255330'" expect="true">
+        TypeUtil.isNumber(2.1)
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import TypeUtil from '../type-util.js?v=1637255330'" expect="true">
+        TypeUtil.isNumber(NaN)
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import TypeUtil from '../type-util.js?v=1637255330'" expect="false">
+        TypeUtil.isNumber([])
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import TypeUtil from '../type-util.js?v=1637255330'" expect="false">
+        TypeUtil.isNumber({})
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import TypeUtil from '../type-util.js?v=1637255330'" expect="false">
+        TypeUtil.isNumber(new class {})
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import TypeUtil from '../type-util.js?v=1637255330'" expect="false">
+        TypeUtil.isNumber(null)
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import TypeUtil from '../type-util.js?v=1637255330'" expect="false">
+        TypeUtil.isNumber(undefined)
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import TypeUtil from '../type-util.js?v=1637255330'" expect="false">
+        TypeUtil.isNumber("string")
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import TypeUtil from '../type-util.js?v=1637255330'" expect="false">
+        TypeUtil.isNumber(true)
+      </ropi-javascript-test>
+    </ropi-demo>
+
+    <ropi-demo sourcehidden name="check if value is legal number">
+      <ropi-javascript-test dependencies="import TypeUtil from '../type-util.js?v=1637255330'" expect="true">
+        TypeUtil.isLegalNumber(2.1)
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import TypeUtil from '../type-util.js?v=1637255330'" expect="false">
+        TypeUtil.isLegalNumber(NaN)
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import TypeUtil from '../type-util.js?v=1637255330'" expect="false">
+        TypeUtil.isLegalNumber([])
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import TypeUtil from '../type-util.js?v=1637255330'" expect="false">
+        TypeUtil.isLegalNumber({})
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import TypeUtil from '../type-util.js?v=1637255330'" expect="false">
+        TypeUtil.isLegalNumber(new class {})
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import TypeUtil from '../type-util.js?v=1637255330'" expect="false">
+        TypeUtil.isLegalNumber(null)
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import TypeUtil from '../type-util.js?v=1637255330'" expect="false">
+        TypeUtil.isLegalNumber(undefined)
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import TypeUtil from '../type-util.js?v=1637255330'" expect="false">
+        TypeUtil.isLegalNumber("string")
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import TypeUtil from '../type-util.js?v=1637255330'" expect="false">
+        TypeUtil.isLegalNumber(true)
+      </ropi-javascript-test>
+    </ropi-demo>
+
+    <ropi-demo sourcehidden name="check if value is function">
+      <ropi-javascript-test dependencies="import TypeUtil from '../type-util.js?v=1637255330'" expect="true">
+        TypeUtil.isFunction(function() {})
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import TypeUtil from '../type-util.js?v=1637255330'" expect="false">
+        TypeUtil.isFunction({})
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import TypeUtil from '../type-util.js?v=1637255330'" expect="false">
+        TypeUtil.isFunction(new class {})
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import TypeUtil from '../type-util.js?v=1637255330'" expect="false">
+        TypeUtil.isFunction([])
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import TypeUtil from '../type-util.js?v=1637255330'" expect="false">
+        TypeUtil.isFunction(null)
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import TypeUtil from '../type-util.js?v=1637255330'" expect="false">
+        TypeUtil.isFunction(undefined)
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import TypeUtil from '../type-util.js?v=1637255330'" expect="false">
+        TypeUtil.isFunction("string")
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import TypeUtil from '../type-util.js?v=1637255330'" expect="false">
+        TypeUtil.isFunction(2.1)
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import TypeUtil from '../type-util.js?v=1637255330'" expect="false">
+        TypeUtil.isFunction(true)
+      </ropi-javascript-test>
+    </ropi-demo>
+
+    <ropi-demo sourcehidden name="check if value is primitive">
+      <ropi-javascript-test dependencies="import TypeUtil from '../type-util.js?v=1637255330'" expect="true">
+        TypeUtil.isPrimitive(null)
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import TypeUtil from '../type-util.js?v=1637255330'" expect="true">
+        TypeUtil.isPrimitive(undefined)
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import TypeUtil from '../type-util.js?v=1637255330'" expect="true">
+        TypeUtil.isPrimitive("string")
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import TypeUtil from '../type-util.js?v=1637255330'" expect="true">
+        TypeUtil.isPrimitive(2.1)
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import TypeUtil from '../type-util.js?v=1637255330'" expect="true">
+        TypeUtil.isPrimitive(true)
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import TypeUtil from '../type-util.js?v=1637255330'" expect="false">
+        TypeUtil.isPrimitive(function() {})
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import TypeUtil from '../type-util.js?v=1637255330'" expect="false">
+        TypeUtil.isPrimitive({})
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import TypeUtil from '../type-util.js?v=1637255330'" expect="false">
+        TypeUtil.isPrimitive(new class {})
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import TypeUtil from '../type-util.js?v=1637255330'" expect="false">
+        TypeUtil.isPrimitive([])
+      </ropi-javascript-test>
+    </ropi-demo>
+
+    <ropi-demo sourcehidden name="check if value is boolean">
+      <ropi-javascript-test dependencies="import TypeUtil from '../type-util.js?v=1637255330'" expect="true">
+        TypeUtil.isBoolean(true)
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import TypeUtil from '../type-util.js?v=1637255330'" expect="true">
+        TypeUtil.isBoolean(false)
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import TypeUtil from '../type-util.js?v=1637255330'" expect="false">
+        TypeUtil.isBoolean(null)
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import TypeUtil from '../type-util.js?v=1637255330'" expect="false">
+        TypeUtil.isBoolean(undefined)
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import TypeUtil from '../type-util.js?v=1637255330'" expect="false">
+        TypeUtil.isBoolean("string")
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import TypeUtil from '../type-util.js?v=1637255330'" expect="false">
+        TypeUtil.isBoolean(2.1)
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import TypeUtil from '../type-util.js?v=1637255330'" expect="false">
+        TypeUtil.isBoolean(function() {})
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import TypeUtil from '../type-util.js?v=1637255330'" expect="false">
+        TypeUtil.isBoolean({})
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import TypeUtil from '../type-util.js?v=1637255330'" expect="false">
+        TypeUtil.isBoolean(new class {})
+      </ropi-javascript-test>
+      <ropi-javascript-test dependencies="import TypeUtil from '../type-util.js?v=1637255330'" expect="false">
+        TypeUtil.isBoolean([])
+      </ropi-javascript-test>
+    </ropi-demo>
+  </body>
+</html>

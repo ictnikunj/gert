@@ -1,0 +1,74 @@
+{% block columns %}
+    <ropi-collapsible>
+        <ropi-subheader slot="header">{% trans %}ropi-frontend-editing.contentElement.definition.subheader.columns{% endtrans %}</ropi-subheader>
+        <div slot="content">
+            {% block columns_content %}
+
+                {% block columns_radio_group %}
+                    <ropi-radio-group>
+                        {% block columns_radio_group_inner %}
+
+                            {% block columns_radio_inherit %}
+                                {% if breakpoint and breakpoint.inheritsFrom %}
+                                <ropi-radio name="{{ name }}" value="inherit" {% if breakpoint.key != 'sm' %}checked{% endif %}>
+                                    {% trans with {'%breakpointName%': breakpoints[breakpoint.inheritsFrom].name} %}ropi-frontend-editing.contentElement.definition.label.inheritFromBreakpoint{% endtrans %}
+                                </ropi-radio>
+                                {% endif %}
+                            {% endblock %}
+
+                            {% block columns_radio_1 %}
+                                <ropi-radio name="{{ name }}" value="1" {% if breakpoint and breakpoint.key == 'sm' %}checked{% endif %}>
+                                    {% trans %}ropi-frontend-editing.contentElement.definition.label.columns-1{% endtrans %}
+                                </ropi-radio>
+                            {% endblock %}
+
+                            {% block columns_radio_1_1 %}
+                                <ropi-radio name="{{ name }}" value="1-1" {% if breakpoint and not breakpoint.inheritsFrom %}checked{% endif %}>
+                                    {% trans %}ropi-frontend-editing.contentElement.definition.label.columns-2{% endtrans %}
+                                </ropi-radio>
+                            {% endblock %}
+
+                            {% block columns_radio_1_2 %}
+                                <ropi-radio name="{{ name }}" value="1-2">
+                                    {% trans %}ropi-frontend-editing.contentElement.definition.label.columns-2-33-66{% endtrans %}
+                                </ropi-radio>
+                            {% endblock %}
+
+                            {% block columns_radio_2_1 %}
+                                <ropi-radio name="{{ name }}" value="2-1">
+                                    {% trans %}ropi-frontend-editing.contentElement.definition.label.columns-2-66-33{% endtrans %}
+                                </ropi-radio>
+                            {% endblock %}
+
+                            {% block columns_radio_1_1_1 %}
+                                <ropi-radio name="{{ name }}" value="1-1-1">
+                                    {% trans %}ropi-frontend-editing.contentElement.definition.label.columns-3{% endtrans %}
+                                </ropi-radio>
+                            {% endblock %}
+
+                            {% block columns_radio_1_2_1 %}
+                                <ropi-radio name="{{ name }}" value="1-2-1">
+                                    {% trans %}ropi-frontend-editing.contentElement.definition.label.columns-3-25-50-25{% endtrans %}
+                                </ropi-radio>
+                            {% endblock %}
+
+                            {% block columns_radio_1_1_1_1 %}
+                                <ropi-radio name="{{ name }}" value="1-1-1-1">
+                                    {% trans %}ropi-frontend-editing.contentElement.definition.label.columns-4{% endtrans %}
+                                </ropi-radio>
+                            {% endblock %}
+
+                            {% block columns_radio_1_1_1_1_1_1 %}
+                                <ropi-radio name="{{ name }}" value="1-1-1-1-1-1">
+                                    {% trans %}ropi-frontend-editing.contentElement.definition.label.columns-6{% endtrans %}
+                                </ropi-radio>
+                            {% endblock %}
+
+                        {% endblock %}
+                    </ropi-radio-group>
+                {% endblock %}
+
+            {% endblock %}
+        </div>
+    </ropi-collapsible>
+{% endblock %}

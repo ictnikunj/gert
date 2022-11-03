@@ -1,0 +1,50 @@
+{% block element %}
+
+{% set numMaxCols = 12 %}
+{% set numCols = colClasses|length %}
+
+{% set rowSpacingClass = 'mb-n3' %}
+{% set colSpacingClass = 'mb-3' %}
+{% if data.configuration.colspacing == 'none' %}
+    {% set colSpacingClass = 'px-0' %}
+    {% set rowSpacingClass = 'mx-0' %}
+{% endif %}
+
+<div
+    {% sw_include '@RopiFrontendEditing/content-editor/elements/common/editor-attributes.html.twig' %}
+    class="{% block element_class %}
+               ropi-frontend-editing-content-element-columns
+               {% sw_include '@RopiFrontendEditing/content-editor/elements/common/general-classes.html.twig' with {
+                    'defaultDisplay': 'flex',
+                    'withoutPaddingClasses': true
+                } %}
+           {% endblock %}"
+    style="{% block element_style %}{% endblock %}">
+    {% block element_inner %}
+        <div class="{% block container_class %}
+                        {% if data.configuration.layout == 'fluid' %}container-fluid{% else %}container{% endif %}
+                        {{ paddingClasses|join(' ') }}
+                    {% endblock %}">
+            <div class="{% block row_class %}row {{ rowSpacingClass }}{% endblock %}">
+                {% for i in range(1, numMaxCols) %}
+                    {% if ropiFrontendEditingEditorOpened or numCols >= i %}
+                        <div {% if colClasses[i - 1] is defined %}
+                                 class="{% block col_class %}{{ colClasses[i - 1]|join(' ') }} {{ colSpacingClass }} d-flex"{% endblock %}
+                             {% else %}
+                                 style="display:none"
+                             {% endif %}>
+                            <div
+                                class="ropi-frontend-editing-content-element-columns__content-area
+                                       ropi-frontend-editing-flex
+                                       ropi-frontend-editing-flex--align-{{ data.configuration.verticalAlign ? data.configuration.verticalAlign : 'center' }}"
+                                data-ropi-content-area="col{{ i }}" {% if numCols < i %}disabled{% endif %}>
+                                {{ ropi_frontend_editing_render_content_area('col' ~ i, data.children) }}
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    {% endblock %}
+</div>
+{% endblock %}

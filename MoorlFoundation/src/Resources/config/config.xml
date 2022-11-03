@@ -1,0 +1,425 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/shopware/platform/master/src/Core/System/SystemConfig/Schema/config.xsd">
+    <card>
+        <title>Add-ons</title>
+        <title lang="de-DE">Add-Ons</title>
+
+        <input-field type="bool">
+            <name>fontawesome</name>
+            <label>[Deprecated - Do not use anymore] Enable Font Awesome 5 Free</label>
+            <label lang="de-DE">[Veraltet - Bitte nicht mehr nutzen] Aktiviere Font Awesome 5 Free</label>
+            <defaultValue>false</defaultValue>
+        </input-field>
+
+        <input-field type="bool">
+            <name>animate</name>
+            <label>Enable Animate.css</label>
+            <label lang="de-DE">Aktiviere Animate.css</label>
+            <defaultValue>true</defaultValue>
+        </input-field>
+
+        <input-field>
+            <name>googleMapsApiKey</name>
+            <label>Google Maps API key</label>
+            <label lang="de-DE">Google Maps API Schlüssel</label>
+            <helpText>This API key is used by moori plugins</helpText>
+            <helpText lang="de-DE">Dieser API Schlüssel wird von moori Plugins genutzt</helpText>
+        </input-field>
+    </card>
+
+    <card>
+        <title>Advanced search</title>
+        <title lang="de-DE">Erweiterte Suche</title>
+
+        <input-field type="bool">
+            <name>advancedSearchActive</name>
+            <label>Enable advanced search</label>
+            <label lang="de-DE">Erweiterte Suche aktivieren</label>
+            <defaultValue>true</defaultValue>
+        </input-field>
+
+        <input-field type="bool">
+            <name>advancedSearchHideEmptyResults</name>
+            <label>Hide empty search results</label>
+            <label lang="de-DE">Leere Suchergebnisse verstecken</label>
+            <defaultValue>true</defaultValue>
+        </input-field>
+
+        <input-field type="bool">
+            <name>advancedSearchNoTab</name>
+            <label>Do not use tab</label>
+            <label lang="de-DE">Keinen Reiter verwenden</label>
+            <defaultValue>false</defaultValue>
+        </input-field>
+
+        <input-field type="text">
+            <name>advancedSearchWidth</name>
+            <label>Width of the search suggest element</label>
+            <label lang="de-DE">Breite des Suchvorschläge Elementes</label>
+            <defaultValue>600px</defaultValue>
+            <placeholder>100%,600px,90vw</placeholder>
+        </input-field>
+
+        <component name="moorl-support-link">
+            <name>null</name>
+            <path>/MoorlFoundation/advanced-search/</path>
+        </component>
+    </card>
+
+    <card>
+        <title>Animation</title>
+        <title lang="de-DE">Animation</title>
+
+        <component name="moorl-animation">
+            <name>moorlAnimation</name>
+        </component>
+
+        <component name="moorl-support-link">
+            <name>null</name>
+            <path>/MoorlFoundation/features-free/</path>
+        </component>
+    </card>
+
+    <card>
+        <title>Auto translate [Premium]</title>
+        <title lang="de-DE">Automatische Übersetzungen [Premium]</title>
+
+        <input-field>
+            <name>deeplApiKey</name>
+            <label>DeepL API key</label>
+            <label lang="de-DE">DeepL API Schlüssel</label>
+            <helpText>This API key is used by moori plugins</helpText>
+            <helpText lang="de-DE">Dieser API Schlüssel wird von moori Plugins genutzt</helpText>
+        </input-field>
+
+        <component name="sw-entity-single-select">
+            <name>translateSource</name>
+            <entity>language</entity>
+            <label>Source language</label>
+            <label lang="de-DE">Quellsprache</label>
+        </component>
+
+        <component name="sw-entity-multi-id-select">
+            <name>translateDestination</name>
+            <entity>language</entity>
+            <label>Destination language(s)</label>
+            <label lang="de-DE">Zielsprache(n)</label>
+        </component>
+
+        <input-field type="single-select">
+            <name>translateFormality</name>
+            <label>Formality</label>
+            <label lang="de-DE">Formalität</label>
+            <options>
+                <option>
+                    <id>default</id>
+                    <name>Default</name>
+                </option>
+                <option>
+                    <id>more</id>
+                    <name>More</name>
+                </option>
+                <option>
+                    <id>less</id>
+                    <name>Less</name>
+                </option>
+            </options>
+            <defaultValue>less</defaultValue>
+        </input-field>
+
+        <input-field type="multi-select">
+            <name>translateProductProperties</name>
+            <label>Product fields</label>
+            <label lang="de-DE">Produkt Felder</label>
+            <options>
+                <option>
+                    <id>name</id>
+                    <name>name</name>
+                </option>
+                <option>
+                    <id>description</id>
+                    <name>description</name>
+                </option>
+                <option>
+                    <id>metaTitle</id>
+                    <name>metaTitle</name>
+                </option>
+                <option>
+                    <id>metaDescription</id>
+                    <name>metaDescription</name>
+                </option>
+                <option>
+                    <id>keywords</id>
+                    <name>keywords</name>
+                </option>
+            </options>
+        </input-field>
+
+        <input-field type="multi-select">
+            <name>translateCategoryProperties</name>
+            <label>Category fields</label>
+            <label lang="de-DE">Kategorie Felder</label>
+            <options>
+                <option>
+                    <id>name</id>
+                    <name>name</name>
+                </option>
+                <option>
+                    <id>description</id>
+                    <name>description</name>
+                </option>
+                <option>
+                    <id>metaTitle</id>
+                    <name>metaTitle</name>
+                </option>
+                <option>
+                    <id>metaDescription</id>
+                    <name>metaDescription</name>
+                </option>
+                <option>
+                    <id>keywords</id>
+                    <name>keywords</name>
+                </option>
+            </options>
+        </input-field>
+
+        <input-field type="multi-select">
+            <name>translatePropertyGroupProperties</name>
+            <label>Property fields</label>
+            <label lang="de-DE">Eigenschaften Felder</label>
+            <options>
+                <option>
+                    <id>name</id>
+                    <name>name</name>
+                </option>
+                <option>
+                    <id>description</id>
+                    <name>description</name>
+                </option>
+            </options>
+        </input-field>
+
+        <input-field type="multi-select">
+            <name>translatePropertyGroupOptionProperties</name>
+            <label>Property option fields</label>
+            <label lang="de-DE">Eigenschaften Optionen Felder</label>
+            <options>
+                <option>
+                    <id>name</id>
+                    <name>name</name>
+                </option>
+            </options>
+        </input-field>
+
+        <component name="moorl-support-link">
+            <name>null</name>
+            <path>/MoorlFoundation/features-premium/</path>
+        </component>
+    </card>
+
+    <card>
+        <title>Open Street Map</title>
+        <title lang="de-DE">Open Street Map</title>
+
+        <input-field>
+            <name>osmTileLayer</name>
+            <label>URL for tile layer</label>
+            <label lang="de-DE">URL Für Kachel-Ebene</label>
+            <defaultValue><![CDATA[https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png]]></defaultValue>
+            <placeholder><![CDATA[https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png]]></placeholder>
+        </input-field>
+
+        <input-field type="textarea">
+            <name>osmAttribution</name>
+            <label>Copyright</label>
+            <label lang="de-DE">Copyright</label>
+            <defaultValue><![CDATA[Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>]]></defaultValue>
+            <placeholder><![CDATA[Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>]]></placeholder>
+        </input-field>
+
+        <input-field type="multi-select">
+            <name>osmOptions</name>
+            <label>More options</label>
+            <label lang="de-DE">Mehr Optionen</label>
+            <options>
+                <option>
+                    <id>scrollWheelZoom</id>
+                    <name>Zoom with scrollwheel</name>
+                    <name lang="de-DE">Mit Mausrad zoomen</name>
+                </option>
+                <option>
+                    <id>dragging</id>
+                    <name>Drag map</name>
+                    <name lang="de-DE">Karte verschieben</name>
+                </option>
+                <option>
+                    <id>tap</id>
+                    <name>Tap map</name>
+                    <name lang="de-DE">Karte antippen</name>
+                </option>
+                <option>
+                    <id>autoPan</id>
+                    <name>Auto pan popup</name>
+                    <name lang="de-DE">Karte antippen</name>
+                </option>
+                <option>
+                    <id>autoClose</id>
+                    <name>Auto close popup</name>
+                    <name lang="de-DE">Popups automatisch schließen</name>
+                </option>
+                <option>
+                    <id>scrollTo</id>
+                    <name>Scroll to active box</name>
+                    <name lang="de-DE">Zum aktiven Feld blättern</name>
+                </option>
+                <option>
+                    <id>flyTo</id>
+                    <name>Fly to to active marker</name>
+                    <name lang="de-DE">Fliege zur aktiven Markierung</name>
+                </option>
+                <option>
+                    <id>fitBounds</id>
+                    <name>Fit bounds on close popup</name>
+                    <name lang="de-DE">Grenzen beim Schließen des Popups anpassen</name>
+                </option>
+            </options>
+        </input-field>
+
+        <component name="sw-entity-multi-id-select">
+            <name>osmCountryIds</name>
+            <entity>country</entity>
+            <label>Reduce search to selected countries for better search results</label>
+            <label lang="de-DE">Suche auf ausgewählte Länder reduzieren für bessere Suchergebnisse</label>
+        </component>
+
+        <input-field type="single-select">
+            <name>osmUnitOfMeasurement</name>
+            <label>Unit of measurement</label>
+            <label lang="de-DE">Maßeinheit</label>
+            <options>
+                <option>
+                    <id>km</id>
+                    <name>Kilometre</name>
+                </option>
+                <option>
+                    <id>mi</id>
+                    <name>Mile</name>
+                </option>
+                <option>
+                    <id>nm</id>
+                    <name>Nautical mile (not supported yet)</name>
+                </option>
+            </options>
+            <defaultValue>km</defaultValue>
+        </input-field>
+    </card>
+
+    <card>
+        <title>Listing options</title>
+        <title lang="de-DE">Listing Optionen</title>
+
+        <input-field type="bool">
+            <name>filterSearchCollapsed</name>
+            <label>Search filter collapsed (Sidebar)</label>
+            <label lang="de-DE">Suchfilter ausgeklappt (Sidebar)</label>
+            <defaultValue>true</defaultValue>
+        </input-field>
+
+        <input-field type="bool">
+            <name>filterRadiusCollapsed</name>
+            <label>Filter radius collapsed (Sidebar)</label>
+            <label lang="de-DE">Radius Filter ausgeklappt (Sidebar)</label>
+            <defaultValue>true</defaultValue>
+        </input-field>
+
+        <input-field type="bool">
+            <name>filterRadiusMyLocation</name>
+            <label>Allow location request by browser</label>
+            <label lang="de-DE">Standortabfrage des Browsers erlauben</label>
+            <defaultValue>true</defaultValue>
+        </input-field>
+
+        <input-field type="single-select">
+            <name>filterRadiusType</name>
+            <label>Filter radius type</label>
+            <label lang="de-DE">Radius Filter Typ</label>
+            <options>
+                <option>
+                    <id>select</id>
+                    <name>Select</name>
+                    <name lang="de-DE">Feste Auswahl</name>
+                </option>
+                <option>
+                    <id>number</id>
+                    <name>Number</name>
+                    <name lang="de-DE">Zahl</name>
+                </option>
+            </options>
+            <defaultValue>number</defaultValue>
+        </input-field>
+
+        <input-field type="text">
+            <name>filterRadiusSteps</name>
+            <label>Filter radius steps</label>
+            <label lang="de-DE">Radius Filter Schritte</label>
+            <defaultValue>1,2.5,5,10,15,25,50</defaultValue>
+            <placeholder>1,2.5,5,10,15,25,50</placeholder>
+        </input-field>
+    </card>
+
+    <card>
+        <title>Order options</title>
+        <title lang="de-DE">Bestellung Optionen</title>
+
+        <input-field type="bool">
+            <name>orderAutoCancel</name>
+            <label>Cancel order if payment failed</label>
+            <label lang="de-DE">Bestellung abbrechen, wenn Zahlung fehlschlägt</label>
+            <helpText>This option ensures that the stock remains up to date</helpText>
+            <helpText lang="de-DE">Diese option stellt sicher, dass der Lagerbestand aktuell bleibt</helpText>
+            <defaultValue>false</defaultValue>
+        </input-field>
+    </card>
+
+    <card>
+        <title>Plugin settings</title>
+        <title lang="de-DE">Plugin Einstellungen</title>
+
+        <input-field type="text">
+            <name>fileExtensions</name>
+            <label>Additional upload extensions</label>
+            <label lang="de-DE">Zusätzliche Upload Erweiterungen</label>
+            <placeholder>zip,rar,psd,docx etc...</placeholder>
+            <defaultValue>zip,rar,psd,docx</defaultValue>
+        </input-field>
+
+        <input-field type="bool">
+            <name>cmsElements</name>
+            <label>Remove CMS elements when uninstalling</label>
+            <label lang="de-DE">CMS Elemente beim deinstallieren entfernen</label>
+            <defaultValue>true</defaultValue>
+        </input-field>
+
+        <input-field type="bool">
+            <name>mailTemplates</name>
+            <label>Remove/Refresh email templates when uninstalling/activating</label>
+            <label lang="de-DE">Entfernen/Erneuern von E-Mail Templates beim Deinstallieren/Aktivieren</label>
+            <defaultValue>true</defaultValue>
+        </input-field>
+
+        <input-field type="bool">
+            <name>customFields</name>
+            <label>Remove/Refresh custom fields when uninstalling/activating</label>
+            <label lang="de-DE">Entfernen/Erneuern von Freitextfeldern beim Deinstallieren/Aktivieren</label>
+            <defaultValue>true</defaultValue>
+        </input-field>
+
+        <input-field type="bool">
+            <name>snippets</name>
+            <label>Remove/Refresh snippets when uninstalling/activating</label>
+            <label lang="de-DE">Entfernen/Erneuern von Textbausteinen beim Deinstallieren/Aktivieren</label>
+            <defaultValue>true</defaultValue>
+        </input-field>
+    </card>
+</config>

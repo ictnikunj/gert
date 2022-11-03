@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+      <script type="module">
+        import '../../demo-element/demo-element.js?v=1637255330';
+        import '../breadcrumb-item-element.js?v=1637255330';
+      </script>
+
+      <title>breadcrumb-item-element demo</title>
+  </head>
+  <body>
+    <ropi-demo>
+      <ropi-breadcrumb-item noarrow>
+        first
+      </ropi-breadcrumb-item>
+      <ropi-breadcrumb-item active>
+        second
+      </ropi-breadcrumb-item>
+    </ropi-demo>
+
+    <ropi-demo name="scrollable breadcrumb">
+      <ropi-vertical-scroll id="vertical-scroll">
+        <ropi-breadcrumb-item noarrow>
+          first
+        </ropi-breadcrumb-item>
+        <ropi-breadcrumb-item>
+          second
+        </ropi-breadcrumb-item>
+        <ropi-breadcrumb-item>
+          third
+        </ropi-breadcrumb-item>
+        <ropi-breadcrumb-item>
+          fourth
+        </ropi-breadcrumb-item>
+        <ropi-breadcrumb-item active>
+          fifth
+        </ropi-breadcrumb-item>
+      </ropi-vertical-scroll>
+      <script type="module">
+        import '../../vertical-scroll-element/vertical-scroll-element.js?v=1637255330';
+
+        let verticalScroll = document.getElementById('vertical-scroll');
+        verticalScroll.scrollSmooth(0, verticalScroll.maxScrollPosition);
+      </script>
+    </ropi-demo>
+  </body>
+</html>

@@ -1,0 +1,18 @@
+{
+  "name": "ict/redirect-plugin",
+  "description": "Redirect plugin",
+  "type": "shopware-platform-plugin",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "Redirectplugin\\": "src/"
+    }
+  },
+  "extra": {
+    "shopware-plugin-class": "Redirectplugin\\Redirectplugin",
+    "label": {
+      "de-DE": "Redirect plugin",
+      "en-GB": "Redirect plugin"
+    }
+  }
+}

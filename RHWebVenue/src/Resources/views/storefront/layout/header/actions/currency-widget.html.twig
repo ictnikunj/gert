@@ -1,0 +1,13 @@
+{% sw_extends '@Storefront/storefront/layout/header/actions/currency-widget.html.twig' %}
+
+{% block layout_header_actions_currency_widget_dropdown_toggle %}
+    <div class="dropdown-toggle top-bar-nav-btn"
+            id="currenciesDropdown-{{ position }}"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false">
+        {% block layout_header_actions_currency_widget_dropdown_toggle_name %}
+            {{ parent() }}
+        {% endblock %}
+    </div>
+{% endblock %}

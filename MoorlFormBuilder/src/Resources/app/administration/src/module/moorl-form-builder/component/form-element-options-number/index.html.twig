@@ -1,0 +1,13 @@
+<div class="moorl-form-element-options-number">
+    <moorl-collapse :label="$tc('moorl-form-builder.general.elementOptions')"
+                    key="elementOptions">
+        <template #content>
+            <sw-number-field :label="$tc('moorl-form-builder.properties.numberMin')"
+                             v-model="formElement.numberMin"></sw-number-field>
+            <sw-number-field :label="$tc('moorl-form-builder.properties.numberMax')"
+                             v-model="formElement.numberMax"></sw-number-field>
+            <sw-number-field :label="$tc('moorl-form-builder.properties.numberStep')"
+                             v-model="formElement.numberStep"></sw-number-field>
+        </template>
+    </moorl-collapse>
+</div>

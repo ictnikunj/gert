@@ -1,0 +1,58 @@
+{% block rhweb_venue_newsletter_popup %}
+    <div class="modal fade rhweb-modal-box newsletter" id="popupModal" tabindex="-1" role="dialog" aria-labelledby="popupModalTitle" aria-hidden="true" data-backdrop="static">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    {% block rhweb_venue_newsletter_popup_close %}
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    {% endblock %}
+                </div>
+
+                <div class="modal-body">
+                    <div class="row m-0">
+                        {% block rhweb_venue_newsletter_popup_image %}
+                            <div class="col-6 p-0">
+                                <img class="d-block w-100" src="{{ theme_config('rhweb-rhwebmailchimp-popup-image') |sw_encode_url }}" alt="First slide">
+                            </div>
+                        {% endblock %}
+                        {% block rhweb_venue_newsletter_popup_content %}
+                            <div class="col-6 p-0">
+                                <div class="popup-content p-3">
+                                    {% block rhweb_venue_newsletter_popup_headline %}
+                                        <div class="h3">{{ "venueTheme.mailchimpPopup.headline"|trans|sw_sanitize }}</div>
+                                    {% endblock %}
+
+                                    {% block rhweb_venue_newsletter_popup_text %}
+                                        <p>{{ "venueTheme.mailchimpPopup.text"|trans|sw_sanitize }}</p>
+                                    {% endblock %}
+
+                                    {% block rhweb_venue_newsletter_popup_form %}
+                                        <form action="{{ theme_config('rhweb-mailchimp-action-url') }}" method="post">
+                                            <input type="hidden" name="u" value="{{ theme_config('rhweb-mailchimp-user-id') }}">
+                                            <input type="hidden" name="id" value="{{ theme_config('rhweb-mailchimp-audience-id') }}">
+                                            <div class="my-4">
+                                                <input class="newsletter-input" type="email" id="MERGE0Popup" name="MERGE0Popup" placeholder="{{ "venueTheme.mailchimpPopup.placeholder"|trans|sw_sanitize }}" autocomplete="off"  value=""/>
+                                            </div>
+                                            <div class="optin-check mb-3">
+                                                <label class="b-contain">
+                                                    <span>{{ "venueTheme.mailchimpPopup.hint"|trans|sw_sanitize }}</span>
+                                                    <input type="checkbox" required>
+                                                    <div class="b-input"></div>
+                                                </label>
+                                            </div>
+                                            <div class="mb-2">
+                                                <button class="btn" type="submit" name="subscribe" id="mc-embedded-subscribe-popup">{{ "venueTheme.mailchimpPopup.button"|trans|sw_sanitize }}</button>
+                                            </div>
+                                        </form>
+                                    {% endblock %}
+                                </div>
+                            </div>
+                        {% endblock %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

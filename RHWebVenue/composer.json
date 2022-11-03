@@ -1,0 +1,42 @@
+{
+    "name": "rhweb/venue",
+    "description": "VENUE | PRO | Responsive Premium Theme",
+    "version": "v2.2.11",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "RH-Webdesign",
+            "homepage": "https://rh-webdesign.com"
+        }
+    ],
+    "require": {
+        "shopware/core": "*"
+    },
+    "type": "shopware-platform-plugin",
+    "autoload": {
+        "psr-4": {
+            "RHWeb\\Venue\\": "src/"
+        }
+    },
+    "extra": {
+        "shopware-plugin-class": "RHWeb\\Venue\\RHWebVenue",
+        "plugin-icon": "icon.png",
+        "copyright": "(c) by RH-Webdesign",
+        "label": {
+            "de-DE": "VENUE | PRO | Responsive Premium Theme",
+            "en-GB": "VENUE | PRO | Responsive Premium Theme"
+        },
+        "description": {
+            "de-DE": "Support von www.rh-webdesign.com",
+            "en-GB": "Support by www.rh-webdesign.com"
+        },
+        "manufacturerLink": {
+            "de-DE": "https://www.rh-webdesign.com",
+            "en-GB": "https://www.rh-webdesign.com"
+        },
+        "supportLink": {
+            "de-DE": "https://rh-webdesign.com",
+            "en-GB": "https://rh-webdesign.com/en"
+        }
+    }
+}
